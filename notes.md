@@ -1,0 +1,16 @@
+# Struktur
+- Landing Page mit Buttons zu
+    - CTF
+    - Real World Exploitation (Bug Bounty/CVE)
+    - Resumee/CV
+        - Ask me anything - Chatbot
+    - Software Engineering
+    - Minigames
+        - TicTacToe vs AI
+    - Tools
+    - About
+        - Discord
+        - Email
+        - Github
+        - Linkedin
+    - Blog
