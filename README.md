@@ -9,6 +9,11 @@ It is written in Ruby, not because I love pain, but more to learn new stuff.
 `cd website && bundle install`
 `rails server`
 
+# Help
+When you have installation problems try out
+`gem update --system`
+`bundle clean --force`
+`bundle install`
 
 # README
 
