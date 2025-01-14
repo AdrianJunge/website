@@ -1,0 +1,2 @@
+class MinigamesController < ApplicationController
+end

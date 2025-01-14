@@ -1,0 +1,2 @@
+class BugBountyController < ApplicationController
+end

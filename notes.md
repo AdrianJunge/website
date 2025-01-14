@@ -1,6 +1,9 @@
 # Struktur
 - Landing Page mit Buttons zu
     - CTF
+        - Writeups
+        - Archievements
+            - DHM (zB mit Link zum Twitter)
     - Real World Exploitation (Bug Bounty/CVE)
     - Resumee/CV
         - Ask me anything - Chatbot
