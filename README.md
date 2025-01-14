@@ -1,5 +1,5 @@
-# AdrianJunge.github.io
-This is the code for my [website](AdrianJunge.github.io).
+# About
+This is the code for my [website](TODO: README hyperlink).
 It is written in Ruby, not because I love pain, but more to learn new stuff.
 
 # Installation
