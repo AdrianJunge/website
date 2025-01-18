@@ -1,3 +1,4 @@
 # Pin npm packages by running ./bin/importmap
 
-pin "application"
+pin "application", preload: true
+pin "landing", to: "landing.js"

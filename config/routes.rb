@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :ctf
-  resources :bug_bounty
-  resources :resumes, only: [ :index ]
-  resources :minigames, only: [ :index ]
-  resources :tools, only: [ :index ]
-  resources :blog_posts, only: [ :index, :show ]
+  root "landing#index"
 
-  root "pages#home"
+  get "ctf", to: "landing#ctf"
+  get "bug-bounty", to: "landing#bug_bounty"
+  get "cv", to: "landing#cv"
+  get "minigames", to: "landing#minigames"
+  get "tools", to: "landing#tools"
+  get "blog", to: "landing#blog"
 end

@@ -1,4 +1,5 @@
-# Struktur
+# TODOs
+- favicon.ico
 - Landing Page mit Buttons zu
     - CTF
         - Writeups
@@ -16,4 +17,7 @@
         - Email
         - Github
         - Linkedin
+        - Bild von mir als Hintergrund
     - Blog
+    - Smartphone
+        - Entsprechende Anpassungen für kleine Bildschirme
