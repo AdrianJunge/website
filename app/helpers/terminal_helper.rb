@@ -1,10 +1,10 @@
 module TerminalHelper
-  def render_terminal(command, paths, current_time)
+  def render_terminal(command, outputs)
     content_tag(:div, class: "coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-3xl font-mono subpixel-antialiased bg-gray-700 pb-6 pt-4 rounded-lg leading-normal", style: "width: 1200px; max-width: 90%; white-space: nowrap;") do
       safe_join([
         render_terminal_top,
         render_terminal_command(command),
-        render_terminal_paths(paths, current_time)
+        render_terminal_output(outputs)
       ])
     end
   end
@@ -32,11 +32,11 @@ module TerminalHelper
     end
   end
 
-  def render_terminal_paths(paths, current_time)
+  def render_terminal_output(outputs)
     content_tag(:div, class: "mt-4 pl-2 text-left") do
       safe_join(
-        paths.map do |path|
-          content_tag(:span, "drwxr-xr-x  5 adrian adrian  4.0K #{current_time} #{path}", class: "text-blue-400", style: "visibility: hidden") +
+        outputs.map do |output|
+          content_tag(:span, output, class: "text-blue-400", style: "visibility: hidden") +
           tag.br
         end
       )
