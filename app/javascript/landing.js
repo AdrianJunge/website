@@ -1,9 +1,9 @@
-for (var i = 0; i < 1000; i++) {
+for (var i = 0; i < 250; i++) {
 	var star =
 	  '<div class="star m-0" style="animation: twinkle ' +
-	  (Math.random() * 2 + 2) +  // Shorter time for faster appearance (from 5s to 2-4s)
+	  (Math.random() * 2 + 2) +
 	  's linear ' +
-	  (Math.random() * 0.1) +  // Shorter delay for quicker start (from 1s to 0.5-1s)
+	  (Math.random() * 0.1) +
 	  's infinite; top: ' +
 	  Math.random() * $(window).height() +
 	  'px; left: ' +
@@ -11,11 +11,15 @@ for (var i = 0; i < 1000; i++) {
 	  'px;"></div>';
 	$('.homescreen').append(star);
 }
-  
+
 document.addEventListener('DOMContentLoaded', function() {
 	const pathsElement = document.querySelectorAll(".text-blue-400");
-  
+	const typingCommand = document.querySelectorAll(".typing-command");
+	const lastInput = document.getElementById("terminal-last-input");
+	
 	setTimeout(function() {
+		typingCommand[0].classList.remove('typing-command');
 		pathsElement.forEach((path) => (path.style.visibility = "visible"));
+		lastInput.style.visibility = "visible";
 	}, 2000);
 });

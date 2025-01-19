@@ -1,13 +1,22 @@
 <% current_time=Time.now.strftime("%b %d %H:%M") %>
 
-<section class="homescreen m-0 flex flex-col items-center justify-center bg-gray-800 h-screen text-gray-100">
-	<%= render_terminal("ls -lah", [
-			"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} ctf",
-			"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} bug_bounty",
-			"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} CV",
-			"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} minigames",
-			"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} tools",
-			"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} blog",
+<section id="screen" class="homescreen m-0 flex flex-col items-center justify-center bg-gray-800 h-screen text-gray-100">
+	<%= render_terminal(
+		[
+			{
+				command: "ls -lah ~",
+				outputs: [
+					"drwxrwxr-x  8 adrian adrian  4.0K #{current_time} ~",
+					"drwxrwxr-x  6 adrian adrian  4.0K #{current_time} .",
+					"drwxrwxr-x  7 adrian adrian  4.0K #{current_time} ..",
+					"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} ctf",
+					"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} bug_bounty",
+					"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} CV",
+					"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} minigames",
+					"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} tools",
+					"drwxr-xr-x  5 adrian adrian  4.0K #{current_time} blog",
+				],
+			},
 		]
 	) %>
 </section>
