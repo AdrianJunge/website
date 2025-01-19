@@ -6,8 +6,10 @@ It is written in Ruby, not because I love pain, but more to learn new stuff.
 `apt install ruby-full`
 `gem install rails`
 `gem install bundler`
+
+# Starting
 `cd website && bundle install`
-`rails server`
+`rails server` or `bin/dev`
 
 # Help
 When you have installation problems try out

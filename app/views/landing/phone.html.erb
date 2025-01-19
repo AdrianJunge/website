@@ -1,0 +1,36 @@
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="text-center p-10">
+      <div class="text-8xl font-bold text-blue-800">
+        <span id="status" class="animate-pulse">Processing...</span>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // TODO: set this js into a separate file
+    setTimeout(() => {
+      const statusElement = document.getElementById('status');
+      statusElement.classList.add('animate-change-text');
+      statusElement.textContent = 'PWNED!';
+    }, 1000);
+  </script>
+
+
+
+<%# <div id="landing-container">
+  <div id="laptop">
+    <div id="laptop-screen">
+      <nav id="menu">
+        <ul>
+          <li data-target="ctf">CTF</li>
+          <li data-target="bug-bounty">Bug Bounty</li>
+          <li data-target="cv">CV</li>
+          <li data-target="minigames">Minigames</li>
+          <li data-target="tools">Tools</li>
+          <li data-target="blog">Blog</li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div> %>

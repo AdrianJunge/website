@@ -1,0 +1,15 @@
+@keyframes changeText {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.animate-change-text {
+    animation: changeText 3s ease-in-out forwards;
+}
