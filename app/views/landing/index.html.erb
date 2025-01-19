@@ -1,29 +1,3 @@
 <section class="homescreen m-0 flex flex-col items-center justify-center bg-gray-800 h-screen text-gray-100">
-  <div class="coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-3xl font-mono subpixel-antialiased 
-              bg-gray-700 pb-6 pt-4 rounded-lg leading-normal" style="width: 1200px; max-width: 90%; white-space: nowrap;">
-    <div class="top mb-2 flex">
-      <div class="h-3 w-3 bg-red-500 rounded-full"></div>
-      <div class="ml-2 h-3 w-3 bg-orange-300 rounded-full"></div>
-      <div class="ml-2 h-3 w-3 bg-green-500 rounded-full"></div>
-    </div>
-    <div class="mt-4 flex">
-      <span class="text-blue-400">adrian@computer:~$</span>
-      <p class="pl-2">
-        <span id="command">
-          ls -lah
-        </span>
-        <br>
-      </p>
-    </div>
-    <div class="mt-4 pl-2 text-left">
-      <span id="paths">
-        drwxr-xr-x  5 adrian adrian  4096 Jan 19 12:00 <span class="text-blue-400">ctf</span><br>
-        drwxr-xr-x  7 adrian adrian  4096 Jan 19 12:00 <span class="text-blue-400">bug_bounty</span><br>
-        drwxr-xr-x  6 adrian adrian  4096 Jan 19 12:00 <span class="text-blue-400">CV</span><br>
-        drwxr-xr-x  8 adrian adrian  4096 Jan 19 12:00 <span class="text-blue-400">minigames</span><br>
-        drwxr-xr-x  5 adrian adrian  4096 Jan 19 12:00 <span class="text-blue-400">tools</span><br>
-        drwxr-xr-x  7 adrian adrian  4096 Jan 19 12:00 <span class="text-blue-400">blog</span><br>
-      </span>
-    </div>
-  </div>
+	<%= render_terminal("ls -lah", ["ctf", "bug_bounty", "CV", "minigames", "tools", "blog"], Time.now.strftime("%b %d %H:%M")) %>
 </section>

@@ -10,5 +10,12 @@ for (var i = 0; i < 1000; i++) {
 	  Math.random() * $(window).width() +
 	  'px;"></div>';
 	$('.homescreen').append(star);
-  }
+}
   
+document.addEventListener('DOMContentLoaded', function() {
+	const pathsElement = document.querySelectorAll(".text-blue-400");
+  
+	setTimeout(function() {
+		pathsElement.forEach((path) => (path.style.visibility = "visible"));
+	}, 2000);
+});
