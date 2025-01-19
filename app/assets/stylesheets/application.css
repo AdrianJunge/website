@@ -13,17 +13,16 @@
 	}
 }
 .view_1 {
-	transform: translateZ(-10vh) rotateX(50deg) rotateY(5deg) rotateZ(-50deg);
+	transform: translateZ(-10vh) rotateX(50deg) rotateY(5deg) rotateZ(50deg);
 	border: solid #333;
 	border-width: 12px 12px 15px 15px;
 	border-radius: 50px 40px 40px 50px;
 	box-shadow:
-		-3px 3px 6px -1px #fff,
-		-3px 3px 0 1px #dadada,
-		-8px 7px 0 -1px #dadada,
-		-12px 12px 0 -5px #dadada,
-		-18px 15px 0 -5px #dadada,
-		-25px 15px 75px -15px rgba(#000, 0.75);
+		5px 1px 0 #BBB,
+		9px 2px 0 #BBB,
+		12px 3px 0 #BBB,
+		15px 4px 0 #BBB,
+		0 7px 20px #999;
 }
 .view_2 {
 	transform: rotateX(0deg) rotateY(-45deg) rotateZ(0deg);
