@@ -13,11 +13,16 @@
         - TicTacToe vs AI
     - Tools
     - About
+        - Bild von mir als Hintergrund
+        - Kurze Beschreibung
+    - Contact
         - Discord
-        - Email
+        - Email via Form
         - Github
         - Linkedin
-        - Bild von mir als Hintergrund
     - Blog
+        - Java Strings
+
+# Features
     - Smartphone
         - Entsprechende Anpassungen für kleine Bildschirme
