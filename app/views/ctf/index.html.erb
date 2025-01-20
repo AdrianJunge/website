@@ -1,1 +1,16 @@
-<h1>CTF Writeups</h1>
+<% current_time=Time.now.strftime("%b %d %H:%M") %>
+
+<%= render_terminal(
+	[
+		{
+			command: "ls -lah ~/ctf",
+			outputs: [
+				"drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>~</span>",
+				"drwxrwxr-x  6 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>.</span>",
+				"drwxrwxr-x  7 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>..</span>",
+				"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>writeups</span>",
+			],
+		},
+	], false
+) %>
+<%# TODO: hyperlinks zu weiterführenden Seiten %>

@@ -48,7 +48,7 @@ html, body {
 	white-space: nowrap;
 	border-right: 20px solid rgba(255, 255, 255, 0.75);
 	width: 0;
-	animation: typing 1s steps(10) 1s 1 normal both, blink-caret 0.5s step-end infinite;
+	animation: typing 1s steps(var(--steps)) 1s 1 normal both, blink-caret 0.5s step-end infinite;
 }
 
 .last-typing-command {
@@ -78,33 +78,6 @@ html, body {
 	}
 }
 
-/* #terminal {
-    transition: all 1s ease-in-out;
-}
-
-#terminal.terminal-minimized {
-    top: 10px;
-    left: 10px;
-    height: 50px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-#terminal.terminal-minimized .command-output,
-#terminal.terminal-minimized .typing-command {
-    visibility: hidden;
-}
-
-#terminal .command-output,
-#terminal .typing-command {
-    transition: opacity 0.3s ease-in-out;
-    opacity: 1;
-}
-
-#terminal.terminal-minimized .command-output,
-#terminal.terminal-minimized .typing-command {
-    opacity: 0;
-} */
 
 #taskbar {
     position: fixed;

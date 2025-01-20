@@ -19,6 +19,9 @@ function typingEffect() {
 	const typingCommand = document.querySelectorAll(".typing-command");
 	const lastInput = document.getElementById("terminal-last-input");
 	
+	const textLength = typingCommand[0].textContent.length;
+	typingCommand[0].style.setProperty('--steps', textLength + 1);
+
 	setTimeout(function() {
 		typingCommand[0].classList.remove('typing-command');
 		pathsElement.forEach((path) => (path.style.visibility = "visible"));
