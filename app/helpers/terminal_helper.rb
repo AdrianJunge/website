@@ -1,4 +1,6 @@
 module TerminalHelper
+  TAG = "adrian@my-space:~$"
+
   def render_terminal(commands_and_outputs)
     content_tag(:div, id: "terminal", class: "coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-3xl font-mono subpixel-antialiased bg-gray-700 pb-6 pt-4 rounded-lg leading-normal", style: "width: 1200px; max-width: 90%; white-space: nowrap;") do
       safe_join([
@@ -17,7 +19,7 @@ module TerminalHelper
 
   def render_terminal_input(command)
     safe_join([
-      content_tag(:span, "adrian@computer:~$", class: "text-blue-400 computer"),
+      content_tag(:span, TAG, class: "text-blue-400"),
       content_tag(:p, class: "pl-2") do
         content_tag(:span, command, class: "typing-command")
       end
@@ -30,7 +32,7 @@ module TerminalHelper
   def last_terminal_input
     content_tag(:div, id: "terminal-last-input", class: "mt-4 flex", style: "visibility: hidden") do
       safe_join([
-        content_tag(:span, "adrian@computer:~$", class: "text-blue-400 computer"),
+        content_tag(:span, TAG, class: "text-blue-400"),
         content_tag(:p, class: "pl-2") do
           content_tag(:span, "", class: "last-typing-command")
         end
@@ -61,7 +63,7 @@ module TerminalHelper
     content_tag(:div, class: "mt-4 pl-2 text-left") do
       safe_join(
         outputs.map do |output|
-          content_tag(:span, output, class: "text-blue-400", style: "visibility: hidden") +
+          content_tag(:span, output.html_safe, class: "command-output", style: "visibility: hidden") +
           tag.br
         end
       )

@@ -13,7 +13,7 @@ for (var i = 0; i < 250; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	const pathsElement = document.querySelectorAll(".text-blue-400");
+	const pathsElement = document.querySelectorAll(".command-output");
 	const typingCommand = document.querySelectorAll(".typing-command");
 	const lastInput = document.getElementById("terminal-last-input");
 	
