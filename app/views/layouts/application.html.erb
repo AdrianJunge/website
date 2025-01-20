@@ -9,6 +9,13 @@
   <%= javascript_importmap_tags %>
 </head>
 <body class="bg-gray-600">
-  <%= yield %>
+  <section id="screen" class="homescreen m-0 flex flex-col items-center justify-center bg-gray-800 h-screen text-gray-100">
+    <div id="taskbar">
+      <div class="taskbar-icon" id="terminal-taskbar-icon">
+        <%= image_tag("terminal/terminal.svg", alt: "Terminal Icon") %>
+      </div>
+    </div>
+    <%= yield %>
+  </section>
 </body>
 </html>

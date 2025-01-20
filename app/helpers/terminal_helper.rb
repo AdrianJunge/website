@@ -50,14 +50,27 @@ module TerminalHelper
   end
 
   def render_terminal_top
-    content_tag(:div, class: "top mb-2 flex") do
+    content_tag(:div, class: "top mb-2 flex justify-between items-center") do
       safe_join([
-        content_tag(:div, "", class: "h-3 w-3 bg-red-500 rounded-full"),
-        content_tag(:div, "", class: "ml-2 h-3 w-3 bg-orange-300 rounded-full"),
-        content_tag(:div, "", class: "ml-2 h-3 w-3 bg-green-500 rounded-full")
+        content_tag(:div, "", class: "flex-grow"),
+        content_tag(:div, class: "flex terminal-buttons") do
+          safe_join([
+            content_tag(:div, id: "minimize-terminal", class: "terminal-button ml-2") do
+              image_tag("terminal/minimize-icon.svg", alt: "Minimize", class: "button-icon")
+            end,
+            content_tag(:div, id: "maximize-terminal", class: "terminal-button ml-2") do
+              image_tag("terminal/maximize-icon.svg", alt: "Maximize", class: "button-icon")
+            end,
+            content_tag(:div, id: "close-terminal", class: "terminal-button ml-2") do
+              image_tag("terminal/close-icon.svg", alt: "Close", class: "button-icon")
+            end
+          ])
+        end
       ])
     end
   end
+
+
 
   def render_terminal_output(outputs)
     content_tag(:div, class: "mt-4 pl-2 text-left") do

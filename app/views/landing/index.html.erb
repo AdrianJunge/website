@@ -1,22 +1,20 @@
 <% current_time=Time.now.strftime("%b %d %H:%M") %>
 
-<section id="screen" class="homescreen m-0 flex flex-col items-center justify-center bg-gray-800 h-screen text-gray-100">
-	<%= render_terminal(
-		[
-			{
-				command: "ls -lah ~",
-				outputs: [
-					"drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>~</span>",
-					"drwxrwxr-x  6 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>.</span>",
-					"drwxrwxr-x  7 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>..</span>",
-					"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>ctf</span>",
-					"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>bug_bounty</span>",
-					"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>cv</span>",
-					"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>minigames</span>",
-					"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>tools</span>",
-					"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>blog</span>",
-				],
-			},
-		]
-	) %>
-</section>
+<%= render_terminal(
+	[
+		{
+			command: "ls -lah ~",
+			outputs: [
+				"drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>~</span>",
+				"drwxrwxr-x  6 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>.</span>",
+				"drwxrwxr-x  7 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>..</span>",
+				"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>ctf</span>",
+				"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>bug_bounty</span>",
+				"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>cv</span>",
+				"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>minigames</span>",
+				"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>tools</span>",
+				"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <span class='text-blue-400'>blog</span>",
+			],
+		},
+	]
+) %>

@@ -77,3 +77,96 @@ html, body {
 	  	border-color: rgba(255, 255, 255, 0.75);
 	}
 }
+
+/* #terminal {
+    transition: all 1s ease-in-out;
+}
+
+#terminal.terminal-minimized {
+    top: 10px;
+    left: 10px;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#terminal.terminal-minimized .command-output,
+#terminal.terminal-minimized .typing-command {
+    visibility: hidden;
+}
+
+#terminal .command-output,
+#terminal .typing-command {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+#terminal.terminal-minimized .command-output,
+#terminal.terminal-minimized .typing-command {
+    opacity: 0;
+} */
+
+#taskbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px; /* Breite der Taskleiste */
+    height: 100vh; /* Vollständig in der Höhe */
+    background-color: #2e3440; /* Ubuntu-ähnliche Farbe */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.taskbar-icon {
+    width: 50px;
+    height: 50px;
+    margin: 10px 0;
+    background-color: #3b4252; /* Standardfarbe der Symbole */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.taskbar-icon:hover {
+    background-color: #4c566a; /* Hover-Effekt */
+}
+
+.taskbar-icon img {
+    width: 35px;
+    height: 35px;
+    user-select: none; /* Kein Markieren möglich */
+}
+
+#terminal.terminal-minimized {
+    display: none; /* Ausblenden des Fensters */
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 10px; /* Abstand zwischen den Buttons */
+}
+
+.terminal-button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.terminal-button:hover {
+    transform: scale(1.5); /* Vergrößerung beim Hover */
+}
+
+.button-icon {
+    width: 100%;
+    height: 100%;
+}

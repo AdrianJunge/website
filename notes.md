@@ -1,5 +1,7 @@
 # TODOs
+- Smooth transitions zwischen den Subpages (https://www.youtube.com/watch?v=gdePV0Beihg)
 - Terminal
+        - red => Seite schließen mit vorheriger Warnung, dass die Seite nun geschlossen wird
     - Auf jeder Subpage wird ein Terminal angezeigt
         - ~ => zurück zu /
         - . => nicht spassiert
