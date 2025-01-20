@@ -1,8 +1,10 @@
 module TerminalHelper
   TAG = "adrian@my-space:~$"
 
-  def render_terminal(commands_and_outputs)
-    content_tag(:div, id: "terminal", class: "coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-3xl font-mono subpixel-antialiased bg-gray-700 pb-6 pt-4 rounded-lg leading-normal", style: "width: 1200px; max-width: 90%; white-space: nowrap;") do
+  def render_terminal(commands_and_outputs, minimized)
+    terminal_class = "coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-3xl font-mono subpixel-antialiased bg-gray-700 pb-6 pt-4 rounded-lg leading-normal"
+    terminal_class += " terminal-minimized" if minimized
+    content_tag(:div, id: "terminal", class: terminal_class, style: "width: 1200px; max-width: 90%; white-space: nowrap;") do
       safe_join([
         render_terminal_top,
         render_commands(commands_and_outputs),
