@@ -2,11 +2,16 @@
 <% subpaths = [".", "..", "cscg", "kitctf"] %>
 <% current_time = Time.now.strftime("%b %d %H:%M") %>
 
+<% ctfs = [
+  { name: "CSCG", logo: "ctf/cscg.png", link: "https://cscg.de/" },
+] %>
+
+
 <%= render_terminal(
   [
     {
-      command: "ls -lah ~#{current_path}",
-      outputs: subpaths.map do |subpath|
+		command: "ls -lah ~#{current_path}",
+		outputs: subpaths.map do |subpath|
 		"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <a href='#{current_path}/#{subpath}' class='text-blue-400'>#{subpath}</a>"
     	end.unshift(
 			"drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <a href='/' class='text-blue-400'>~</a>"
@@ -15,3 +20,13 @@
   ], 
   true
 ) %>
+
+<div class="ctf-overview grid grid-cols-1 md:grid-cols-3 gap-4">
+  <% ctfs.each do |ctf| %>
+    <div class="ctf-card">
+      <a href="<%= ctf[:link] %>" target="_blank" rel="noopener noreferrer">
+		<%= image_tag(ctf[:logo], alt: "#{ctf[:name]} Logo", class: "w-128 h-128") %>
+      </a>
+    </div>
+  <% end %>
+</div>
