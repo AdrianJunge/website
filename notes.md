@@ -1,29 +1,23 @@
 # TODOs
-- Smooth transitions zwischen den Subpages (https://www.youtube.com/watch?v=gdePV0Beihg)
-- Terminal
-        - red => Seite schließen mit vorheriger Warnung, dass die Seite nun geschlossen wird
-    - Auf jeder Subpage wird ein Terminal angezeigt
-        - ~ => zurück zu /
-        - . => nicht spassiert
-        - .. => zurück zu page höher
-        - alles andere bezieht sich auf den aktuellen Pfad was enthalten ist
-    - Start mit "ls -lah ~"
-        => zB ctf hat dann "ls -lah ~/ctf"
-    - Terminal wird bei allen Seiten außer / klein angezeigt bzw Fenster minimiert
 - favicon.ico
 - Landing Page mit Buttons zu
     - CTF
+        - Übersicht mit allen CTFs für die ich Writeups habe oder noch anfertigen möchte
+            - CSCG
+            - DHM
+                - Perle einer Website
+            - KITCTF
+            - PicoCTF
+            - GlacierCTF
+            - 0CTF
+            - ... (Kalender durchgehen und gucken welche noch)
         - Writeups
         - Archievements
             - DHM
-    - Real World Exploitation (Bug Bounty/CVE)
-    - Resumee/CV
-        - Ask me anything - Chatbot
-    - Software Engineering
-    - Minigames
-        - TicTacToe vs AI
-    - Tools
     - About
+        - Resumee/CV
+            - Englisch/Deutsch
+            - Ask me anything - Chatbot
         - Bild von mir als Hintergrund
         - Kurze Beschreibung
     - Contact
@@ -31,8 +25,14 @@
         - Email via Form
         - Github
         - Linkedin
+- Upcoming
     - Blog
         - Java Strings
+    - Real World Exploitation (Bug Bounty/CVE)
+    - Software Engineering
+    - Minigames (eigene App wie das Terminal)
+        - TicTacToe vs AI
+    - Tools
 
 # Features
 - Smartphone
