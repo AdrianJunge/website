@@ -1,6 +1,7 @@
 # TODOs
 - favicon.ico
 - Landing Page mit Buttons zu
+    - Dynamischer Hintergrund
     - CTF
         - Übersicht mit allen CTFs für die ich Writeups habe oder noch anfertigen möchte
             - CSCG

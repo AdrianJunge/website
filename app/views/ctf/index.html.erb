@@ -1,11 +1,13 @@
 <% current_path = "/ctf" %>
-<% subpaths = [".", "..", "cscg", "kitctf"] %>
 <% current_time = Time.now.strftime("%b %d %H:%M") %>
 
 <% ctfs = [
-  { name: "CSCG", logo: "ctf/cscg.png", link: "https://cscg.de/" },
+  { terminal_path: "cscg", name: "CSCG", logo: "ctf/cscg.png", link: "https://cscg.de/" },
+  # { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", link: "https://kitctf.de/" },
 ] %>
-
+<% terminal_paths = ctfs.map { |ctf| ctf[:terminal_path] } %>
+<% subpaths = [".", ".."] %>
+<% subpaths += terminal_paths %>
 
 <%= render_terminal(
   [
@@ -21,12 +23,14 @@
   true
 ) %>
 
-<div class="ctf-overview grid grid-cols-1 md:grid-cols-3 gap-4">
-  <% ctfs.each do |ctf| %>
-    <div class="ctf-card">
-      <a href="<%= ctf[:link] %>" target="_blank" rel="noopener noreferrer">
-		<%= image_tag(ctf[:logo], alt: "#{ctf[:name]} Logo", class: "w-128 h-128") %>
-      </a>
-    </div>
-  <% end %>
+<div class="content">
+  <div class="ctf-overview">
+    <% ctfs.each do |ctf| %>
+      <div class="ctf-card">
+        <a href="<%= ctf[:link] %>" target="_blank" rel="noopener noreferrer">
+          <%= image_tag(ctf[:logo], alt: "#{ctf[:name]}") %>
+        </a>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -7,8 +7,12 @@ module TerminalHelper
     content_tag(:div, id: "terminal", class: terminal_class, style: "width: 1200px; max-width: 90%; white-space: nowrap;") do
       safe_join([
         render_terminal_top,
-        render_commands(commands_and_outputs),
-        last_terminal_input
+        content_tag(:div, class: "terminal-content") do
+          safe_join([
+            render_commands(commands_and_outputs),
+            last_terminal_input
+          ])
+        end
       ])
     end
   end
@@ -52,21 +56,16 @@ module TerminalHelper
   end
 
   def render_terminal_top
-    content_tag(:div, class: "top mb-2 flex justify-between items-center") do
+    content_tag(:div, class: "terminal-header") do
       safe_join([
-        content_tag(:div, "", class: "flex-grow"),
-        content_tag(:div, class: "flex terminal-buttons") do
-          safe_join([
-            content_tag(:div, id: "minimize-terminal", class: "terminal-button ml-2") do
-              image_tag("terminal/minimize-icon.svg", alt: "Minimize", class: "button-icon")
-            end,
-            content_tag(:div, id: "maximize-terminal", class: "terminal-button ml-2") do
-              image_tag("terminal/maximize-icon.svg", alt: "Maximize", class: "button-icon")
-            end,
-            content_tag(:div, id: "close-terminal", class: "terminal-button ml-2") do
-              image_tag("terminal/close-icon.svg", alt: "Close", class: "button-icon")
-            end
-          ])
+        content_tag(:div, id: "minimize-terminal", class: "terminal-button") do
+          image_tag("terminal/minimize-icon.svg", alt: "Minimize", class: "button-icon")
+        end,
+        content_tag(:div, id: "maximize-terminal", class: "terminal-button") do
+          image_tag("terminal/maximize-icon.svg", alt: "Maximize", class: "button-icon")
+        end,
+        content_tag(:div, id: "close-terminal", class: "terminal-button") do
+          image_tag("terminal/close-icon.svg", alt: "Close", class: "button-icon")
         end
       ])
     end

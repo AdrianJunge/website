@@ -1,19 +1,3 @@
-function addStars() {
-	for (var i = 0; i < 250; i++) {
-		var star =
-		'<div class="star m-0" style="animation: twinkle ' +
-		(Math.random() * 2 + 2) +
-		's linear ' +
-		(Math.random() * 0.1) +
-		's infinite; top: ' +
-		Math.random() * $(window).height() +
-		'px; left: ' +
-		Math.random() * $(window).width() +
-		'px;"></div>';
-		$('.homescreen').append(star);
-	}
-}
-
 function typingEffect() {
 	const pathsElement = document.querySelectorAll(".command-output");
 	const typingCommand = document.querySelectorAll(".typing-command");
@@ -43,7 +27,7 @@ function minimizeTerminal() {
 	});
 	
 	terminalTaskbarIcon.addEventListener("click", function () {
-		terminal.classList.remove("terminal-minimized");
+		terminal.classList.toggle("terminal-minimized");
 	});
 }
 
@@ -51,5 +35,3 @@ document.addEventListener('DOMContentLoaded', function() {
 	typingEffect();
 	minimizeTerminal();
 });
-
-addStars();

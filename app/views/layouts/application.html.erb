@@ -6,16 +6,16 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag params[:controller], "data-turbo-track": "reload" if asset_exists?("#{params[:controller]}.css") %>
+  <%= stylesheet_link_tag "#{params[:controller]}_#{params[:action]}", "data-turbo-track": "reload" if asset_exists?("#{params[:controller]}_#{params[:action]}.css") %>
   <%= javascript_importmap_tags %>
 </head>
-<body class="bg-gray-600">
-  <section id="screen" class="homescreen m-0 flex flex-col items-center justify-center bg-gray-800 h-screen text-gray-100">
-    <div id="taskbar">
-      <div class="taskbar-icon" id="terminal-taskbar-icon">
-        <%= image_tag("terminal/terminal.svg", alt: "Terminal Icon") %>
-      </div>
+<body class="bg-gray-800">
+  <div id="taskbar">
+    <div class="taskbar-icon" id="terminal-taskbar-icon">
+      <%= image_tag("terminal/terminal.svg", alt: "Terminal Icon") %>
     </div>
-    <%= yield %>
-  </section>
+  </div>
+  <%= yield %>
 </body>
 </html>
