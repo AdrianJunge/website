@@ -1,47 +1,52 @@
-html, body {
+html,
+body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	overflow: hidden; /* Prevent scrolling */
-  }
-  
-  .homescreen {
-	position: relative; /* Contain the absolute positioning of stars */
+	overflow: hidden;
+}
+
+.homescreen {
+	position: relative;
 	width: 100%;
 	height: 100%;
-  }
-  
-  .star {
+}
+
+/* Stars background animation */
+.star {
 	position: absolute;
 	width: 2px;
 	height: 2px;
 	border-radius: 5px;
-  }
-  
-  @keyframes twinkle {
+}
+
+@keyframes twinkle {
 	0% {
-	  transform: scale(1, 1);
-	  background: rgba(255, 255, 255, 0);
-	  animation-timing-function: linear;
+		transform: scale(1, 1);
+		background: rgba(255, 255, 255, 0);
+		animation-timing-function: linear;
 	}
+
 	40% {
-	  transform: scale(0.8, 0.8);
-	  background: rgba(255, 255, 255, 1);
-	  animation-timing-function: ease-out;
+		transform: scale(0.8, 0.8);
+		background: rgba(255, 255, 255, 1);
+		animation-timing-function: ease-out;
 	}
+
 	80% {
-	  background: rgba(255, 255, 255, 0);
-	  transform: scale(1, 1);
+		background: rgba(255, 255, 255, 0);
+		transform: scale(1, 1);
 	}
+
 	100% {
-	  background: rgba(255, 255, 255, 0);
-	  transform: scale(1, 1);
+		background: rgba(255, 255, 255, 0);
+		transform: scale(1, 1);
 	}
 }
 
-  
 
 
+/* Terminal type effect */
 .typing-command {
 	display: inline-block;
 	overflow: hidden;
@@ -62,67 +67,88 @@ html, body {
 
 @keyframes typing {
 	from {
-	  	width: 0;
+		width: 0;
 	}
+
 	to {
-	  	width: 100%;
+		width: 100%;
 	}
 }
 
 @keyframes blink-caret {
 	50% {
-	  	border-color: transparent;
+		border-color: transparent;
 	}
+
 	100% {
-	  	border-color: rgba(255, 255, 255, 0.75);
+		border-color: rgba(255, 255, 255, 0.75);
 	}
 }
 
-
+/* Task bar */
 #taskbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 60px; /* Breite der Taskleiste */
-    height: 100vh; /* Vollständig in der Höhe */
-    background-color: #2e3440; /* Ubuntu-ähnliche Farbe */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 60px;
+	height: 100vh;
+	background-color: #2e3440;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px 0;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .taskbar-icon {
-    width: 50px;
-    height: 50px;
-    margin: 10px 0;
-    background-color: #3b4252; /* Standardfarbe der Symbole */
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+	width: 50px;
+	height: 50px;
+	margin: 10px 0;
+	background-color: #3b4252;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
 }
 
 .taskbar-icon:hover {
-    background-color: #4c566a; /* Hover-Effekt */
+	background-color: #4c566a;
 }
 
 .taskbar-icon img {
-    width: 35px;
-    height: 35px;
-    user-select: none; /* Kein Markieren möglich */
+	width: 35px;
+	height: 35px;
+	user-select: none;
 }
 
+/* Terminal */
+#terminal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 80%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 2px solid #4c566a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
 #terminal.terminal-minimized {
-    display: none; /* Ausblenden des Fensters */
+	display: none;
 }
 
 .terminal-buttons {
-    display: flex;
-    gap: 10px; /* Abstand zwischen den Buttons */
+	display: flex;
+	gap: 10px;
 }
 
 .terminal-button {
@@ -132,14 +158,18 @@ html, body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.terminal-button img {
+    filter: invert(1);
 }
 
 .terminal-button:hover {
-    transform: scale(1.5); /* Vergrößerung beim Hover */
+    transform: scale(1.5);
 }
 
 .button-icon {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }

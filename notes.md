@@ -16,11 +16,13 @@
         - Archievements
             - DHM
     - About
-        - Resumee/CV
+        - Resumee/CV (oder nur Teile davon direkt auf der Website schreiben)
             - Englisch/Deutsch
-            - Ask me anything - Chatbot
+        - Ask me anything - Chatbot
         - Bild von mir als Hintergrund
         - Kurze Beschreibung
+            - Hobbies
+            - KITCTF studying @KIT
     - Contact
         - Discord
         - Email via Form
