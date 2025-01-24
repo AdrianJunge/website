@@ -9,6 +9,7 @@
   <%= stylesheet_link_tag params[:controller], "data-turbo-track": "reload" if asset_exists?("#{params[:controller]}.css") %>
   <%= stylesheet_link_tag "#{params[:controller]}_#{params[:action]}", "data-turbo-track": "reload" if asset_exists?("#{params[:controller]}_#{params[:action]}.css") %>
   <%= javascript_importmap_tags %>
+  <%= favicon_link_tag asset_path('favicon.ico') %>
 </head>
 <body class="bg-gray-800">
   <div id="taskbar">
