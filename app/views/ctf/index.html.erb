@@ -3,6 +3,7 @@
 
 <% ctfs = [
   { terminal_path: "cscg", name: "CSCG", logo: "ctf/cscg.png", writeups: "#{current_path}/cscg", website: "https://cscg.de/" },
+  { terminal_path: "dhm", name: "DHM", logo: "ctf/dhm.jpg", writeups: "#{current_path}/dhm", website: "https://hacking-meisterschaft.de/" },
   { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
 ] %>
 <% terminal_paths = ctfs.map { |ctf| ctf[:terminal_path] } %>
@@ -14,10 +15,10 @@
     {
 		command: "ls -lah ~#{current_path}",
 		outputs: subpaths.map do |subpath|
-		"drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <a href='#{current_path}/#{subpath}' class='text-blue-400'>#{subpath}</a>"
-    	end.unshift(
-			"drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <a href='/' class='text-blue-400'>~</a>"
-		)
+      "drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <a href='#{current_path}/#{subpath}' class='text-blue-400'>#{subpath}</a>"
+        end.unshift(
+        "drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <a href='/' class='text-blue-400'>~</a>"
+      )
     },
   ], 
   true

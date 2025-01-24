@@ -1,0 +1,36 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contact-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.contact-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+}
+
+.contact-card img {
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.contact-card:hover {
+    transform: scale(1.1);
+}

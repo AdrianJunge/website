@@ -1,5 +1,4 @@
 # TODOs
-- favicon.ico
 - Landing Page mit Buttons zu
     - Dynamischer Hintergrund
     - CTF
@@ -13,24 +12,25 @@
             - 0CTF
             - THM
             - ... (Kalender durchgehen und gucken welche noch)
-        - Writeups
-            - Render PDF
+        - Writeup Overview
+            - Tags wie "Web", "PHP", "SQLi", "PrivEsc"
+        - Writeup
+            - Render PDF oder Mardown Interpreter
         - Suchfilter und Filteroption nach Jahr
-        - Archievements
-            - DHM
+        - Archievements - auch mit KITCTF
+            - 2024  3rd Glacier CTF     KITCTF
+            - 2024  1st DHM             Cornflags
     - About
         - Resumee/CV (oder nur Teile davon direkt auf der Website schreiben)
             - Englisch/Deutsch
+            => was muss man beachten wenn man sein CV online stellt
         - Ask me anything - Chatbot
         - Bild von mir als Hintergrund
         - Kurze Beschreibung
             - Hobbies
             - KITCTF studying @KIT
     - Contact
-        - Discord
         - Email via Form
-        - Github
-        - Linkedin
 - Upcoming
     - Blog
         - Java Strings
