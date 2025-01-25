@@ -1,0 +1,30 @@
+<% current_path = "/ctf/#{@which}" %>
+<% current_time = Time.now.strftime("%b %d %H:%M") %>
+<% subpaths = [".", ".."] + @writeups %>
+
+<%= render_terminal(
+  [
+    {
+		command: "ls -lah ~#{current_path}",
+		outputs: subpaths.map do |subpath|
+      "drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <a href='#{current_path}/#{subpath}' class='text-blue-400'>#{subpath}</a>"
+        end.unshift(
+        "drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <a href='/' class='text-blue-400'>~</a>"
+      )
+    },
+  ], 
+  true
+) %>
+
+<div class="header-container">
+  <h1 class="header text-white dark:text-gray-200"><%= @which.upcase %></h1>
+</div>
+<div class="writeup-content">
+  <div class="writeup-overview">
+  <% @writeups.each do |writeup| %>
+    <% writeup_path = "/ctf/#{@which}/#{writeup}" %>
+    <div class="writeup-card">
+        <%= render_writeup_card(writeup, writeup_path, @which, "web", "Some description") %>
+    </div>
+  <% end %>
+</div>

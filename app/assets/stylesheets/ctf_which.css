@@ -1,0 +1,59 @@
+/* Container für den Header, außerhalb des Grids */
+.header-container {
+    display: flex;
+    justify-content: center;  /* Zentriert horizontal */
+    align-items: center;      /* Zentriert vertikal */
+    position: absolute;       /* Fixiert den Header an der Spitze */
+    top: 0;
+    left: 60px;               /* Positioniert den Header rechts von der Taskbar (60px für Taskbar-Breite) */
+    width: calc(100% - 60px); /* Nimmt den Rest der Breite nach der Taskbar */
+    height: 100px;            /* Höhe des Headers */
+    z-index: 10;              /* Sicherstellen, dass der Header über anderen Elementen liegt */
+    margin-bottom: 30px;      /* Abstand nach unten */
+  }
+  
+  /* Die Überschrift */
+  .header {
+    font-size: 3rem;          /* Große Schriftgröße */
+    font-weight: bold;        /* Fett */
+    text-align: center;       /* Zentriert den Text */
+    margin: 0;                /* Entfernt möglichen Standardabstand */
+    max-width: 100%;           /* Text soll nicht über den Rand hinausgehen */
+  }
+  
+
+.writeup-content {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    padding-top: 120px;
+    overflow-y: auto;
+}
+.writeup-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    justify-items: center;
+    align-items: center;
+}
+
+.writeup-details {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+  
+.writeup-card {
+    background-color: #222024;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.writeup-card:hover {
+    transform: scale(1.1);
+}

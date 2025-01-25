@@ -67,3 +67,4 @@ end
 gem "tailwindcss", "~> 0.1.1"
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem "redcarpet"
