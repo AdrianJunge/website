@@ -15,8 +15,7 @@
   ], 
   true
 ) %>
-
-<h1>Writeup: <%= params[:writeup].gsub('.md', '').capitalize %></h1>
-<div class="markdown-content">
-  <%= @html_content %>
+<div class="writeup-container">
+  <h1 class="writeup-title"><%= params[:writeup].gsub('.md', '').capitalize %></h1>
+    <%= render_markdown(@markdown_content) %>
 </div>

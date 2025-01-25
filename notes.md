@@ -16,6 +16,7 @@
             - Tags wie "Web", "PHP", "SQLi", "PrivEsc"
         - Writeup
             - Render PDF oder Mardown Interpreter
+            - Sidebar um an bestimmte Stelle von Post zu springen
         - Suchfilter und Filteroption nach Jahr
         - Archievements - auch mit KITCTF
             - 2024  3rd Glacier CTF     KITCTF

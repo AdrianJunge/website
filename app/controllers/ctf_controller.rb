@@ -39,18 +39,11 @@ class CtfController < ApplicationController
     file_path = BASE_PATH.join(params[:which], (params[:writeup] + ".md"))
 
     if file_path.exist? && file_path.file? && file_path.to_s.start_with?(BASE_PATH.to_s)
-      markdown_text = File.read(file_path)
-      renderer = Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true)
-      markdown = Redcarpet::Markdown.new(renderer, {
-        autolink: true,
-        tables: true,
-        fenced_code_blocks: true
-      })
-      @html_content = markdown.render(markdown_text).html_safe
-      @which = params[:which]
-      @writeup = params[:writeup]
+      @markdown_content = File.read(file_path)
     else
-      render plain: "Writeup not found", status: :not_found
+      @markdown_content = "Markdown file not found"
     end
+    @which = params[:which]
+    @writeup = params[:writeup]
   end
 end
