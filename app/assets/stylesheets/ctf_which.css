@@ -1,25 +1,24 @@
-/* Container für den Header, außerhalb des Grids */
 .header-container {
     display: flex;
-    justify-content: center;  /* Zentriert horizontal */
-    align-items: center;      /* Zentriert vertikal */
-    position: absolute;       /* Fixiert den Header an der Spitze */
+    justify-content: center; 
+    align-items: center;     
+    position: absolute;      
     top: 0;
-    left: 60px;               /* Positioniert den Header rechts von der Taskbar (60px für Taskbar-Breite) */
-    width: calc(100% - 60px); /* Nimmt den Rest der Breite nach der Taskbar */
-    height: 100px;            /* Höhe des Headers */
-    z-index: 10;              /* Sicherstellen, dass der Header über anderen Elementen liegt */
-    margin-bottom: 30px;      /* Abstand nach unten */
-  }
+    left: 60px;              
+    width: calc(100% - 60px);
+    height: 100px;           
+    z-index: 10;             
+    margin-bottom: 30px;     
+}
   
-  /* Die Überschrift */
-  .header {
-    font-size: 3rem;          /* Große Schriftgröße */
-    font-weight: bold;        /* Fett */
-    text-align: center;       /* Zentriert den Text */
-    margin: 0;                /* Entfernt möglichen Standardabstand */
-    max-width: 100%;           /* Text soll nicht über den Rand hinausgehen */
-  }
+ 
+.header {
+    font-size: 3rem;         
+    font-weight: bold;       
+    text-align: center;      
+    margin: 0;               
+    max-width: 100%;          
+}
   
 
 .writeup-content {
@@ -46,6 +45,7 @@
 }
   
 .writeup-card {
+    height: 250px;
     background-color: #222024;
     padding: 20px;
     border-radius: 10px;

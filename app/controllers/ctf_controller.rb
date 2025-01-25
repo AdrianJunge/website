@@ -2,14 +2,15 @@ class CtfController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
   BASE_PATH = Rails.root.join("app", "assets", "ctf", "writeups")
+  CTF_INFO_PATH = Rails.root.join("app", "assets", "ctf", "ctfs.json")
 
   def sanitize_path(param)
     param.match?(/\A[\w\-]+\z/)
   end
 
   def index
-    @categories = Dir.entries(BASE_PATH)
-                     .select { |entry| File.directory?(BASE_PATH.join(entry)) && ![ ".", ".." ].include?(entry) }
+    file = File.read(CTF_INFO_PATH)
+    @ctfs = JSON.parse(file)
   end
 
   def which
@@ -19,9 +20,11 @@ class CtfController < ApplicationController
     end
 
     which_path = BASE_PATH.join(params[:which])
+    ctf_info = File.read(which_path.join("writeups.json"))
+    @ctf_info = JSON.parse(ctf_info)
     if Dir.exist?(which_path)
       @which = params[:which]
-      @writeups = Dir.entries(which_path).select { |file| file.end_with?(".md") }
+      @writeups = Dir.entries(which_path).select { |file| file.end_with?(".md") }.map { |file| file.sub(".md", "") }
     else
       render plain: "Ctf not found", status: :not_found
     end
@@ -33,8 +36,7 @@ class CtfController < ApplicationController
       return
     end
 
-    file_path = BASE_PATH.join(params[:which], params[:writeup])
-    puts "file_path: #{file_path}"
+    file_path = BASE_PATH.join(params[:which], (params[:writeup] + ".md"))
 
     if file_path.exist? && file_path.file? && file_path.to_s.start_with?(BASE_PATH.to_s)
       markdown_text = File.read(file_path)

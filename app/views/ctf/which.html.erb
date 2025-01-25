@@ -24,7 +24,7 @@
   <% @writeups.each do |writeup| %>
     <% writeup_path = "/ctf/#{@which}/#{writeup}" %>
     <div class="writeup-card">
-        <%= render_writeup_card(writeup, writeup_path, @which, "web", "Some description") %>
+        <%= render_writeup_card(writeup, writeup_path, @which, @ctf_info[writeup]["category"] || "Unknown category", @ctf_info[writeup]["description"] || "No description available",) %>
     </div>
   <% end %>
 </div>

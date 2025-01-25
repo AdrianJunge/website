@@ -1,25 +1,7 @@
 <% current_path = "/ctf" %>
 <% current_time = Time.now.strftime("%b %d %H:%M") %>
 
-<% ctfs = [
-  { terminal_path: "cscg", name: "CSCG", logo: "ctf/cscg.png", writeups: "#{current_path}/cscg", website: "https://cscg.de/" },
-  { terminal_path: "dhm", name: "DHM", logo: "ctf/dhm.jpg", writeups: "#{current_path}/dhm", website: "https://hacking-meisterschaft.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-  { terminal_path: "kitctf", name: "KITCTF", logo: "ctf/kitctf.png", writeups: "#{current_path}/kitctf", website: "https://kitctf.de/" },
-] %>
-<% terminal_paths = ctfs.map { |ctf| ctf[:terminal_path] } %>
+<% terminal_paths = @ctfs.map { |ctf| ctf["terminal_path"] } %>
 <% subpaths = [".", ".."] %>
 <% subpaths += terminal_paths %>
 
@@ -39,17 +21,17 @@
 
 <div class="content">
   <div class="ctf-overview">
-    <% ctfs.each do |ctf| %>
+    <% @ctfs.each do |ctf| %>
       <div class="ctf-card">
-        <%= image_tag(ctf[:logo]) %>
+        <%= image_tag(ctf["logo"]) %>
         <div class="overlay">
-          <a href="<%= ctf[:writeups] %>">
+          <a href="<%= ctf["writeups"] %>">
             <button class="text-white border-4 border-white bg-gray-900 hover:scale-110 transition-transform duration-300 hover:text-black hover:bg-white focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-lg px-8 py-4 text-center inline-flex items-center dark:focus:ring-[#050708]/50 mb-10">
               Writeups
             </button>
           </a>
 
-          <a href="<%= ctf[:website] %>" target="_blank" rel="noopener noreferrer">
+          <a href="<%= ctf["website"] %>" target="_blank" rel="noopener noreferrer">
             <button class="text-white border-4 border-white bg-gray-900 hover:scale-110 transition-transform duration-300 hover:text-black hover:bg-white focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-lg px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-500 mb-10">
               Website
             </button>
