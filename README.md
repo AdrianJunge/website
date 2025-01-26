@@ -17,7 +17,10 @@ When you have installation problems try out
 `bundle clean --force`
 `bundle install`
 
-# Recompile assets
+# Stop using precompiled assets
+`bundle exec rake assets:clean`
+
+# Precompile assets
 ```
 rails assets:clobber
 rails assets:precompile

@@ -73,4 +73,5 @@ Rails.application.configure do
   config.assets.debug = true
   config.assets.compile = true
   config.assets.check_precompiled_asset = false
+  config.serve_static_assets = false
 end
