@@ -13,9 +13,8 @@
             - THM
             - ... (Kalender durchgehen und gucken welche noch)
         - Writeup Overview
-            - Tags wie "Web", "PHP", "SQLi", "PrivEsc"
+            - Sortieren nach Datum
         - Writeup
-            - Render PDF oder Mardown Interpreter
             - Sidebar um an bestimmte Stelle von Post zu springen
         - Suchfilter und Filteroption nach Jahr
         - Archievements - auch mit KITCTF

@@ -1,5 +1,6 @@
 class CtfController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
+  include MarkdownHelper
 
   BASE_PATH = Rails.root.join("app", "assets", "ctf", "writeups")
   CTF_INFO_PATH = Rails.root.join("app", "assets", "ctf", "ctfs.json")
@@ -20,11 +21,31 @@ class CtfController < ApplicationController
     end
 
     which_path = BASE_PATH.join(params[:which])
-    ctf_info = File.read(which_path.join("writeups.json"))
-    @ctf_info = JSON.parse(ctf_info)
-    if Dir.exist?(which_path)
+    if which_path && Dir.exist?(which_path)
       @which = params[:which]
-      @writeups = Dir.entries(which_path).select { |file| file.end_with?(".md") }.map { |file| file.sub(".md", "") }
+      @writeups = Dir.entries(which_path)
+                     .select { |file| file.end_with?(".md") }
+                     .map { |file| file.sub(".md", "") }
+
+      @ctf_info = {}
+
+      @writeups.each do |writeup|
+        file_path = BASE_PATH.join(@which, "#{writeup}.md")
+
+        next unless File.exist?(file_path)
+        writeup_header = File.read(file_path)
+        parsed_writeup_header = begin
+          FrontMatterParser::Parser.new(:md).call(writeup_header)
+        rescue StandardError
+          nil
+        end
+
+        next unless parsed_writeup_header
+
+        parsed_hash = parsed_writeup_header.front_matter
+        @ctf_info[writeup] ||= {}
+        @ctf_info[writeup].merge!(parsed_hash)
+      end
     else
       render plain: "Ctf not found", status: :not_found
     end
@@ -45,5 +66,6 @@ class CtfController < ApplicationController
     end
     @which = params[:which]
     @writeup = params[:writeup]
+    @html_content = render_markdown(@markdown_content)
   end
 end

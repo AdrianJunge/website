@@ -5,6 +5,7 @@ description: Recently I learned ASP .NET Core and boy, it's so magic! Dependency
 categories:
     - Web
     - .NET
+year: 2024
 ---
 
 # Hallo
