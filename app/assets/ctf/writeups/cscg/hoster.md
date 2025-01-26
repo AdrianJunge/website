@@ -17,3 +17,4 @@ foo barfoo barfoo barfoo barfoo barfoo barfoo bar
 testtest
 ```
 ![Rails Logo](https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-1035x780.jpg "Rails Logo")
+![Foo Bar](ctf/writeups/cscg/hoster/cscg.png "Foo Bar")
