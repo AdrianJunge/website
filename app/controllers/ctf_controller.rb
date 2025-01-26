@@ -11,7 +11,7 @@ class CtfController < ApplicationController
   end
 
   def which
-    @which = params[:which]
+    @which = params[:which].gsub("..", "").gsub("/", "")
     return unless sanitize_which(@which)
 
     @writeups = Dir.entries(BASE_PATH.join(@which))
@@ -21,8 +21,8 @@ class CtfController < ApplicationController
   end
 
   def writeup
-    @which = params[:which]
-    @writeup = params[:writeup]
+    @which = params[:which].gsub("..", "").gsub("/", "")
+    @writeup = params[:writeup].gsub("..", "").gsub("/", "")
     return unless sanitize_writeup(@which, @writeup)
 
     @ctf_info = fetch_ctf_info(@which, [ @writeup ])
