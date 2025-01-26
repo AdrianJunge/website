@@ -46,6 +46,7 @@
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
+- /ctf sollte immer Kreise rendern, egal wie groß der Bildschirm
 
 # Features
 - Smartphone

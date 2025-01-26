@@ -42,29 +42,39 @@ class CtfController < ApplicationController
   def sanitize_which(which)
     unless sanitize_path(@which)
       render plain: "Invalid ctf", status: :bad_request
-      false
-    end
-
-    folder_path = File.realpath(File.join(BASE_PATH, @which))
-    if !folder_path.to_s.start_with?(BASE_PATH.to_s)
-      render plain: "Path Traversal detected", status: :bad_request
       return false
     end
 
-    available_ctfs = Dir.entries(BASE_PATH).select { |entry| File.directory?(File.join(BASE_PATH, entry)) && !entry.start_with?(".") }
-    available_ctfs.include?(@which)
+    begin
+      folder_path = File.realpath(File.join(BASE_PATH, @which))
+      if !folder_path.to_s.start_with?(BASE_PATH.to_s)
+        render plain: "Path Traversal detected", status: :bad_request
+        return false
+      end
+      available_ctfs = Dir.entries(BASE_PATH).select { |entry| File.directory?(File.join(BASE_PATH, entry)) && !entry.start_with?(".") }
+      available_ctfs.include?(@which)
+    rescue StandardError
+      render plain: "Invalid ctf", status: :bad_request
+      false
+    end
   end
 
   def sanitize_writeup(which, writeup)
     unless sanitize_path(@writeup) && sanitize_which(@which)
       render plain: "Invalid writeup", status: :bad_request
-      false
+      return false
     end
 
     directory = File.join(BASE_PATH, @which)
-    file_path = File.realpath(BASE_PATH.join(@which, (@writeup + ".md")))
-    if !file_path.to_s.start_with?(directory.to_s)
-      render plain: "Path Traversal detected", status: :bad_request
+
+    begin
+      file_path = File.realpath(BASE_PATH.join(@which, (@writeup + ".md")))
+      if !file_path.to_s.start_with?(directory.to_s)
+        render plain: "Path Traversal detected", status: :bad_request
+        return false
+      end
+    rescue StandardError
+      render plain: "Invalid writeup", status: :bad_request
       return false
     end
 
