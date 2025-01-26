@@ -49,6 +49,7 @@ class CtfController < ApplicationController
     @which = params[:which]
     @writeup = params[:writeup]
     @ctf_info = fetch_ctf_info(@which, [ @writeup ])
+    @headings = get_writeup_headings(@which, @writeup)
     @html_content = render_markdown(@markdown_content)
   end
 
@@ -76,5 +77,19 @@ class CtfController < ApplicationController
     end
 
     ctf_info
+  end
+
+  def get_writeup_headings(which, writeup)
+    headings = []
+    file_path = BASE_PATH.join(which, "#{writeup}.md")
+
+    if File.exist?(file_path)
+      writeup_content = File.read(file_path)
+      writeup_content.scan(/^#+\s*(.+)<a name="(.+)"><\/a>/) do |heading_text, anchor_name|
+      headings << { text: heading_text.strip, anchor: anchor_name.strip }
+      end
+    end
+    puts "headings: #{headings}"
+    headings
   end
 end
