@@ -45,6 +45,7 @@
     => Navigation mit dem Terminal vs Navigation über Navbar
 
 # Fix
+- Tailwind css terminal paths sind nicht farbig
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
