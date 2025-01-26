@@ -1,0 +1,28 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "4bdfdc8986758da8ab5c91567802e9ed4a6a8fd1c8f0e7980fb74fd5a0c567d7",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/ctf_controller.rb",
+      "line": 32,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\")))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CtfController",
+        "method": "writeup"
+      },
+      "user_input": "(params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\")",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.0.0"
+}
