@@ -70,3 +70,5 @@ gem "jquery-ui-rails"
 gem "redcarpet"
 gem "front_matter_parser"
 gem "rouge"
+
+gem "tailwindcss-ruby", "~> 3.4"

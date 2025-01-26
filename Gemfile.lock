@@ -405,6 +405,7 @@ DEPENDENCIES
   stimulus-rails
   tailwindcss (~> 0.1.1)
   tailwindcss-rails
+  tailwindcss-ruby (~> 3.4)
   thruster
   turbo-rails
   tzinfo-data

@@ -5,55 +5,80 @@ class CtfController < ApplicationController
   BASE_PATH = Rails.root.join("app", "assets", "ctf", "writeups")
   CTF_INFO_PATH = Rails.root.join("app", "assets", "ctf", "ctfs.json")
 
-  def sanitize_path(param)
-    param.match?(/\A[\w\-]+\z/)
-  end
-
   def index
     file = File.read(CTF_INFO_PATH)
     @ctfs = JSON.parse(file)
   end
 
   def which
-    unless sanitize_path(params[:which])
-      render plain: "Invalid ctf", status: :bad_request
-      return
-    end
+    @which = params[:which]
+    return unless sanitize_which(@which)
 
-    which_path = BASE_PATH.join(params[:which])
-    if which_path && Dir.exist?(which_path)
-      @which = params[:which]
-      @writeups = Dir.entries(which_path)
-                     .select { |file| file.end_with?(".md") }
-                     .map { |file| file.sub(".md", "") }
-
-      @ctf_info = fetch_ctf_info(@which, @writeups)
-    else
-      render plain: "Ctf not found", status: :not_found
-    end
+    @writeups = Dir.entries(BASE_PATH.join(@which))
+                   .select { |file| file.end_with?(".md") }
+                   .map { |file| file.sub(".md", "") }
+    @ctf_info = fetch_ctf_info(@which, @writeups)
   end
 
   def writeup
-    unless sanitize_path(params[:which]) && sanitize_path(params[:writeup].gsub(".md", ""))
-      render plain: "Invalid writeup", status: :bad_request
-      return
-    end
+    @which = params[:which]
+    @writeup = params[:writeup]
+    return unless sanitize_writeup(@which, @writeup)
 
-    file_path = BASE_PATH.join(params[:which], (params[:writeup] + ".md"))
+    @ctf_info = fetch_ctf_info(@which, [ @writeup ])
+    file_path = BASE_PATH.join(@which, (@writeup + ".md"))
 
     if file_path.exist? && file_path.file? && file_path.to_s.start_with?(BASE_PATH.to_s)
       @markdown_content = File.read(file_path)
     else
       @markdown_content = "Markdown file not found"
     end
-    @which = params[:which]
-    @writeup = params[:writeup]
-    @ctf_info = fetch_ctf_info(@which, [ @writeup ])
     @headings = get_writeup_headings(@which, @writeup)
     @html_content = render_markdown(@markdown_content)
   end
 
   private
+
+  def sanitize_which(which)
+    unless sanitize_path(@which)
+      render plain: "Invalid ctf", status: :bad_request
+      false
+    end
+
+    folder_path = File.realpath(File.join(BASE_PATH, @which))
+    if !folder_path.to_s.start_with?(BASE_PATH.to_s)
+      render plain: "Path Traversal detected", status: :bad_request
+      return false
+    end
+
+    available_ctfs = Dir.entries(BASE_PATH).select { |entry| File.directory?(File.join(BASE_PATH, entry)) && !entry.start_with?(".") }
+    available_ctfs.include?(@which)
+  end
+
+  def sanitize_writeup(which, writeup)
+    unless sanitize_path(@writeup) && sanitize_which(@which)
+      render plain: "Invalid writeup", status: :bad_request
+      false
+    end
+
+    directory = File.join(BASE_PATH, @which)
+    file_path = File.realpath(BASE_PATH.join(@which, (@writeup + ".md")))
+    if !file_path.to_s.start_with?(directory.to_s)
+      render plain: "Path Traversal detected", status: :bad_request
+      return false
+    end
+
+    if File.exist?(file_path)
+      true
+    else
+      render plain: "Writeup not found", status: :not_found
+      false
+    end
+  end
+
+  def sanitize_path(param)
+    param.match?(/\A[\w\-]+\z/)
+  end
 
   def fetch_ctf_info(which, writeups)
     ctf_info = {}
