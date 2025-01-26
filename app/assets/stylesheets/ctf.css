@@ -51,8 +51,8 @@ body {
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    width: clamp(50px, 20vw, 500px);
-    height: clamp(50px, 20vw, 500px);
+    width: clamp(25px, 20vw, 500px);
+    height: clamp(25px, 20vw, 500px);
     transition: transform 0.2s ease-in-out;
 }
 

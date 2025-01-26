@@ -41,12 +41,16 @@
     - Minigames (eigene App wie das Terminal)
         - TicTacToe vs AI
     - Tools
+- Toggle "Nerd" vs "Normi"
+    => Navigation mit dem Terminal vs Navigation über Navbar
 
 # Fix
-- dns uptime von adrianjunge.de nicht wirklich gut
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
+- Terminal verkleinert sich ein wenig nachdem alles gerendert wurde
+- dns uptime von adrianjunge.de nicht wirklich gut
+
 
 # Features
 - Smartphone

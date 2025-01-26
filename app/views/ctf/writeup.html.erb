@@ -1,16 +1,19 @@
-<% current_path = "/ctf/#{@which}/#{@writeup}" %>
-<% current_time = Time.now.strftime("%b %d %H:%M") %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'thankfuleyes' %>
+<% end %>
+
+
 <% subpaths = [".", ".."] %>
-<%= stylesheet_link_tag 'thankfuleyes' %>
+<% current_path = "/ctf/#{@which}/#{@writeup}" %>
 
 <%= render_terminal(
   [
     {
 		command: "ls -lah ~#{current_path}",
 		outputs: subpaths.map do |subpath|
-      "drwxrwxr-x  5 adrian adrian  4.0K #{current_time} <a href='#{current_path}/#{subpath}' class='text-blue-400'>#{subpath}</a>"
+      "drwxrwxr-x  5 adrian adrian  4.0K #{@current_time} <a href='#{current_path}/#{subpath}' class='#{@paths_color}'>#{subpath}</a>"
         end.unshift(
-        "drwxrwxr-x  8 adrian adrian  4.0K #{current_time} <a href='/' class='text-blue-400'>~</a>"
+        "drwxrwxr-x  8 adrian adrian  4.0K #{@current_time} <a href='/' class='#{@paths_color}'>~</a>"
       )
     },
   ], 

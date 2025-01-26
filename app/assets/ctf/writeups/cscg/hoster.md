@@ -8,7 +8,7 @@ year: 2024
 ---
 
 # 1. Introduction<a name="introduction"></a>
-The description of this ctf already reveals what kind of ctf type this is gonna be about:
+The description of this challenge already reveals what kind of ctf type this is gonna be about:
 
 ```
 You gained access to a Linux server. Can you also gain privileges?
