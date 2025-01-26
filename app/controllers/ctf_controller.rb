@@ -115,7 +115,6 @@ class CtfController < ApplicationController
       headings << { text: heading_text.strip, anchor: anchor_name.strip }
       end
     end
-    puts "headings: #{headings}"
     headings
   end
 end
