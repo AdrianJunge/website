@@ -30,8 +30,6 @@ module MarkdownHelper
       highlight: true,
       underline: true
     }
-    renderer = Redcarpet::Render::HTML.new(render_options)
-    # renderer = Redcarpet::Render::HTML.new(render_options)
     renderer = RougeHTML.new(render_options)
 
     html_content = "<div class='markdown-content'>

@@ -19,6 +19,7 @@ When you have installation problems try out
 
 # Stop using precompiled assets
 `bundle exec rake assets:clean`
+and delete `public/assets/.manifest.json`
 
 # Precompile assets
 ```

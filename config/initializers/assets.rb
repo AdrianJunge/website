@@ -9,4 +9,3 @@ Rails.application.config.assets.paths << Rails.root.join("app", "assets", "style
 Rails.application.config.assets.precompile += %w[ application.js ]
 Rails.application.config.assets.precompile += %w[ jquery.min.js jquery_ujs.js jquery-ui.min.js ]
 Rails.application.config.assets.precompile += %w[ favicon.ico ]
-Rails.application.config.assets.precompile += %w[ rouge.css.erb ]

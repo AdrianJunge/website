@@ -1,5 +1,6 @@
 module TerminalHelper
   TAG = "adrian@my-space:~$"
+  TAG_COLOR = "text-red-700"
 
   def render_terminal(commands_and_outputs, minimized)
     terminal_class = "coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-3xl font-mono subpixel-antialiased bg-gray-700 pb-6 pt-4 rounded-lg leading-normal"
@@ -25,7 +26,7 @@ module TerminalHelper
 
   def render_terminal_input(command)
     safe_join([
-      content_tag(:span, TAG, class: "text-blue-400"),
+      content_tag(:span, TAG, class: TAG_COLOR),
       content_tag(:p, class: "pl-2") do
         content_tag(:span, command, class: "typing-command")
       end
@@ -38,7 +39,7 @@ module TerminalHelper
   def last_terminal_input
     content_tag(:div, id: "terminal-last-input", class: "mt-4 flex", style: "visibility: hidden") do
       safe_join([
-        content_tag(:span, TAG, class: "text-blue-400"),
+        content_tag(:span, TAG, class: TAG_COLOR),
         content_tag(:p, class: "pl-2") do
           content_tag(:span, "", class: "last-typing-command")
         end
