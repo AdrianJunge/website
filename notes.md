@@ -16,6 +16,8 @@
             - Sortieren nach Datum
         - Writeup
             - Sidebar um an bestimmte Stelle von Post zu springen
+                => diese "scrollt automatisch mit"
+            - Hintergrund Image des CTFs
         - Suchfilter und Filteroption nach Jahr
         - Archievements - auch mit KITCTF
             - 2024  3rd Glacier CTF     KITCTF
@@ -39,6 +41,11 @@
     - Minigames (eigene App wie das Terminal)
         - TicTacToe vs AI
     - Tools
+
+# Fix
+- Rouge
+    - Rouge Theme dynamisch laden zB mit rouge.css.erb
+        <%= Rouge::Themes::ThankfulEyes.render %>
 
 # Features
 - Smartphone

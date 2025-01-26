@@ -1,6 +1,7 @@
 <% current_path = "/ctf/#{@which}/#{@writeup}" %>
 <% current_time = Time.now.strftime("%b %d %H:%M") %>
 <% subpaths = [".", ".."] %>
+<%= stylesheet_link_tag 'thankfuleyes' %>
 
 <%= render_terminal(
   [
@@ -16,6 +17,7 @@
   true
 ) %>
 <div class="writeup-container">
-  <h1 class="writeup-title"><%= params[:writeup].gsub('.md', '').capitalize %></h1>
-    <%= @html_content %>
+  <h4 class="writeup-year text-white text-center"><%= @which.upcase %>-<%= @ctf_info.dig(@writeup, "year") %></h4>
+  <h1 class="writeup-title text-white"><%= params[:writeup].gsub('.md', '').capitalize %></h1>
+  <%= @html_content %>
 </div>

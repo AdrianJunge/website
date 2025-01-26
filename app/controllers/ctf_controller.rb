@@ -27,25 +27,7 @@ class CtfController < ApplicationController
                      .select { |file| file.end_with?(".md") }
                      .map { |file| file.sub(".md", "") }
 
-      @ctf_info = {}
-
-      @writeups.each do |writeup|
-        file_path = BASE_PATH.join(@which, "#{writeup}.md")
-
-        next unless File.exist?(file_path)
-        writeup_header = File.read(file_path)
-        parsed_writeup_header = begin
-          FrontMatterParser::Parser.new(:md).call(writeup_header)
-        rescue StandardError
-          nil
-        end
-
-        next unless parsed_writeup_header
-
-        parsed_hash = parsed_writeup_header.front_matter
-        @ctf_info[writeup] ||= {}
-        @ctf_info[writeup].merge!(parsed_hash)
-      end
+      @ctf_info = fetch_ctf_info(@which, @writeups)
     else
       render plain: "Ctf not found", status: :not_found
     end
@@ -66,6 +48,33 @@ class CtfController < ApplicationController
     end
     @which = params[:which]
     @writeup = params[:writeup]
+    @ctf_info = fetch_ctf_info(@which, [ @writeup ])
     @html_content = render_markdown(@markdown_content)
+  end
+
+  private
+
+  def fetch_ctf_info(which, writeups)
+    ctf_info = {}
+
+    writeups.each do |writeup|
+      file_path = BASE_PATH.join(which, "#{writeup}.md")
+
+      next unless File.exist?(file_path)
+      writeup_header = File.read(file_path)
+      parsed_writeup_header = begin
+        FrontMatterParser::Parser.new(:md).call(writeup_header)
+      rescue StandardError
+        nil
+      end
+
+      next unless parsed_writeup_header
+
+      parsed_hash = parsed_writeup_header.front_matter
+      ctf_info[writeup] ||= {}
+      ctf_info[writeup].merge!(parsed_hash)
+    end
+
+    ctf_info
   end
 end
