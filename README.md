@@ -17,6 +17,12 @@ When you have installation problems try out
 `bundle clean --force`
 `bundle install`
 
+# Recompile assets
+```
+rails assets:clobber
+rails assets:precompile
+```
+
 # README
 
 This README would normally document whatever steps are necessary to get the
