@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_global_variable
-    @paths_color = "text-blue-700"
+    @paths_color = "#3b82f6"
     @current_time = Time.now.strftime("%b %d %H:%M")
   end
 end

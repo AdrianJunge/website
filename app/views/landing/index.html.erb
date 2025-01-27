@@ -6,9 +6,9 @@
     {
       command: "ls -lah ~#{current_path}",
       outputs: subpaths.map do |subpath|
-		"drwxrwxr-x  5 adrian adrian  4.0K #{@current_time} <a href='#{current_path}/#{subpath}' class='#{@paths_color}'>#{subpath}</a>"
+		"drwxrwxr-x  5 adrian adrian  4.0K #{@current_time} <a href='#{current_path}/#{subpath}' style='color: #{@paths_color};'>#{subpath}</a>"
     	end.unshift(
-			"drwxrwxr-x  8 adrian adrian  4.0K #{@current_time} <a href='/' class='#{@paths_color}'>~     (home)</a> "
+			"drwxrwxr-x  8 adrian adrian  4.0K #{@current_time} <a href='/' style='color: #{@paths_color};'>~     (home)</a> "
 		)
     },
   ], 

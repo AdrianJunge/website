@@ -19,6 +19,11 @@
     <div class="taskbar-icon" id="terminal-taskbar-icon">
       <%= image_tag("terminal/terminal.svg", alt: "Terminal Icon") %>
     </div>
+    <div class="taskbar-icon tooltip-container" id="help-taskbar-icon">
+      <%= image_tag("terminal/help.svg", alt: "Help Icon") %>
+      <span class="tooltip">Navigation: press one of the hyperlinks in the terminal to navigate to e.g. ctf or contact.</span>
+    </div>
+  </div>
   </div>
   <%= yield %>
 </body>

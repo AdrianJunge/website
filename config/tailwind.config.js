@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
@@ -8,7 +9,11 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        ...colors
+      },
+    },
   },
   plugins: [
     // require('@tailwindcss/forms'),

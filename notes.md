@@ -3,10 +3,6 @@
     - Dynamischer Hintergrund
     - CTF
         - Übersicht mit allen CTFs für die ich Writeups habe oder noch anfertigen möchte
-            - CSCG
-            - DHM
-                - Perle einer Website
-            - KITCTF
             - PicoCTF
             - GlacierCTF
             - 0CTF
@@ -43,9 +39,12 @@
     - Tools
 - Toggle "Nerd" vs "Normi"
     => Navigation mit dem Terminal vs Navigation über Navbar
-- Terminal Info - Fragezeichen mit Tooltip zur Verwendung des Terminals für die Navigation
+- update deps und ruby zu 3.3.7
+- Procfile für Heroku
 
 # Fix
+- Tailwind Terminal colors kann nicht zwei unterschiedliche Farben anzeigen
+    => temporärer Fix mit style color
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
