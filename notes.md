@@ -43,8 +43,6 @@
 - Procfile für Heroku
 
 # Fix
-- Tailwind Terminal colors kann nicht zwei unterschiedliche Farben anzeigen
-    => temporärer Fix mit style color
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
