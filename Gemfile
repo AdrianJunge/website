@@ -73,4 +73,4 @@ gem "redcarpet"
 gem "front_matter_parser"
 gem "rouge"
 
-gem "tailwindcss-ruby", "~> 3.4"
+gem "tailwindcss-ruby", "~> 4.0"
