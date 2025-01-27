@@ -3,7 +3,7 @@
 	display: inline-block;
 	overflow: hidden;
 	white-space: nowrap;
-	border-right: 20px solid rgba(255, 255, 255, 0.75);
+	border-right: 0.7em solid rgba(255, 255, 255, 0.75);
 	width: 0;
 	animation: typing 1s steps(var(--steps)) 1s 1 normal both, blink-caret 0.5s step-end infinite;
 }
@@ -12,7 +12,7 @@
 	display: inline;
 	overflow: hidden;
 	white-space: nowrap;
-	border-right: 20px solid rgba(255, 255, 255, 0.75);
+	border-right: 0.7em solid rgba(255, 255, 255, 0.75);
 	width: 0;
 	animation: blink-caret 0.75s step-end infinite;
 }
@@ -42,22 +42,19 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 60px;
+	width: 6vh;
 	height: 100vh;
 	background-color: #2e3440;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 10px 0;
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .taskbar-icon {
-	width: 50px;
-	height: 50px;
-	margin: 10px 0;
+	width: 5vh;
+	height: 5vh;
+	margin: 0.8vh 0;
 	background-color: #3b4252;
-	border-radius: 5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -80,21 +77,24 @@
 
 /* Terminal */
 #terminal {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1000;
-	width: 80%;
-	max-width: 1200px;
-	max-height: 90vh;
-	overflow: auto;
-	background-color: rgba(0, 0, 0, 0.9);
-	border: 2px solid #4c566a;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-	display: flex;
-	flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 1200px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 0.2vh solid #4c566a;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.25rem;
+    color: #f5f5f5;
+    font-size: clamp(1.25rem, 2vw, 1.875rem);
+    font-family: "Courier New", monospace;
+    line-height: 1.5;
+    border-radius: 0.375rem;
 }
 
 
@@ -104,23 +104,22 @@
 
 .terminal-buttons {
 	display: flex;
-	gap: 10px;
 }
 
 .terminal-header {
 	position: absolute;
-	top: 20px;
-	left: 20px;
-	right: 20px;
+	top: 2vh;
+	left: 2vh;
+	right: 2vh;
 	display: flex;
 	justify-content: flex-end;
-	gap: 10px;
+	gap: 1vh;
 	z-index: 1001;
 }
 
 .terminal-button {
-	width: 20px;
-	height: 20px;
+	width: 2vh;
+	height: 2vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -142,7 +141,9 @@
 }
 
 .terminal-content {
-	overflow-y: scroll;
+	overflow-y: auto;
+	word-wrap: break-word;
+	white-space: pre-wrap;
 	scrollbar-width: none;
 }
 
@@ -163,14 +164,12 @@
 	left: 100%;
 	top: 50%;
 	transform: translateY(-50%);
-	margin-left: 10px;
+	margin-left: 1vh;
 	background-color: #333;
 	color: #fff;
 	text-align: left;
-	padding: 5px 10px;
-	border-radius: 5px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	font-size: 14px;
+	padding: 0.5vh 1vh;
+	font-size: 1.3vh;
 	z-index: 100;
 	white-space: normal;
 	line-height: 1.4;

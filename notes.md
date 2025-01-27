@@ -7,7 +7,11 @@
             - GlacierCTF
             - 0CTF
             - THM
-            - ... (Kalender durchgehen und gucken welche noch)
+            - OpenECSC
+            - FaustCTF
+            - HackluCTF
+            - SaarCTF
+            - SnakeCTF + Final
         - Writeup Overview
             - Sortieren nach Datum
         - Writeup
@@ -15,11 +19,9 @@
                 => diese "scrollt automatisch mit"
             - Hintergrund Image des CTFs
         - Suchfilter und Filteroption nach Jahr
-        - Archievements - auch mit KITCTF
-            - 2024  3rd Glacier CTF     KITCTF
-            - 2024  1st DHM             Cornflags
+        - Archievements
     - About
-        - Resumee/CV (oder nur Teile davon direkt auf der Website schreiben)
+        - Resumee/CV (oder nur Teile davon)
             - Englisch/Deutsch
             => was muss man beachten wenn man sein CV online stellt
         - Ask me anything - Chatbot
@@ -39,17 +41,9 @@
     - Tools
 - Toggle "Nerd" vs "Normi"
     => Navigation mit dem Terminal vs Navigation über Navbar
-- update deps und ruby zu 3.3.7
-- Procfile für Heroku
 
 # Fix
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
 - Terminal verkleinert sich ein wenig nachdem alles gerendert wurde
-- dns uptime von adrianjunge.de nicht wirklich gut
-
-
-# Features
-- Smartphone
-    - Entsprechende Anpassungen für kleine Bildschirme

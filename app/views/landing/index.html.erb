@@ -1,5 +1,5 @@
 <% current_path = "" %>
-<% subpaths = [".      (current page)", "..    (previous page)", "ctf   ", "about_me", "contact"] %>
+<% subpaths = [".  (current)", ".. (previous)", "ctf", "about_me", "contact"] %>
 
 <%= render_terminal(
   [
@@ -8,7 +8,7 @@
       outputs: subpaths.map do |subpath|
 		"drwxrwxr-x  5 adrian adrian  4.0K #{@current_time} <a href='#{current_path}/#{subpath}' class='text-blue-500'}>#{subpath}</a>"
     	end.unshift(
-			"drwxrwxr-x  8 adrian adrian  4.0K #{@current_time} <a href='/' class='text-blue-500'>~     (home)</a> "
+			"drwxrwxr-x  8 adrian adrian  4.0K #{@current_time} <a href='/' class='text-blue-500'>~  (home)</a> "
 		)
     },
   ], 

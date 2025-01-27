@@ -1,6 +1,5 @@
 body {
     display: grid;
-    grid-template-columns: 60px 1fr;
     grid-template-rows: 100vh;
     margin: 0;
     padding: 0;
@@ -13,14 +12,12 @@ body {
     align-items: center;     
     position: absolute;      
     top: 0;
-    left: 60px;              
-    width: calc(100% - 60px);
-    height: 100px;           
-    z-index: 10;             
-    margin-bottom: 30px;     
+    width: 100%;
+    height: 10vh;
+    z-index: -1;
+    margin-bottom: 3vh;
 }
-  
- 
+
 .header {
     font-size: 3rem;         
     font-weight: bold;       
@@ -35,33 +32,63 @@ body {
     grid-row: 1;
     display: flex;
     flex-direction: column;
-    padding: 60px;
-    padding-top: 120px;
+    padding: 6vh;
+    padding-top: 10vh;
     overflow-y: auto;
 }
 .writeup-overview {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
     justify-items: center;
     align-items: center;
+}
+
+.writeup-card {
+    min-height: 25vh;
+    background-color: #222024;
+    padding: 3vh;
+    border-radius: 3vh;
+    width: 90%;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
 }
 
 .writeup-details {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 3vh;
+    flex-grow: 1;
+    overflow-y: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    height: 100%;
 }
-  
-.writeup-card {
-    height: 250px;
-    background-color: #222024;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    transition: transform 0.2s ease-in-out;
+
+.writeup-card p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
 }
+
+
+@media (max-width: 768px) {
+    .writeup-card {
+        width: 100%;
+        padding: 2vh;
+    }
+
+    .writeup-details {
+        padding: 2vh;
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
 
 .writeup-card:hover {
     transform: scale(1.1);

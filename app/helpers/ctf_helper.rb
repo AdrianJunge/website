@@ -3,7 +3,7 @@ module CtfHelper
     svg_filename = Rails.root.join("app", "assets", "ctf", "categories", "#{category.downcase}.svg")
     svg_path = File.exist?(svg_filename) ? svg_filename : Rails.root.join("app", "assets", "ctf", "categories", "default.svg")
     svg = File.read(svg_path)
-    svg.gsub("<svg", '<svg style="width: 60px; height: 60px;"')
+    svg.gsub("<svg", '<svg style="width: 6vh; height: 6vh;"')
   end
 
   def render_writeup_card(writeup, writeup_path, which, categories, description)
