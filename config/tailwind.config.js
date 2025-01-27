@@ -9,11 +9,7 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
-    extend: {
-      colors: {
-        ...colors
-      },
-    },
+    extend: {},
   },
   plugins: [
     // require('@tailwindcss/forms'),

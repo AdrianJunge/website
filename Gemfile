@@ -66,11 +66,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "tailwindcss", "~> 0.1.1"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "redcarpet"
 gem "front_matter_parser"
 gem "rouge"
-
-gem "tailwindcss-ruby", "~> 4.0"
