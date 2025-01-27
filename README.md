@@ -27,6 +27,9 @@ rails assets:clobber
 rails assets:precompile
 ```
 
+# Rebuilding project
+`bundle exec rake db:migrate`
+
 # README
 
 This README would normally document whatever steps are necessary to get the
