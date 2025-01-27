@@ -3,7 +3,7 @@ module TerminalHelper
   TAG_COLOR = "text-red-700"
 
   def render_terminal(commands_and_outputs, minimized)
-    terminal_class = "subpixel-antialiased"
+    terminal_class = "subpixel-antialiased font-mono"
     terminal_class += " terminal-minimized" if minimized
     content_tag(:div, id: "terminal", class: terminal_class) do
       safe_join([

@@ -92,7 +92,6 @@
     padding: 1rem 1.25rem;
     color: #f5f5f5;
     font-size: clamp(1.25rem, 2vw, 1.875rem);
-    font-family: "Courier New", monospace;
     line-height: 1.5;
     border-radius: 0.375rem;
 }
