@@ -43,9 +43,9 @@
     - Tools
 - Toggle "Nerd" vs "Normi"
     => Navigation mit dem Terminal vs Navigation über Navbar
+- Terminal Info - Fragezeichen mit Tooltip zur Verwendung des Terminals für die Navigation
 
 # Fix
-- Tailwind css terminal paths sind nicht farbig
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
