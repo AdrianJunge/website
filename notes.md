@@ -47,6 +47,7 @@
     => Navigation mit dem Terminal vs Navigation über Navbar
 
 # Fix
+- RVM "/bin/zsh --login" automatisch bei Shell Start, sonst passt die ruby version nicht
 - keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - which ctf
     => keine Buttons mit Writeup oder Website, sondern das Image selber leitet zu den Writeups weiter und über die Überschrift kommt man zur Website (evtl mit kleinem Hint)

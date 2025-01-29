@@ -1,6 +1,6 @@
 module TerminalHelper
   def render_terminal(paths, minimized)
-    paths = ['~', '.', '..'] + paths
+    paths = [ "~", ".", ".." ] + paths
     terminal_class = "subpixel-antialiased font-mono"
     terminal_class += " terminal-minimized" if minimized
     content_tag(:div, id: "terminal", data: { terminal_text: paths.to_json }, class: terminal_class) do
