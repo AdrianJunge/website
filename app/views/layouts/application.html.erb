@@ -24,8 +24,19 @@
       <%= image_tag("terminal/help.svg", alt: "Help Icon") %>
       <span class="tooltip">Navigation: press one of the hyperlinks in the terminal to navigate to e.g. ctf or contact.</span>
     </div>
+
+    <div class="separator"></div>
+
+    <%= link_to image_tag("terminal/home.svg", alt: "Home Icon"), root_path, class: "taskbar-icon" %>
+
+    <%= link_to image_tag("terminal/flag.svg", alt: "Ctf Icon"), ctf_path, class: "taskbar-icon" %>
+    
+    <%= link_to image_tag("terminal/about.svg", alt: "About Icon"), about_me_path, class: "taskbar-icon" %>
+    
+    <%= link_to image_tag("terminal/contact.svg", alt: "Contact Icon"), contact_path, class: "taskbar-icon" %>
   </div>
-  </div>
+
+
   <%= yield %>
 </body>
 </html>
