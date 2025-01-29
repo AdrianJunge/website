@@ -1,4 +1,6 @@
 # TODOs
+- Precommit
+- Impressum
 - RSS Feed
     - Writeups
     - Blog

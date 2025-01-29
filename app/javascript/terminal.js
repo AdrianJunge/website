@@ -24,8 +24,8 @@ const fastFetchInfo = `
 `
 const aboutMe = `
 \tDiscord:\t${createHyperlink('Discord', 'https://discord.com/users/305624492221267968}')}
-\tGitHub:\t\t${createHyperlink('GitHub', 'https://github.com/AdrianJunge/}')}
-\tLinkedin:\t${createHyperlink('Linkedin', 'https://www.linkedin.com/in/adrian-junge-998a63296/}')}
+\tGitHub:\t\t${createHyperlink('GitHub', 'https://github.com/AdrianJunge/')}
+\tLinkedin:\t${createHyperlink('Linkedin', 'https://www.linkedin.com/in/adrian-junge-998a63296/')}
 `
 
 const viewportHeight = window.innerHeight;
@@ -163,9 +163,19 @@ const initTerminal = () => {
     });
 };
 
-function generateLsOutput(pathsArray) {
-    const currentDate = new Date().toLocaleString();  
+function getFormattedDate() {
+    const now = new Date();
+    const formatted = new Intl.DateTimeFormat('en-US', {
+      month: 'short', 
+      day: 'numeric', 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      hour12: false
+    }).format(now);
+    return formatted.replace(',', '');
+  }
 
+function generateLsOutput(pathsArray) {
     pathsArray.forEach(path => {
         let pathDisplay = path;
         let hyperlink = '';
@@ -176,13 +186,13 @@ function generateLsOutput(pathsArray) {
         hyperlink = createHyperlink(pathDisplay, url);
 
         if (path === '~') {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${currentDate}  ${hyperlink}   (home)`, COLORS.magenta);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}   (home)`, COLORS.magenta);
         } else if (path === '.') {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${currentDate}  ${hyperlink}   (current)`, COLORS.green);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}   (current)`, COLORS.green);
         } else if (path === '..') {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${currentDate}  ${hyperlink}  (parent)`, COLORS.yellow);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}  (parent)`, COLORS.yellow);
         } else {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${currentDate}  ${hyperlink}`, COLORS.blue);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}`, COLORS.blue);
         }
     });
 }
