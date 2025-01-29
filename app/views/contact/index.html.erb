@@ -1,25 +1,9 @@
-<% current_path = "/contact" %>
-<% subpaths = [".", ".."] %>
-
 <% contacts = [
   { name: "github", logo: "contact/github.webp", website: "https://github.com/AdrianJunge/" },
   { name: "linkedin", logo: "contact/linkedin.png", website: "https://www.linkedin.com/in/adrian-junge-998a63296/" },
   { name: "discord", logo: "contact/discord.jpg", website: "https://discord.com/users/305624492221267968" },
 ] %>
-
-<%= render_terminal(
-  [
-    {
-      command: "ls -lah ~#{current_path}",
-      outputs: subpaths.map do |subpath|
-		"drwxrwxr-x  5 adrian adrian  4.0K #{@current_time} <a href='#{current_path}/#{subpath}' class='text-blue-500'>#{subpath}</a>"
-    	end.unshift(
-			"drwxrwxr-x  8 adrian adrian  4.0K #{@current_time} <a href='/' class='text-blue-500'>~</a>"
-		)
-    },
-  ], 
-  true
-) %>
+<%= render_terminal([], true) %>
 
 <div class="content">
   <div class="contact-overview">

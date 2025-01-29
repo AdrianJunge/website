@@ -1,42 +1,3 @@
-/* Terminal type effect */
-.typing-command {
-	display: inline-block;
-	overflow: hidden;
-	white-space: nowrap;
-	border-right: 0.7em solid rgba(255, 255, 255, 0.75);
-	width: 0;
-	animation: typing 1s steps(var(--steps)) 1s 1 normal both, blink-caret 0.5s step-end infinite;
-}
-
-.last-typing-command {
-	display: inline;
-	overflow: hidden;
-	white-space: nowrap;
-	border-right: 0.7em solid rgba(255, 255, 255, 0.75);
-	width: 0;
-	animation: blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-	from {
-		width: 0;
-	}
-
-	to {
-		width: 100%;
-	}
-}
-
-@keyframes blink-caret {
-	50% {
-		border-color: transparent;
-	}
-
-	100% {
-		border-color: rgba(255, 255, 255, 0.75);
-	}
-}
-
 /* Task bar */
 #taskbar {
 	position: fixed;
@@ -82,8 +43,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    width: 90%;
-    max-width: 1200px;
+    width: 80%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.9);
     border: 0.2vh solid #4c566a;
@@ -140,15 +100,14 @@
 }
 
 .terminal-content {
-	overflow-y: auto;
-	word-wrap: break-word;
-	white-space: pre-wrap;
-	scrollbar-width: none;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    scrollbar-width: none;
 }
-
 .terminal-content::-webkit-scrollbar {
-	width: 0;
-	height: 0;
+    width: 0;
+    height: 0;
 }
 
 /* Tooltip-Container */
@@ -169,7 +128,7 @@
 	text-align: left;
 	padding: 0.5vh 1vh;
 	font-size: 1.3vh;
-	z-index: 100;
+	z-index: 10000;
 	white-space: normal;
 	line-height: 1.4;
 	opacity: 0;
