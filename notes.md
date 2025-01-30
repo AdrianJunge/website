@@ -49,14 +49,9 @@
     - Tools
 
 # Fix
-- xterm mit npm nochmal installieren und Path nochmal ändern in importmaps
-- RVM "/bin/zsh --login" automatisch bei Shell Start, sonst passt die ruby version nicht
-- keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
-- which ctf
-    => keine Buttons mit Writeup oder Website, sondern das Image selber leitet zu den Writeups weiter und über die Überschrift kommt man zur Website (evtl mit kleinem Hint)
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
-- default challenge svg ist kaputt (]> kommt davor)
+- keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
