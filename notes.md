@@ -49,10 +49,13 @@
     - Tools
 
 # Fix
+- noch mehr responsiveness
+    => aus irgendeinem Grund werden einige Sachen in prod größer gerendert
+    => Terminal
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
+- @import "rouge" fixen
 - keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
-- Terminal verkleinert sich ein wenig nachdem alles gerendert wurde

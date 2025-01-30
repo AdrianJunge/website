@@ -23,7 +23,7 @@ const fastFetchInfo = `
                                                                  \\____/ 
 `
 const aboutMe = `
-\tDiscord:\t${createHyperlink('Discord', 'https://discord.com/users/305624492221267968}')}
+\tDiscord:\t${createHyperlink('Discord', 'https://discord.com/users/305624492221267968')}
 \tGitHub:\t\t${createHyperlink('GitHub', 'https://github.com/AdrianJunge/')}
 \tLinkedin:\t${createHyperlink('Linkedin', 'https://www.linkedin.com/in/adrian-junge-998a63296/')}
 `
