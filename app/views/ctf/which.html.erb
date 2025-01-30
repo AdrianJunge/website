@@ -1,8 +1,14 @@
 <%= render_terminal(@writeups, true) %>
 
 <div class="header-container">
-  <h1 class="header text-white dark:text-gray-200"><%= @which.upcase %></h1>
+  <a href="<%= @ctf["website"] %>" target="_blank">
+      <button type="button" style="background-color: #222024;" class="header flex text-white rounded-xl text-5xl px-5 py-2.5 inline-flex items-center">
+      <%= fetch_favicon(@ctf["website"]) %>
+      <%= @which.upcase %>
+    </button>
+  </a>
 </div>
+
 <div class="writeup-content">
   <div class="writeup-overview">
     <% @ctf_info.each do |writeup, info| %>

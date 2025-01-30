@@ -1,24 +1,20 @@
-[
-    {
-      "terminal_path": "cscg",
-      "name": "CSCG",
-      "logo": "ctf/cscg.png",
-      "writeups": "/ctf/cscg",
-      "website": "https://cscg.de/"
-    },
-    {
-      "terminal_path": "dhm",
-      "name": "DHM",
-      "logo": "ctf/dhm.jpg",
-      "writeups": "/ctf/dhm",
-      "website": "https://hacking-meisterschaft.de/"
-    },
-    {
-      "terminal_path": "kitctf",
-      "name": "KITCTF",
-      "logo": "ctf/kitctf.png",
-      "writeups": "/ctf/kitctf",
-      "website": "https://kitctf.de/"
-    }
-  ]
-  
+{
+  "CSCG": {
+    "terminal_path": "cscg",
+    "logo": "ctf/cscg.png",
+    "writeups": "/ctf/cscg",
+    "website": "https://cscg.de/"
+  },
+  "DHM": {
+    "terminal_path": "dhm",
+    "logo": "ctf/dhm.jpg",
+    "writeups": "/ctf/dhm",
+    "website": "https://hacking-meisterschaft.de/"
+  },
+  "KITCTF":{
+    "terminal_path": "kitctf",
+    "logo": "ctf/kitctf.png",
+    "writeups": "/ctf/kitctf",
+    "website": "https://kitctf.de/"
+  }
+}

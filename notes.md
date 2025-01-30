@@ -1,5 +1,7 @@
 # TODOs
+- Email einrichten für Domaine
 - Precommit
+- vurlo.de sichern und DNS einrichten
 - Impressum
 - RSS Feed
     - Writeups
@@ -36,7 +38,7 @@
         - Hobbies
         - KITCTF studying @KIT
 - Contact
-    - Email via Form
+    - Email Adresse
 - Upcoming
     - Blog
         - Java Strings
@@ -45,10 +47,9 @@
     - Minigames (eigene App wie das Terminal)
         - TicTacToe vs AI
     - Tools
-- Toggle "Nerd" vs "Normi"
-    => Navigation mit dem Terminal vs Navigation über Navbar
 
 # Fix
+- xterm mit npm nochmal installieren und Path nochmal ändern in importmaps
 - RVM "/bin/zsh --login" automatisch bei Shell Start, sonst passt die ruby version nicht
 - keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - which ctf

@@ -11,6 +11,9 @@ class CtfController < ApplicationController
   end
 
   def which
+    file = File.read(CTF_INFO_PATH)
+    @ctfs = JSON.parse(file)
+    @ctf = @ctfs[params[:which].upcase] if @ctfs.key?(params[:which].upcase)
     @which = params[:which].gsub("..", "").gsub("/", "")
     return unless sanitize_which(@which)
 
