@@ -1,3 +1,5 @@
+// https://xtermjs.org/docs/api/terminal/classes/terminal/
+
 import "xterm";
 import "xterm-addon-web-links";
 
@@ -28,6 +30,11 @@ const aboutMe = `
 \tLinkedin:\t${createHyperlink('Linkedin', 'https://www.linkedin.com/in/adrian-junge-998a63296/')}
 `
 
+const firstHelp = `
+\tNavigation via the sidebar, by using the 'cd' command or use the listed hyperlinks.
+\tType 'help' for more...
+`
+
 const viewportHeight = window.innerHeight;
 const fontSize = viewportHeight / 30;
 const term = new Terminal({
@@ -48,11 +55,37 @@ const COLORS = {
     bold: '\x1B[1m',          
 };
 
-function printMultiLineString(str=fastFetchInfo, color=COLORS.white) {
-    const lines = str.split('\n');
-    lines.forEach((line) => {
-        term.writeln(colorize(line, color));
+function wrapText(text, maxWidth) {
+    const words = text.split(' ');
+    let line = '';
+    let wrappedText = '';
+
+    words.forEach(word => {
+        if ((line + word).length > maxWidth) {
+            wrappedText += line + '\n' + '\t';
+            line = '';
+        }
+        line += word + ' ';
     });
+
+    wrappedText += line;
+    return wrappedText;
+}
+
+function printMultiLineString(str = fastFetchInfo, color = COLORS.white, wrap = false) {
+    if (wrap) {
+        const maxTerminalWidth = 80;
+        const wrappedText = wrapText(str, maxTerminalWidth);
+
+        wrappedText.split('\n').forEach((line) => {
+            term.writeln(colorize(line, color));
+        });
+    } else {
+        const lines = str.split('\n');
+        lines.forEach((line) => {
+            term.writeln(colorize(line, color));
+        });
+    }
 }
 
 function colorize(text, color) {
@@ -150,6 +183,7 @@ const initTerminal = () => {
     if (window.location.pathname === '/') {
         printMultiLineString(fastFetchInfo, COLORS.green);
         printMultiLineString(aboutMe, COLORS.bold);
+        printMultiLineString(firstHelp, COLORS.bold, true);
     }
 
     printLine('adrian@my-space:~$ ', COLORS.red);
@@ -242,9 +276,6 @@ function minimizeTerminal() {
         terminal.classList.toggle("terminal-minimized");
 	});
     
-	help.addEventListener('click', function () {
-        help.classList.toggle('tooltip-visible');
-	});
 	document.addEventListener("keydown", (event) => {
 		if (event.ctrlKey && event.key === "Enter") {
             terminal.classList.toggle("terminal-minimized");
