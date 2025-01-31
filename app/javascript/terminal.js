@@ -97,6 +97,48 @@ function getTargetUrl(path) {
     return url
 }
 
+function processCommand(command) {
+    switch (command) {
+        case 'ls':
+            generateLsOutput(pathsArray);
+            break;
+        case 'cd ':
+            const target = command.substring(3).trim();
+            
+            if (pathsArray.includes(target)) {
+                let targetUrl;
+    
+                targetUrl = getTargetUrl(target);
+    
+                printLine(`\n  Changing to ${target}...\n`);
+                printLine(`\nadrian@my-space:~$ `, COLORS.red);
+                window.location.href = targetUrl;  
+            } else {
+                printLine(`\n  Directory "${target}" not found.`, COLORS.white);
+                printLine(`\nadrian@my-space:~$ `, COLORS.red);
+            }
+            break;
+        case 'clear':
+            term.clear();
+            break;
+        case 'whoami':
+            printLine('\n  adrian', COLORS.white);
+            printMultiLineString(aboutMe, COLORS.bold);
+            break;
+        case 'help':
+            printLine('\n  Available commands:');
+            printLine('\n\t- help: Shows this help message');
+            printLine('\n\t- ls: Lists the directories');
+            printLine('\n\t- cd <directory>: Navigates to a directory');
+            printLine('\n\t- clear: Clears the terminal');
+            printLine('\n\t- whoami: Who am I?');
+            break;
+        default:
+            printLine(`\n  Command not recognized: ${command}`, COLORS.white);
+        }
+        printLine(`\nadrian@my-space:~$ `, COLORS.red);
+}
+
 const initTerminal = () => {
     const terminalElement = document.getElementById('terminal');
     const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
@@ -120,47 +162,30 @@ const initTerminal = () => {
 
     term.onData(function(data) {
         if (data === '\r' || data === '\n') {
-            const command = inputBuffer.trim();  
+            const command = inputBuffer.trim();
             inputBuffer = '';  
-
-            if (command.startsWith('ls')) {
-                generateLsOutput(pathsArray);
-                printLine('\nadrian@my-space:~$ ', COLORS.red);
+            processCommand(command);
+            return;
+        } else if (data === '\x7f') {
+            if (inputBuffer.length > 0) {
+                inputBuffer = inputBuffer.slice(0, -1);
+                const cursorBack = '\x1b[D';
+                const eraseChar = '\x1b[P';
+                term.write(cursorBack + eraseChar);
             }
-            else if (command.startsWith('cd ')) {
-                const target = command.substring(3).trim();
-                
-                if (pathsArray.includes(target)) {
-                    let targetUrl;
-
-                    targetUrl = getTargetUrl(target);
-
-                    printLine(`\n  Changing to ${target}...\n`);
-                    printLine(`\nadrian@my-space:~$ `, COLORS.red);
-                    window.location.href = targetUrl;  
-                } else {
-                    printLine(`\n  Directory "${target}" not found.`, COLORS.white);
-                    printLine(`\nadrian@my-space:~$ `, COLORS.red);
-                }
-            } else if (command === 'help') {
-                printLine('\n  Available commands:');
-                printLine('\n\t- help: Shows this help message');
-                printLine('\n\t- ls: Lists the directories');
-                printLine('\n\t- cd <directory>: Navigates to a directory');
-                printLine('\n\t- clear: Clears the terminal');
-                printLine('\nadrian@my-space:~$ ', COLORS.red);
-            } else if (command === 'clear') {
-                term.clear();
-                printLine('\nadrian@my-space:~$ ', COLORS.red);
-            } else {
-                printLine(`\n  Command not recognized: ${command}`, COLORS.white);
-                printLine(`\nadrian@my-space:~$ `, COLORS.red);
+        } else if (data === '\x15') {
+            const clearBuffer = inputBuffer.length;
+            if (clearBuffer > 0) {
+                const cursorBack = `\x1b[${clearBuffer}D`;
+                const clearText = `\x1b[0K`;
+                term.write(cursorBack + clearText);
+                inputBuffer = '';
             }
         } else {
             inputBuffer += data;
             term.write(data);
         }
-    });
+    });    
 };
 
 function getFormattedDate() {
@@ -198,4 +223,37 @@ function generateLsOutput(pathsArray) {
 }
 
 
+
+function minimizeTerminal() {
+    const minimizeButton = document.getElementById("minimize-terminal");
+	const closeButton = document.getElementById("close-terminal");
+	const terminal = document.getElementById("terminal");
+	const terminalTaskbarIcon = document.getElementById("terminal-taskbar-icon");
+	const help = document.getElementById("help-taskbar-icon");
+	
+	minimizeButton.addEventListener("click", function () {
+        terminal.classList.add("terminal-minimized");
+	});
+	closeButton.addEventListener("click", function () {
+        terminal.classList.add("terminal-minimized");
+	});
+	
+	terminalTaskbarIcon.addEventListener("click", function () {
+        terminal.classList.toggle("terminal-minimized");
+	});
+    
+	help.addEventListener('click', function () {
+        help.classList.toggle('tooltip-visible');
+	});
+	document.addEventListener("keydown", (event) => {
+		if (event.ctrlKey && event.key === "Enter") {
+            terminal.classList.toggle("terminal-minimized");
+            term.focus();
+		}
+	});
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    minimizeTerminal();
+});
 document.addEventListener('DOMContentLoaded', initTerminal);

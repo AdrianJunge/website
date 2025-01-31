@@ -1,7 +1,20 @@
+# Appearance
+- primary, secondary color festlegen
+    - Icon colors einheitlich schlicht
+- Task Bar
+    - Terminal Button unten
+    - Help Button weg und stattdessen kurze Erklärung im Terminal
+    - Nav Buttons oben
+    - Burger Menu was Sidebar öffnet und Name/Beschreibung der anderen Buttons öffnet
+- Help Button links unten um auf "Tutorial" page zu kommen
+
 # TODOs
+- ctf-cards
+    - Titel + kurze Beschreibung des CTFs in dem runden Image
+- Footer für alle Pages anstatt contact page
+- vurlo.de sichern und DNS einrichten
 - Email einrichten für Domaine
 - Precommit
-- vurlo.de sichern und DNS einrichten
 - Impressum
 - RSS Feed
     - Writeups
@@ -48,10 +61,18 @@
         - TicTacToe vs AI
     - Tools
 
+# Security
+- Fetched ctf favicon sanitzen wegen XSS vector
+
 # Fix
-- noch mehr responsiveness
+- Responsiveness
     => aus irgendeinem Grund werden einige Sachen in prod größer gerendert
     => Terminal
+    - Smartphone
+        - Terminal Shell nur mit $ und directory Kram weg
+        - Zeilenumbruch beim Schreiben
+        - Task Bar unten anstatt auf der Seite
+        - Sidebar für Nav füllt kompletten Bildschirm aus
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
 - @import "rouge" fixen
