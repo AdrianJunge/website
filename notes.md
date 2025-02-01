@@ -1,10 +1,8 @@
 # Appearance
-- primary, secondary color festlegen
-    - Icon colors einheitlich schlicht
 - Task Bar
+    - Burger Menu für beide Sidebars jeweils öffnet und Name/Beschreibung der anderen Buttons öffnet
     - Terminal Button unten
     - Nav Buttons oben
-    - Burger Menu was Sidebar öffnet und Name/Beschreibung der anderen Buttons öffnet
 - Help Button links unten um auf "Tutorial" page zu kommen
 
 # TODOs
@@ -12,11 +10,12 @@
     - maxTerminalWidth ersetzen durch tatsächliche Terminal width
 - ctf-cards
     - Titel + kurze Beschreibung des CTFs in dem runden Image
-- Footer für alle Pages anstatt contact page
 - Fehler pages updaten
 - kompletten boiler plate Code von Rails durchgehen und das rauswerfen was ich nicht brauche
 - vurlo.de sichern und DNS einrichten
 - Email einrichten für Domaine
+    - Forwarding
+    - als contact angeben in Terminal + Footer
 - Precommit
 - Impressum
 - RSS Feed

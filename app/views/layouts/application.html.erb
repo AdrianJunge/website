@@ -15,21 +15,28 @@
   <%= yield :head %>
 
 </head>
-<body class="bg-gray-800">
-  <div id="taskbar">
-    <div class="taskbar-icon" id="terminal-taskbar-icon">
-      <%= image_tag("terminal/terminal.svg", alt: "Terminal Icon") %>
+<body class="bg-default">
+  <div id="taskbar-left" class="bg-primary flex flex-col h-screen">
+    <%= link_to image_tag("task-bar/home.svg", alt: "Home Icon"), root_path, class: "taskbar-icon bg-tertiary hover:bg-accent" %>
+    <%= link_to image_tag("task-bar/flag.svg", alt: "Ctf Icon"), ctf_path, class: "taskbar-icon bg-tertiary hover:bg-accent" %>
+    <%= link_to image_tag("task-bar/about.svg", alt: "About Icon"), about_me_path, class: "taskbar-icon bg-tertiary hover:bg-accent" %>
+
+    <div class="mt-auto">
+      <%= image_tag("task-bar/terminal.svg", alt: "Terminal Icon", class: "taskbar-icon bg-tertiary hover:bg-accent", id: "terminal-taskbar-icon") %>
     </div>
-
-    <%= link_to image_tag("terminal/home.svg", alt: "Home Icon"), root_path, class: "taskbar-icon" %>
-
-    <%= link_to image_tag("terminal/flag.svg", alt: "Ctf Icon"), ctf_path, class: "taskbar-icon" %>
-    
-    <%= link_to image_tag("terminal/about.svg", alt: "About Icon"), about_me_path, class: "taskbar-icon" %>
-    
   </div>
 
-
   <%= yield %>
+
+  <div id="taskbar-right" class="bg-primary flex flex-col h-screen">
+    <%= link_to image_tag("task-bar/github.svg", alt: "Github Icon"), "https://github.com/AdrianJunge/", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
+    <%= link_to image_tag("task-bar/linkedin.svg", alt: "Linkedin Icon"), "https://www.linkedin.com/in/adrian-junge-998a63296/", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
+    <%= link_to image_tag("task-bar/discord.svg", alt: "Discord Icon"), "https://discord.com/users/305624492221267968", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
+    
+    <div class="mt-auto">
+      <%= link_to image_tag("task-bar/code.svg", alt: "Website Link Icon"), "https://github.com/AdrianJunge/website", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
+    </div>
+  </div>
 </body>
+
 </html>

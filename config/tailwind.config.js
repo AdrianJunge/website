@@ -9,8 +9,16 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
-    extend: {},
-  },
+    extend: {
+      colors: {
+        default: '#0a101a',
+        primary: '#18243a',
+        secondary: '#334461',
+        tertiary: '#576f91',
+        accent: '#7086a4'
+      }
+    }
+  },  
   plugins: [
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/typography'),

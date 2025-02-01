@@ -15,8 +15,7 @@ import "xterm-addon-web-links";
 //         C          A   \`.  _,===:::=-'-=-"""''
 //     i      d  t         '-/:::''
 //                           ''
-const fastFetchInfo = `
-  _____                          _                                      
+const fastFetchInfo = `  _____                          _                                      
  |  __ \\                        | |                               ____  
  | |__) |   ___    __ _    ___  | |__      _ __ ___     ___      / __ \\ 
  |  _  /   / _ \\  / _\` |  / __| | '_ \\    | '_ \` _ \\   / _ \\    / / _\` |
@@ -24,14 +23,12 @@ const fastFetchInfo = `
  |_|  \\_\\  \\___|  \\__,_|  \\___| |_| |_|   |_| |_| |_|  \\___|    \\ \\__,_|
                                                                  \\____/ 
 `
-const aboutMe = `
-\tDiscord:\t${createHyperlink('Discord', 'https://discord.com/users/305624492221267968')}
+const aboutMe = `\tDiscord:\t${createHyperlink('Discord', 'https://discord.com/users/305624492221267968')}
 \tGitHub:\t\t${createHyperlink('GitHub', 'https://github.com/AdrianJunge/')}
 \tLinkedin:\t${createHyperlink('Linkedin', 'https://www.linkedin.com/in/adrian-junge-998a63296/')}
 `
 
-const firstHelp = `
-\tNavigation via the sidebar, by using the 'cd' command or use the listed hyperlinks.
+const firstHelp = `\tNavigation via the sidebar, by using the 'cd' command or use the listed hyperlinks.
 \tType 'help' for more...
 `
 

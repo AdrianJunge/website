@@ -4,7 +4,7 @@
 
 <%= render_terminal([], true) %>
 
-<div class="writeup-container">
+<div class="writeup-container bg-primary">
   <h4 class="writeup-year text-white text-center"><%= @which.upcase %>-<%= @ctf_info.dig(@writeup, "year") %></h4>
   <h1 class="writeup-title text-white"><%= params[:writeup].gsub('.md', '').capitalize %></h1>
   <%= @html_content %>
