@@ -6,33 +6,38 @@
 	width: 6vh;
 	height: 100vh;
 	display: flex;
+	white-space: nowrap;
 	flex-direction: column;
-	align-items: center;
 	z-index: 1000;
+	transition: width 0.3s ease-in-out;
 }
 
-#taskbar-right {
-	position: fixed;
-	top: 0;
-	right: 0;
-	width: 6vh;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	z-index: 1000;
+#taskbar-left.expanded {
+	width: 20vh;
+}
+
+.taskbar-item {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.taskbar-label {
+  opacity: 0;
+  position: absolute;
+  left: 7vh;
+  pointer-events: none;
+  color: white;
 }
 
 .taskbar-icon {
 	width: 5vh;
 	height: 5vh;
 	margin: 0.8vh 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	cursor: pointer;
 	transition: background-color 0.2s ease-in-out;
 	border-radius: 0.5vh;
+	margin-left: 0.5vh;
 }
 
 .taskbar-icon img {
@@ -49,7 +54,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
+    z-index: 100;
     width: 80%;
     max-width: 90vw;
     border: 0.2vh solid #4c566a;
@@ -95,10 +100,6 @@
 
 .terminal-button img {
 	filter: invert(1);
-}
-
-.terminal-button:hover {
-	transform: scale(1.5);
 }
 
 .button-icon {

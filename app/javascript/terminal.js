@@ -39,6 +39,8 @@ const term = new Terminal({
     fontSize: fontSize,
 });  
 const webLinksAddon = new WebLinksAddon.WebLinksAddon()
+const terminalElement = document.getElementById('terminal');
+const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
 
 const COLORS = {
     reset: '\x1B[0m',         
@@ -128,11 +130,9 @@ function getTargetUrl(path) {
 }
 
 function processCommand(command) {
-    switch (command) {
-        case 'ls':
+        if (/^ls\s*(-[a-zA-Z]+)?\s*$/.test(command)) {
             generateLsOutput(pathsArray);
-            break;
-        case 'cd ':
+        } else if (/^cd\s+([^<>:"|?*\r\n]+)?\s*$/.test(command)) {
             const target = command.substring(3).trim();
             
             if (pathsArray.includes(target)) {
@@ -147,32 +147,25 @@ function processCommand(command) {
                 printLine(`\n  Directory "${target}" not found.`, COLORS.white);
                 printLine(`\nadrian@my-space:~$ `, COLORS.red);
             }
-            break;
-        case 'clear':
+        } else if (command === 'clear') {
             term.clear();
-            break;
-        case 'whoami':
+        } else if (command === 'whoami') {
             printLine('\n  adrian', COLORS.white);
             printMultiLineString(aboutMe, COLORS.bold);
-            break;
-        case 'help':
+        } else if (command === 'help') {
             printLine('\n  Available commands:');
             printLine('\n\t- help: Shows this help message');
             printLine('\n\t- ls: Lists the directories');
             printLine('\n\t- cd <directory>: Navigates to a directory');
             printLine('\n\t- clear: Clears the terminal');
             printLine('\n\t- whoami: Who am I?');
-            break;
-        default:
+        } else {
             printLine(`\n  Command not recognized: ${command}`, COLORS.white);
         }
         printLine(`\nadrian@my-space:~$ `, COLORS.red);
 }
 
 const initTerminal = () => {
-    const terminalElement = document.getElementById('terminal');
-    const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
-    
     term.open(terminalElement);
     webLinksAddon._openLink = customOpenLink;
     term.loadAddon(webLinksAddon);

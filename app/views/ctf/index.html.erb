@@ -4,7 +4,7 @@
 <div class="content">
   <div class="ctf-overview">
     <% @ctfs.each do |name, ctf| %>
-      <div class="ctf-card">
+      <div class="ctf-card hover:scale-110">
         <%= link_to image_tag(ctf["logo"], alt: "#{name} Logo"), ctf["writeups"], class: "ctf-logo" %>
       </div>
     <% end %>

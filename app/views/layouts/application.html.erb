@@ -16,27 +16,48 @@
 
 </head>
 <body class="bg-default">
-  <div id="taskbar-left" class="bg-primary flex flex-col h-screen">
-    <%= link_to image_tag("task-bar/home.svg", alt: "Home Icon"), root_path, class: "taskbar-icon bg-tertiary hover:bg-accent" %>
-    <%= link_to image_tag("task-bar/flag.svg", alt: "Ctf Icon"), ctf_path, class: "taskbar-icon bg-tertiary hover:bg-accent" %>
-    <%= link_to image_tag("task-bar/about.svg", alt: "About Icon"), about_me_path, class: "taskbar-icon bg-tertiary hover:bg-accent" %>
+  <% taskbar_icon_class = "taskbar-icon bg-tertiary hover:bg-accent hover:scale-110" %>
+  <div id="taskbar-left" class="bg-primary collapsed">
+    <div class="taskbar-item">
+      <%= image_tag("task-bar/burgermenu.svg", alt: "Home Icon", class: taskbar_icon_class, id: "menu-icon") %>
+    </div>
+    <div class="taskbar-item">
+      <%= link_to image_tag("task-bar/home.svg", alt: "Home Icon"), root_path, class: taskbar_icon_class %>
+      <span class="taskbar-label">Home</span>
+    </div>
+    <div class="taskbar-item">
+      <%= link_to image_tag("task-bar/flag.svg", alt: "Ctf Icon"), ctf_path, class: taskbar_icon_class %>
+      <span class="taskbar-label">Capture The Flag Writeups</span>
+    </div>
+    <div class="taskbar-item">
+      <%= link_to image_tag("task-bar/about.svg", alt: "About Icon"), about_me_path, class: taskbar_icon_class %>
+      <span class="taskbar-label">About Me</span>
+    </div>
 
     <div class="mt-auto">
-      <%= image_tag("task-bar/terminal.svg", alt: "Terminal Icon", class: "taskbar-icon bg-tertiary hover:bg-accent", id: "terminal-taskbar-icon") %>
+      <div class="taskbar-item">
+        <%= image_tag("task-bar/terminal.svg", alt: "Terminal Icon", class: taskbar_icon_class, id: "terminal-taskbar-icon") %>
+        <span class="taskbar-label">Terminal navigation</span>
+      </div>
+    </div>
+
+    <div class="mt-auto">
+      <div class="taskbar-item">
+        <%= link_to image_tag("task-bar/github.svg", alt: "Github Icon"), "https://github.com/AdrianJunge/", class: taskbar_icon_class, target: "_blank" %>
+        <span class="taskbar-label">Github</span>
+      </div>
+      <div class="taskbar-item">
+        <%= link_to image_tag("task-bar/linkedin.svg", alt: "Linkedin Icon"), "https://www.linkedin.com/in/adrian-junge-998a63296/", class: taskbar_icon_class, target: "_blank" %>
+        <span class="taskbar-label">Linkedin</span>
+      </div>
+      <div class="taskbar-item">
+        <%= link_to image_tag("task-bar/discord.svg", alt: "Discord Icon"), "https://discord.com/users/305624492221267968", class: taskbar_icon_class, target: "_blank" %>
+        <span class="taskbar-label">Discord</span>
+      </div>
     </div>
   </div>
 
   <%= yield %>
 
-  <div id="taskbar-right" class="bg-primary flex flex-col h-screen">
-    <%= link_to image_tag("task-bar/github.svg", alt: "Github Icon"), "https://github.com/AdrianJunge/", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
-    <%= link_to image_tag("task-bar/linkedin.svg", alt: "Linkedin Icon"), "https://www.linkedin.com/in/adrian-junge-998a63296/", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
-    <%= link_to image_tag("task-bar/discord.svg", alt: "Discord Icon"), "https://discord.com/users/305624492221267968", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
-    
-    <div class="mt-auto">
-      <%= link_to image_tag("task-bar/code.svg", alt: "Website Link Icon"), "https://github.com/AdrianJunge/website", class: "taskbar-icon bg-tertiary hover:bg-accent", target: "_blank" %>
-    </div>
-  </div>
 </body>
-
 </html>

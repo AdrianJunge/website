@@ -14,9 +14,6 @@ body {
     width: 100%;
     height: 10vh;
 }
-.header:hover {
-    transform: scale(1.1);
-}
 
 .header {
     transition: transform 0.2s ease-in-out;
@@ -81,9 +78,4 @@ body {
         max-height: none;
         overflow-y: visible;
     }
-}
-
-
-.writeup-card:hover {
-    transform: scale(1.1);
 }

@@ -1,8 +1,4 @@
 # Appearance
-- Task Bar
-    - Burger Menu für beide Sidebars jeweils öffnet und Name/Beschreibung der anderen Buttons öffnet
-    - Terminal Button unten
-    - Nav Buttons oben
 - Help Button links unten um auf "Tutorial" page zu kommen
 
 # TODOs

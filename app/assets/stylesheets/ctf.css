@@ -64,8 +64,3 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-.ctf-card:hover {
-    transform: scale(1.1);
-    opacity: 1;
-}
