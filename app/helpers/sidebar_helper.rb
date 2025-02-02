@@ -15,40 +15,39 @@ module SidebarHelper
     taskbar_label_class = "taskbar-label"
 
     content_tag(:div, id: "taskbar-left", class: "bg-primary collapsed") do
-      concat(content_tag(:div, class: "taskbar-item") do
-        image_tag("task-bar/burgermenu.svg", alt: "Home Icon", class: taskbar_icon_class, id: "menu-icon")
-      end)
-
-      concat(taskbar_icon_item(
-        image_path: "task-bar/home.svg",
-        alt_text: "Home Icon",
-        label: "Home",
-        link: root_path,
-        icon_class: taskbar_icon_class,
-        label_class: taskbar_label_class
-      ))
-
-      concat(taskbar_icon_item(
-        image_path: "task-bar/back.svg",
-        alt_text: "Back Icon",
-        label: "Previous Page",
-        link: request.referer || root_path,
-        icon_class: taskbar_icon_class,
-        label_class: taskbar_label_class
-      ))
-
-      taskbar_items.each do |item|
+      concat(content_tag(:div, class: "taskbar-items-upper") do
+        concat(content_tag(:div, class: "taskbar-item") do
+          image_tag("task-bar/burgermenu.svg", alt: "Home Icon", class: taskbar_icon_class, id: "menu-icon")
+        end)
         concat(taskbar_icon_item(
-          image_path: item[:image_path],
-          alt_text: item[:alt_text],
-          label: item[:label],
-          link: item[:link],
+          image_path: "task-bar/home.svg",
+          alt_text: "Home Icon",
+          label: "Home",
+          link: root_path,
           icon_class: taskbar_icon_class,
           label_class: taskbar_label_class
         ))
-      end
+        concat(taskbar_icon_item(
+          image_path: "task-bar/back.svg",
+          alt_text: "Back Icon",
+          label: "Previous Page",
+          link: request.referer || root_path,
+          icon_class: taskbar_icon_class,
+          label_class: taskbar_label_class
+        ))
+        taskbar_items.each do |item|
+          concat(taskbar_icon_item(
+            image_path: item[:image_path],
+            alt_text: item[:alt_text],
+            label: item[:label],
+            link: item[:link],
+            icon_class: taskbar_icon_class,
+            label_class: taskbar_label_class
+          ))
+        end
+      end)
 
-      concat(content_tag(:div, class: "mt-auto") do
+      concat(content_tag(:div, class: "taskbar-items-mid") do
         concat(taskbar_icon_item(
           image_path: "task-bar/terminal.svg",
           alt_text: "Terminal Icon",
@@ -59,7 +58,7 @@ module SidebarHelper
         ))
       end)
 
-      concat(content_tag(:div, class: "mt-auto") do
+      concat(content_tag(:div, class: "taskbar-items-lower") do
         concat(taskbar_icon_item(
           image_path: "task-bar/github.svg",
           alt_text: "Github Icon",

@@ -8,13 +8,16 @@
     white-space: nowrap;
     flex-direction: column;
     z-index: 1000;
-    justify-content: center;
     align-items: center;
     transition: width 0.3s ease-in-out;
 }
 
 #taskbar-left.expanded {
     width: 20vmin;
+}
+
+[class^="taskbar-items"] {
+    margin-bottom: auto;
 }
 
 .taskbar-item {
@@ -68,7 +71,6 @@
     overflow: hidden;
 }
 
-
 #terminal-container.terminal-minimized {
 	display: none;
 }
@@ -79,12 +81,12 @@
 
 .terminal-header {
 	position: absolute;
-	top: 2vh;
-	left: 2vw;
-	right: 2vw;
+	top: 2vmin;
+	left: 2vmin;
+	right: 2vmin;
 	display: flex;
 	justify-content: flex-end;
-	gap: 1vh;
+	gap: 1vmin;
 	z-index: 1001;
 }
 
