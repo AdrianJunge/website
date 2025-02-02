@@ -27,14 +27,6 @@ module SidebarHelper
           icon_class: taskbar_icon_class,
           label_class: taskbar_label_class
         ))
-        concat(taskbar_icon_item(
-          image_path: "task-bar/back.svg",
-          alt_text: "Back Icon",
-          label: "Previous Page",
-          link: request.referer || root_path,
-          icon_class: taskbar_icon_class,
-          label_class: taskbar_label_class
-        ))
         taskbar_items.each do |item|
           concat(taskbar_icon_item(
             image_path: item[:image_path],

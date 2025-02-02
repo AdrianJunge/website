@@ -62,6 +62,7 @@
 - Fetched ctf favicon sanitzen wegen XSS vector
 
 # Fix
+- Burgermenu Icon Tips
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
     => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
