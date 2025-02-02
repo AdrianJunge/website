@@ -3,7 +3,7 @@ module TerminalHelper
     paths = [ "~", ".", ".." ] + paths
     terminal_class = "subpixel-antialiased font-mono bg-black"
     terminal_class += " terminal-minimized" if minimized
-    content_tag(:div, id: "terminal", data: { terminal_text: paths.to_json }, class: terminal_class) do
+    content_tag(:div, id: "terminal-container", data: { terminal_text: paths.to_json }, class: terminal_class) do
       content_tag(:div, class: "terminal-header") do
         safe_join([
           content_tag(:div, id: "minimize-terminal", class: "terminal-button hover:scale-150") do

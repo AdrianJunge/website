@@ -1,5 +1,6 @@
 body {
     display: grid;
+    grid-template-columns: 100vw;
     grid-template-rows: 100vh;
     margin: 0;
     padding: 0;
@@ -7,34 +8,43 @@ body {
 }
 
 .content {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 5vh;
     overflow-y: auto;
+    margin-left: 6vmin;
+    width: calc(100vw - 6vmin);
+    height: 100vh;
 }
 
 .ctf-overview {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5vh;
     place-items: center;
+    gap: 3vh;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
-@media (width <= 1200px) {
+@media (width <= 2400px) {
     .ctf-overview {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (width <= 768px) {
+@media (width <= 1800px) {
     .ctf-overview {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (width <= 480px) {
+@media (width <= 1200px) {
     .ctf-overview {
         grid-template-columns: 1fr;
     }
@@ -47,8 +57,8 @@ body {
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    width: 50vh;
-    height: 50vh;
+    width: 50vmin;
+    height: 50vmin;
     transition: transform 0.2s ease-in-out;
 }
 

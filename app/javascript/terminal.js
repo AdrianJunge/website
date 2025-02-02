@@ -2,6 +2,7 @@
 
 import "xterm";
 import "xterm-addon-web-links";
+import "xterm-addon-fit";
 
 //                                  _.
 //                            _.-----'' \`
@@ -28,18 +29,18 @@ const aboutMe = `\tDiscord:\t${createHyperlink('Discord', 'https://discord.com/u
 \tLinkedin:\t${createHyperlink('Linkedin', 'https://www.linkedin.com/in/adrian-junge-998a63296/')}
 `
 
-const firstHelp = `\tNavigation via the sidebar, by using the 'cd' command or use the listed hyperlinks.
+const firstHelp = `\tNavigation via sidebar, 'cd' command or listed hyperlinks
 \tType 'help' for more...
 `
 
-const viewportHeight = window.innerHeight;
-const fontSize = viewportHeight / 30;
+const fontSize = window.innerWidth / 60;
 const term = new Terminal({
     convertEol: true,
     fontSize: fontSize,
 });
 const webLinksAddon = new WebLinksAddon.WebLinksAddon()
-const terminalElement = document.getElementById('terminal');
+const fitAddon = new FitAddon.FitAddon();
+const terminalElement = document.getElementById('terminal-container');
 const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
 
 const COLORS = {
@@ -77,12 +78,12 @@ function printMultiLineString(str = fastFetchInfo, color = COLORS.white, wrap = 
         const wrappedText = wrapText(str, maxTerminalWidth);
 
         wrappedText.split('\n').forEach((line) => {
-            term.writeln(colorize(line, color));
+            term.writeln(colorize(colorize(line, color), COLORS.bold));
         });
     } else {
         const lines = str.split('\n');
         lines.forEach((line) => {
-            term.writeln(colorize(line, color));
+            term.writeln(colorize(colorize(line, color), COLORS.bold));
         });
     }
 }
@@ -163,9 +164,14 @@ function processCommand(command) {
 }
 
 const initTerminal = () => {
-    term.open(terminalElement);
-    webLinksAddon._openLink = customOpenLink;
     term.loadAddon(webLinksAddon);
+    term.loadAddon(fitAddon);
+    term.open(terminalElement);
+    fitAddon.fit();
+    term.onResize((_) => {
+        fitAddon.fit();
+    });
+    webLinksAddon._openLink = customOpenLink;
 
     if (window.location.pathname === '/') {
         printMultiLineString(fastFetchInfo, COLORS.green);
@@ -228,7 +234,7 @@ function generateLsOutput(pathsArray) {
         let url = '';
         url = getTargetUrl(path);
 
-        hyperlink = createHyperlink(pathDisplay, url);
+        hyperlink = colorize(createHyperlink(pathDisplay, url), COLORS.bold);
 
         if (path === '~') {
             printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}   (home)`, COLORS.blue);
@@ -247,9 +253,8 @@ function generateLsOutput(pathsArray) {
 function minimizeTerminal() {
     const minimizeButton = document.getElementById("minimize-terminal");
 	const closeButton = document.getElementById("close-terminal");
-	const terminal = document.getElementById("terminal");
+	const terminal = document.getElementById("terminal-container");
 	const terminalTaskbarIcon = document.getElementById("terminal-taskbar-icon");
-	const help = document.getElementById("help-taskbar-icon");
 	minimizeButton.addEventListener("click", function () {
         terminal.classList.add("terminal-minimized");
 	});

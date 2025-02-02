@@ -32,6 +32,8 @@
     - Writeup
         - Sidebar um an bestimmte Stelle von Post zu springen
             => diese "scrollt automatisch mit"
+            => aufpassen bei Smartphone
+                - Grid anlegen, und ab bestimmter Width wird die Sidebar über dem Writeup oder gar nicht mehr angezeigt
         - Hintergrund Image des CTFs
     - Suchfilter und Filteroption nach Jahr
     - Archievements
@@ -65,14 +67,6 @@
     => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
 - keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - taskbar-label haben nicht beim ersten Mal Laden opacity-1 erst sobald transitionend beim Ausklappen der Taskbar
-- Responsiveness
-    => aus irgendeinem Grund werden einige Sachen in prod größer gerendert
-    => Terminal
-    - Smartphone
-        - Terminal Shell nur mit $ und directory Kram weg
-        - Zeilenumbruch beim Schreiben
-        - Task Bar unten anstatt auf der Seite
-        - Sidebar für Nav füllt kompletten Bildschirm aus
 - @import "rouge" fixen
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb

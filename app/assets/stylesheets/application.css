@@ -1,75 +1,72 @@
-/* Task bar */
 #taskbar-left {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 6vh;
-	height: 100vh;
-	display: flex;
-	white-space: nowrap;
-	flex-direction: column;
-	z-index: 1000;
-	transition: width 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6vmin;
+    height: 100vh;
+    display: flex;
+    white-space: nowrap;
+    flex-direction: column;
+    z-index: 1000;
+    transition: width 0.3s ease-in-out;
 }
 
 #taskbar-left.expanded {
-	width: 20vh;
+    width: 20vmin;
 }
 
 .taskbar-item {
-  display: flex;
-  position: relative;
-  align-items: center;
+    display: flex;
+    position: relative;
+    align-items: center;
 }
 
 .taskbar-label {
-  opacity: 0;
-  position: absolute;
-  left: 7vh;
-  pointer-events: none;
-  color: white;
+    opacity: 0;
+    position: absolute;
+    left: 7vmin;
+    pointer-events: none;
+    color: white;
+    font-size: 1.3vmin;
 }
 
 .taskbar-icon {
-	width: 5vh;
-	height: 5vh;
-	margin: 0.8vh 0;
-	cursor: pointer;
-	transition: background-color 0.2s ease-in-out;
-	border-radius: 0.5vh;
-	margin-left: 0.5vh;
+    width: 5vmin;
+    height: 5vmin;
+    margin: 0.5vh;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 0.5vh;
 }
 
 .taskbar-icon img {
-	width: auto;
-	height: auto;
-	max-width: 100%;
-	max-height: 100%;
-	user-select: none;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    user-select: none;
 }
 
 /* Terminal */
-#terminal {
+#terminal-container {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
     width: 80%;
-    max-width: 90vw;
+	height: 95%;
     border: 0.2vh solid #4c566a;
     display: flex;
     flex-direction: column;
     padding: 1rem 1.25rem;
     color: #f5f5f5;
-    font-size: clamp(1.25rem, 2vw, 1.875rem);
-    line-height: 1.5;
     border-radius: 0.375rem;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 
-#terminal.terminal-minimized {
+#terminal-container.terminal-minimized {
 	display: none;
 }
 
@@ -80,8 +77,8 @@
 .terminal-header {
 	position: absolute;
 	top: 2vh;
-	left: 2vh;
-	right: 2vh;
+	left: 2vw;
+	right: 2vw;
 	display: flex;
 	justify-content: flex-end;
 	gap: 1vh;
@@ -89,8 +86,8 @@
 }
 
 .terminal-button {
-	width: 2vh;
-	height: 2vh;
+	width: 2vmin;
+	height: 2vmin;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -103,8 +100,8 @@
 }
 
 .button-icon {
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 }
 
 .terminal-content {
