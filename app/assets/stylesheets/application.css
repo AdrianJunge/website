@@ -94,13 +94,14 @@
 }
 
 .terminal-button {
-	width: 2vmin;
-	height: 2vmin;
+	width: 5vmin;
+	height: 5vmin;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
 	transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    padding: 1vmin;
 }
 
 .terminal-button img {

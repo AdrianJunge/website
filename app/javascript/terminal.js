@@ -53,6 +53,8 @@ const COLORS = {
     cyan: '\x1B[36m',
     white: '\x1B[37m',
     bold: '\x1B[1m',
+    brightRed: '\x1B[38;2;255;70;70m',
+    brightBlue: '\x1B[38;2;85;170;255m',
 };
 
 function wrapText(text, maxWidth) {
@@ -139,11 +141,11 @@ function processCommand(command) {
                 let targetUrl;
                 targetUrl = getTargetUrl(target);
                 printLine(`\n  Changing to ${target}...\n`);
-                printLine(`\nadrian@my-space:~$ `, COLORS.red);
+                printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
                 window.location.href = targetUrl;
             } else {
                 printLine(`\n  Directory "${target}" not found.`, COLORS.white);
-                printLine(`\nadrian@my-space:~$ `, COLORS.red);
+                printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
             }
         } else if (command === 'clear') {
             term.clear();
@@ -160,7 +162,7 @@ function processCommand(command) {
         } else {
             printLine(`\n  Command not recognized: ${command}`, COLORS.white);
         }
-        printLine(`\nadrian@my-space:~$ `, COLORS.red);
+        printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
 }
 
 const initTerminal = () => {
@@ -174,15 +176,15 @@ const initTerminal = () => {
     webLinksAddon._openLink = customOpenLink;
 
     if (window.location.pathname === '/') {
-        printMultiLineString(fastFetchInfo, COLORS.green);
+        printMultiLineString(fastFetchInfo, COLORS.brightBlue);
         printMultiLineString(aboutMe, COLORS.bold);
         printMultiLineString(firstHelp, COLORS.bold, true);
     }
 
-    printLine('adrian@my-space:~$ ', COLORS.red);
+    printLine('adrian@my-space:~$ ', COLORS.brightRed);
     typeText('ls -lah ~', COLORS.white, () => {
         generateLsOutput(pathsArray);
-        printLine('\nadrian@my-space:~$ ', COLORS.red);
+        printLine('\nadrian@my-space:~$ ', COLORS.brightRed);
     });
 
     let inputBuffer = '';
@@ -237,13 +239,13 @@ function generateLsOutput(pathsArray) {
         hyperlink = colorize(createHyperlink(pathDisplay, url), COLORS.bold);
 
         if (path === '~') {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}   (home)`, COLORS.blue);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}   (home)`, COLORS.brightBlue);
         } else if (path === '.') {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}   (current)`, COLORS.blue);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}   (current)`, COLORS.brightBlue);
         } else if (path === '..') {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}  (parent)`, COLORS.blue);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}  (parent)`, COLORS.brightBlue);
         } else {
-            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}`, COLORS.blue);
+            printLine(`\n  drwxrwxr-x  5 adrian adrian  4.0K ${getFormattedDate()}  ${hyperlink}`, COLORS.brightBlue);
         }
     });
 }
