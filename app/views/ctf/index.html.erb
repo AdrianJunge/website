@@ -1,3 +1,4 @@
+<%= render_taskbar_items([]) %>
 <% terminal_paths = @ctfs.map { |name, ctf| ctf["terminal_path"] } %>
 <%= render_terminal(terminal_paths, true) %>
 

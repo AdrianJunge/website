@@ -1,7 +1,4 @@
 # TODOs
-- für jede View ändern sich die nav Buttons an der sidebar
-    => helper anlegen, welcher die Buttons anlegt
-    => nur die contact Buttons bleiben im Layout
 - Terminal
     - maxTerminalWidth ersetzen durch tatsächliche Terminal width
 - ctf-cards
