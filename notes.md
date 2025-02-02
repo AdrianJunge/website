@@ -1,4 +1,6 @@
 # TODOs
+- nur Burger Menü erst sichtbar und dann ausgeklappt mit den texten
+- about me als landing Page mit Welcome Message etc und kleine gifs Terminal nav vs sidebar nav ⇒ Terminal ist by Default eingeklappt
 - Terminal
     - maxTerminalWidth ersetzen durch tatsächliche Terminal width
 - ctf-cards
@@ -68,7 +70,3 @@
     => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
 - keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - taskbar-label haben nicht beim ersten Mal Laden opacity-1 erst sobald transitionend beim Ausklappen der Taskbar
-- @import "rouge" fixen
-- Rouge
-    - Rouge Theme dynamisch laden zB mit rouge.css.erb
-        <%= Rouge::Themes::ThankfulEyes.render %>

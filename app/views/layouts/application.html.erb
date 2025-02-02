@@ -7,8 +7,6 @@
   <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "xterm", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-  <%= stylesheet_link_tag "#{params[:controller]}_#{params[:action]}", "data-turbo-track": "reload" if asset_exists?("#{params[:controller]}_#{params[:action]}.css") %>
-  <%= stylesheet_link_tag params[:controller], "data-turbo-track": "reload" if !asset_exists?("#{params[:controller]}_#{params[:action]}.css") && asset_exists?("#{params[:controller]}.css") %>
   <%= javascript_importmap_tags %>
   <%= favicon_link_tag asset_path('favicon.ico') %>
 
