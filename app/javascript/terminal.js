@@ -15,13 +15,13 @@ import "xterm-addon-web-links";
 //         C          A   \`.  _,===:::=-'-=-"""''
 //     i      d  t         '-/:::''
 //                           ''
-const fastFetchInfo = `  _____                          _                                      
- |  __ \\                        | |                               ____  
- | |__) |   ___    __ _    ___  | |__      _ __ ___     ___      / __ \\ 
+const fastFetchInfo = `  _____                          _
+ |  __ \\                        | |                               ____
+ | |__) |   ___    __ _    ___  | |__      _ __ ___     ___      / __ \\
  |  _  /   / _ \\  / _\` |  / __| | '_ \\    | '_ \` _ \\   / _ \\    / / _\` |
  | | \\ \\  |  __/ | (_| | | (__  | | | |   | | | | | | |  __/   | | (_| |
  |_|  \\_\\  \\___|  \\__,_|  \\___| |_| |_|   |_| |_| |_|  \\___|    \\ \\__,_|
-                                                                 \\____/ 
+                                                                 \\____/
 `
 const aboutMe = `\tDiscord:\t${createHyperlink('Discord', 'https://discord.com/users/305624492221267968')}
 \tGitHub:\t\t${createHyperlink('GitHub', 'https://github.com/AdrianJunge/')}
@@ -37,21 +37,21 @@ const fontSize = viewportHeight / 30;
 const term = new Terminal({
     convertEol: true,
     fontSize: fontSize,
-});  
+});
 const webLinksAddon = new WebLinksAddon.WebLinksAddon()
 const terminalElement = document.getElementById('terminal');
 const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
 
 const COLORS = {
-    reset: '\x1B[0m',         
-    red: '\x1B[31m',          
-    green: '\x1B[32m',        
-    yellow: '\x1B[33m',       
-    blue: '\x1B[34m',         
-    magenta: '\x1B[35m',      
-    cyan: '\x1B[36m',         
-    white: '\x1B[37m',        
-    bold: '\x1B[1m',          
+    reset: '\x1B[0m',
+    red: '\x1B[31m',
+    green: '\x1B[32m',
+    yellow: '\x1B[33m',
+    blue: '\x1B[34m',
+    magenta: '\x1B[35m',
+    cyan: '\x1B[36m',
+    white: '\x1B[37m',
+    bold: '\x1B[1m',
 };
 
 function wrapText(text, maxWidth) {
@@ -112,7 +112,7 @@ function typeText(text, color, callback) {
             clearInterval(interval);
             if (callback) callback();
         }
-    }, 100); 
+    }, 100);
 }
 
 function getTargetUrl(path) {
@@ -134,15 +134,12 @@ function processCommand(command) {
             generateLsOutput(pathsArray);
         } else if (/^cd\s+([^<>:"|?*\r\n]+)?\s*$/.test(command)) {
             const target = command.substring(3).trim();
-            
             if (pathsArray.includes(target)) {
                 let targetUrl;
-    
                 targetUrl = getTargetUrl(target);
-    
                 printLine(`\n  Changing to ${target}...\n`);
                 printLine(`\nadrian@my-space:~$ `, COLORS.red);
-                window.location.href = targetUrl;  
+                window.location.href = targetUrl;
             } else {
                 printLine(`\n  Directory "${target}" not found.`, COLORS.white);
                 printLine(`\nadrian@my-space:~$ `, COLORS.red);
@@ -182,12 +179,12 @@ const initTerminal = () => {
         printLine('\nadrian@my-space:~$ ', COLORS.red);
     });
 
-    let inputBuffer = '';  
+    let inputBuffer = '';
 
     term.onData(function(data) {
         if (data === '\r' || data === '\n') {
             const command = inputBuffer.trim();
-            inputBuffer = '';  
+            inputBuffer = '';
             processCommand(command);
             return;
         } else if (data === '\x7f') {
@@ -209,16 +206,16 @@ const initTerminal = () => {
             inputBuffer += data;
             term.write(data);
         }
-    });    
+    });
 };
 
 function getFormattedDate() {
     const now = new Date();
     const formatted = new Intl.DateTimeFormat('en-US', {
-      month: 'short', 
-      day: 'numeric', 
-      hour: '2-digit', 
-      minute: '2-digit', 
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
       hour12: false
     }).format(now);
     return formatted.replace(',', '');
@@ -229,7 +226,6 @@ function generateLsOutput(pathsArray) {
         let pathDisplay = path;
         let hyperlink = '';
         let url = '';
-        
         url = getTargetUrl(path);
 
         hyperlink = createHyperlink(pathDisplay, url);
@@ -254,18 +250,15 @@ function minimizeTerminal() {
 	const terminal = document.getElementById("terminal");
 	const terminalTaskbarIcon = document.getElementById("terminal-taskbar-icon");
 	const help = document.getElementById("help-taskbar-icon");
-	
 	minimizeButton.addEventListener("click", function () {
         terminal.classList.add("terminal-minimized");
 	});
 	closeButton.addEventListener("click", function () {
         terminal.classList.add("terminal-minimized");
 	});
-	
 	terminalTaskbarIcon.addEventListener("click", function () {
         terminal.classList.toggle("terminal-minimized");
 	});
-    
 	document.addEventListener("keydown", (event) => {
 		if (event.ctrlKey && event.key === "Enter") {
             terminal.classList.toggle("terminal-minimized");

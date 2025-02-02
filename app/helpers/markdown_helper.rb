@@ -38,7 +38,7 @@ module MarkdownHelper
       </span>
     </div>"
 
-    html_content.gsub!(/"\/?([A-z0-9-_+]+\/)*([A-z0-9]+\.([A-z0-9])*)"/) do |match|
+    html_content.gsub!(/"\/?([A-z0-9\-_+]+\/)*([A-z0-9]+\.([A-z0-9])*)"/) do |match|
       match = match.gsub(/"/, "")
       ActionController::Base.helpers.asset_path(match)
     end

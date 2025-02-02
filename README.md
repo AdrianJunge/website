@@ -11,6 +11,11 @@ Have fun exploring :smile:
 
 `gem install bundler`
 
+# Dev stuff
+`gem install overcommit`
+`overcommit --install`
+`overcommit --run`
+
 # Starting
 `cd website && bundle install`
 

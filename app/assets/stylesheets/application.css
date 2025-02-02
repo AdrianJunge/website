@@ -108,11 +108,11 @@
 }
 
 .terminal-content {
-    overflow-y: auto;
-    word-wrap: break-word;
-    overflow-x: hidden;
+	word-wrap: break-word;
+    overflow: hidden auto;
     scrollbar-width: none;
 }
+
 .terminal-content::-webkit-scrollbar {
     width: 0;
     height: 0;

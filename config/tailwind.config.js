@@ -18,7 +18,7 @@ module.exports = {
         accent: '#ccffff'
       }
     }
-  },  
+  },
   plugins: [
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/typography'),

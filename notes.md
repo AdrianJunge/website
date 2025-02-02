@@ -1,7 +1,7 @@
-# Appearance
-- Help Button links unten um auf "Tutorial" page zu kommen
-
 # TODOs
+- für jede View ändern sich die nav Buttons an der sidebar
+    => helper anlegen, welcher die Buttons anlegt
+    => nur die contact Buttons bleiben im Layout
 - Terminal
     - maxTerminalWidth ersetzen durch tatsächliche Terminal width
 - ctf-cards
@@ -12,7 +12,6 @@
 - Email einrichten für Domaine
     - Forwarding
     - als contact angeben in Terminal + Footer
-- Precommit
 - Impressum
 - RSS Feed
     - Writeups
@@ -48,13 +47,14 @@
     - Kurze Beschreibung
         - Hobbies
         - KITCTF studying @KIT
+- Help Button links unten um auf "Tutorial" page zu kommen
 - Contact
     - Email Adresse
 - Upcoming
     - Blog
         - Java Strings
     - Real World Exploitation (Bug Bounty/CVE)
-    - Software Engineering
+    - Competitive Programming
     - Minigames (eigene App wie das Terminal)
         - TicTacToe vs AI
     - Tools
@@ -63,6 +63,11 @@
 - Fetched ctf favicon sanitzen wegen XSS vector
 
 # Fix
+- Writeups in Datenbank verschieben anstatt .md files einzulesen
+    => kein Potenzial mehr für Path Traversals
+    => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
+- keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
+- taskbar-label haben nicht beim ersten Mal Laden opacity-1 erst sobald transitionend beim Ausklappen der Taskbar
 - Responsiveness
     => aus irgendeinem Grund werden einige Sachen in prod größer gerendert
     => Terminal
@@ -71,10 +76,7 @@
         - Zeilenumbruch beim Schreiben
         - Task Bar unten anstatt auf der Seite
         - Sidebar für Nav füllt kompletten Bildschirm aus
-- Writeups in Datenbank verschieben anstatt .md files einzulesen
-    => kein Potenzial mehr für Path Traversals
 - @import "rouge" fixen
-- keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - Rouge
     - Rouge Theme dynamisch laden zB mit rouge.css.erb
         <%= Rouge::Themes::ThankfulEyes.render %>
