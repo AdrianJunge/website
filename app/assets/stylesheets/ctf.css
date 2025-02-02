@@ -16,8 +16,8 @@ body {
     align-items: center;
     padding: 5vh;
     overflow-y: auto;
-    margin-left: 6vmin;
-    width: calc(100vw - 6vmin);
+    margin-left: 7vmin;
+    width: calc(100vw - 7vmin);
     height: 100vh;
 }
 

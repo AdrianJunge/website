@@ -2,18 +2,21 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 6vmin;
+    width: 7vmin;
     height: 100vh;
     display: flex;
     white-space: nowrap;
     flex-direction: column;
     z-index: 1000;
-    align-items: center;
+    align-items: flex-start;
     transition: width 0.3s ease-in-out;
+    padding-left: 1vmin;
+    padding-top: 1vmin;
 }
 
 #taskbar-left.expanded {
     width: 20vmin;
+    align-items: flex-start;
 }
 
 [class^="taskbar-items"] {
@@ -102,6 +105,8 @@
 
 .terminal-button img {
 	filter: invert(1);
+    width: 100%;
+    height: 100%;
 }
 
 .button-icon {
