@@ -8,6 +8,8 @@
     white-space: nowrap;
     flex-direction: column;
     z-index: 1000;
+    justify-content: center;
+    align-items: center;
     transition: width 0.3s ease-in-out;
 }
 
@@ -19,6 +21,8 @@
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5vh;
 }
 
 .taskbar-label {
@@ -33,7 +37,6 @@
 .taskbar-icon {
     width: 5vmin;
     height: 5vmin;
-    margin: 0.5vh;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     border-radius: 0.5vh;
