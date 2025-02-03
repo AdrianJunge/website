@@ -90,8 +90,7 @@ class CtfController < ApplicationController
   end
 
   def sanitize_path(param)
-    param.match?(/^[a-z]+$/
-)
+    param.match?(/^[a-zA-Z\s]+$/)
   end
 
   def fetch_ctf_info(which, writeups)

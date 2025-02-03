@@ -16,5 +16,11 @@
     "logo": "ctf/kitctf.png",
     "writeups": "/ctf/kitctf",
     "website": "https://kitctf.de/"
+  },
+  "FCSC":{
+    "terminal_path": "fcsc",
+    "logo": "ctf/fcsc.png",
+    "writeups": "/ctf/fcsc",
+    "website": "https://hackropole.fr/"
   }
 }
