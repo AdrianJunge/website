@@ -70,3 +70,4 @@
     => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
 - keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - taskbar-label haben nicht beim ersten Mal Laden opacity-1 erst sobald transitionend beim Ausklappen der Taskbar
+- Heroku Warnings durchgehen und evtl fixen

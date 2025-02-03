@@ -74,4 +74,7 @@ Rails.application.configure do
   config.assets.compile = true
   config.assets.check_precompiled_asset = false
   config.serve_static_assets = false
+
+  # https://github.com/tailwindlabs/tailwindcss/discussions/6738
+  config.assets.css_compressor = nil
 end
