@@ -4,37 +4,20 @@ document.addEventListener('click', function (e) {
 	}
 });
 
-function toggleTaskbar(side) {
-	const taskbar = document.getElementById(`taskbar-${side}`);
-	const icons = document.getElementById(`taskbar-icons-${side}`);
+document.addEventListener("DOMContentLoaded", function () {
+	const menuIcons = document.querySelectorAll(".menu-icon");
+	const taskbarLeft = document.getElementById("taskbar-left");
 
-	taskbar.classList.toggle('expanded');
-	icons.classList.toggle('visible');
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-	const burgerMenuLeft = document.querySelectorAll('.taskbar-icon[data-burger="left"]');
-	const burgerMenuRight = document.querySelectorAll('.taskbar-icon[data-burger="right"]');
-
-	burgerMenuLeft.forEach(menu => {
-		menu.addEventListener('click', toggleTaskbar);
-	});
-	burgerMenuRight.forEach(menu => {
-		menu.addEventListener('click', toggleTaskbar);
+	menuIcons.forEach(function(menuIcon) {
+		menuIcon.addEventListener("click", function () {
+			menuIcons.forEach(icon => icon.classList.toggle('shift'));
+			taskbarLeft.classList.toggle("expanded");
+			taskbarLeft.classList.toggle("collapsed");
+		});
 	});
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-	const menuIcon = document.getElementById("menu-icon");
-	const taskbarLeft = document.getElementById("taskbar-left");
-
-	menuIcon.addEventListener("click", function () {
-		taskbarLeft.classList.toggle("expanded");
-		taskbarLeft.classList.toggle("collapsed");
-	});
-  });
-
-  document.getElementById('taskbar-left').addEventListener('transitionend', function() {
+document.getElementById('taskbar-left').addEventListener('transitionend', function() {
     if (this.classList.contains('expanded')) {
         document.querySelectorAll('.taskbar-label').forEach(function(label) {
             label.style.whiteSpace = 'pre-wrap';

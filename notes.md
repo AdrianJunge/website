@@ -1,5 +1,4 @@
 # TODOs
-- nur Burger Menü erst sichtbar und dann ausgeklappt mit den texten
 - about me als landing Page mit Welcome Message etc und kleine gifs Terminal nav vs sidebar nav ⇒ Terminal ist by Default eingeklappt
 - Terminal
     - maxTerminalWidth ersetzen durch tatsächliche Terminal width
@@ -64,6 +63,7 @@
 - Fetched ctf favicon sanitzen wegen XSS vector
 
 # Fix
+- Terminal Height passt nicht ganz zum content - es wird was abgeschnitten
 - Terminal Placement unter Beachtung der Taskbar width
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals

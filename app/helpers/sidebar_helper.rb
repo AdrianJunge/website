@@ -11,14 +11,19 @@ module SidebarHelper
   end
 
   def render_taskbar_items(taskbar_items)
-    taskbar_icon_class = "taskbar-icon bg-tertiary hover:bg-accent hover:scale-110"
+    base_class = "bg-tertiary hover:bg-accent hover:scale-110"
+    taskbar_icon_class = base_class + " taskbar-icon"
     taskbar_label_class = "taskbar-label"
+
+    concat(content_tag(:div, class: "taskbar-item") do
+      image_tag("task-bar/arrow-right.svg", alt: "Menu Icon", class: base_class + " menu-icon", id: "menu-icon-right")
+    end)
+    concat(content_tag(:div, class: "taskbar-item") do
+      image_tag("task-bar/arrow-left.svg", alt: "Menu Icon", class: base_class + " menu-icon", id: "menu-icon-left")
+    end)
 
     content_tag(:div, id: "taskbar-left", class: "bg-primary collapsed") do
       concat(content_tag(:div, class: "taskbar-items-upper") do
-        concat(content_tag(:div, class: "taskbar-item") do
-          image_tag("task-bar/burgermenu.svg", alt: "Home Icon", class: taskbar_icon_class, id: "menu-icon")
-        end)
         concat(taskbar_icon_item(
           image_path: "task-bar/home.svg",
           alt_text: "Home Icon",
