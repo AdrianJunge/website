@@ -6,9 +6,7 @@
 
 .writeup-container {
   max-width: 100vw;
-  margin: 2vmin 2vw;
-  margin-left: calc(#{$taskbar-size} + 2vw);
-  width: calc(100vw - (#{$taskbar-size} + 4vw));
+  margin: 2vh 2vw;
   padding: 4vh;
   border-radius: 3vh;
 }

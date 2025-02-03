@@ -31,9 +31,7 @@ When you have installation problems try out
 `bundle exec rake assets:clean` and delete all in `public/assets/*` especially `.manifest.json`
 
 # Precompile assets
-`rails assets:clobber`
-
-`rails assets:precompile`
+`rails assets:clobber && rails assets:precompile`
 
 # Rebuilding project
 `bundle exec rake db:migrate`

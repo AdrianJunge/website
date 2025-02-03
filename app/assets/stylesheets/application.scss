@@ -62,7 +62,7 @@
 
 .menu-icon {
     position: fixed;
-    width: $taskbar-icon-size;
+    width: calc(#{$taskbar-icon-size} * 0.8);
     height: calc(#{$taskbar-icon-size} * 2);
     top: calc(50% - #{$taskbar-icon-size});
     left: 0;
@@ -78,7 +78,7 @@
 
 #menu-icon-right {
     opacity: 1;
-    z-index: 1;
+    z-index: 2000;
 }
 
 #menu-icon-right.shift {
@@ -90,7 +90,7 @@
 #menu-icon-left.shift {
     left: calc(#{$taskbar-size} * 3);
     opacity: 1;
-    z-index: 1;
+    z-index: 2000;
 }
 
 .taskbar-icon img {

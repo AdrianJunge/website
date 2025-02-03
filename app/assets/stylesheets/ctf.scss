@@ -5,9 +5,7 @@
     padding: 5vh;
     overflow-y: auto;
     flex-direction: column;
-    margin-left: $taskbar-size;
-    width: calc(100vw - #{$taskbar-size});
-    height: 100vh;
+    height: 95vh;
 }
 
 .ctf-overview {

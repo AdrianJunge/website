@@ -11,8 +11,7 @@
     align-items: center;
     position: absolute;
     height: 10vh;
-    margin-left: $taskbar-size;
-    width: calc(100vw - #{$taskbar-size});
+    width: 100vw;
 }
 
 .header {
@@ -26,8 +25,6 @@
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
-    margin-left: $taskbar-size;
-    width: calc(100vw - #{$taskbar-size});
 }
 
 .writeup-overview {

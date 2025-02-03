@@ -64,7 +64,6 @@
 
 # Fix
 - Terminal Height passt nicht ganz zum content - es wird was abgeschnitten
-- Terminal Placement unter Beachtung der Taskbar width
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
     => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
