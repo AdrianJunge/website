@@ -1,9 +1,3 @@
-document.addEventListener('click', function (e) {
-	if (!e.target.closest('.tooltip-container')) {
-		document.querySelectorAll('.tooltip-container').forEach(el => el.classList.remove('tooltip-visible'));
-	}
-});
-
 document.addEventListener("DOMContentLoaded", function () {
 	const menuIcons = document.querySelectorAll(".menu-icon");
 	const taskbarLeft = document.getElementById("taskbar-left");

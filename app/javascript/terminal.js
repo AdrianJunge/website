@@ -66,6 +66,9 @@ function wrapText(text, maxWidth) {
         if ((line + word).length > maxWidth) {
             wrappedText += line + '\n' + '\t';
             line = '';
+        } else if (word.includes('\n')) {
+            wrappedText += line;
+            line = '';
         }
         line += word + ' ';
     });
@@ -76,7 +79,7 @@ function wrapText(text, maxWidth) {
 
 function printMultiLineString(str = fastFetchInfo, color = COLORS.white, wrap = false) {
     if (wrap) {
-        const maxTerminalWidth = 80;
+        const maxTerminalWidth = term.cols;
         const wrappedText = wrapText(str, maxTerminalWidth);
 
         wrappedText.split('\n').forEach((line) => {
@@ -257,6 +260,7 @@ function minimizeTerminal() {
 	const closeButton = document.getElementById("close-terminal");
 	const terminal = document.getElementById("terminal-container");
 	const terminalTaskbarIcon = document.getElementById("terminal-taskbar-icon");
+
 	minimizeButton.addEventListener("click", function () {
         terminal.classList.add("terminal-minimized");
 	});
@@ -265,13 +269,48 @@ function minimizeTerminal() {
 	});
 	terminalTaskbarIcon.addEventListener("click", function () {
         terminal.classList.toggle("terminal-minimized");
-	});
-	document.addEventListener("keydown", (event) => {
-		if (event.ctrlKey && event.key === "Enter") {
-            terminal.classList.toggle("terminal-minimized");
+        if (terminal.classList.contains("terminal-minimized")) {
+            term.blur();
+        } else {
             term.focus();
-		}
-	});
+        }
+    });
+
+    let isProcessingShortcut = false;
+
+    const handleCtrlEnter = () => {
+        if (isProcessingShortcut) return;
+        isProcessingShortcut = true;
+
+        terminal.classList.toggle("terminal-minimized");
+        if (terminal.classList.contains("terminal-minimized")) {
+            term.blur();
+        } else {
+            term.focus();
+        }
+
+        setTimeout(() => {
+            isProcessingShortcut = false;
+        }, 200);
+    };
+
+    term.attachCustomKeyEventHandler((event) => {
+        if (event.ctrlKey && event.key === 'Enter') {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            handleCtrlEnter();
+            return false;
+        }
+        return true;
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey && event.key === "Enter") {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            handleCtrlEnter();
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -1,7 +1,5 @@
 # TODOs
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav
-- Terminal
-    - maxTerminalWidth ersetzen durch tatsächliche Terminal width
 - ctf-cards
     - Titel + kurze Beschreibung des CTFs in dem runden Image
 - Fehler pages updaten
