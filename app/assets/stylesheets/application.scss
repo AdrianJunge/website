@@ -62,7 +62,7 @@
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     border-radius: 0.5vh;
-    border: 0.3vh solid #5d749e;
+    border: $default-border;
 }
 
 .footer-icon {
@@ -71,7 +71,7 @@
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     border-radius: 50%;
-    border: 0.3vh solid #5d749e;
+    border: $default-border;
 }
 
 .menu-icon {

@@ -136,36 +136,36 @@ function getTargetUrl(path) {
 }
 
 function processCommand(command) {
-        if (/^ls\s*(-[a-zA-Z]+)?\s*$/.test(command)) {
-            generateLsOutput(pathsArray);
-        } else if (/^cd\s+([^<>:"|?*\r\n]+)?\s*$/.test(command)) {
-            const target = command.substring(3).trim();
-            if (pathsArray.includes(target)) {
-                let targetUrl;
-                targetUrl = getTargetUrl(target);
-                printLine(`\n  Changing to ${target}...\n`);
-                printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
-                window.location.href = targetUrl;
-            } else {
-                printLine(`\n  Directory "${target}" not found.`, COLORS.white);
-                printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
-            }
-        } else if (command === 'clear') {
-            term.clear();
-        } else if (command === 'whoami') {
-            printLine('\n  adrian', COLORS.white);
-            printMultiLineString(aboutMe, COLORS.bold);
-        } else if (command === 'help') {
-            printLine('\n  Available commands:');
-            printLine('\n\t- help: Shows this help message');
-            printLine('\n\t- ls: Lists the directories');
-            printLine('\n\t- cd <directory>: Navigates to a directory');
-            printLine('\n\t- clear: Clears the terminal');
-            printLine('\n\t- whoami: Who am I?');
+    if (/^ls\s*(-[a-zA-Z]+)?\s*$/.test(command)) {
+        generateLsOutput(pathsArray);
+    } else if (/^cd\s+([^<>:"|?*\r\n]+)?\s*$/.test(command)) {
+        const target = command.substring(3).trim();
+        if (pathsArray.includes(target)) {
+            let targetUrl;
+            targetUrl = getTargetUrl(target);
+            printLine(`\n  Changing to ${target}...\n`);
+            printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
+            window.location.href = targetUrl;
         } else {
-            printLine(`\n  Command not recognized: ${command}`, COLORS.white);
+            printLine(`\n  Directory "${target}" not found.`, COLORS.white);
+            printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
         }
-        printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
+    } else if (command === 'clear') {
+        term.clear();
+    } else if (command === 'whoami') {
+        printLine('\n\tadrian\n\n', COLORS.white);
+        printMultiLineString(aboutMe, COLORS.bold);
+    } else if (command === 'help') {
+        printLine('\n  Available commands:');
+        printLine('\n\t- help: Shows this help message');
+        printLine('\n\t- ls: Lists the directories');
+        printLine('\n\t- cd <directory>: Navigates to a directory');
+        printLine('\n\t- clear: Clears the terminal');
+        printLine('\n\t- whoami: Who am I?');
+    } else {
+        printLine(`\n  Command not recognized: ${command}`, COLORS.white);
+    }
+    printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
 }
 
 const initTerminal = () => {

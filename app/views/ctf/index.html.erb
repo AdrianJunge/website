@@ -2,12 +2,10 @@
 <% terminal_paths = @ctfs.map { |name, ctf| ctf["terminal_path"] } %>
 <%= render_terminal(terminal_paths, true) %>
 
-<div class="overview-container">
-  <div class="ctf-overview">
-    <% @ctfs.each do |name, ctf| %>
-      <div class="ctf-card hover:scale-110">
-        <%= link_to image_tag(ctf["logo"], alt: "#{name} Logo"), ctf["writeups"], class: "ctf-logo" %>
-      </div>
-    <% end %>
-  </div>
+<div class="ctf-overview">
+  <% @ctfs.each do |name, ctf| %>
+    <div class="ctf-card hover:scale-110">
+      <%= link_to image_tag(ctf["logo"], alt: "#{name} Logo"), ctf["writeups"], class: "ctf-logo" %>
+    </div>
+  <% end %>
 </div>

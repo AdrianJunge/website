@@ -16,6 +16,7 @@
 
 .header {
     transition: transform 0.2s ease-in-out;
+    border: $default-border;
 }
 
 .writeup-content {
@@ -53,6 +54,7 @@
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    border: $default-border;
 }
 
 .writeup-details {
