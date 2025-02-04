@@ -19,6 +19,8 @@
 }
 
 .markdown-content {
+  word-wrap: break-word;
+  word-break: break-word;
   font-size: 1.75em;
   font-family: monospace;
 }

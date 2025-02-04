@@ -5,14 +5,6 @@
 @import "ctf_which";
 @import "ctf_writeup";
 
-html, body {
-    min-height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
 
 .flex-grow {
     flex-grow: 1;
@@ -91,6 +83,8 @@ body {
     transition: left 0.3s ease-in-out;
     border-top-right-radius: 1vmin;
     border-bottom-right-radius: 1vmin;
+    border: 0.3vh solid #4c566a;
+    border-left: none;
 }
 
 #menu-icon-left {

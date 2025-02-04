@@ -7,6 +7,13 @@ categories:
 year: 2024
 ---
 
+# TL;DR
+    **- Challenge Setup:** **Node.js** server with **nginx** allows setting arbitrary response headers
+    **- Key Discoveries:** **Nginx** processes `X-Accel-Redirect` header to gain arbitrary file read in workdir e.g. of `.env`
+    **- Check Bypass:** Bypassed X- header restriction using case insensitivity (x-Accel-Redirect)
+    **- Cookie Forgery:** Forged cookies with leaked server secrets to impersonate the internal user using session keys
+    **- Check Bypass:** Bypassed filename `/` check by sending the filename as an array: `filename[]=/flag.txt`
+
 # 1. Introduction<a name="introduction"></a>
 The description might be a bit misleading at the beginning:
 
@@ -21,7 +28,7 @@ Dive in and clarify your CORS concepts!
 Although **CORS** is both contained in the title and the description, this challenge is nothing about exploitation of **CORS** misconfigurations.
 
 # 2. Reconnaissance<a name="reconnaissance"></a>
-The challenge is about a nodejs server being deployed together with nginx. By starting playing around with the application we are able to add any kinds of CORS-headers to the server response:
+The challenge is about a **node.js** server being deployed together with **nginx**. By starting playing around with the application we are able to add any kinds of CORS-headers to the server response via the `/cors` endpoint appending the headers as url parameters:
 
 ![overview](ctf/writeups/fcsc/corsplayground/corsplayground.png "overview")
 
@@ -82,7 +89,7 @@ KEY1=244f6308a26ad41dd8ebacf617282a7f3dc1cb6fec5fa7a03f1a907857295620
 KEY2=c3f8b13c86454198e624813a8d480dd2a43ed5154e5b43f33eedfe962831bbf2
 ```
 
-Now that we have the server secrets we can start forging cookies. For this I used a small nodejs server generating the cookies for me:
+Now that we have the server secrets we can start forging cookies. For this I used a small **node.js** server generating the cookies for me:
 
 ```javascript
 const express = require("express");
