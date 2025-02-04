@@ -5,6 +5,18 @@
 @import "ctf_which";
 @import "ctf_writeup";
 
+html, body {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
 
 #taskbar-left {
     position: fixed;
@@ -58,6 +70,16 @@
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     border-radius: 0.5vh;
+    border: 0.3vh solid #5d749e;
+}
+
+.footer-icon {
+    width: $taskbar-icon-size;
+    height: $taskbar-icon-size;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 50%;
+    border: 0.3vh solid #5d749e;
 }
 
 .menu-icon {

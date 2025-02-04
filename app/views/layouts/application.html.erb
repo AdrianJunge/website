@@ -13,9 +13,13 @@
   <%= yield :head %>
 
 </head>
-<body class="bg-default">
+  <body class="bg-default min-h-screen flex flex-col">
 
-  <%= yield %>
+    <div class="flex-grow">
+      <%= yield %>
+    </div>
 
-</body>
+    <%= render 'layouts/footer' %>
+
+  </body>
 </html>

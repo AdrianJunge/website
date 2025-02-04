@@ -1,5 +1,5 @@
 # TODOs
-- about me als landing Page mit Welcome Message etc und kleine gifs Terminal nav vs sidebar nav ⇒ Terminal ist by Default eingeklappt
+- about me als landing Page mit Welcome Message etc und kleines gif Terminal nav
 - Terminal
     - maxTerminalWidth ersetzen durch tatsächliche Terminal width
 - ctf-cards
@@ -42,7 +42,7 @@
     - Resumee/CV (oder nur Teile davon)
         - Englisch/Deutsch
         => was muss man beachten wenn man sein CV online stellt
-    - Ask me anything - Chatbot
+    - Ask me anything - Chatbot (chat with me)
     - Bild von mir als Hintergrund
     - Kurze Beschreibung
         - Hobbies

@@ -54,36 +54,6 @@ module SidebarHelper
           id: "terminal-taskbar-icon"
         ))
       end)
-
-      concat(content_tag(:div, class: "taskbar-items-lower") do
-        concat(taskbar_icon_item(
-          image_path: "task-bar/github.svg",
-          alt_text: "Github Icon",
-          label: "Github",
-          link: "https://github.com/AdrianJunge/",
-          icon_class: taskbar_icon_class,
-          label_class: taskbar_label_class,
-          target: "_blank"
-        ))
-        concat(taskbar_icon_item(
-          image_path: "task-bar/linkedin.svg",
-          alt_text: "Linkedin Icon",
-          label: "Linkedin",
-          link: "https://www.linkedin.com/in/adrian-junge-998a63296/",
-          icon_class: taskbar_icon_class,
-          label_class: taskbar_label_class,
-          target: "_blank"
-        ))
-        concat(taskbar_icon_item(
-          image_path: "task-bar/discord.svg",
-          alt_text: "Discord Icon",
-          label: "Discord",
-          link: "https://discord.com/users/305624492221267968",
-          icon_class: taskbar_icon_class,
-          label_class: taskbar_label_class,
-          target: "_blank"
-        ))
-      end)
     end
   end
 end

@@ -1,0 +1,20 @@
+<% footer_icon_class = "bg-tertiary hover:bg-accent hover:scale-110 footer-icon" %>
+
+<footer class="bg-gray-800 text-white py-6">
+  <div class="container mx-auto text-center">
+    <div class="flex justify-center space-x-4 mb-4">
+      <%= link_to(image_tag("task-bar/github.svg", alt: "Github Icon", class: footer_icon_class), "https://github.com/AdrianJunge/", target: "_blank")%>
+      <%= link_to(image_tag("task-bar/linkedin.svg", alt: "Linkedin Icon", class: footer_icon_class), "https://www.linkedin.com/in/adrian-junge-998a63296/", target: "_blank")%>
+      <%= link_to(image_tag("task-bar/discord.svg", alt: "Discord Icon", class: footer_icon_class), "https://discord.com/users/305624492221267968/", target: "_blank")%>
+    </div>
+
+    <div class="mt-4">
+      <p class="text-lg">© <%= Time.current.year %> All rights reserved</p>
+      <p class="text-xl">
+        <a href="https://github.com/AdrianJunge/website" target="_blank" class="text-blue-400 hover:underline">
+          View Source Code
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
