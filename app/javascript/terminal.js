@@ -132,7 +132,10 @@ function getTargetUrl(path) {
     } else {
         url = window.location.href.endsWith("/") ? window.location.href + path : window.location.href + "/" + path;
     }
-    return url
+    // url = new URL(url);
+    // url = parsedUrl.pathname
+
+    return url;
 }
 
 function processCommand(command) {

@@ -4,6 +4,7 @@ module.exports = {
         './app/**/*.html.erb',
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
+        './app/views/**/*.{erb,haml,html,slim}',
         './node_modules/flowbite/**/*.js',
     ],
     theme: {

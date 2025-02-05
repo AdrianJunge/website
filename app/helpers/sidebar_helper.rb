@@ -23,7 +23,6 @@ module SidebarHelper
     end)
 
     content_tag(:div, id: "taskbar-left", class: "bg-primary collapsed") do
-      concat(content_tag(:div, class: "taskbar-items-upper") do
         concat(taskbar_icon_item(
           image_path: "task-bar/home.svg",
           alt_text: "Home Icon",
@@ -42,9 +41,7 @@ module SidebarHelper
             label_class: taskbar_label_class
           ))
         end
-      end)
 
-      concat(content_tag(:div, class: "taskbar-items-mid") do
         concat(taskbar_icon_item(
           image_path: "task-bar/terminal.svg",
           alt_text: "Terminal Icon",
@@ -53,7 +50,6 @@ module SidebarHelper
           label_class: taskbar_label_class,
           id: "terminal-taskbar-icon"
         ))
-      end)
     end
   end
 end

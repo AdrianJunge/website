@@ -1,4 +1,5 @@
 # TODOs
+- Projekt komplett neu pullen und installieren
 - Vorschläge von Elias
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
     - Smartphone CSS anpassen

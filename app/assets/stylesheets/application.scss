@@ -39,9 +39,9 @@
     transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-[class^="taskbar-items"] {
-    margin-bottom: auto;
-}
+#taskbar-left .taskbar-item:last-child {
+    margin-top: auto;
+  }
 
 .taskbar-item {
     display: flex;
@@ -92,8 +92,9 @@
 
 .menu-icon {
     position: fixed;
-    width: calc(#{$taskbar-icon-size} * 0.8);
-    height: calc(#{$taskbar-icon-size} * 2);
+    width: calc(#{$taskbar-icon-size} * 0.7);
+    padding: 1vmin;
+    height: calc(#{$taskbar-icon-size} * 3);
     top: calc(50% - #{$taskbar-icon-size});
     left: 0;
     border-top-right-radius: 1vmin;
