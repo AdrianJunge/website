@@ -75,6 +75,11 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Install dependencies
+        run: |
+          npm install
+          bundle install
+
       - name: Run tests
         env:
           RAILS_ENV: test
