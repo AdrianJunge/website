@@ -6,7 +6,7 @@
 <div class="ctf-container">
   <div class="header-container">
     <a href="<%= @ctf["website"] %>" target="_blank">
-        <button type="button" class="bg-primary hover:bg-secondary hover:scale-110 header flex text-white rounded-xl text-5xl px-5 py-2.5 inline-flex items-center">
+        <button type="button" class="bg-primary header flex text-white rounded-xl text-5xl px-5 py-2.5 inline-flex items-center">
         <%= fetch_favicon(@ctf["website"]) %>
         <%= @which.upcase %>
       </button>
@@ -19,7 +19,7 @@
         <% writeup_path = "/ctf/#{@which}/#{writeup}" %>
         <% categories = info["categories"] || [ "Unknown category" ] %>
         <% description = info["description"] || "No description available" %>
-        <div class="writeup-card bg-primary hover:bg-secondary hover:scale-110">
+        <div class="writeup-card bg-primary">
           <%= render_writeup_card(writeup, writeup_path, @which, categories, description) %>
         </div>
       <% end %>

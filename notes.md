@@ -1,5 +1,11 @@
 # TODOs
-- about me als landing Page mit Welcome Message etc und kleines gif Terminal nav
+- Vorschläge von Elias
+- about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
+    - Smartphone CSS anpassen
+    - Resumee/CV (oder nur Teile davon)
+        - Englisch/Deutsch
+        => was muss man beachten wenn man sein CV online stellt
+    - Ask me anything - Chatbot (chat with me)
 - ctf-cards
     - Titel + kurze Beschreibung des CTFs in dem runden Image
 - Fehler pages updaten
@@ -36,16 +42,6 @@
         - Hintergrund Image des CTFs
     - Suchfilter und Filteroption nach Jahr
     - Archievements
-- About
-    - Resumee/CV (oder nur Teile davon)
-        - Englisch/Deutsch
-        => was muss man beachten wenn man sein CV online stellt
-    - Ask me anything - Chatbot (chat with me)
-    - Bild von mir als Hintergrund
-    - Kurze Beschreibung
-        - Hobbies
-        - KITCTF studying @KIT
-- Help Button links unten um auf "Tutorial" page zu kommen
 - Contact
     - Email Adresse
 - Upcoming

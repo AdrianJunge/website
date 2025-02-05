@@ -22,8 +22,14 @@
     @media (max-width: 1200px) {
         grid-template-columns: 1fr;
     }
-}
 
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    -webkit-display: grid;
+    -webkit-grid-template-columns: repeat(4, 1fr);
+    display: -ms-grid;
+    display: -webkit-grid;
+}
 
 .ctf-card {
     position: relative;
@@ -34,9 +40,17 @@
     overflow: hidden;
     width: 50vmin;
     height: 50vmin;
-    transition: transform 0.2s ease-in-out;
     border: $default-border;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
 }
+
 
 .ctf-card img {
     width: 100%;
@@ -45,5 +59,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }

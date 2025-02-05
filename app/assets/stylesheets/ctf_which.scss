@@ -15,8 +15,13 @@
 }
 
 .header {
-    transition: transform 0.2s ease-in-out;
     border: $default-border;
+
+    transition: transform 0.2s ease-in-out, background-color 1s ease;
+    &:hover {
+        transform: scale(1.1);
+        background-color: $color-secondary;
+    }
 }
 
 .writeup-content {
@@ -26,6 +31,7 @@
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .writeup-overview {
@@ -34,11 +40,16 @@
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
     height: 100%;
+    -ms-grid-columns: 1fr 1fr 1fr;
+
     @media (max-width: 2400px) {
         grid-template-columns: repeat(2, 1fr);
+        -ms-grid-columns: 1fr 1fr;
     }
+
     @media (max-width: 1200px) {
         grid-template-columns: 1fr;
+        -ms-grid-columns: 1fr;
     }
 }
 
@@ -49,12 +60,19 @@
     margin: 2vh;
     border-radius: 3vh;
     width: 90%;
-    transition: transform 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
     border: $default-border;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    transition: transform 0.2s ease-in-out, background-color 1s ease;
+    &:hover {
+        transform: scale(1.1);
+        background-color: $color-secondary;
+    }
 }
 
 .writeup-details {
@@ -67,6 +85,8 @@
     overflow-wrap: break-word;
     white-space: normal;
     height: 100%;
+    -webkit-overflow-scrolling: touch;
+
     @media (max-width: 768px) {
         padding: 2vh;
         max-height: none;
@@ -79,6 +99,13 @@
     overflow-wrap: break-word;
     white-space: normal;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+
     @media (max-width: 768px) {
         width: 100%;
         padding: 2vh;

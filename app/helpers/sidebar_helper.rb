@@ -11,7 +11,7 @@ module SidebarHelper
   end
 
   def render_taskbar_items(taskbar_items)
-    base_class = "bg-tertiary hover:bg-accent hover:scale-110"
+    base_class = "bg-tertiary"
     taskbar_icon_class = base_class + " taskbar-icon"
     taskbar_label_class = "taskbar-label"
 
