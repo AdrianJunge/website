@@ -1,4 +1,4 @@
-module ImageProcessingHelper
+module ImageprocessingHelper
   def should_invert_image?(image_path)
     full_image_path = Rails.root.join("app", "assets", "images", image_path)
     return false unless File.exist?(full_image_path)
