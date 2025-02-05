@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@config "./../../../config/tailwind.config.js";
+
 @theme {
   --color-default: #0a101a;
   --color-primary: #18243a;
@@ -18,5 +20,5 @@
   }
 }
 
-@source '../../../node_modules/flowbite';
-@plugin "flowbite/plugin";
+/* @source '../../../node_modules/flowbite';
+@plugin "flowbite/plugin"; */
