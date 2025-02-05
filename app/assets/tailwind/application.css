@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@source '../../../node_modules/flowbite';
+
+@theme {
+  --color-default: #0a101a;
+  --color-primary: #18243a;
+  --color-secondary: #334461;
+  --color-tertiary: #55aaff;
+  --color-accent: #ccffff;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@plugin "flowbite/plugin";

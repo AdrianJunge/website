@@ -16,8 +16,6 @@ gem "importmap-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -73,3 +71,5 @@ gem "front_matter_parser"
 gem "rouge"
 gem "sass-rails"
 gem "mini_magick"
+
+gem "tailwindcss-rails", "~> 4.0"

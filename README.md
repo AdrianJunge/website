@@ -35,3 +35,10 @@ When you have installation problems try out
 
 # Rebuilding project
 `bundle exec rake db:migrate`
+
+# Tailwind
+## Rebuilding
+`rails tailwindcss:build`
+## Watchman
+To use tailwindcss you need watchman. For installation simply execute:
+`brew install watchman`
