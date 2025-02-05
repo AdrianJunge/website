@@ -1,5 +1,4 @@
 # TODOs
-- Images automatisch color invert falls zu viel weiß
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav
 - ctf-cards
     - Titel + kurze Beschreibung des CTFs in dem runden Image
