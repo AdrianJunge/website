@@ -89,6 +89,4 @@ Rails.application.configure do
 
   # https://github.com/tailwindlabs/tailwindcss/discussions/6738
   config.assets.css_compressor = nil
-
-  config.assets.compile = false
 end
