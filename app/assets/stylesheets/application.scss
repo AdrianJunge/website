@@ -6,9 +6,6 @@
 @import "ctf_which";
 @import "ctf_writeup";
 
-.flex-grow {
-    flex-grow: 1;
-}
 
 #taskbar-left {
     position: fixed;
@@ -41,43 +38,53 @@
 
 #taskbar-left .taskbar-item:last-child {
     margin-top: auto;
-  }
+}
 
 .taskbar-item {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     margin-bottom: 1.5vh;
+}
+
+.taskbar-link, .taskbar-button-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    flex-direction: row;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .taskbar-label {
     opacity: 0;
-    position: absolute;
-    left: $taskbar-size;
-    pointer-events: none;
+    margin: 1vh;
     color: white;
     font-size: 2vmin;
+    pointer-events: auto;
 }
+
+.taskbar-link:hover .taskbar-icon {
+    transition: transform 0.2s ease-in-out, background-color 1s ease;
+    transform: scale(1.1);
+    background-color: $color-accent;}
+
+.taskbar-button-container:hover .taskbar-icon {
+    transition: transform 0.2s ease-in-out, background-color 1s ease;
+    transform: scale(1.1);
+    background-color: $color-accent;}
 
 .taskbar-icon {
     width: $taskbar-icon-size;
     height: $taskbar-icon-size;
-    cursor: pointer;
     border-radius: 0.5vh;
     border: $default-border;
     box-sizing: border-box;
-
-    transition: transform 0.2s ease-in-out, background-color 1s ease;
-    &:hover {
-        transform: scale(1.1);
-        background-color: $color-accent;
-    }
 }
 
 .footer-icon {
-    width: $taskbar-icon-size;
-    height: $taskbar-icon-size;
+    width: calc(#{$taskbar-icon-size} / 1.3);
+    height: calc(#{$taskbar-icon-size} / 1.3);
     cursor: pointer;
     border-radius: 50%;
     border: $default-border;
@@ -91,10 +98,10 @@
 }
 
 .menu-icon {
-    position: fixed;
-    width: calc(#{$taskbar-icon-size} * 0.7);
     padding: 1vmin;
-    height: calc(#{$taskbar-icon-size} * 3);
+    position: fixed;
+    width: calc(#{$taskbar-icon-size} * 0.8);
+    height: calc(#{$taskbar-icon-size} * 1.7);
     top: calc(50% - #{$taskbar-icon-size});
     left: 0;
     border-top-right-radius: 1vmin;

@@ -198,9 +198,8 @@ const initTerminal = () => {
     term.onData(function(data) {
         if (data === '\r' || data === '\n') {
             const command = inputBuffer.trim();
-            inputBuffer = '';
             processCommand(command);
-            return;
+            inputBuffer = '';
         } else if (data === '\x7f') {
             if (inputBuffer.length > 0) {
                 inputBuffer = inputBuffer.slice(0, -1);
@@ -262,7 +261,7 @@ function minimizeTerminal() {
     const minimizeButton = document.getElementById("minimize-terminal");
 	const closeButton = document.getElementById("close-terminal");
 	const terminal = document.getElementById("terminal-container");
-	const terminalTaskbarIcon = document.getElementById("terminal-taskbar-icon");
+	const terminalTaskbarIcon = document.getElementById("terminal-taskbar-button");
 
 	minimizeButton.addEventListener("click", function () {
         terminal.classList.add("terminal-minimized");

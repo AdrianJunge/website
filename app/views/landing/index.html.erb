@@ -3,25 +3,25 @@
 ]) %>
 <%= render_terminal(['ctf'], true) %>
 
-<div class="landing-container text-white md:space-y-20 mb-20 mx-auto">
-    <div class="welcome-container text-white text-center md:space-y-5">
+<div class="landing-container text-white mx-auto">
+    <div class="welcome-container text-white text-center">
         <h3 class="font-bold text-5xl">Welcome to my space!</h3>
         <p class="text-2xl">Hey, I'm Adrian.</p>
-        <p class="text-2xl">Here you will find my projects and CTF writeups. Have fun exploring! <p>
+        <p class="text-2xl">Here you will find my projects and CTF writeups. Have fun exploring! </p>
     </div>
 
-    <div class="student-container text-white flex flex-col md:flex-row items-center md:space-x-40">
+    <div class="student-content-container text-white flex flex-col items-center">
         <%= image_tag("landing/kit.jpg", alt: "KIT", class: "w-full md:w-1/2 h-auto rounded-lg") %>
         <div class="w-full md:w-1/2">
-            <h2 class="text-4xl font-semibold ">Studies</h2>
+            <h2 class="text-4xl font-semibold">Studies</h2>
             <p class="text-2xl">I'm a master's student of computer science <a href="https://www.kit.edu" class="font-bold underline" target="_blank">@KIT</a> focusing on cyber security.</p>
         </div>
     </div>
 
-    <div class="student-container text-white flex flex-col md:flex-row items-center md:space-x-40">
+    <div class="ctf-content-container text-white flex flex-col items-center">
         <div class="w-full md:w-1/2">
-            <h2 class="text-4xl font-semibold ">CTF</h2>
-            <p class="text-2xl">Together with the <a href="https://kitctf.de" class="font-bold underline" target="_blank">KITCTF</a> team I regularly challenge myself. My main categories are:<p>
+            <h2 class="text-4xl font-semibold">CTF</h2>
+            <p class="text-2xl">Together with the <a href="https://kitctf.de" class="font-bold underline" target="_blank">KITCTF</a> team I regularly challenge myself. My main categories are:</p>
             <p class="text-2xl">    - Web</p>
             <p class="text-2xl">    - PWN</p>
         </div>
@@ -29,12 +29,5 @@
     </div>
 
     <!-- TODO: carousel slider for projects -->
-
-    <button data-tooltip-target="tooltip-default" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default tooltip</button>
-
-    <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
-        Tooltip content
-        <div class="tooltip-arrow" data-popper-arrow></div>
-    </div>
 
 </div>

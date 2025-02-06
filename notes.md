@@ -1,13 +1,14 @@
 # TODOs
-- Projekt komplett neu pullen und installieren
-- Vorschläge von Elias
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
-    - Smartphone CSS anpassen
     - Resumee/CV (oder nur Teile davon)
         - Englisch/Deutsch
         => was muss man beachten wenn man sein CV online stellt
     - Ask me anything - Chatbot (chat with me)
+    - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
+    - CTF Artikel direkt verlinken
+    - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
 - ctf-cards
+    - Icons kleiner
     - Titel + kurze Beschreibung des CTFs in dem runden Image
 - Fehler pages updaten
 - kompletten boiler plate Code von Rails durchgehen und das rauswerfen was ich nicht brauche
@@ -54,10 +55,22 @@
         - TicTacToe vs AI
     - Tools
 
+# Visuals
+- Landing Page Footer nicht ganz unten und scrollbar
+    - 100dvh
+- Der Text ist zu klein auf mobile
+- Auf Desktop ist alles etwas groß, auf mobile alles etwas zu klein (wird aber etwas gefixt vom viewport tag)
+## Terminal
+- internal statt external links
+- Das Terminal könnte vllt von unten hochgeschoben werden, statt einfach so aufzuploppen
+
 # Security
 - Fetched ctf favicon sanitzen wegen XSS vector
 
 # Fix
+- Terminal nav button geht aus Bildschirm raus sobald zu klein
+- tailwindcss flowbite plugin fixen
+    => evtl neues Setup und Code übernehmen
 - Terminal Height passt nicht ganz zum content - es wird was abgeschnitten
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals

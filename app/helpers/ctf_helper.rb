@@ -17,7 +17,7 @@ module CtfHelper
       concat(content_tag(:div, class: "flex items-center") do
         concat(get_category_svg(first_category).html_safe)
 
-        concat(content_tag(:h5, class: "ml-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white") do
+        concat(content_tag(:h5, class: "ml-4 text-2xl font-semibold tracking-tight text-white") do
           writeup.capitalize
         end)
       end)
@@ -26,11 +26,11 @@ module CtfHelper
         content_tag(:div, class: "writeup-details") do
           concat(content_tag(:div, class: "mb-4 flex flex-wrap gap-2") do
             categories.each do |category|
-              concat(content_tag(:span, category, class: "inline-block px-2 py-1 text-xs font-medium text-gray-800 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-200"))
+              concat(content_tag(:span, category, class: "inline-block px-2 py-1 text-xs font-medium text-black bg-gray-200 rounded"))
             end
           end)
           truncated_description = description.length > max_description_length ? "#{description[0, max_description_length]}..." : description
-          concat(content_tag(:p, class: "text-gray-900 dark:text-gray-200 italic") do
+          concat(content_tag(:p, class: "text-white italic") do
             truncated_description
           end)
         end

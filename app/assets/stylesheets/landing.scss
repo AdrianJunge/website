@@ -1,3 +1,23 @@
 .landing-container {
     width: 60%;
+    display: flex;
+    gap: 10vh;
+    flex-direction: column;
+    margin-bottom: 5vh;
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+}
+
+[class*="content-container"] {
+    display: flex;
+    gap: 5vh;
+    flex-direction: row;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+    }
 }

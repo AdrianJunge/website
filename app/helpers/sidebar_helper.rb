@@ -2,11 +2,18 @@ module SidebarHelper
   def taskbar_icon_item(image_path:, alt_text:, label:, link: nil, icon_class:, label_class:, id: nil, target: nil)
     content_tag :div, class: "taskbar-item" do
       if link
-        concat(link_to(image_tag(image_path, alt: alt_text, class: icon_class, id: id), link, target: target))
+        concat(
+          link_to(link, target: target, class: "taskbar-link", id: id) do
+            image_tag(image_path, alt: alt_text, class: icon_class) +
+            content_tag(:span, label, class: label_class)
+          end
+        )
       else
-        concat(image_tag(image_path, alt: alt_text, class: icon_class, id: id))
+        content_tag(:div, class: "taskbar-button-container", id: id) do
+          concat(image_tag(image_path, alt: alt_text, class: icon_class))
+          concat(content_tag(:span, label, class: label_class))
+        end
       end
-      concat(content_tag(:span, label, class: label_class))
     end
   end
 
@@ -48,7 +55,7 @@ module SidebarHelper
           label: "Terminal navigation",
           icon_class: taskbar_icon_class,
           label_class: taskbar_label_class,
-          id: "terminal-taskbar-icon"
+          id: "terminal-taskbar-button"
         ))
     end
   end
