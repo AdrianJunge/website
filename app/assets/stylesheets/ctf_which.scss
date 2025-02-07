@@ -10,8 +10,8 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    height: 10vh;
-    width: 100vw;
+    height: 10dvh;
+    width: 100dvw;
 }
 
 .header {
@@ -56,9 +56,9 @@
 .writeup-card {
     min-width: 25vmin;
     min-height: 25vmin;
-    padding: 3vh;
-    margin: 2vh;
-    border-radius: 3vh;
+    padding: 3dvh;
+    margin: 2dvh;
+    border-radius: 3dvh;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -78,7 +78,7 @@
 .writeup-details {
     display: flex;
     flex-direction: column;
-    padding: 3vh;
+    padding: 3dvh;
     flex-grow: 1;
     overflow-y: auto;
     word-wrap: break-word;
@@ -88,7 +88,7 @@
     -webkit-overflow-scrolling: touch;
 
     @media (max-width: 768px) {
-        padding: 2vh;
+        padding: 2dvh;
         max-height: none;
         overflow-y: visible;
     }
@@ -108,6 +108,6 @@
 
     @media (max-width: 768px) {
         width: 100%;
-        padding: 2vh;
+        padding: 2dvh;
     }
 }

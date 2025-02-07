@@ -5,7 +5,6 @@
         => was muss man beachten wenn man sein CV online stellt
     - Ask me anything - Chatbot (chat with me)
     - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
-    - CTF Artikel direkt verlinken
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
 - ctf-cards
     - Icons kleiner
@@ -56,6 +55,8 @@
     - Tools
 
 # Visuals
+- Firefox
+    - CSS fixen
 - Landing Page Footer nicht ganz unten und scrollbar
     - 100dvh
 - Der Text ist zu klein auf mobile
@@ -63,6 +64,8 @@
 ## Terminal
 - internal statt external links
 - Das Terminal könnte vllt von unten hochgeschoben werden, statt einfach so aufzuploppen
+## Nav
+- Back button mit Pfeil
 
 # Security
 - Fetched ctf favicon sanitzen wegen XSS vector

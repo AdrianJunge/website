@@ -1,20 +1,20 @@
 .landing-container {
     width: 60%;
     display: flex;
-    gap: 10vh;
+    gap: 10dvh;
     flex-direction: column;
-    margin-bottom: 5vh;
+    margin-bottom: 5ddvh;
 }
 
 .welcome-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5vh;
+    gap: 1.5dvh;
 }
 
 [class*="content-container"] {
     display: flex;
-    gap: 5vh;
+    gap: 5dvh;
     flex-direction: row;
 
     @media (max-width: 900px) {
@@ -27,5 +27,5 @@ h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-bottom: 1.5vh;
+    margin-bottom: 1.5dvh;
 }

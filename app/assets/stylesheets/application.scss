@@ -13,7 +13,7 @@
     left: 0;
     width: 0;
     opacity: 0;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     white-space: nowrap;
     flex-direction: column;
@@ -22,7 +22,7 @@
     transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
     padding-left: calc((#{$taskbar-size} - #{$taskbar-icon-size}) / 2.0);
     padding-top: 1vmin;
-    border-right: 0.2vh solid #4c566a;
+    border-right: 0.2dvh solid #4c566a;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -31,9 +31,7 @@
 
 #taskbar-left.expanded {
     width: calc(#{$taskbar-size} * 3);
-    align-items: flex-start;
     opacity: 1;
-    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 #taskbar-left .taskbar-item:last-child {
@@ -42,7 +40,7 @@
 
 .taskbar-item {
     width: 100%;
-    margin-bottom: 1.5vh;
+    margin-bottom: 1.5dvh;
 }
 
 .taskbar-link, .taskbar-button-container {
@@ -52,32 +50,27 @@
     cursor: pointer;
     flex-direction: row;
     width: 100%;
-    display: flex;
-    flex-direction: row;
 }
 
 .taskbar-label {
     opacity: 0;
-    margin: 1vh;
+    margin: 1dvh;
     color: white;
     font-size: 2vmin;
     pointer-events: auto;
 }
 
-.taskbar-link:hover .taskbar-icon {
-    transition: transform 0.2s ease-in-out, background-color 1s ease;
-    transform: scale(1.1);
-    background-color: $color-accent;}
-
+.taskbar-link:hover .taskbar-icon,
 .taskbar-button-container:hover .taskbar-icon {
     transition: transform 0.2s ease-in-out, background-color 1s ease;
     transform: scale(1.1);
-    background-color: $color-accent;}
+    background-color: $color-accent;
+}
 
 .taskbar-icon {
     width: $taskbar-icon-size;
     height: $taskbar-icon-size;
-    border-radius: 0.5vh;
+    border-radius: 0.5dvh;
     border: $default-border;
     box-sizing: border-box;
 }
@@ -106,7 +99,7 @@
     left: 0;
     border-top-right-radius: 1vmin;
     border-bottom-right-radius: 1vmin;
-    border: 0.3vh solid #4c566a;
+    border: 0.3dvh solid #4c566a;
     border-left: none;
     box-sizing: border-box;
 
@@ -158,7 +151,7 @@
     z-index: 100;
     width: 80%;
     height: 95%;
-    border: 0.2vh solid #4c566a;
+    border: 0.2dvh solid #4c566a;
     display: flex;
     flex-direction: column;
     padding: 1rem 1.25rem;
@@ -213,8 +206,8 @@
 }
 
 .button-icon {
-    width: 100vw;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
     box-sizing: border-box;
 }
 
