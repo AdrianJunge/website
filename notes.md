@@ -1,4 +1,6 @@
 # TODOs
+- fix tailwindcss
+    - neues Projekt aufsetzen und zB tailwindcss cards ausprobieren
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
     - Resumee/CV (oder nur Teile davon)
         - Englisch/Deutsch

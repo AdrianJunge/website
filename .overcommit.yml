@@ -28,7 +28,7 @@ PreCommit:
   Stylelint:
     enabled: true
     include: '**/*.css'
-    exclude: [ 'vendor/**/*', 'node_modules/**/*', "app/assets/tailwind/application.css", "app/assets/stylesheets/thankfuleyes.css", "app/assets/stylesheets/xterm.css" ]
+    exclude: [ 'vendor/**/*', 'node_modules/**/*', "app/assets/tailwind/application.css", "app/assets/stylesheets/application.tailwind.css", "app/assets/stylesheets/thankfuleyes.css", "app/assets/stylesheets/xterm.css" ]
 
   RuboCop:
     enabled: true
