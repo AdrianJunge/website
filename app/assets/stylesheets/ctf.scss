@@ -57,7 +57,7 @@
     text-align: center;
     color: #fff;
     z-index: 2;
-    padding: 1rem;
+    padding: 1vmin;
     background: rgba(0, 0, 0, 0.8);
     border: $default-border;
     border-radius: 10px;
@@ -75,12 +75,12 @@
 
 .ctf-button {
     display: inline-block;
-    margin: 0.5rem;
-    padding: 0.7rem 1.2rem;
+    margin: 0.5vmin;
+    padding: 0.7vmin 1.2vmin;
     background-color: #f1f1f1;
     color: #333;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 1vmin;
 
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }

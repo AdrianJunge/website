@@ -17,7 +17,9 @@ document.querySelectorAll('.ctf-card').forEach(card => {
             const translateY = (viewportHeight / 2) - centerY;
             const translateX = (viewportWidth / 2) - centerX;
 
-            const targetScale = viewportWidth / rect.width * 0.43;
+            const minDimension = Math.min(rect.width, rect.height);
+            const minViewport = Math.min(viewportWidth, viewportHeight);
+            const targetScale = minViewport / minDimension * 0.9;
 
             card.style.transform = `translate(${translateX}px, ${translateY}px) scale(${targetScale})`;
         } else {
