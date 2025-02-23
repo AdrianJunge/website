@@ -28,5 +28,11 @@
     "logo": "ctf/ehax.png",
     "writeups": "/ctf/ehax",
     "website": "https://ctf.ehax.tech/"
+  },
+  "LACTF":{
+    "terminal_path": "lactf",
+    "logo": "ctf/lactf.png",
+    "writeups": "/ctf/lactf",
+    "website": "https://lac.tf/"
   }
 }

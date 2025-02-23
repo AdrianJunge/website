@@ -24,7 +24,7 @@ year:
 # 5. Mitigation<a name="mitigation"></a>
 
 # 6. Solve script<a name="solve script"></a>
-```Python
+```python
 
 ```
 
