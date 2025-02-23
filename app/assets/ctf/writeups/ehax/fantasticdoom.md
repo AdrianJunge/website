@@ -24,26 +24,17 @@ At first we need to know the enabled protections:
 
 ![checksec](ctf/writeups/ehax/fantasticdoom/checksec.png "checksec")
 
-Interesting enough there are no stack canaries and more over `PIE` is inactive.
-But we should still assume that `ASLR` is activated as it is not an option of the binary itself but of the operating system.
-Most of the operating system have `ASLR` enabled by default.
-Analysing the binary in `Binary Ninja` we discover something interesting:
+Interesting enough there are no stack canaries and more over `PIE` is inactive. But we should still assume that `ASLR` is activated as it is not an option of the binary itself but of the operating system. Most of the operating system have `ASLR` enabled by default. Analysing the binary in `Binary Ninja` we discover something interesting:
 
 ![binja-overview](ctf/writeups/ehax/fantasticdoom/binja.png "binja-overview")
 
-This binary got a very obvious stack buffer overflow by using the `gets` functionality which just reads the whole user input until it reaches a `\n` and saves it the given buffer.
-The main problem about `gets` is, the buffer to which the user input is copied got limited size, while the user input got unknown size.
-
-More over as we can see in the decompiled code, we get a free leak of the address of the libc function `wctrans`.
+This binary got a very obvious stack buffer overflow by using the `gets` functionality which just reads the whole user input until it reaches a `\n` and saves it the given buffer. The main problem about `gets` is, the buffer to which the user input is copied got limited size, while the user input got unknown size. More over as we can see in the decompiled code, we get a free leak of the address of the libc function `wctrans`.
 
 # 3. Vulnerability Description<a name="vulnerability description"></a>
-The usage of `gets` leads to an arbitrary large stack buffer overflow and by leaking the address of `wctrans` we can easily defeat `ASLR` - at least for everything libc related.
-Unfortunately the `NX` protection is enabled, so we can't just return to the stack buffer and injecting some shell code.
+The usage of `gets` leads to an arbitrary large stack buffer overflow and by leaking the address of `wctrans` we can easily defeat `ASLR` - at least for everything libc related. Unfortunately the `NX` protection is enabled, so we can't just return to the stack buffer and injecting some shell code.
 
 # 4. Exploitation<a name="exploitation"></a>
-Only knowing the randomized libc base address is already enough to get a shell, as we can just pop a shell via a [OneGadget](https://github.com/david942j/one_gadget).
-This tool is absolutely great.
-By executing it like `one_gadget libc.so.6` we get the offsets of potentially useful onegadgets which can be exploited to pop a shell without any ROP:
+Only knowing the randomized libc base address is already enough to get a shell, as we can just pop a shell via a [OneGadget](https://github.com/david942j/one_gadget). This tool is absolutely great. By executing it like `one_gadget libc.so.6` we get the offsets of potentially useful onegadgets which can be exploited to pop a shell without any ROP:
 
 ```bash
 0x4f29e execve("/bin/sh", rsp+0x40, environ)
@@ -67,8 +58,7 @@ constraints:
   [rsp+0x70] == NULL || {[rsp+0x70], [rsp+0x78], [rsp+0x80], [rsp+0x88], ...} is a valid argv
 ```
 
-As these onegadgets got some requirements to work, we can easily just try out everyone of these. The one with libc offset `0x4f2a5` will work for us.
-After determining the offset to the return address e.g. by using the `cyclic` command in `gdb` we can construct our payload and eventually pop our shell.
+As these onegadgets got some requirements to work, we can easily just try out everyone of these. The one with libc offset `0x4f2a5` will work for us. After determining the offset to the return address e.g. by using the `cyclic` command in `gdb` we can construct our payload and eventually pop our shell.
 
 # 5. Mitigation<a name="mitigation"></a>
 The vulnerabilities can be easily mitigated by not intentionally leaking some addresses and moreover using some safe alternatives for `gets` like `fgets`.
