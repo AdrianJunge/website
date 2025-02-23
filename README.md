@@ -36,6 +36,9 @@ When you have installation problems try out
 # Rebuilding project
 `bundle exec rake db:migrate`
 
+# Adding js
+Add entry in `/config/importmap.rb` and `/assets/config/manifest.js`
+
 # Tailwind
 ## Rebuilding
 `rails tailwindcss:build`
