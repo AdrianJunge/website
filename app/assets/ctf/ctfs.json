@@ -22,5 +22,11 @@
     "logo": "ctf/fcsc.png",
     "writeups": "/ctf/fcsc",
     "website": "https://hackropole.fr/"
+  },
+  "EHAX":{
+    "terminal_path": "ehax",
+    "logo": "ctf/ehax.png",
+    "writeups": "/ctf/ehax",
+    "website": "https://ctf.ehax.tech/"
   }
 }
