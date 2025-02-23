@@ -67,6 +67,12 @@
     background-color: $color-accent;
 }
 
+.taskbar-link .taskbar-icon,
+.taskbar-button-container .taskbar-icon {
+    transition: transform 0.2s ease-in-out, background-color 1s ease;
+    transform: scale(1);
+}
+
 .taskbar-icon {
     width: $taskbar-icon-size;
     height: $taskbar-icon-size;

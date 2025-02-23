@@ -2,6 +2,8 @@
     { image_path: 'task-bar/flag.svg', alt_text: "CTF Icon", label: "CTF", link: ctf_path },
 ]) %>
 <%= render_terminal(['ctf'], true) %>
+<% kit_link="https://www.kit.edu" %>
+<% kitctf_link="https://kitctf.de" %>
 
 <div class="landing-container text-white mx-auto">
     <div class="welcome-container text-white text-center">
@@ -15,14 +17,14 @@
             <%= image_tag("landing/kit.jpg", alt: "KIT", class: "w-full md:w-1/2 h-auto rounded-lg") %>
             <div class="w-full md:w-1/2">
                 <h2 class="text-4xl font-semibold">Studies</h2>
-                <p class="text-2xl">I'm a master's student of computer science <a href="https://www.kit.edu" class="font-bold underline" target="_blank">@KIT</a> focusing on cyber security.</p>
+                <p class="text-2xl">I'm a master's student of computer science <a href=kit_link class="font-bold underline" target="_blank">@KIT</a> focusing on cyber security.</p>
             </div>
         </div>
 
         <div class="ctf-content-container text-white flex flex-col items-center">
             <div class="w-full md:w-1/2">
                 <h2 class="text-4xl font-semibold">CTF</h2>
-                <p class="text-2xl">Together with the <a href="https://kitctf.de" class="font-bold underline" target="_blank">KITCTF</a> team I regularly challenge myself. My main categories are:</p>
+                <p class="text-2xl">Together with the <a href=kitctf_link class="font-bold underline" target="_blank">KITCTF</a> team I regularly challenge myself. My main categories are:</p>
                 <p class="text-2xl">    - Web</p>
                 <p class="text-2xl">    - PWN</p>
             </div>
