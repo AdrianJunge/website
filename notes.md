@@ -8,9 +8,6 @@
     - Ask me anything - Chatbot (chat with me)
     - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
-- ctf-cards
-    - Icons kleiner
-    - Titel + kurze Beschreibung des CTFs in dem runden Image
 - Fehler pages updaten
 - kompletten boiler plate Code von Rails durchgehen und das rauswerfen was ich nicht brauche
 - vurlo.de sichern und DNS einrichten

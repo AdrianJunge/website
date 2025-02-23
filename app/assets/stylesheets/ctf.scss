@@ -46,9 +46,47 @@
     transform: translateZ(0);
 
     transition: transform 0.2s ease-in-out;
-    &:hover {
+    &:not(.expanded):hover {
         transform: scale(1.1);
+        cursor: pointer;
     }
+}
+
+.ctf-details {
+    display: none;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: $default-border;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.ctf-card.expanded {
+    z-index: 10;
+}
+
+.ctf-card.expanded .ctf-details {
+    display: block;
+    width: auto;
+}
+
+.ctf-button {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ctf-button:hover {
+    background-color: #555;
+    color: #fff;
 }
 
 

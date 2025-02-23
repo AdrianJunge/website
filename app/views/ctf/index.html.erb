@@ -7,7 +7,13 @@
 <div class="ctf-overview">
   <% @ctfs.each do |name, ctf| %>
     <div class="ctf-card">
-      <%= link_to image_tag(ctf["logo"], alt: "#{name} Logo"), ctf["writeups"], class: "ctf-logo" %>
+      <%= image_tag(ctf["logo"], alt: "#{name} Logo", class: "ctf-logo") %>
+      <div class="ctf-details">
+        <h3 class="ctf-name"><%= name %></h3>
+        <p class="ctf-description"><%= ctf["description"] %></p>
+        <a href="<%= ctf["website"] %>" target="_blank" class="ctf-button website-button">Website</a>
+        <a href="<%= ctf["writeups"] %>" class="ctf-button writeups-button">Writeups</a>
+      </div>
     </div>
   <% end %>
 </div>

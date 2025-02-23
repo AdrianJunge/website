@@ -3,36 +3,42 @@
     "terminal_path": "cscg",
     "logo": "ctf/cscg.png",
     "writeups": "/ctf/cscg",
-    "website": "https://cscg.de/"
+    "website": "https://cscg.de/",
+    "description": "The CSCG is an annual CTF competition that spans two months and serves as the qualifier for the DHM. The categories cover a wide range of topics, including crypto, reverse engineering, pwn, web and more, catering to skill levels from beginner to expert."
   },
   "DHM": {
     "terminal_path": "dhm",
     "logo": "ctf/dhm.jpg",
     "writeups": "/ctf/dhm",
-    "website": "https://hacking-meisterschaft.de/"
+    "website": "https://hacking-meisterschaft.de/",
+    "description": "The DHM is the annual CTF final round of the CSCG qualifiers, where teams of 6 members compete against each other for the chance to qualify for the ECSC."
   },
   "KITCTF":{
     "terminal_path": "kitctf",
     "logo": "ctf/kitctf.png",
     "writeups": "/ctf/kitctf",
-    "website": "https://kitctf.de/"
+    "website": "https://kitctf.de/",
+    "description": "KITCTF organizes the local IntroCTF @KIT every semester and the GPNCTF annually, covering a wide range of categories such as crypto, reverse engineering, pwn and web."
   },
   "FCSC":{
     "terminal_path": "fcsc",
     "logo": "ctf/fcsc.png",
     "writeups": "/ctf/fcsc",
-    "website": "https://hackropole.fr/"
+    "website": "https://hackropole.fr/",
+    "description": "The FCSC is the French equivalent of the CSCG/DHM and serves as the qualifier for selecting the French team for the ECSC."
   },
   "EHAX":{
     "terminal_path": "ehax",
     "logo": "ctf/ehax.png",
     "writeups": "/ctf/ehax",
-    "website": "https://ctf.ehax.tech/"
+    "website": "https://ctf.ehax.tech/",
+    "description": "EHAX is an 24-hour CTF competition hosted as part of Invictus DTU's mega tech fest."
   },
   "LACTF":{
     "terminal_path": "lactf",
     "logo": "ctf/lactf.png",
     "writeups": "/ctf/lactf",
-    "website": "https://lac.tf/"
+    "website": "https://lac.tf/",
+    "description": "LACTF is an annual CTF competition hosted by ACM Cyber at UCLA."
   }
 }
