@@ -4,7 +4,7 @@
     "logo": "ctf/cscg.png",
     "writeups": "/ctf/cscg",
     "website": "https://cscg.de/",
-    "description": "The CSCG is an annual CTF competition that spans two months and serves as the qualifier for the DHM. The categories cover a wide range of topics, including crypto, reverse engineering, pwn, web and more, catering to skill levels from beginner to expert."
+    "description": "The CSCG is an annual CTF competition that spans two months and serves as the qualifier for the DHM."
   },
   "DHM": {
     "terminal_path": "dhm",
@@ -18,7 +18,7 @@
     "logo": "ctf/kitctf.png",
     "writeups": "/ctf/kitctf",
     "website": "https://kitctf.de/",
-    "description": "KITCTF organizes the local IntroCTF @KIT every semester and the GPNCTF annually, covering a wide range of categories such as crypto, reverse engineering, pwn and web."
+    "description": "KITCTF organizes the local IntroCTF @KIT every semester and the GPNCTF annually."
   },
   "FCSC":{
     "terminal_path": "fcsc",

