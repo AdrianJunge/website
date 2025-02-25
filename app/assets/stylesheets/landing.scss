@@ -29,3 +29,10 @@ h2 {
     text-align: center;
     margin-bottom: 1.5dvh;
 }
+
+.ctf-content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5dvh;
+    flex-direction: row;
+}
