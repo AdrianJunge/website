@@ -11,8 +11,10 @@
       <div class="ctf-details">
         <h3 class="ctf-name font-bold"><%= name %></h3>
         <p class="ctf-description"><%= ctf["description"] %></p>
-        <a href="<%= ctf["website"] %>" target="_blank" class="ctf-button website-button">Website</a>
-        <a href="<%= ctf["writeups"] %>" class="ctf-button writeups-button">Writeups</a>
+        <div class="ctf-button-container">
+          <a href="<%= ctf["website"] %>" target="_blank" class="ctf-button website-button">Website</a>
+          <a href="<%= ctf["writeups"] %>" class="ctf-button writeups-button">Writeups</a>
+        </div>
       </div>
     </div>
   <% end %>
