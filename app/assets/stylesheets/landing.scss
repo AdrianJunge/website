@@ -9,15 +9,17 @@
 .welcome-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5dvh;
+    gap: 0.75dvh;
 }
 
 [class*="content-container"] {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 5dvh;
     flex-direction: row;
 
     @media (max-width: 900px) {
+        display: flex;
         flex-direction: column;
     }
 }
@@ -30,9 +32,14 @@ h2 {
     margin-bottom: 1.5dvh;
 }
 
-.ctf-content-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.information-container {
+    display: flex;
+    flex-direction: column;
     gap: 5dvh;
-    flex-direction: row;
+}
+
+.content-container-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75dvh;
 }
