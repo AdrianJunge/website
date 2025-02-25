@@ -1,8 +1,8 @@
 import "jquery"
-import "jquery_ujs"
+import "jquery-ujs"
+import "jquery-ui"
+import "flowbite";
 
 import "landing";
 import "terminal";
 import "ctf";
-
-import 'flowbite';

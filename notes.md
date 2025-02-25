@@ -1,6 +1,7 @@
 # TODOs
-- fix tailwindcss
-    - neues Projekt aufsetzen und zB tailwindcss cards ausprobieren
+- fix Ctf description s - Small Screens Small font size und für die anderen bleibt es so
+- Redundantes CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
+- Orientieren an https://sky-lance.github.io/
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
     - Resumee/CV (oder nur Teile davon)
         - Englisch/Deutsch
@@ -19,7 +20,6 @@
     - Writeups
     - Blog
     ...
-- Taskfile oder Makefile für easy Setup
 - Dynamischer Hintergrund
 - CTF
     - Übersicht mit allen CTFs für die ich Writeups habe oder noch anfertigen möchte
