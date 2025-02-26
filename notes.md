@@ -1,11 +1,4 @@
 # TODOs
-
-        - Sidebar um an bestimmte Stelle von Post zu springen
-            => anchors werden automatisch ermittelt über das Finden von <a> tags und deren ids werden genommen
-            => diese "scrollt automatisch mit"
-            => aufpassen bei Smartphone
-                - Grid anlegen, und ab bestimmter Width wird die Sidebar über dem Writeup oder gar nicht mehr angezeigt
-
 - Redundantes CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
 - Orientieren an https://sky-lance.github.io/

@@ -48,6 +48,14 @@ body {
   }
 }
 
+.active-anchor {
+  color: $color-accent !important;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 0.2em 0.5em;
+  border-radius: 5px;
+}
+
 @media (max-width: 1400px) {
   .table-of-content {
     display: none;

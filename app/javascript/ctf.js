@@ -48,3 +48,33 @@ document.querySelectorAll('.ctf-card').forEach(card => {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tocLinks = document.querySelectorAll(".toc-anchor");
+    const headings = document.querySelectorAll(".markdown-content h1, .markdown-content h2, .markdown-content h3");
+
+    function highlightCurrentSection() {
+      let scrollPosition = window.scrollY + 10;
+
+      let currentSection = null;
+      headings.forEach((heading) => {
+        const anchor = heading.querySelector("a[id]");
+        if (anchor && anchor.offsetTop <= scrollPosition) {
+          currentSection = anchor;
+        }
+      });
+
+      if (currentSection) {
+        console.log(currentSection)
+        tocLinks.forEach((link) => {
+          link.classList.remove("active-anchor");
+          if (link.getAttribute("href") === `#${currentSection.id}`) {
+            link.classList.add("active-anchor");
+          }
+        });
+      }
+    }
+
+    window.addEventListener("scroll", highlightCurrentSection);
+    highlightCurrentSection();
+  });

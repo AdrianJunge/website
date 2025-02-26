@@ -123,7 +123,7 @@ class CtfController < ApplicationController
 
     if File.exist?(file_path)
       writeup_content = File.read(file_path)
-      writeup_content.scan(/^#+\s*(.+)<a name="(.+)"><\/a>/) do |heading_text, anchor_name|
+      writeup_content.scan(/^#+\s*(.+)<a id="(.+)"><\/a>/) do |heading_text, anchor_name|
       headings << { text: heading_text.strip, anchor: anchor_name.strip }
       end
     end

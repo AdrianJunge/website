@@ -7,27 +7,27 @@ categories:
 year:
 ---
 
-# TL;DR
+# TL;DR<a id="TL;DR"></a>
     **- Challenge Setup:**
     **- Key Discoveries:**
     **- Vulnerability:**
     **- Exploitation:**
 
-# 1. Introduction<a name="introduction"></a>
+# 1. Introduction<a id="introduction"></a>
 
-# 2. Reconnaissance<a name="reconnaissance"></a>
+# 2. Reconnaissance<a id="reconnaissance"></a>
 
-# 3. Vulnerability Description<a name="vulnerability description"></a>
+# 3. Vulnerability Description<a id="vulnerability description"></a>
 
-# 4. Exploitation<a name="exploitation"></a>
+# 4. Exploitation<a id="exploitation"></a>
 
-# 5. Mitigation<a name="mitigation"></a>
+# 5. Mitigation<a id="mitigation"></a>
 
-# 6. Solve script<a name="solve script"></a>
+# 6. Solve script<a id="solve script"></a>
 ```python
 
 ```
 
-# 7. Flag<a name="flag"></a>
+# 7. Flag<a id="flag"></a>
 
-# 8. References<a name="references"></a>
+# 8. References<a id="references"></a>
