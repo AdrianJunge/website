@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (currentSection) {
-        console.log(currentSection)
         tocLinks.forEach((link) => {
           link.classList.remove("active-anchor");
           if (link.getAttribute("href") === `#${currentSection.id}`) {

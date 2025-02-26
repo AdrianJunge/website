@@ -112,6 +112,8 @@
     justify-content: center;
     color: #333;
     border-radius: 1vmin;
+    border: 0.3dvh solid #4c566a;
+    box-sizing: border-box;
     max-height: 5vh;
     max-width: 20vw;
 
@@ -120,7 +122,7 @@
 
 .ctf-button:hover {
     transform: scale(1.2);
-    background-color: #555;
+    background-color: $color-tertiary;
     color: #fff;
     cursor: pointer;
 }
