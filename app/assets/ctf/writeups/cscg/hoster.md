@@ -63,7 +63,7 @@ My initial thoughts were some kind of bash command injection via the *$file* in 
 
 
 # 4. Exploitation<a name="exploitation"></a>
-## 4.1 Exploitation Variant 1<a name="exploitation variant 1"></a>
+## 4.1. Exploitation Variant 1<a name="exploitation variant 1"></a>
 My approach was exploiting the script via a symlink with `ln -s  /flag config/domains.txt` pointing to `/flag` so the script would read the content of your flag file and give it as a parameter to the dig command. By running **PSPY** you will just see the dig command being executed with the flag as the parameter. Of course, there are other possible solutions to reveal the flag by `for (( ; ; )); do ps aux >> log; done` effectively spamming `ps aux` and searching for the flag prefix or writing some small script doing this for you:
 
 ```bash
@@ -77,7 +77,7 @@ while true; do
 done
 ```
 
-## 4.2 Exploitation Variant 2<a name="exploitation variant 2"></a>
+## 4.2. Exploitation Variant 2<a name="exploitation variant 2"></a>
 The intended solution was about command option injection. The problem was to find a parameter fitting both the dig and the `curl` commands and eventually upload the content of `/flag` to your server. With the -K option for `curl` you can define a path of a config file being used by `curl`. But there is a little problem with this parameter. The `dig` command doesn’t have an option -K so the if statement around `dig` in the script will fail. You need another option that won’t result in an output of dig containing *NXDOMAIN*, *Invalid* and *SERVFAIL*. Additionally, this option has to be a valid option for the `curl` command. There were multiple options like the `-f` argument which is the option for a silent fail in `curl` and the option to define a file path for `dig` to interact with. By defining a config file for curl with content like
 
 ```bash

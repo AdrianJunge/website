@@ -16,16 +16,64 @@ body {
   background-color: #18243a;
 }
 
+.writeup-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2dvw;
+}
+
+.table-of-content {
+  flex: 1;
+  position: sticky;
+  max-width: 20%;
+  margin: 2dvh 2dvw;
+  margin-left: 0;
+  padding: 4dvh;
+  border-radius: 3dvh;
+  top: 2dvh;
+  font-size: 1.5vmin;
+  word-wrap: break-all;
+  hyphens: manual;
+}
+
+.toc-anchor {
+  transition: transform 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    color: $color-tertiary;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 1400px) {
+  .table-of-content {
+    display: none;
+  }
+
+  .writeup-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .writeup-container {
+  flex: 3;
   max-width: 100dvw;
   margin: 2dvh 2dvw;
   padding: 4dvh;
   border-radius: 3dvh;
 }
 
+.writeup-year {
+  font-size: 2vmin;
+}
+
 .writeup-title {
   text-align: center;
-  font-size: 4em;
+  font-size: 5vmin;
   font-weight: bold;
   margin-bottom: 2dvh;
 }
@@ -33,7 +81,7 @@ body {
 .markdown-content {
   word-wrap: break-word;
   word-break: break-word;
-  font-size: 1.75em;
+  font-size: 2vmin;
   font-family: monospace;
 }
 

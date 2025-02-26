@@ -65,10 +65,10 @@ With the heap overflow we can overwrite parts of the following chunk and thus ex
 
 Instead of the heap overflow we can also exploit the UAF bug by editing a chunk which was freed beforehand, thus overwriting the `next` pointer. Now there are multiple possible solutions how to abuse this constructed primitive.
 
-## 4.1 Exploitation Variant 1<a name="exploitation variant 1"></a>
+## 4.1. Exploitation Variant 1<a name="exploitation variant 1"></a>
 To turn an arbitrary write into RCE we can abuse the `free_hook` as the challenge just uses glibc version 2.31. Usually the `free_hook` is used to overwrite the behaviour of the `free` functionality e.g. for debugging purposes. But we can also use this hook to call `system` by overwriting it or executing a onegadget. So when e.g. `free("/bin/sh")` is called, actually `system("/bin/sh")` is called. Since glibc 2.34 such hooks were removed.
 
-## 4.2 Exploitation Variant 2<a name="exploitation variant 2"></a>
+## 4.2. Exploitation Variant 2<a name="exploitation variant 2"></a>
 For this challenge the following technique is a bit of an overkill. I got it from [this blog](https://hackmd.io/@pepsipu/SyqPbk94a) where it is explained in a more detailed way. There are some constraints you need to consider before you can apply this technique. First of all the `GOT` of the libc must be writeable. Second you need either one huge arbitrary write primitive or a primitive you can apply multiple times, as the payload is pretty big.
 To apply this technique to the current challenge we need to make sure we can write enough for the `setcontext` payload. Moreover we can't exploit any bins other than the tcache bin, so with a size of 1010 we are still in tcache range and can write up to 1010 + 0x40 bytes which is just enough for the payload to write it as a whole.
 
@@ -76,7 +76,7 @@ To apply this technique to the current challenge we need to make sure we can wri
 First of all there is absolutely no need for the heap overflow. Just make sure the buffer size and the input size are an exact match. Moreover you should always explicitly set pointers to null when they are not used anymore.
 
 # 6. Solve script<a name="solve script"></a>
-# 6.1 Solve script - Exploit 1<a name="solve script exploit 1"></a>
+## 6.1. Solve script - Exploit 1<a name="solve script exploit 1"></a>
 Leak via UAF + tcache poisoning via UAF + free_hook
 ```python
 #!/usr/bin/env python3
@@ -237,7 +237,7 @@ if __name__ == "__main__":
 
 ```
 
-# 6.2 Solve script - Exploit 2<a name="solve script exploit 2"></a>
+## 6.2. Solve script - Exploit 2<a name="solve script exploit 2"></a>
 Leak via UAF + tcache poisoning via heap overflow + setcontext
 ```python
 #!/usr/bin/env python3

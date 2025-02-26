@@ -3,8 +3,33 @@
 ]) %>
 <%= render_terminal([], true) %>
 
-<div class="writeup-container bg-primary">
-  <h4 class="writeup-year text-white text-center"><%= @which.upcase %>-<%= @ctf_info.dig(@writeup, "year") %></h4>
-  <h1 class="writeup-title text-white"><%= params[:writeup].gsub('.md', '').capitalize %></h1>
-  <%= @html_content %>
+<div class="writeup-wrapper">
+  <div class="writeup-container bg-primary">
+    <h4 class="writeup-year text-white text-center"><%= @which.upcase %>-<%= @ctf_info.dig(@writeup, "year") %></h4>
+    <h1 class="writeup-title text-white"><%= params[:writeup].gsub('.md', '').capitalize %></h1>
+    <%= @html_content %>
+  </div>
+
+  <div class="table-of-content bg-primary">
+    <h5 class="text-slate-100 font-semibold">On this page</h5>
+    <ul class="text-slate-100 leading-12">
+      <% @headings.each do |heading| %>
+        <% indent_level = heading[:text].count(".") - 1 %>
+        <%puts(heading[:text])%>
+        <%puts(indent_level)%>
+        <li class="ml-<%= indent_level * 6 %>">
+          <a href="#<%= heading[:anchor] %>" class="toc-anchor group flex items-start py-1">
+            <% if indent_level > 0 %>
+              <svg width="3" height="24" viewBox="0 -9 3 24"
+                class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                </path>
+              </svg>
+            <% end %>
+            <%= heading[:text] %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
