@@ -1,6 +1,7 @@
 # TODOs
 - Redundantes CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
+- SEO (search engine optimization)
 - Orientieren an https://sky-lance.github.io/
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
     - Resumee/CV (oder nur Teile davon)
