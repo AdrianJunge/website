@@ -49,8 +49,16 @@
     - Minigames (eigene App wie das Terminal)
         - TicTacToe vs AI
     - Tools
+- Content Management
+    - Admin Account
+        - dieser kann neue Inhalte hochladen
+    - Management
+        - Writeups/Blogs erstellen/editieren/löschen
+        - live Rendering des Markdowns
 
 # Visuals
+- Font size für Handy anpassen - ist zu klein
+    => vgl mit medium blogs
 - Firefox
     - CSS fixen
 - Landing Page Footer nicht ganz unten und scrollbar
