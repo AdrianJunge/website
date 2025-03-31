@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const tocLinks = document.querySelectorAll(".toc-anchor");
     const headings = document.querySelectorAll(".markdown-content h1, .markdown-content h2, .markdown-content h3");
 
+    if (tocLinks.length > 0) {
+      tocLinks[0].classList.add("active-anchor");
+    }
+
     function highlightCurrentSection() {
       let scrollPosition = window.scrollY + 10;
 
@@ -76,4 +80,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", highlightCurrentSection);
     highlightCurrentSection();
-  });
+});

@@ -20,7 +20,7 @@ class CtfController < ApplicationController
     @writeups = Dir.entries(BASE_PATH.join(@which))
                    .select { |file| file.end_with?(".md") }
                    .map { |file| file.sub(".md", "") }
-    @ctf_info = fetch_ctf_info(@which, @writeups)
+    @ctf_info = get_ctf_infos(@which, @writeups)
   end
 
   def writeup
@@ -28,7 +28,6 @@ class CtfController < ApplicationController
     @writeup = params[:writeup].gsub("..", "").gsub("/", "")
     return unless sanitize_writeup(@which, @writeup)
 
-    @ctf_info = fetch_ctf_info(@which, [ @writeup ])
     file_path = BASE_PATH.join(@which, (@writeup + ".md"))
 
     if file_path.exist? && file_path.file? && file_path.to_s.start_with?(BASE_PATH.to_s)
@@ -36,6 +35,7 @@ class CtfController < ApplicationController
     else
       @markdown_content = "Markdown file not found"
     end
+    @ctf_info = get_ctf_info(@markdown_content)
     @headings = get_writeup_headings(@which, @writeup)
     @html_content = render_markdown(@markdown_content)
   end
@@ -93,7 +93,7 @@ class CtfController < ApplicationController
     param.match?(/^[a-zA-Z\s]+$/)
   end
 
-  def fetch_ctf_info(which, writeups)
+  def get_ctf_infos(which, writeups)
     ctf_info = {}
 
     writeups.each do |writeup|
@@ -101,20 +101,26 @@ class CtfController < ApplicationController
 
       next unless File.exist?(file_path)
       writeup_header = File.read(file_path)
-      parsed_writeup_header = begin
-        FrontMatterParser::Parser.new(:md).call(writeup_header)
-      rescue StandardError
-        nil
-      end
 
+      parsed_writeup_header = get_ctf_info(writeup_header)
       next unless parsed_writeup_header
 
       parsed_hash = parsed_writeup_header.front_matter
+
       ctf_info[writeup] ||= {}
       ctf_info[writeup].merge!(parsed_hash)
     end
 
     ctf_info
+  end
+
+  def get_ctf_info(writeup_content)
+    parsed_writeup_header = begin
+      FrontMatterParser::Parser.new(:md).call(writeup_content)
+    rescue StandardError
+      nil
+    end
+    parsed_writeup_header
   end
 
   def get_writeup_headings(which, writeup)

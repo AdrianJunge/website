@@ -33,28 +33,38 @@ body {
   padding: 4dvh;
   border-radius: 3dvh;
   top: 2dvh;
-  font-size: 1.5vmin;
   word-wrap: break-all;
   hyphens: manual;
 }
 
 .toc-anchor {
   transition: transform 0.2s ease, color 0.2s ease;
+  padding-left: 1dvw;
 
   &:hover {
-    transform: scale(1.05);
     color: $color-tertiary;
     text-decoration: underline;
   }
 }
 
 .active-anchor {
+  position: relative;
   color: $color-accent !important;
   font-weight: bold;
   text-decoration: underline;
-  padding: 0.2em 0.5em;
-  border-radius: 5px;
 }
+
+.active-anchor::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100%;
+  background-color: $color-accent;
+}
+
 
 @media (max-width: 1400px) {
   .table-of-content {

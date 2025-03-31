@@ -1,8 +1,4 @@
-# TODOs
-- Redundantes CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
-    - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
-- SEO (search engine optimization)
-- Orientieren an https://sky-lance.github.io/
+# Content
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
     - Resumee/CV (oder nur Teile davon)
         - Englisch/Deutsch
@@ -10,12 +6,6 @@
     - Ask me anything - Chatbot (chat with me)
     - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
-- Fehler pages updaten
-- kompletten boiler plate Code von Rails durchgehen und das rauswerfen was ich nicht brauche
-- vurlo.de sichern und DNS einrichten
-- Email einrichten für Domaine
-    - Forwarding
-    - als contact angeben in Terminal + Footer
 - Impressum
 - RSS Feed
     - Writeups
@@ -57,23 +47,31 @@
         - live Rendering des Markdowns
 
 # Visuals
+- Redundantes bzw alles an CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
+    - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
+- Taskbar Icons sind klickbar auch wenn die Taskbar nicht expanded ist
+- Fehler pages updaten
 - Font size für Handy anpassen - ist zu klein
     => vgl mit medium blogs
 - Firefox
     - CSS fixen
-- Landing Page Footer nicht ganz unten und scrollbar
-    - 100dvh
-- Der Text ist zu klein auf mobile
-- Auf Desktop ist alles etwas groß, auf mobile alles etwas zu klein (wird aber etwas gefixt vom viewport tag)
 ## Terminal
 - internal statt external links
+    => keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - Das Terminal könnte vllt von unten hochgeschoben werden, statt einfach so aufzuploppen
-## Nav
-- Back button mit Pfeil
-- CTF Seite Sidenav sollte direkt tldr focusen
+- localstore speichern ob Terminal gerade collapsed ist oder nicht => seitenübergreifend bleibt das Terminal auf
+
+# Misc
+- Orientieren an https://sky-lance.github.io/
+- SEO (search engine optimization)
+- kompletten boiler plate Code von Rails durchgehen und das rauswerfen was ich nicht brauche
+- vurlo.de sichern und DNS einrichten
+- Email einrichten für Domaine
+    - Forwarding
+    - als contact angeben in Terminal + Footer
 
 # Security
-- Fetched ctf favicon sanitzen wegen XSS vector
+- Fetched ctf favicon sanitzen wegen XSS vector mit DOMPurify
 
 # Fix
 - Terminal nav button geht aus Bildschirm raus sobald zu klein
@@ -83,6 +81,4 @@
 - Writeups in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
     => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
-- keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
-- taskbar-label haben nicht beim ersten Mal Laden opacity-1 erst sobald transitionend beim Ausklappen der Taskbar
 - Heroku Warnings durchgehen und evtl fixen
