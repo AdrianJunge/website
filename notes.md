@@ -70,6 +70,7 @@
 - Das Terminal könnte vllt von unten hochgeschoben werden, statt einfach so aufzuploppen
 ## Nav
 - Back button mit Pfeil
+- CTF Seite Sidenav sollte direkt tldr focusen
 
 # Security
 - Fetched ctf favicon sanitzen wegen XSS vector
