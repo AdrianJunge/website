@@ -20,12 +20,22 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-between;
+  margin-bottom: 1.5dvh;
+}
+
+.writeup-container {
+  flex: 1 1 70%;
+  min-width: 45ch;
+  padding: 4dvh;
+  border-radius: 3dvh;
 }
 
 .table-of-content {
+  max-width: 25%;
   position: sticky;
   top: 1.5dvh;
+  height: fit-content;
+
   padding: 4dvh;
   border-radius: 3dvh;
   word-wrap: break-all;
@@ -71,13 +81,11 @@ body {
     flex-direction: column;
     align-items: center;
   }
-}
-
-.writeup-container {
-  flex: 3;
-  max-width: 100dvw;
-  padding: 4dvh;
-  border-radius: 3dvh;
+  
+  .writeup-container {
+    max-width: 100%;
+  }
+  
 }
 
 .writeup-year {

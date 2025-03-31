@@ -57,8 +57,6 @@
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
 - Taskbar Icons sind klickbar auch wenn die Taskbar nicht expanded ist
 - Fehler pages updaten
-- Font size für Handy anpassen - ist zu klein
-    => vgl mit medium blogs
 - Firefox
     - CSS fixen
 ## Terminal
