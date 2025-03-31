@@ -21,20 +21,16 @@ body {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 2dvw;
 }
 
 .table-of-content {
-  flex: 1;
   position: sticky;
-  max-width: 20%;
-  margin: 2dvh 2dvw;
-  margin-left: 0;
+  top: 1.5dvh;
   padding: 4dvh;
   border-radius: 3dvh;
-  top: 2dvh;
   word-wrap: break-all;
   hyphens: manual;
+  font-size: 2vmin;
 }
 
 .toc-anchor {
@@ -80,26 +76,24 @@ body {
 .writeup-container {
   flex: 3;
   max-width: 100dvw;
-  margin: 2dvh 2dvw;
   padding: 4dvh;
   border-radius: 3dvh;
 }
 
 .writeup-year {
-  font-size: 2vmin;
+  font-size: 4vmin;
 }
 
 .writeup-title {
   text-align: center;
-  font-size: 5vmin;
+  font-size: 6vmin;
   font-weight: bold;
-  margin-bottom: 2dvh;
 }
 
 .markdown-content {
   word-wrap: break-word;
   word-break: break-word;
-  font-size: 2vmin;
+  font-size: 3vmin;
   font-family: monospace;
 }
 

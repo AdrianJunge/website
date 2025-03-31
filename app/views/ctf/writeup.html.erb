@@ -3,20 +3,18 @@
 ]) %>
 <%= render_terminal([], true) %>
 
-<div class="writeup-wrapper">
+<div class="writeup-wrapper gap-4 mx-4">
   <div class="writeup-container bg-primary">
     <h4 class="writeup-year text-white text-center"><%= @which.upcase %>-<%= @ctf_info["year"] %></h4>
-    <h1 class="writeup-title text-white"><%= params[:writeup].gsub('.md', '').capitalize %></h1>
+    <h1 class="writeup-title text-white"><%= @ctf_info["title"] %></h1>
     <%= @html_content %>
   </div>
 
   <div class="table-of-content bg-primary">
-    <h5 class="text-slate-100 font-semibold"><%= @ctf_info["title"] %> - Table of contents</h5>
+    <h3 class="text-slate-100 font-semibold text-3xl"><%= @ctf_info["title"] %> - Table of contents</h3>
     <ul class="text-slate-100">
       <% @headings.each do |heading| %>
         <% indent_level = heading[:text].count(".") - 1 %>
-        <%puts(heading[:text])%>
-        <%puts(indent_level)%>
         <li class="ml-<%= indent_level * 6 %>">
           <a href="#<%= heading[:anchor] %>" class="toc-anchor group flex items-start py-1">
             <% if indent_level > 0 %>

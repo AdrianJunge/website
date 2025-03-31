@@ -1,4 +1,10 @@
 # Content
+- xterm + flowbite css über CDN fetchen
+- Landing Page anpassen
+    - https://unbounce.com/landing-page-examples/best-landing-page-examples/
+    - Images von KIT/KITCTF lieber wegpacken oder vlt als Emoji falls das irgendwie geht
+    - Schrift größer
+    - Writeups direkt verlinken bzw "latest content"
 - about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
     - Resumee/CV (oder nur Teile davon)
         - Englisch/Deutsch
