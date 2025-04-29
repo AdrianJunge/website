@@ -72,4 +72,4 @@ gem "rouge"
 gem "sass-rails"
 gem "mini_magick"
 
-gem "tailwindcss-rails", "~> 4.0"
+gem "tailwindcss-rails", "~> 4.2"
