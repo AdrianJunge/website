@@ -6,20 +6,20 @@
     "website": "https://cscg.de/",
     "description": "The CSCG is an annual CTF competition that spans two months and serves as the qualifier for the DHM."
   },
-  "DHM": {
-    "terminal_path": "dhm",
-    "logo": "ctf/dhm.jpg",
-    "writeups": "/ctf/dhm",
-    "website": "https://hacking-meisterschaft.de/",
-    "description": "The DHM is the annual CTF final round of the CSCG qualifiers, where teams of 6 members compete against each other for the chance to qualify for the ECSC."
-  },
-  "KITCTF":{
-    "terminal_path": "kitctf",
-    "logo": "ctf/kitctf.png",
-    "writeups": "/ctf/kitctf",
-    "website": "https://kitctf.de/",
-    "description": "KITCTF organizes the local IntroCTF @KIT every semester and the GPNCTF annually."
-  },
+  // "DHM": {
+  //   "terminal_path": "dhm",
+  //   "logo": "ctf/dhm.jpg",
+  //   "writeups": "/ctf/dhm",
+  //   "website": "https://hacking-meisterschaft.de/",
+  //   "description": "The DHM is the annual CTF final round of the CSCG qualifiers, where teams of 6 members compete against each other for the chance to qualify for the ECSC."
+  // },
+  // "KITCTF":{
+  //   "terminal_path": "kitctf",
+  //   "logo": "ctf/kitctf.png",
+  //   "writeups": "/ctf/kitctf",
+  //   "website": "https://kitctf.de/",
+  //   "description": "KITCTF organizes the local IntroCTF @KIT every semester and the GPNCTF annually."
+  // },
   "FCSC":{
     "terminal_path": "fcsc",
     "logo": "ctf/fcsc.png",

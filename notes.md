@@ -53,6 +53,7 @@
         - live Rendering des Markdowns
 
 # Visuals
+- Writeup padding-left-right etwas erhöhen, sodass der expand Button nicht mehr knapp drüber ist
 - Redundantes bzw alles an CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
 - Taskbar Icons sind klickbar auch wenn die Taskbar nicht expanded ist
@@ -78,6 +79,7 @@
 - Fetched ctf favicon sanitzen wegen XSS vector mit DOMPurify
 
 # Fix
+- /ctf wenn man neben den geöffneten Kreis klickt soll der Kreis wieder minimiert werden
 - Terminal nav button geht aus Bildschirm raus sobald zu klein
 - tailwindcss flowbite plugin fixen
     => evtl neues Setup und Code übernehmen
