@@ -78,7 +78,6 @@
 - Fetched ctf favicon sanitzen wegen XSS vector mit DOMPurify
 
 # Fix
-- /ctf wenn man neben den geöffneten Kreis klickt soll der Kreis wieder minimiert werden
 - Terminal nav button geht aus Bildschirm raus sobald zu klein
 - tailwindcss flowbite plugin fixen
     => evtl neues Setup und Code übernehmen
