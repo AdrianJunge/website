@@ -148,7 +148,7 @@ By adding a post with following content:
 the button will be perfectly covered by the like button.
 Submitting this to the admin will lead in a like for our post.
 
-## 4.5. Exploitation Variant 5 - I like cheese🧀<a id="exploitation variant 5"></a>
+## 4.5. Exploitation Variant 5 - I…LIKE CHEESE!🧀<a id="exploitation variant 5"></a>
 This is one of the oldest cheeses in CTF and also really applies in the real world.
 In general if you have a weak password policy enforcement, people will use bad username-password combinations.
 Especially if time is a factor like in CTF challenges.
