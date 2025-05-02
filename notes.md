@@ -53,6 +53,9 @@
         - live Rendering des Markdowns
 
 # Visuals
+- Writeups
+    - Anstatt Screenshots, Challenge HTML embedden und so aussehen lassen als wäre es wie in einem eigenen Browserfenster
+    => https://github.com/felixfbecker/dom-to-svg
 - Redundantes bzw alles an CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
 - Taskbar Icons sind klickbar auch wenn die Taskbar nicht expanded ist
