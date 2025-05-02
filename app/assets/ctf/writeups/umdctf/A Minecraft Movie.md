@@ -17,7 +17,7 @@ year: 2025
 While this wasn't the most complex challenge, it was refreshing to see a challenge with so many different solutions. Beyond my solution, I'll be discussing a bunch of alternative approaches from the **UMDCTF** Discord after the CTF ended. So thanks to everyone who shared their ideas and payloads!
 
 # 2. Reconnaissance<a id="reconnaissance"></a>
-We are given two URLs: one for the website itself and one to submit a post ID to the admin (everything else than a post ID will be rejected) - a typical XSS/CSRF challenge setup. Starting with the challenge we are greeted by a wonderful landing page containing different posts. As the theme of this year's **UMDCTF** was all about brainrot social media, this challenge followed this idea with a **Minecraft movie** fanclub page where people can submit, like, and dislike each other's posts on a shared instance. Having a look into one of the posts reveals users can add for example embedded **YouTube** links via iframes and more. But more important we see a small hint `🌟 This post was liked by an admin!`.
+We are given two URLs: one for the website itself and one to submit a post ID to the admin (everything else than a post ID will be rejected) - a typical XSS/CSRF challenge setup. Starting with the challenge we are greeted by a wonderful landing page containing different posts. As the theme of this year's **UMDCTF** was all about brainrot social media, this challenge was about a **Minecraft movie** fanclub website where people can submit, like, and dislike each other's posts on a shared instance. Having a look into one of the posts reveals users can add embedded **YouTube** links via iframes. But more important we see a small hint `🌟 This post was liked by an admin!`.
 
 ![landing overview](ctf/writeups/umdctf/aminecraftmovie/landingoverview.png "landing overview")
 
@@ -25,31 +25,32 @@ So it is quite obvious we have to make the admin like our post. Creating our Acc
 
 ![account overview](ctf/writeups/umdctf/aminecraftmovie/accountoverview.png "account overview")
 
-But there is something weird with the `session number`, it tells us it is `undefined`. This will be more important later for the `DOM clobbering` exploit. Creating a new post with some `<b>` HTML tag will reveal that we effectively got HTML injection:
+But there is something weird with the `session number`, it tells us it is `undefined`. This will be more important later for the [DOM clobbering exploit](#exploitation%20variant%201). Creating a new post with some `<b>` HTML tag will reveal that we effectively got HTML injection:
 
 ![post testing](ctf/writeups/umdctf/aminecraftmovie/posttesting.png "post testing")
 
-Moreover, sending any post to the admin reveals, he will always click the dislike button. Going further and trying some `<script>` tag reveals there is some kind of sanitizer, removing malicious HTML, as no alert box pops up. Let's look at the response in **Burp Suite** to figure out what happened:
+Moreover, sending any post to the admin reveals, he will always click the `dislike` button. Going further and trying some `<script>` tag reveals there is some kind of sanitizer, removing malicious HTML, as no alert box pops up. Let's look at the response in **Burp Suite** to figure out what happened:
 
 ![xss test](ctf/writeups/umdctf/aminecraftmovie/xsstest.png "xss test")
 
-We see the script tag isn't sanitized by some backend. There has to be a client-side sanitizer. Investigating the `index.js` running in our browser, we find **DOMPurify** v3.2.5, a powerful XSS sanitizer running in its latest version. It is very unlikely we have to find a bypass for this sanitizer, as you would need a zero-day vulnerability for this.
-So we have to come up with some other ideas.
+We see the script tag isn't sanitized by some backend. There has to be a client-side sanitizer. Investigating the `index.js` running in our browser, we find **DOMPurify** v3.2.5, a powerful XSS sanitizer running in its latest version. It is very unlikely that we have to find a bypass for this sanitizer, as you would need a zero-day vulnerability for this. So we have to come up with some other ideas.
 
 # 3. Vulnerability Description<a id="vulnerability description"></a>
-Liking one of our posts and coming back to our account Dashboard, we won't see `Current Session Number: undefined` anymore, but now it shows the number of likes we have given to posts. Having a closer look at the request made reveals some `legacy` endpoint:
+Liking one of our posts and coming back to our account Dashboard, we won't see `Current Session Number: undefined` anymore, but now it shows the number of likes we have given to posts. Having a closer look at the request made reveals some `legacy-social` endpoint:
 
 ![liking a post](ctf/writeups/umdctf/aminecraftmovie/sessionnumberinlikingpost.png "liking a post")
 
-So the `session number` is always submitted with our POST request to like a post. As we saw earlier, `Current Session Number: undefined`, this is maybe just a `window` property, so let's test our assumption. And indeed, as we type in `window`, it will already suggest `window.sessionNumber`, which has the same number we see on our dashboard. Also, checking out the HTML of an arbitrary post gives us a hint in a comment: `<!-- TODO: Migrate social endpoint, switch to useState/useContext -->`. So instead of some native **React** functionality to manage some kind of state, the developers of this website just used a simple `window` property.
+So the `session number` is always submitted with our POST request when a post is liked. As we saw earlier, `Current Session Number: undefined`, this is maybe just a `window` object property, so let's test our assumption. And indeed, as we type in `window`, it will already suggest `window.sessionNumber` which has the same number we see on our dashboard. Also, checking out the HTML of an arbitrary post gives us a hint in a HTML comment:
+`<!-- TODO: Migrate social endpoint, switch to useState/useContext -->`
+So instead of some native **React** functionality to manage some kind of state, the developers of this website just used a global **JavaScript** object.
 
 # 4. Exploitation<a id="exploitation"></a>
 ## 4.1. Exploitation Variant 1 - DOM clobbering<a id="exploitation variant 1"></a>
-In short, DOM clobbering is about changing the way JavaScript works on a website by injecting specific HTML content. By setting the `id` attribute of some HTML tag to a used `window` property, we can overwrite the content of this global JavaScript object or variable. In this case, `sessionNumber` is a great target. So by simply using as post content `<a href="&likes=10" id="sessionNumber">gimme like</a>` we will see in the request following:
+In short, DOM clobbering is about changing the way **JavaScript** works on a website by injecting specific HTML content. By setting the `id` attribute of some HTML tag to a used `window` object property, we can overwrite the content of this global **JavaScript** object or variable. In this case, `sessionNumber` is a great target. So by simply using as post content like `<a href="&likes=10" id="sessionNumber">gimme like</a>` we will see in the request following:
 
 ![dom clobbered session number](ctf/writeups/umdctf/aminecraftmovie/domclobberedsessionnumber.png "dom clobbered session number")
 
-As the `sessionNumber` is simply added into the HTTP request data, we can add a new key-value pair `likes` by simply setting `&` at the start of the `href` attribute, which is used for the request. The backend will take the first `likes` key-value pair, so although we clicked the dislike button, we still contribute a like to the post. Sending the post ID to the admin will result in:
+As the `sessionNumber` is simply added into the HTTP request data, we can add the key-value pair `likes` by simply setting `&` at the start of the `href` attribute, which is used for the request. The backend will take the first `likes` key-value pair, so although we clicked the dislike button, we still contribute a like to the post. Sending the post ID to the admin will result in:
 
 ![admin liked](ctf/writeups/umdctf/aminecraftmovie/adminliked.png "admin liked")
 
@@ -58,12 +59,12 @@ Returning to our account overview, we are greeted with the flag:
 ![flag](ctf/writeups/umdctf/aminecraftmovie/flag.png "flag")
 
 ## 4.2. Exploitation Variant 2 - Submit form<a id="exploitation variant 2"></a>
-The simplest method to get CSRF without any JavaScript but with a click is to submit forms. The only obstacle is that the admin will always click the button with the id `dislike-button`. But what happens if we just add another HTML element with the same ID? Technically, this is invalid HTML. But as browsers always do something with invalid HTML, it is still being rendered. However, DOM access via, for example, `window.document.getElementById('dislike-button')` will return the first element in the DOM with this specific id. This is just an assumption, but the probability is high that the admin is implemented with selenium/puppeteer to automate admin requests. As the challenge just simulates a click on the button with id `dislike-button`, it will search the DOM and will receive the first one, which is ours. So if we just add a random post and a second one, like following:
+The simplest method to get CSRF without any **JavaScript** but with a click is via submit forms. The only obstacle is that the admin will always click the button with the id `dislike-button`. But something interesting will happen if we just add another HTML element with the same ID. Technically, this is invalid HTML. But as browsers always try their best to fix invalid HTML, this rule is ignored and the document is still being rendered. However, DOM access via `window.document.getElementById('dislike-button')` will return the first element in the DOM with this specific id. This is just an assumption, but the probability is high that the admin is implemented with selenium/puppeteer to automate admin requests. As the admin bot just simulates a click on the button with id `dislike-button`, it will search the DOM and will receive the first one being ours. So we can just add a random post and a second one, like following:
 
 ```html
 <form action="https://a-minecraft-movie-api.challs.umdctf.io/legacy-social"
     method="post">
-    <input type="hidden" name="postId" value="<post-id-from-any-other-post>">
+    <input type="hidden" name="postId" value="<some-post-id>">
     <input type="hidden" name="likes" value="1">
     <button id="dislike-button" type="submit">Get this juice like</button>
 </form>
@@ -71,8 +72,8 @@ The simplest method to get CSRF without any JavaScript but with a click is to su
 
 The admin will click our submit form and thus like our other post.
 
-## 4.3. Exploitation Variant 3 - iframe youtube redirect<a id="exploitation variant 3"></a>
-There was another great idea to solve this challenge. As you have an HTML injection, we can try to redirect the admin to our website. As the web server has no CSRF protection, we can simply host an automatic submit form, so the admin will like our post. Starting with the Redirect, we have a little problem:
+## 4.3. Exploitation Variant 3 - iframe YouTube open redirect<a id="exploitation variant 3"></a>
+There was another great idea to solve this challenge. As you have an HTML injection, we can try to redirect the admin to our website. As the web server has no CSRF protection, we can simply host an automated submit form, so the admin will like our post. Starting with the redirect, we have a little problem:
 
 ```javascript
 const dirtyHTML = f.content;
@@ -93,13 +94,13 @@ DOMPurify.addHook("uponSanitizeElement", (node, data) => {
 });
 ```
 
-We are allowed to embed content in iframes, but only from **YouTube**. So we need an open redirect. The first one is in **YouTube** itself, but it is a bit restricted as it only allows you to redirect to **Google** domains via: `https://www.youtube.com/embed/../logout?continue=https://google.com`. The second open redirect is in the **Googleads** product and thus allows us to do a double open redirect like the following:
+We are allowed to embed content in iframes, but only from **YouTube**. So we need an **open redirect**. The first one is in **YouTube** itself, but it is restricted as it only allows you to redirect to **Google** domains via: `https://www.youtube.com/embed/../logout?continue=https://google.com`. The second **open redirect** is in the **Googleads** product and thus allows us to chain these **open redirects** like the following:
 
 ```html
 <iframe src="https://www.youtube.com/embed/../logout?continue=https://googleads.g.doubleclick.net/pcs/click?adurl=<your-own-website>"></iframe>
 ```
 
-Now we can host the following HTML with an appropriate post ID on our website, which leads to a CSRF attack on our post:
+Now we can host the following HTML with an appropriate post ID on our website, which leads to CSRF:
 
 ```html
 <script>
@@ -114,7 +115,7 @@ fetch('https://a-minecraft-movie-api.challs.umdctf.io/legacy-social', {
 </script>
 ```
 
-The iframe will be victim to the open redirects. The reason for this is the cookie attribute `sameSite=none`, you can read further in [this article](https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions#none). This means the browser will always send the cookie to the challenge website in all requests, no matter by whom they were issued. So when the iframe is redirected to our malicious website, the POST request will be submitted together with the admin cookie. The cool thing about this exploit is that we don't even need the click of the admin.
+The iframe will be victim to the **open redirects**. The reason for this is the cookie attribute `sameSite=none`, you can read further in [this article](https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions#none) describing this attribute in depth. This means the browser will always send the cookie to the challenge website in all requests, no matter by whom they were issued. So when the iframe is redirected to our malicious website, the POST request will be submitted together with the admin cookie. The cool thing about this exploit is that we don't even need the click of the admin.
 
 ## 4.4. Exploitation Variant 4 - CSS shenanigans<a id="exploitation variant 4"></a>
 This one is a bit more special, but I like the idea. It is a clickjacking-like approach to solve this challenge. The main idea is to add another button with the id `dislike-button`, just like in the submit-form-approach. But this time we will move our button behind the like button. The admin bot will just search for this button via the id attribute and then click on the element. You might think at first that, puppeteer will click the element even when it is overlapped by another element. But reading the documentation about puppeteer [click handler](https://pptr.dev/api/puppeteer.elementhandle.click), we will get the information that it simulates a real mouse click. So it will focus on the element given by a selector, for example, the element with the id `dislike-button`, but will still click the topmost element. By adding a post with the following content:
@@ -129,7 +130,7 @@ The button will be perfectly covered by the like button. Submitting this to the 
 This is one of the oldest cheeses in CTF, and also really applies in the real world. In General, if you have a weak password policy enforcement, people will use bad username-password combinations. Especially if time is a factor, like in CTF challenges. So you can expect some bad credentials and try to guess them like for example, `asdfasdf:asdfasdf`, and you get the flag without even exploiting the actual challenge.
 
 # 5. Mitigation<a id="mitigation"></a>
-Although **DOMPurify** was present on this website, some mistakes were made. Giving users effective HTML injection always opens doors for attackers. If you want your users to style their content, then you might want to use a markdown parser or something similar, as these have a more restrictive way to style your content. Moreover, allowing **YouTube** links to be embedded opens the door for open redirects, as we already saw. There is no reason for `sameSite=none`, especially if users can add iframes. This is a very bad idea. Instead, use the default value `Lax` or even `Strict`. Also, the use of global JavaScript objects like `window. sessionNumber` is a very bad idea when requests are depending on it. Instead, use (as the TODO already hints) native functionality in **React** like `useState` or `useContext`. Another mistake was to set up the challenge with a shared instance. This is not, in General, a bad idea, but together with a weak password policy and having the flag just right there in the dashboard of the accounts will always lead to lazy players logging into others' accounts and stealing their flags. All in having another user give you one click on your post is very powerful and should always remind us to think about clicking on unknown websites.
+Although **DOMPurify** was present on this website, some mistakes were made. Giving users effective HTML injection always opens doors for attackers. If you want your users to style their content, then you might want to use a markdown parser or something similar, as these have a more restrictive way to style your content. Moreover, allowing **YouTube** links to be embedded opens the door for **open redirects**, as we already saw. There is no reason for `sameSite=none`, especially if users can add iframes. This is a very bad idea. Instead, use the default value `Lax` or even `Strict`. Also, the use of global **JavaScript** objects like `window. sessionNumber` is a very bad idea when requests are depending on it. Instead, use (as the TODO already hints) native functionality in **React** like `useState` or `useContext`. Another mistake was to set up the challenge with a shared instance. This is not, in General, a bad idea, but together with a weak password policy and having the flag just right there in the dashboard of the accounts will always lead to lazy players logging into others' accounts and stealing their flags. All in having another user give you one click on your post is very powerful and should always remind us to think about clicking on unknown websites.
 
 # 6. Flag<a id="flag"></a>
 UMDCTF{I_y3@RNeD_f0R_7HE_Min3S}
