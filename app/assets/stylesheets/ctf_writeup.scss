@@ -107,7 +107,7 @@ body {
 
 .markdown-content h1, .markdown-content h2, .markdown-content h3, .markdown-content h4, .markdown-content h5, .markdown-content h6 {
   font-weight: bold;
-  margin-top: 3dvh;
+  margin-top: 6dvh;
   margin-bottom: 1dvh;
   color: #fff;
 }
@@ -168,6 +168,8 @@ body {
   font-family: monospace;
   font-size: 0.7em;
   line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .markdown-content img {
