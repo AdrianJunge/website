@@ -45,3 +45,15 @@ Add entry in `/config/importmap.rb` and `/assets/config/manifest.js`
 ## Watchman
 To use tailwindcss you need watchman. For installation simply execute:
 `brew install watchman`
+
+## Latex to Markdown
+\\textit\{([^}]+)\}
+**$1**
+
+\\command\{([^}]+)\}
+`$1`
+
+\\href\{([^}]+)\}\{([^}]+)\}
+[$2]($1)
+
+\
