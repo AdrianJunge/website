@@ -20,6 +20,13 @@
   //   "website": "https://kitctf.de/",
   //   "description": "KITCTF organizes the local IntroCTF @KIT every semester and the GPNCTF annually."
   // },
+  "UMDCTF":{
+    "terminal_path": "umdctf",
+    "logo": "ctf/umdctf.png",
+    "writeups": "/ctf/umdctf",
+    "website": "https://umdctf.io/",
+    "description": "UMDCTF is an annual CTF competition hosted by the University of Maryland."
+  },
   "FCSC":{
     "terminal_path": "fcsc",
     "logo": "ctf/fcsc.png",
