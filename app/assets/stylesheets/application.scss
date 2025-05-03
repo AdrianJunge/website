@@ -6,6 +6,16 @@
 @import "ctf_which";
 @import "ctf_writeup";
 
+.MathJax {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+.MathJax.has-scroll {
+    border-radius: 8px;
+    border: 1px solid $color-accent;
+    padding: 3vmin;
+}
 
 #taskbar-left {
     position: fixed;

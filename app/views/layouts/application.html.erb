@@ -14,7 +14,7 @@
         paths: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5'
         },
-        load: ['[tex]/color']
+        load: ['input/tex-full', 'output/chtml', '[tex]/color']
       },
       options: {
         skipHtmlTags: ["script","noscript","style","textarea"]
@@ -25,6 +25,24 @@
         },
         inlineMath: [['$','$'], ['\\(','\\)']],
         displayMath: [['$$','$$'], ['\\[','\\]']]
+      },
+      startup: {
+        pageReady() {
+          function updateScrollClasses() {
+            console.log('Updating scroll classes');
+            document.querySelectorAll('.MathJax').forEach(el => {
+              if (el.scrollWidth > el.clientWidth) {
+                el.classList.add('has-scroll');
+              } else {
+                el.classList.remove('has-scroll');
+              }
+            });
+          }
+          return MathJax.startup.defaultPageReady().then(() => {
+            updateScrollClasses();
+            window.addEventListener('resize', updateScrollClasses);
+          });
+        }
       }
     };
   </script>
