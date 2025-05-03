@@ -33,7 +33,7 @@ As in most CTF challenges, there is not only one way to solve a problem. The **M
 <div>
   \[
     \begin{aligned}
-        (P-1)\equiv -1 \bmod 
+        (P-1)\equiv -1 \bmod
     \end{aligned}
   \]
 </div>
@@ -114,13 +114,13 @@ Now we can just rearrange and substitute the formula as follows:
 <div>
 \[
     \begin{aligned}
-    \mathrm{AES}^{-1}(K_{\mathrm{IN}},T) 
+    \mathrm{AES}^{-1}(K_{\mathrm{IN}},T)
         &= c_4 \oplus M_5 \oplus K' \\
         &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_3 \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00)\bigr) \\
         &\qquad \oplus M_5 \oplus K' \\[1ex]
     %%%%
     \mathrm{AES}^{-1}\bigl(K_{\mathrm{IN}},\,\mathrm{AES}^{-1}(K_{\mathrm{IN}},T) \\
-        \qquad \oplus M_5 \oplus K'\bigr) 
+        \qquad \oplus M_5 \oplus K'\bigr)
         &= c_3 \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00) \\
         &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_2 \oplus (\textcolor{green}{\mathbf{M_3[0{:}14]}} \Vert M_3[14{:}16])\bigr) \\
         &\qquad \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00) \\[1ex]
@@ -203,7 +203,7 @@ def forge_nonce_for_target(key, T, ctx_second_half):
                 xor(c.encrypt(b'\x00\x00\x00\x01keygen_for_s'), b'ecure_bagdrop\x00' + ctx_first_half_0_2)
             )
         )
-        
+
         if attempt[-2:] == ctx_second_half[0:2]:
             ctx_first_half_2_16 = attempt
             break

@@ -71,7 +71,6 @@ gem "front_matter_parser"
 gem "rouge"
 gem "sass-rails"
 gem "mini_magick"
-
-gem 'mathjax-rails'
+gem "mathjax-rails"
 
 gem "tailwindcss-rails", "~> 4.0"

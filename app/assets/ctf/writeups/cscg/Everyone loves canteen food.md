@@ -34,7 +34,7 @@ For this challenge, the source code is provided. The web server is implemented w
 The web server uses the [MVC pattern](https://de.wikipedia.org/wiki/Model_View_Controller) to provide the interactive functionality. There is an `AdminController.php` and a `CanteenController.php`, each with its appropriate `AdminModel.php` and `CanteenModel.php`. In addition to the capabilities of a normal user, the admin user can also access the logs of the website with the functionality in its controller. In the `AdminModel`, the class has some interesting functions like `__wakeup`, which will become important later. The `CanteenModel`, which is used by every normal user, implements two functions to obtain the data shown on the landing page. The first one `getFood` just fetches all of the food from the database, adds a log to `log.txt` and rerandomizes the prices for each food. The second one `filterFood` filters the shown food by applying the user input to a **SQL** query and thus fetching only a limited amount of the food. Both of these functions also contain some functionality for unserialization in specific cases. Having a closer look at these functions immediately reveals the following vulnerabilities:
 
 - **SQL** injection - The user input `$price_param` for the `filterFood` function is concatenated with the query without any sanitization and prepared statements:
-    
+
 ```php
 $sql = "SELECT * FROM food where price < " . $price_param;
 ```
@@ -128,4 +128,4 @@ This web server has some fundamental flaws. Starting with the **SQL** injection,
 
 
 # 7. Flag<a id="flag"></a>
-dach2025{sh1ty_r3g3x_w0nt_s4fe_y0u} 
+dach2025{sh1ty_r3g3x_w0nt_s4fe_y0u}

@@ -89,7 +89,7 @@ doc = new DOMParser().parseFromString(dirtyPayload, PARSER_MEDIA_TYPE);
 The **jsdom** implementation of `parseFromString` uses the **parse5** [parser](https://github.com/inikulin/parse5/blob/v6.0.0/packages/parse5/lib/parser/index.js). Eventually after sanitization, **DOMPurify** calls:
 
 ```javascript
-let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;    
+let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
 ```
 
 This will internally use the **parse5** [serializer](https://github.com/inikulin/parse5/blob/v6.0.0/packages/parse5/lib/serializer/index.js), which has the aforementioned namespace-dependent bug. Thus, the malicious payload is processed in the following stages, each potentially modifying its HTML structure and representation:
