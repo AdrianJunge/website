@@ -1,7 +1,4 @@
 # Content
-- Latex to HTML anstatt Markdown to HTML
-    => überlegen ob das wirklich so eine gute Idee ist, da ich dann auch den Table of contents anpassen müsste, bzw Latex so konfigurieren dass es diese anchor tags automatisch rein haut
-- Writeups code field copy button
 - xterm + flowbite css über CDN fetchen
 - Landing Page anpassen
     - https://unbounce.com/landing-page-examples/best-landing-page-examples/
@@ -84,7 +81,6 @@
 - Fetched ctf favicon sanitzen wegen XSS vector mit DOMPurify
 
 # Fix
-- KDF_dream Writeup hoch- und tiefgestellte Character mithilfe von zB MathJax
 - table of contents - sobald zu einer section gescrollt wird dessen title die ganze Box ausfüllt wird die Box nochmal größer
 - Terminal nav button geht aus Bildschirm raus sobald zu klein
 - tailwindcss flowbite plugin fixen

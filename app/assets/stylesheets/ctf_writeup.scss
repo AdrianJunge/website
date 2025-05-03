@@ -158,7 +158,12 @@ body {
   text-decoration: underline;
 }
 
+.code-block {
+  position: relative;
+}
+
 .markdown-content code {
+  position: relative;
   display: inline-block;
   padding: 0.25dvh 0.5dvh;
   background-color: #2e2e2e;
@@ -174,4 +179,23 @@ body {
 .markdown-content img {
   margin: 1.5dvh auto;
   border-radius: 1dvh;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5dvh;
+  right: 2.5dvh;
+  z-index: 100;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.2em;
+  border-radius: 0.3em;
+  font-size: 0.8em;
+  color: #ccc;
+  transition: background-color 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: $color-secondary;
 }

@@ -3,10 +3,6 @@ module MarkdownHelper
   require "rouge"
   require "rouge/plugins/redcarpet"
 
-  class RougeHTML < Redcarpet::Render::HTML
-    include Rouge::Plugins::Redcarpet
-  end
-
   def render_markdown(text)
     sanitized_text = text.gsub(/---([\S\s]*)---/, "").strip
 
@@ -30,7 +26,7 @@ module MarkdownHelper
       highlight: true,
       underline: true
     }
-    renderer = RougeHTML.new(render_options)
+    renderer = HtmlWithCopy.new(render_options)
 
     html_content = "<div class='markdown-content'>
       <span style='color:white'>

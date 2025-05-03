@@ -96,3 +96,18 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", highlightCurrentSection);
     highlightCurrentSection();
 });
+
+document.addEventListener('click', event => {
+  const btn = event.target.closest('.copy-btn');
+  if (!btn) return;
+
+  const code = btn.getAttribute('data-code');
+  navigator.clipboard.writeText(code)
+    .then(() => {
+      btn.textContent = '✅';
+      setTimeout(() => btn.textContent = '📋', 2000);
+    })
+    .catch(() => {
+      btn.textContent = 'Error';
+    });
+});
