@@ -1,5 +1,6 @@
 # Content
 - Latex to HTML anstatt Markdown to HTML
+    => überlegen ob das wirklich so eine gute Idee ist, da ich dann auch den Table of contents anpassen müsste, bzw Latex so konfigurieren dass es diese anchor tags automatisch rein haut
 - Writeups code field copy button
 - xterm + flowbite css über CDN fetchen
 - Landing Page anpassen

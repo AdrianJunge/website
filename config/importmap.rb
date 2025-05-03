@@ -15,3 +15,5 @@ pin "jquery-ui", to: "https://cdn.jsdelivr.net/npm/jquery-ui@1.14.1/dist/jquery-
 pin "xterm", to: "https://cdn.jsdelivr.net/npm/xterm/lib/xterm.min.js"
 pin "xterm-addon-web-links", to: "https://cdn.jsdelivr.net/npm/xterm-addon-web-links/lib/xterm-addon-web-links.min.js"
 pin "xterm-addon-fit", to: "https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.min.js"
+
+pin "mathjax", to: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js", preload: true

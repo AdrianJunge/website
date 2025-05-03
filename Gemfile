@@ -72,4 +72,6 @@ gem "rouge"
 gem "sass-rails"
 gem "mini_magick"
 
+gem 'mathjax-rails'
+
 gem "tailwindcss-rails", "~> 4.0"

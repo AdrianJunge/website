@@ -167,6 +167,8 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    mathjax-rails (2.6.1)
+      railties (>= 3.0)
     matrix (0.4.2)
     mini_magick (5.2.0)
       benchmark
@@ -429,6 +431,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   kamal
+  mathjax-rails
   mini_magick
   propshaft
   puma (>= 5.0)

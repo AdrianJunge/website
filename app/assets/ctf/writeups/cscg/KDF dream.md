@@ -20,7 +20,7 @@ We are given some **Python** files simulating a series of communication exchange
 The communication starts with the popular **Diffie-Hellman Key Exchange** using a secure group. After both parties calculated the shared key **Alice** and **Bob** agree on one of the three **NIST** certified pseudo random functions (PRF) HMAC, CMAC and KMAC, for the KDF. Both parties randomly select a nonce and exchange these to have a common KDF context. After that, the shared key, the chosen PRF, the common context and some hardcoded string are used to derive a common key out of the KDF algorithm **SP800 108 Counter Mode**. **Alice** then sends **Bob** a message `wearecompromised` because she is already suspicious about the connection, as the description tells us. The only way to receive the flag is by somehow making sure **Bob** receives `allgoodprintflag` as a message.
 
 # 3. We are the man in the middle<a id="we are the man in the middle"></a>
-At first, we want to make sure we get to know the shared secret being calculated via the **Diffie-Hellman Key Exchange**. Both parties calculate the same shared secret `K = g^ab mod P` through modular exponentiation with a prime `P`, which can then be used for symmetric encryption:
+At first, we want to make sure we get to know the shared secret being calculated via the **Diffie-Hellman Key Exchange**. Both parties calculate the same shared secret `\(K = g^{ab} \bmod P\)` through modular exponentiation with a prime `P`, which can then be used for symmetric encryption:
 
 ![casual diffie-hellman key exchange](ctf/writeups/cscg/kdfdream/casual_dh.png "casual diffie-hellman key exchange")
 
@@ -30,19 +30,47 @@ But this key exchange is highly vulnerable to a **Man-in-the-Middle** attack. We
 
 As in most CTF challenges, there is not only one way to solve a problem. The **Man-in-the-Middle** can also force a trivial shared secret `K=1` by simply sending `P-1` to each party. The reason for this is the following equation holding for any prime P:
 
-![prime equation](ctf/writeups/cscg/kdfdream/prime_equation.png "prime equation")
+<div>
+  \[
+    \begin{aligned}
+        (P-1)\equiv -1 \bmod 
+    \end{aligned}
+  \]
+</div>
 
 This also means **Alice** and **Bob** are actually calculating
 
-![actual calc](ctf/writeups/cscg/kdfdream/actual_calc.png "actual calc")
+<div>
+  \[
+    \begin{aligned}
+        (-1)^k \bmod P
+    \end{aligned}
+  \]
+</div>
 
 with k being their private secret. This results in the shared secret K:
 
-![diffie-hellman shared key](ctf/writeups/cscg/kdfdream/dh_shared_key.png "diffie-hellman shared key")
+<div>
+\[
+    K = \begin{cases}
+    1 \bmod P       & \text{if } a \text{ and } b \text{ are both even} \\
+    P-1 \bmod P     & \text{if } a \text{ and } b \text{ are both odd } \\
+    \bot            &\text{otherwise}.
+    \end{cases}
+\]
+</div>
 
 The probability of both parties choosing even exponents is:
 
-![probability success](ctf/writeups/cscg/kdfdream/p_success.png "probability success")
+<div>
+  \[
+    P_{\text{success}}
+    = \bigl(\tfrac{1}{2}\bigr)^2
+    = 25\%
+  \]
+</div>
+
+
 
 # 4. Deriving some flags<a id="deriving some flags"></a>
 Now that we know the shared secret, we can decrypt every message **Alice** and **Bob** send each other via the KDF-derived OTPs, as we can calculate these ourselves. But this is not enough for the challenge, we need to influence the output and thus the derived OTPs.
@@ -63,17 +91,63 @@ There are some nice explanations out there on how the [AES-CMAC](https://www.rfc
 <span>
 We will go for the first part of the context of **Bob** influencing his OTP. The reason for this is that at the time of intercepting the nonces and modifying the one dedicated to **Bob**, we already know the nonce for **Alice** and thus can calculate her OTP, which will be important later.
 <span>
-To proceed, we need some formulas. Each `M_i` got its own block, so overall there are 5 blocks in the **CMAC**. `K_{IN}` is the shared secret key from the **Diffie-Hellman Key Exchange** used as the encryption key for **AES**. `M_i[x:y]` represents all of the bytes of `M_i` starting with index `x` until index `y`. `K'` is the **AES** subkey we can easily calculate via the shared key and `T` is the target OTP we want to forge. The green highlighted parts `M_2[14:16]` and `M_3[0:14]` are the first half of the context we can control:
+To proceed, we need some formulas. Each `\(M_i\)` got its own block, so overall there are 5 blocks in the **CMAC**. `\(K_{IN}\)` is the shared secret key from the **Diffie-Hellman Key Exchange** used as the encryption key for **AES**. `\(M_i[x:y]\)` represents all of the bytes of `\(M_i\)` starting with index `x` until index `y`. `K'` is the **AES** subkey we can easily calculate via the shared key and `T` is the target OTP we want to forge. The green highlighted parts `\(M_2[14:16]\)` and `\(M_3[0:14]\)` are the first half of the context we can control:
 
-![basic cmac](ctf/writeups/cscg/kdfdream/basic_cmac.png "basic cmac")
+<div>
+\[
+    \begin{aligned}
+        c_1 &= \mathrm{AES}(K_{\mathrm{IN}},\,M_1)\\
+        c_2 &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_1\oplus M_2\bigr)
+            = \mathrm{AES}\Bigl(K_{\mathrm{IN}},\,c_1 \oplus \bigl(M_2[0:14]\Vert \textcolor{green}{\mathbf{M_2[14:16]}}\bigr)\Bigr)\\
+        c_3 &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_2\oplus M_3\bigr)
+            = \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_2\oplus (\textcolor{green}{\mathbf{M_3[0:14]}}\Vert M_3[14:16])\bigr)\\
+        c_4 &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_3\oplus M_4\bigr)
+            = \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_3\oplus (M_4[0:14]\Vert 0x00\Vert 0x00)\bigr)\\
+        T = c_5 &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_4\oplus M_5 \oplus K'\bigr)
+    \end{aligned}
+\]
+</div>
+
 
 Now we can just rearrange and substitute the formula as follows:
 
-![basic cmac rearrange](ctf/writeups/cscg/kdfdream/basic_cmac_rearrange.png "basic cmac rearrange")
+<div>
+\[
+    \begin{aligned}
+    \mathrm{AES}^{-1}(K_{\mathrm{IN}},T) 
+        &= c_4 \oplus M_5 \oplus K' \\
+        &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_3 \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00)\bigr) \\
+        &\qquad \oplus M_5 \oplus K' \\[1ex]
+    %%%%
+    \mathrm{AES}^{-1}\bigl(K_{\mathrm{IN}},\,\mathrm{AES}^{-1}(K_{\mathrm{IN}},T) \\
+        \qquad \oplus M_5 \oplus K'\bigr) 
+        &= c_3 \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00) \\
+        &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_2 \oplus (\textcolor{green}{\mathbf{M_3[0{:}14]}} \Vert M_3[14{:}16])\bigr) \\
+        &\qquad \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00) \\[1ex]
+    %%%%
+    \mathrm{AES}^{-1}\Bigl(K_{\mathrm{IN}},\,\mathrm{AES}^{-1}\bigl(K_{\mathrm{IN}},\,\mathrm{AES}^{-1}(K_{\mathrm{IN}},T) \\
+        \qquad \oplus M_5 \oplus K'\bigr) \\
+        \qquad \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00)\Bigr)
+        &= c_2 \oplus (\textcolor{green}{\mathbf{M_3[0{:}14]}} \Vert M_3[14{:}16]) \\
+        &= \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_1 \oplus (M_2[0{:}14] \Vert \textcolor{green}{\mathbf{M_2[14{:}16]}})\bigr) \\
+        &\qquad \oplus (\textcolor{green}{\mathbf{M_3[0{:}14]}} \Vert M_3[14{:}16]) \\[1ex]
+    %%%%
+    \mathrm{AES}^{-1}\Bigl(K_{\mathrm{IN}},\,\mathrm{AES}^{-1}\bigl(K_{\mathrm{IN}},\,\mathrm{AES}^{-1}(K_{\mathrm{IN}},T) \\
+        \qquad \oplus M_5 \oplus K'\bigr) \\
+        \qquad \oplus (M_4[0{:}14]\Vert 0\mathrm{x}00\Vert 0\mathrm{x}00)\Bigr) \\
+        \qquad \oplus \mathrm{AES}\bigl(K_{\mathrm{IN}},\,c_1 \oplus (M_2[0{:}14] \Vert \textcolor{green}{\mathbf{M_2[14{:}16]}})\bigr)
+        &= (\textcolor{green}{\mathbf{M_3[0{:}14]}} \Vert M_3[14{:}16])
+    \end{aligned}
+\]
+</div>
 
-Now we have on both sides of the equation parts we can control. We just need to brute force `M_2[14:16]` until the two bytes `M_3[14:16]`, which we are not able to control, are the correct ones. There might be the rare case in which we can't fulfill the equation, although we tried all of the `2^16 = 65535` variations. In this case, we need to repeat the whole exploit. Because of the equation holding, using the calculated context will result in our selected OTP target `T`. Before calculating the context for **Bob**, we need to determine our OTP target `T`. This can be done using the calculated `OTP_A` from **Alice**, the hardcoded `allgoodprintflag` string `m_{flag}` and the hardcoded `wearecompromised` string `m_{compromised}`:
+Now we have on both sides of the equation parts we can control. We just need to brute force `\(M_2[14:16]\)` until the two bytes `\(M_3[14:16]\)`, which we are not able to control, are the correct ones. There might be the rare case in which we can't fulfill the equation, although we tried all of the `\(2^{16} = 65535\)` variations. In this case, we need to repeat the whole exploit. Because of the equation holding, using the calculated context will result in our selected OTP target `T`. Before calculating the context for **Bob**, we need to determine our OTP target `T`. This can be done using the calculated `\(OTP_A\)` from **Alice**, the hardcoded `allgoodprintflag` string `\(m_{flag}\)` and the hardcoded `wearecompromised` string `\(m_{compromised}\)`:
 
-![target otp equation](ctf/writeups/cscg/kdfdream/target_otp_equation.png "target otp equation")
+<div>
+  \[
+    T = OTP_A \oplus m_{flag} \oplus m_{compromised}
+  \]
+</div>
 
 With this information and the derived equation, the implementation is straightforward:
 

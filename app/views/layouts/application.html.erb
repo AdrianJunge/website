@@ -8,6 +8,26 @@
   <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "flowbite", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "xterm", "data-turbo-track": "reload" %>
+  <script>
+    window.MathJax = {
+      loader: {
+        paths: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5'
+        },
+        load: ['[tex]/color']
+      },
+      options: {
+        skipHtmlTags: ["script","noscript","style","textarea"]
+      },
+      tex: {
+        packages: {
+          '[+]': ['color']
+        },
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']]
+      }
+    };
+  </script>
   <%= javascript_importmap_tags %>
   <%= favicon_link_tag asset_path('favicon.svg') %>
 
