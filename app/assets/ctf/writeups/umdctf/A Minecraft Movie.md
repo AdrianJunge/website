@@ -46,11 +46,42 @@ So instead of some native **React** functionality to manage some kind of state, 
 
 # 4. Exploitation<a id="exploitation"></a>
 ## 4.1. Exploitation Variant 1 - DOM clobbering<a id="exploitation variant 1"></a>
-In short, DOM clobbering is about changing the way **JavaScript** works on a website by injecting specific HTML content. By setting the `id` attribute of some HTML tag to a used `window` object property, we can overwrite the content of this global **JavaScript** object or variable. In this case, `sessionNumber` is a great target. So by simply using as post content like `<a href="&likes=10" id="sessionNumber">gimme like</a>` we will see in the request following:
+In short, DOM clobbering is about changing the way **JavaScript** works on a website by injecting specific HTML content. By setting the `id` attribute of some HTML tag to a used `window` object property, we can overwrite the value of this global **JavaScript** object or variable. In this case, `sessionNumber` is a great target as we see in following code snippet to handle the dislike button:
+
+```javascript
+const handleLikeDislike = useCallback(async (likesChange) => {
+  await startSessionIfNeeded();
+
+    if (window.sessionNumber === undefined) {
+      setSocialError("Session not started. Cannot like/dislike.");
+            return;
+    }
+    try {
+      const response = await fetch(`${API_BASE_URL}/legacy-social`, {
+        method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `sessionNumber=${window.sessionNumber}&postId=${postId}&likes=${likesChange}`,
+            credentials: "include"
+        });
+        if (!response.ok) {
+          setSocialError(await response.text());
+            return;
+        }
+        await fetchPost();
+    } catch (err) {
+      setSocialError("Failed to update likes.");
+            console.error("Like/dislike error:", err);
+    }
+}, [postId, fetchPost]);
+```
+
+As the `sessionNumber` is simply concatenated with the other HTTP request data we can create a post with content like `<a href="&likes=10" id="sessionNumber">gimme dat like</a>`. This will result in a new key-value pair `likes` by simply setting `&` at the start of the `href` attribute. The `href` attribute will overwrite the value of the `sessionNumber` window property. The request will look like this:
 
 ![dom clobbered session number](ctf/writeups/umdctf/aminecraftmovie/domclobberedsessionnumber.png "dom clobbered session number")
 
-As the `sessionNumber` is simply added into the HTTP request data, we can add the key-value pair `likes` by simply setting `&` at the start of the `href` attribute, which is used for the request. The backend will take the first `likes` key-value pair, so although we clicked the dislike button, we still contribute a like to the post. Sending the post ID to the admin will result in:
+The backend will take the first `likes` key-value pair and although we clicked the dislike button, we will contribute a like to the post. Sending the post ID to the admin will result in:
 
 ![admin liked](ctf/writeups/umdctf/aminecraftmovie/adminliked.png "admin liked")
 
