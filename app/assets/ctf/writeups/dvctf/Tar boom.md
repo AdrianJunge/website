@@ -50,7 +50,7 @@ So by simply having a file name with several `../` as a prefix will result in ar
 import tarfile
 
 overwrites = [
-    ('../../templates', 'result.html'),
+    ('../', 'test.txt'),
 ]
 
 with tarfile.open('malicious.tar', 'w') as tar:
