@@ -1,7 +1,7 @@
 ---
 title: Tar boom
 author:
-description:
+description: Within the Louvre Museum's intranet, there is a service that allows trusted users to upload .tar files and view their content. However, this service has been exploited by a hacker. He was able to retrieve crucial information about the Louvre's security, hidden within the flag.txt.
 categories:
     - web
 year: 2025
