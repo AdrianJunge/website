@@ -47,5 +47,12 @@
     "writeups": "/ctf/lactf",
     "website": "https://lac.tf/",
     "description": "LACTF is an annual CTF competition hosted by ACM Cyber at UCLA."
+  },
+  "DVCTF":{
+    "terminal_path": "dvctf",
+    "logo": "ctf/dvctf.png",
+    "writeups": "/ctf/dvctf",
+    "website": "https://dvc.tf/",
+    "description": "DVCTF is annualy held by DaVinciCode, the academic team of the École supérieure d'ingénieurs Léonard-de-Vinci."
   }
 }
