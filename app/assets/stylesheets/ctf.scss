@@ -3,32 +3,17 @@
 .ctf-overview {
     display: grid;
     place-items: center;
-    gap: 3dvh;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 5dvh;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     place-content: center;
     width: 100%;
     height: 100%;
-    margin-top: 5dvh;
-    margin-bottom: 5dvh;
+    padding: 5dvh;
 
-    @media (max-width: 2400px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (max-width: 1800px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 1200px) {
-        grid-template-columns: 1fr;
-    }
-
-    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: (1fr)[auto];
     -ms-grid-rows: auto;
     -webkit-display: grid;
-    -webkit-grid-template-columns: repeat(4, 1fr);
-    display: -ms-grid;
-    display: -webkit-grid;
+    -webkit-grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 
 .ctf-card {
@@ -38,14 +23,13 @@
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    width: 40vmin;
-    height: 40vmin;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 50vmin;
     border: $default-border;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
     transform: translateZ(0);
-
     transition: transform 0.2s ease-in-out;
+
     &:not(.expanded):hover {
         transform: scale(1.1);
         cursor: pointer;

@@ -10,7 +10,9 @@
         - Englisch/Deutsch
         => was muss man beachten wenn man sein CV online stellt
     - Ask me anything - Chatbot (chat with me)
-    - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
+    - Landing Page improvement
+        - Text about me left aligned
+        - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
 - Impressum
 - RSS Feed
