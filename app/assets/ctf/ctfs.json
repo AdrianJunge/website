@@ -20,6 +20,13 @@
   //   "website": "https://kitctf.de/",
   //   "description": "KITCTF organizes the local IntroCTF @KIT every semester and the GPNCTF annually."
   // },
+  "SMILEYCTF": {
+    "terminal_path": "smileyctf",
+    "logo": "ctf/smileyctf.png",
+    "writeups": "/ctf/smileyctf",
+    "website": "https://play.ctf.gg/",
+    "description": "This was the very first edition of SmileyCTF hosted by \"America's #1 CTF team\" named .;,;."
+  },
   "UMDCTF":{
     "terminal_path": "umdctf",
     "logo": "ctf/umdctf.png",

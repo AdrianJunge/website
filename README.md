@@ -11,6 +11,9 @@ Have fun exploring :smile:
 
 `gem install bundler`
 
+# Update
+`bundle update`
+
 # Dev stuff
 `gem install overcommit`
 `overcommit --install`
