@@ -8,7 +8,6 @@ sudo apt install -y ruby-railties
 sudo apt install -y rbenv
 sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev libyaml-dev
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-rvm install $RUBY_VERSION
 rbenv install $RUBY_VERSION
 rbenv global $RUBY_VERSION
 rbenv rehash
