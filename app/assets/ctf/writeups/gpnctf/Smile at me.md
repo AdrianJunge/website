@@ -8,7 +8,7 @@ year: 2025
 ---
 
 # TL;DR<a id="TL;DR"></a>
-    **- Challenge Setup:** The bot has a restricted URL filter and the site enforces a strict CSP preventing XSS and CSS exfiltration
+    **- Challenge Setup:** The bot has a restricted URL filter and the site enforces a strict **CSP** preventing XSS and CSS exfiltration
     **- Key Discoveries:** The URL parser of **Python** and **NodeJS** (Puppeteer) are differing in their implementation
     **- Vulnerability:** There are some URL parser differentials allowing you to bypass the checks and you can inject arbitrary image attributes in your notes
     **- Exploitation:** We can leverage the image attribute injection to an **XSLeak** via **STTF**
@@ -24,7 +24,7 @@ You can even add emojis to your notes - how awesome! There is a bot simulating a
 
 Overall there are two major problems to solve in this challenge:
 &nbsp;&nbsp; - finding a way to bypass the `example.com` filter
-&nbsp;&nbsp; - extracting the flag without **CSS** and **JavaScript**
+&nbsp;&nbsp; - extracting the flag without **CSS** and **JavaScript** as the **CSP** is quite strict
 
 # 2. Reconnaissance<a id="reconnaissance"></a>
 Having a look into the source code of the challenge we find out the bot can't be contacted directly as the port of the container in which the bot is running is not exposed. We can only contact it indirectly via the `/bot` endpoint of the **Flask** server. However, this endpoint implements a filter that only allows you to send URLs to the bot with the host `example.com` by implementing a check with the **Python urlparse** module. The bot itself is implemented as an **express** server waiting for requests to the `/bot` endpoint. With the very first request, the bot will log in and add a note to its account. Eventually, it will visit the website via the provided URL. The goal is to extract the flag out of the note title or body which was created by the bot.
