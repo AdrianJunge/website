@@ -6,6 +6,13 @@
     "website": "https://cscg.de/",
     "description": "The CSCG is an annual CTF competition that spans two months and serves as the qualifier for the DHM."
   },
+  "GPNCTF": {
+    "terminal_path": "gpnctf",
+    "logo": "ctf/gpnctf.png",
+    "writeups": "/ctf/gpnctf",
+    "website": "https://gpn23.ctf.kitctf.de/",
+    "description": "GPNCTF is an annual CTF competition hosted by KITCTF at the GPN chaos event in Karlsruhe."
+  },
   // "DHM": {
   //   "terminal_path": "dhm",
   //   "logo": "ctf/dhm.jpg",

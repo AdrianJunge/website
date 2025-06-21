@@ -64,6 +64,7 @@
 - Fehler pages updaten
 - Firefox
     - CSS fixen
+- Scrolling out/in führt dazu dass "Table of content" Überschrift zu klein ist/unproportional zum Rest
 ## Terminal
 - internal statt external links
     => keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
