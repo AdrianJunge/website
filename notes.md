@@ -1,4 +1,5 @@
 # Content
+- Autoren auflisten auf Website für CTF
 - xterm + flowbite css über CDN fetchen
 - Landing Page anpassen
     - https://unbounce.com/landing-page-examples/best-landing-page-examples/
