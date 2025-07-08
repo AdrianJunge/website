@@ -1,6 +1,7 @@
 # Content
 - Autoren auflisten auf Website für CTF
 - xterm + flowbite css über CDN fetchen
+- ctf tags clickable machen sodass gefiltert wird nach dem tag unter den writeups
 - Landing Page anpassen
     - https://unbounce.com/landing-page-examples/best-landing-page-examples/
     - Images von KIT/KITCTF lieber wegpacken oder vlt als Emoji falls das irgendwie geht
