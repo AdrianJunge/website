@@ -51,13 +51,14 @@ To use tailwindcss you need watchman. For installation simply execute:
 
 ## Latex to Markdown find and replace
 ### regex
-\\textit\{([^}]+)\}
-**$1**
+`\\textit\{([^}]+)\}`
+`**$1**`
 ### regex
-\\command\{([^}]+)\}
+`\\command\{([^}]+)\}`
 `$1`
 ### regex
-\\href\{([^}]+)\}\{([^}]+)\}
-[$2]($1)
+`\\href\{([^}]+)\}\{([^}]+)\}`
+`[$2]($1)`
 ### normal
-\
+`\`
+``

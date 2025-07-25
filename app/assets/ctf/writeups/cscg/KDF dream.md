@@ -33,7 +33,7 @@ As in most CTF challenges, there is not only one way to solve a problem. The **M
 <div>
   \[
     \begin{aligned}
-        (P-1)\equiv -1 \bmod
+        (P-1)\equiv -1 \bmod P
     \end{aligned}
   \]
 </div>

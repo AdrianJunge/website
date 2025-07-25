@@ -13,7 +13,7 @@ rbenv global $RUBY_VERSION
 rbenv rehash
 
 sudo apt install -y build-essential procps curl file git
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 for CONFIG in "${CONFIG_FILES[@]}"; do
     if grep "eval \"\$(rbenv init -)\"" "$CONFIG" > /dev/null; then
