@@ -60,7 +60,7 @@ Notice that we have to URL encode the `#` of the **STTF** as otherwise it will b
 /bot?url=http://challenge_service:9222\@example.com/../note/<note-id>%23:~:text=GPNCTF{🤔%26text=GPNCTF{🏃%26text=GPNCTF{🍬...%26text=GPNCTF{💹%26text=FLAG_NOT_FOUND
 ```
 
-Now that we have our payload we just need to go char by char with the binary search and dynamically create the next payload depending on the image sending a request to our webhook or not. For this, we just need a webhook dynamically reacting to incoming requests from the bot. This can be easily done with [Tailscale funnel](https://tailscale.com/kb/1223/funnel). Furthermore, we need to be careful with the docker setup as sending the bot to a local URL you have to use `challenge_service:9222` as the requested host while on the remote instance, you just have to use `localhost:9222` as already stated in the description. 
+Now that we have our payload we just need to go char by char with the binary search and dynamically create the next payload depending on the image sending a request to our webhook or not. For this, we just need a webhook dynamically reacting to incoming requests from the bot. This can be easily done with [Tailscale funnel](https://tailscale.com/kb/1223/funnel). Furthermore, we need to be careful with the docker setup as sending the bot to a local URL you have to use `challenge_service:9222` as the requested host while on the remote instance, you just have to use `localhost:9222` as already stated in the description.
 
 # 5. Mitigation<a id="mitigation"></a>
 In general if you, for whatever reason, parse some (user) input more than one time, make sure the parsers behave the same and are implemented correctly. Second, always make sure to escape any user input correct and not only rely on the escaping of modules like **Jinja2** but also use your brain and use these tools correct.
@@ -143,7 +143,7 @@ def check_server_reachable(published_url):
             return False
     except requests.exceptions.RequestException as e:
         return False
-    
+
 def check_server_reachable_until_success(published_url, delay=10):
     while True:
         time.sleep(delay)

@@ -96,8 +96,8 @@
 - tailwindcss flowbite plugin fixen
     => evtl neues Setup und Code übernehmen
 - Terminal Height passt nicht ganz zum content - es wird was abgeschnitten
-- Writeups in Datenbank verschieben anstatt .md files einzulesen
+- Writeups und paths für ctf file zips in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
-    => Brakeman ignore Test wieder rausnehmen (/config/brakeman.ignore)
+    => Brakeman ignore Test wieder rausnehmen (config/brakeman.ignore)
 - Pipeline aufsetzen, welche automatisch neue oder edited Markdown Writeups zu HTML parsed, sodass nicht bei jedem Request unnötig neu geparsed wird
 - Heroku Warnings durchgehen und evtl fixen

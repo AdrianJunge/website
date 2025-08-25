@@ -11,7 +11,8 @@ Just use the `install_necessary.sh` to install everything needed.
 `bundle update`
 
 # Dev stuff
-`overcommit --run`
+`bundle exec overcommit --sign pre-commit`
+`bundle exec overcommit --run`
 
 # Starting
 `rails server` or `bin/dev`
@@ -19,7 +20,6 @@ Just use the `install_necessary.sh` to install everything needed.
 # Help
 When you have installation problems try out
 `gem update --system`
-
 `bundle clean --force`
 
 # Stop using precompiled assets
@@ -30,6 +30,9 @@ When you have installation problems try out
 
 # Rebuilding project
 `bundle exec rake db:migrate`
+
+# Brakeman ignore warnings
+Exec `bundle exec brakeman -f json -o brakeman-report.json` and add the warnings to be ignored to the `config/brakeman.ignore`
 
 # Adding js
 Add entry in `/config/importmap.rb` and `/assets/config/manifest.js`
