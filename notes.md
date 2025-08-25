@@ -1,4 +1,11 @@
 # Content
+- RSS Feed
+    - Writeups
+    - Blog
+    ...
+- “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
+    => Übersicht über meine Challenges
+    => jeweils redirect zu bereits published Post
 - Autoren auflisten auf Website für CTF
 - xterm + flowbite css über CDN fetchen
 - ctf tags clickable machen sodass gefiltert wird nach dem tag unter den writeups
@@ -17,10 +24,6 @@
         - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
 - Impressum
-- RSS Feed
-    - Writeups
-    - Blog
-    ...
 - Dynamischer Hintergrund
 - CTF
     - Übersicht mit allen CTFs für die ich Writeups habe oder noch anfertigen möchte
@@ -43,7 +46,9 @@
     - Email Adresse
 - Upcoming
     - Blog
+        - Codewhite bzw Deadsecctf webmiau exploit aufschlüsseln
         - Java Strings
+        - Falls Wordpress CVE gefunden mit POP Chain diese ebenfalls im Blog veröffentlichen
     - Real World Exploitation (Bug Bounty/CVE)
     - Competitive Programming
     - Minigames (eigene App wie das Terminal)

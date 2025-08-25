@@ -5,6 +5,7 @@ description: We recently stumbled upon an exposed SVN server of a large multimed
 categories:
     - Web
 year: 2025
+challengefiles: vidplow.zip
 ---
 
 # TL;DR<a id="TL;DR"></a>
@@ -70,7 +71,7 @@ Setting up a local instance is not quite necessary, but it makes debugging much 
 # 6. Exploitation<a id="exploitation"></a>
 As the code is the best documentation, let's have a look at the source code of [HopObjects](https://github.com/helma-org/helma/blob/helma_1_5_2/src/helma/scripting/rhino/HopObject.java#L890). Here we find all of the different internal properties. Playing around with `__parent__` will result in following URL to obtain the flag:
 
-```url
+```
 /Documentary/The+Fall+of+Arasaka+Tower/__parent__/accessKey
 ```
 

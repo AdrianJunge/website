@@ -5,6 +5,7 @@ description:
 categories:
     -
 year:
+challenge files: ../../public/ctf/files/
 ---
 
 # TL;DR<a id="TL;DR"></a>

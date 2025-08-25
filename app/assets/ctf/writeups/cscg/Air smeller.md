@@ -5,6 +5,7 @@ description: I found this website where you can rate the smell of the air, after
 categories:
     - Web
 year: 2025
+challengefiles: air-smeller.zip
 ---
 
 # TL;DR<a id="TL;DR"></a>

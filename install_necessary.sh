@@ -31,12 +31,17 @@ for CONFIG in "${CONFIG_FILES[@]}"; do
     fi
 done
 
+exec $SHELL
+
 brew install watchman
+brew install foreman
 
 bundle install
 
 gem install overcommit
-exec $SHELL
+gem install rails
+gem install bundler
+
 overcommit --install
 
 bundle exec rake db:migrate

@@ -5,6 +5,7 @@ description: I have a really hard time managing my cash, am afraid someone might
 categories:
     - PWN
 year: 2025
+challengefiles: cashmemo.zip
 ---
 
 # TL;DR<a id="TL;DR"></a>

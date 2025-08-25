@@ -5,6 +5,7 @@ description: You've heard of rogue-likes, but have you heard of heap-likes?
 categories:
     - PWN
 year: 2025
+challengefiles: gamedev.zip
 ---
 
 # TL;DR<a id="TL;DR"></a>

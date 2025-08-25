@@ -5,6 +5,7 @@ description: asdf
 categories:
     - pwn
 year: 2024
+challengefiles: xmalloc.zip
 ---
 
 # TL;DR<a id="TL;DR"></a>

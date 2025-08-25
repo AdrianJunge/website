@@ -6,6 +6,7 @@ categories:
     - Web
     - .NET
 year: 2024
+challengefiles: photoeditor.zip
 ---
 
 # TL;DR<a id="TL;DR"></a>

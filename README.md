@@ -5,23 +5,15 @@ This website is mainly about myself and some ctf stuff.
 Have fun exploring :smile:
 
 # Installation
-`apt install ruby-full`
-
-`gem install rails`
-
-`gem install bundler`
+Just use the `install_necessary.sh` to install everything needed.
 
 # Update
 `bundle update`
 
 # Dev stuff
-`gem install overcommit`
-`overcommit --install`
 `overcommit --run`
 
 # Starting
-`cd website && bundle install`
-
 `rails server` or `bin/dev`
 
 # Help
