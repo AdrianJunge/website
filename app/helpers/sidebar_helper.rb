@@ -30,33 +30,52 @@ module SidebarHelper
     end)
 
     content_tag(:div, id: "taskbar-left", class: "bg-primary collapsed") do
+      concat(taskbar_icon_item(
+        image_path: "task-bar/home.svg",
+        alt_text: "Home Icon",
+        label: "Home",
+        link: root_path,
+        icon_class: taskbar_icon_class,
+        label_class: taskbar_label_class
+        ))
+      taskbar_items.each do |item|
         concat(taskbar_icon_item(
-          image_path: "task-bar/home.svg",
-          alt_text: "Home Icon",
-          label: "Home",
-          link: root_path,
+          image_path: item[:image_path],
+          alt_text: item[:alt_text],
+          label: item[:label],
+          link: item[:link],
           icon_class: taskbar_icon_class,
           label_class: taskbar_label_class
         ))
-        taskbar_items.each do |item|
-          concat(taskbar_icon_item(
-            image_path: item[:image_path],
-            alt_text: item[:alt_text],
-            label: item[:label],
-            link: item[:link],
-            icon_class: taskbar_icon_class,
-            label_class: taskbar_label_class
-          ))
-        end
+      end
 
-        concat(taskbar_icon_item(
-          image_path: "task-bar/terminal.svg",
-          alt_text: "Terminal Icon",
-          label: "Terminal navigation",
-          icon_class: taskbar_icon_class,
-          label_class: taskbar_label_class,
-          id: "terminal-taskbar-button"
-        ))
+      concat(taskbar_icon_item(
+        image_path: "task-bar/rss.svg",
+        alt_text: "RSS Icon",
+        label: "CTF RSS Feed",
+        link: ctf_feed_url(format: :rss),
+        icon_class: taskbar_icon_class,
+        label_class: taskbar_label_class,
+        target: "/ctf/feed"
+      ))
+      concat(taskbar_icon_item(
+        image_path: "task-bar/atom.svg",
+        alt_text: "Atom Icon",
+        label: "CTF Atom Feed",
+        link: ctf_feed_url(format: :atom),
+        icon_class: taskbar_icon_class,
+        label_class: taskbar_label_class,
+        target: "/ctf/feed.atom"
+      ))
+
+      concat(taskbar_icon_item(
+        image_path: "task-bar/terminal.svg",
+        alt_text: "Terminal Icon",
+        label: "Terminal navigation",
+        icon_class: taskbar_icon_class,
+        label_class: taskbar_label_class,
+        id: "terminal-taskbar-button"
+      ))
     end
   end
 end
