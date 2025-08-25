@@ -40,6 +40,49 @@ class CtfController < ApplicationController
     @html_content = render_markdown(@markdown_content)
   end
 
+  def feed
+    @items = []
+
+    Dir.entries(BASE_PATH).select { |entry|
+      File.directory?(BASE_PATH.join(entry)) && !entry.start_with?(".")
+    }.each do |which_dir|
+      Dir.glob(BASE_PATH.join(which_dir, "*.md")).each do |file_path|
+        next unless File.file?(file_path)
+
+        content = File.read(file_path)
+        parsed = get_ctf_info(content)
+        next unless parsed
+
+        meta = parsed.front_matter || {}
+        title = meta["title"].presence || File.basename(file_path, ".md").humanize
+        description = (meta["description"].presence || parsed.content.to_s[0, 800]).to_s
+        pub_date = begin
+                     Time.parse(meta["published"].to_s)
+                   rescue StandardError
+                     File.ctime(file_path)
+                   end
+
+        writeup_slug = File.basename(file_path, ".md")
+        link = url_for(controller: "ctf", action: "writeup", which: which_dir, writeup: writeup_slug, only_path: false)
+
+        @items << {
+          ctf: which_dir,
+          title: sanitize(title),
+          description: sanitize(description, tags: %w[p br strong em a code pre img], attributes: %w[href src alt title]),
+          link: link,
+          pub_date: pub_date,
+          guid: link
+        }
+      end
+    end
+
+    @items.sort_by! { |i| -i[:pub_date].to_i }
+    respond_to do |format|
+      format.rss { render layout: false }
+      format.atom { render layout: false }
+    end
+  end
+
   private
 
   def sanitize_which(which)

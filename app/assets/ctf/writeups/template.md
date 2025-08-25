@@ -5,7 +5,8 @@ description:
 categories:
     -
 year:
-challenge files: ../../public/ctf/files/
+challenge files:
+published: "2025-08-25"
 ---
 
 # TL;DR<a id="TL;DR"></a>

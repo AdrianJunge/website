@@ -6,6 +6,7 @@ categories:
     - Web
 year: 2024
 challengefiles: cors-playground.zip
+published: "2024-09-01"
 ---
 
 # TL;DR<a id="TL;DR"></a>

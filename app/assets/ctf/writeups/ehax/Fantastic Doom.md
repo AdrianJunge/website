@@ -6,6 +6,7 @@ categories:
     - Pwn
 year: 2025
 challengefiles: fantasticdoom.zip
+published: "2025-04-01"
 ---
 
 # TL;DR<a id="TL;DR"></a>

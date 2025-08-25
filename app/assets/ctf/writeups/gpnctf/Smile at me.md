@@ -6,6 +6,7 @@ categories:
     - web
 year: 2025
 challengefiles: smile-at-me.zip
+published: "2025-08-01"
 ---
 
 # TL;DR<a id="TL;DR"></a>

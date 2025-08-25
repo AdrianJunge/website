@@ -79,4 +79,6 @@ Rails.application.configure do
   config.assets.css_compressor = nil
   # config.assets.compile = false
   config.assets.digest = true
+
+  Rails.application.routes.default_url_options[:host] = "localhost:3000"
 end

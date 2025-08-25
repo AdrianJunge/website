@@ -91,4 +91,7 @@ Rails.application.configure do
   config.assets.css_compressor = nil
   # config.assets.compile = false
   config.assets.digest = true
+
+  Rails.application.routes.default_url_options[:host] = "adrianjunge.de"
+  Rails.application.routes.default_url_options[:protocol] = "https"
 end

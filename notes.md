@@ -1,8 +1,5 @@
 # Content
-- RSS Feed
-    - Writeups
-    - Blog
-    ...
+- Search bar for ctfs and writeups
 - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
     => Übersicht über meine Challenges
     => jeweils redirect zu bereits published Post
@@ -25,6 +22,8 @@
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
 - Impressum
 - Dynamischer Hintergrund
+- RSS Feed
+    - Blog
 - CTF
     - Übersicht mit allen CTFs für die ich Writeups habe oder noch anfertigen möchte
         - PicoCTF

@@ -6,6 +6,7 @@ categories:
     - Web
 year: 2025
 challengefiles: canteenfood.zip
+published: "2025-05-01"
 ---
 
 # TL;DR<a id="TL;DR"></a>

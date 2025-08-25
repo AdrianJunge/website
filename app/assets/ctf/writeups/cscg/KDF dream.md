@@ -6,6 +6,7 @@ categories:
     - Crypto
 year: 2025
 challengefiles: kdf-dream.zip
+published: "2025-05-01"
 ---
 
 # TL;DR<a id="TL;DR"></a>
