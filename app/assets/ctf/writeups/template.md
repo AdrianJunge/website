@@ -5,7 +5,7 @@ description:
 categories:
     -
 year:
-challenge files:
+challengefiles:
 published: "2025-08-25"
 ---
 

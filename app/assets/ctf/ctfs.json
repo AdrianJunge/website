@@ -13,6 +13,13 @@
     "website": "https://gpn23.ctf.kitctf.de/",
     "description": "GPNCTF is an annual CTF competition hosted by KITCTF at the GPN chaos event in Karlsruhe."
   },
+  "SEKAICTF": {
+    "terminal_path": "sekaictf",
+    "logo": "ctf/sekaictf.png",
+    "writeups": "/ctf/sekaictf",
+    "website": "https://sekai.team/",
+    "description": "SekaiCTF is an annual CTF competition, hosted by PROJECT SEKAI which is a very well known and international CTF team. The competition itself is known for its sizable prize pools and for serving as a prequalifier for events like MaltaCTF and XCTF."
+  },
   // "DHM": {
   //   "terminal_path": "dhm",
   //   "logo": "ctf/dhm.jpg",
