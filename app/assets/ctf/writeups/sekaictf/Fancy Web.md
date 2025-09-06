@@ -6,7 +6,7 @@ categories:
     - web
 year: 2025
 challengefiles: fancy-web.zip
-published: "2025-09-04"
+published: "2025-09-06"
 hints:
     - Taking a closer look at `in_array` might offer some inspiration on where to look next.
     - The intended solution is to use `__toString` Gadget.
@@ -19,11 +19,11 @@ hints:
     **- Exploitation:** triggering the **PHP** `unserialize` and exploiting a POP chain in the **Wordpress** core
 
 # 1. Introduction<a id="introduction"></a>
-Starting the web application we are greeted by a simple page which allows us to input arbitrary base-64 strings of serialized data:
+Starting the web application, we are greeted by a simple page that allows us to input arbitrary base-64 strings of serialized data:
 
 ![landing-page](ctf/writeups/sekaictf/fancyweb/landing.png "landing-page")
 
-Here we already see what might be going on in the backend. If you already had something to do with **PHP** `unserialize` the `O:20:"SecureTableGenerator":...` prefix written on the web page might be very familiar. Down below is an example of a table we might be able to generate via the backend of the web page. Scrolling further we are being hinted there are some security checks going on and we got a test payload to play with:
+Here, we already see what might be happening in the backend. If you already had something to do with **PHP** `unserialize` the `O:20:"SecureTableGenerator":...` prefix written on the web page might be very familiar. Scrolling further, we are being hinted that there are some security checks going on, and we got a test payload to play with:
 
 ![landing-page-2](ctf/writeups/sekaictf/fancyweb/landing_2.png "landing-page-2")
 
@@ -31,11 +31,20 @@ Inserting the test payload leads to the generation of our own table:
 
 ![landing-page-test-payload](ctf/writeups/sekaictf/fancyweb/landing_test_payload.png "landing-page-test-payload")
 
-Also hinting the `__wakeup` method already secured the input strongly indicates that this is a **PHP** challenge.
+Also hinting the `__wakeup` method already secured the input strongly indicates that this is a **PHP** `unserialize` challenge.
 
 # 2. Reconnaissance<a id="reconnaissance"></a>
-Having a look into the challenge setup it becomes clear this is a **Wordpress** website running the latest version `6.8.2`. **Wordpress** is a very popular CMS (content management system) based on **PHP**, which allows you to build website without requiring deep knowledge in **PHP**. **Wordpress** comes by default with its core code and allows you to add several plugins and themes to improve the functionality and visuals of your website. The challenge has a plugin named `fancy` which might be custom written as its directory suggests. Having a look at the code of the `fancy.php` it seems like there is a lot going on with almost 800 lines of **PHP** code. By searching for `unserialize(` in the code, we have 4 locations where this **PHP** functionality is used.
-The most interesting part seems to be like the location where `unserialize` is called with user **POST** input without previous sanitization and validation:
+Having a look into the challenge setup it becomes clear this is a **Wordpress** website running the latest version `6.8.2`. **Wordpress** is a very popular CMS (content management system) based on **PHP**, which allows you to build websites without requiring deeper knowledge in **PHP**. **Wordpress** comes by default with its core code and allows you to add several plugins and themes to improve the functionality and visuals of your website. The challenge has a plugin named `fancy`, which might be custom-written as its directory suggests. Having a look at the code of the `fancy.php` it seems like there is a lot going on with almost 800 lines of **PHP** code. Funny enough on top of the `SecureTableGenerator` class is a comment hinting that most of the code is written with AI models like **ChatGPT** or **ClaudeAI**:
+
+```php
+ /**
+ * SecureTableGenerator - A serializable class for creating beautiful HTML tables
+ * Features security measures to prevent common serialization attacks, made with vibe coding.
+ */
+class SecureTableGenerator
+```
+
+By searching for `unserialize(` in the code, we have 4 locations where this **PHP** functionality is used. The most interesting part seems to be like the location where `unserialize` is called with user **POST** input without previous sanitization and validation:
 
 ```php
 $userBase64Data = trim($_POST['serialized_data']);
@@ -63,32 +72,21 @@ if ($userSerializedData === false) {
     }
 ```
 
-Funny enough on top of the `SecureTableGenerator` class is a comment hinting that most of the code is written with AI models like **ChatGPT** or **ClaudeAI**:
-
-```php
- /**
- * SecureTableGenerator - A serializable class for creating beautiful HTML tables
- * Features security measures to prevent common serialization attacks, made with vibe coding.
- */
-class SecureTableGenerator
-```
-
 # 3. Vulnerability Description<a id="vulnerability description"></a>
-The website intends that user are only allowed to input serialized `SecureTableGenerator` objects. But the security validations to ensure this are very bad. As we already saw, the `unserialize` function is called on any user input without previous validations and sanitizations. Although just right after the `unserialize` there is a check trying to make sure only `SecureTableGenerator` was deserialized. But at this point any malicious `unserialize` payload was already executed, so there is no point in making these checks just afterwards. When `unserialize` is called, internally **PHP** will automatically call the `__wakeup` method of the dedicated object that is deserialized, if defined. Besides objects it is also possible to deserialize a bunch of other stuff like arrays, strings and integers. If you are interested in reading further information about **PHP** serialization I recommend reading [PHP serialization](https://www.phpinternalsbook.com/php5/classes_objects/serialization.html).
+The website intends that users are only allowed to input serialized `SecureTableGenerator` objects. But the security validations to ensure this are very bad. As we already saw, the `unserialize` function is called on any user input without previous validations and sanitizations. Although just right after the `unserialize`, there is a check trying to make sure only `SecureTableGenerator` was deserialized. But at this point, any malicious `unserialize` payload was already executed, so there is no point in making these checks just afterwards. When `unserialize` is called, internally **PHP** will automatically call the `__wakeup` method of the dedicated object that is deserialized, if defined. Besides objects, it is also possible to deserialize a bunch of other stuff like arrays, strings, and integers. If you are interested in reading further information about **PHP** serialization I recommend reading [PHP serialization](https://www.phpinternalsbook.com/php5/classes_objects/serialization.html).
 
 # 4. Exploitation<a id="exploitation"></a>
-An attacker could create now a special payload with a serialized object. To achieve RCE we need a special sink that allows us to execute arbitrary **PHP** functions or specifying the parameters of a `include` function. To reach these sinks we can start for example with the `__wakeup` method that is automatically called via `unserialize`. But not only `__wakeup` is automatically called, there are a lot of other methods like `__destruct` and  `__toString` that might be interesting as an entry point. To eventually reach our RCE sink we have to create a chain of different objects with carefully set properties, influencing the control flow of for example the `__wakeup` method and all the called functionality. This is called a POP chain (Property Oriented Programming). So to exploit the `unserialize` vulnerability we have to find such a POP chain either in the `fancy` plugin itself or in the **Wordpress** core.
+An attacker could now create a malicious payload with a serialized object. To achieve RCE we need a special sink that e.g. allows us to execute arbitrary **PHP** functions. To reach these sinks, we can start, for example, with the `__wakeup` method that is automatically called via `unserialize`. But not only is `__wakeup` automatically called, there are a lot of other methods like `__destruct` and  `__toString` that are called at a specific point and might be interesting as an entry point. To eventually reach our RCE sink, we have to create a chain of different objects with carefully set properties. This could influencing the control flow of, for example, the `__wakeup` method and all the called functionality by triggering only specific branches. This is called a POP chain (Property Oriented Programming). So to exploit the `unserialize` vulnerability we have to find such a POP chain either in the `fancy` plugin itself or in the **Wordpress** core.
 
 # 4.1. The POP entry<a id="the pop entry"></a>
-Having a look at the plugin code itself, most of the functionality is about some weird **XSS** sanitizations which are not interesting at all to us.
-However an interesting sanitization is the removal of specific malicious **PHP** keywords like `eval`, `exec` and `system`. If we want to make use of `SecureTableGenerator` for our malicious payload we need to be aware of this. During the competition two hints were released as a lot of people got stuck:
+Having a look at the plugin code itself, most of the functionality is about some weird **XSS** sanitizations which are not interesting at all to us. However an interesting sanitization is the removal of specific malicious **PHP** keywords like `eval`, `exec` and `system`. If we want to make use of `SecureTableGenerator` for our malicious payload, we need to be aware of this. During the competition, two hints were released as a lot of people got stuck:
 
 ```
-Hint 1: Taking a closer look at in_array might offer some inspiration on where to look next.
-Hint 2: The intended solution is to use __toString Gadget.
+Hint 1: Taking a closer look at "in_array" might offer some inspiration on where to look next.
+Hint 2: The intended solution is to use "__toString" Gadget.
 ```
 
-In the plugin code itself we can find following part which matches the description of the hints perfectly:
+In the plugin code itself, we can find the following part, which matches the description of the hints perfectly:
 
 ```php
     private function resetSecurityProperties()
@@ -108,14 +106,14 @@ In the plugin code itself we can find following part which matches the descripti
     }
 ```
 
-When `in_array` is being called, to check wether an array consisting of strings contains a specific string, **PHP** will internally call `__toString` if objects are used for the comparison. For our POP chain we can make use of this as the `resetSecurityProperties` method is called via the `__wakeup` method of the `SecureTableGenerator` class. We fully control the `allowedTags` property which we can set as an object of which the `__toString` method will be called for the comparison. So the `SecureTableGenerator` might be our best entry for this POP chain followed by a class that implements an exploitable `__toString` method.
+When `in_array` is being called, to check wether an array consisting of strings contains a specific string, **PHP** will internally call `__toString` if objects are used for the comparison. For our POP chain, we can make use of this as the `resetSecurityProperties` method is called via the `__wakeup` method of the `SecureTableGenerator` class. We fully control the `allowedTags` array property, so we can set an element as an object for which the `__toString` method will be called for the comparison. So the `SecureTableGenerator` might be our best entry for this POP chain, followed by a class that implements an exploitable `__toString` method.
 
 # 4.2. The source and the sink<a id="the source and the sink"></a>
-So now we are at a point where it becomes exponentially difficult to create the POP chain. There could be a lot of different ways to reach an RCE sink and we have to figur this way out. Fortunately there is already an interesting [article](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) about finding POP chains in the **Wordpress** core which will also help us building up the POP chain. Reading through this article and searching in the source code of **Wordpress** we can find out that neither the source nor the sink is usable anymore. However the middle part of the POP chain is still useable.
+Now it becomes exponentially difficult to create the POP chain. There could be a lot of different ways to reach an RCE sink, and we have to figure this out. Fortunately there is already an interesting [article](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) about finding POP chains in the **Wordpress** core which will also help us building up the POP chain. Reading through this article and searching in the source code of **Wordpress** we can find out that neither the source nor the sink is usable anymore. However, the middle part of the POP chain is still usable.
 
-For the source the article uses a class called [WP_Theme](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/class-wp-theme.php#L550). This POP chain was fixed by **Wordpress** by implementing some checks in its `__wakeup` method. There are still some interesting classes around in the **Wordpress** core one of them being [WP_HTML_Tag_Processor](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/html-api/class-wp-html-tag-processor.php#L4125) implementing an interesting `__toString` method as we will see soon.
+For the source, the article uses a class called [WP_Theme](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/class-wp-theme.php#L550). This POP chain entry was fixed by **Wordpress** by implementing some checks in its `__wakeup` method. However there are still some interesting classes around in the **Wordpress** core one of them being [WP_HTML_Tag_Processor](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/html-api/class-wp-html-tag-processor.php#L4125) implementing an interesting `__toString` method as we will see soon.
 
-Also the sink used in the article is not usable anymore as for another class called [WP_Block_Type_Registry](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/class-wp-block-type-registry.php#L171) which is used at the end of the POP chain, it now implements specific checks in its `__wakeup` method preventing the exploitation of the POP chain. `WP_Block_Type_Registry` is used as it implements a `get_registered` method, which is needed for the POP chain. So either we use a different class implementing an interesting `call` method, which is always automatically called when a called method doesn't exist, or we find another class implementing an exploitable `get_registered` method. Lucky enough there is `WP_Block_Patterns_Registry` which implements a `get_registered` method which eventually leads to an `include`:
+Also, the sink used in the article is not usable anymore, as for another class called [WP_Block_Type_Registry](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/class-wp-block-type-registry.php#L171), which is used at the end of the POP chain, it now implements specific checks in its `__wakeup` method, preventing the exploitation of the POP chain. `WP_Block_Type_Registry` is used as it implements a `get_registered` method, which is needed for the POP chain. So either we use a different class implementing an interesting `call` method, which is always automatically called when a called method doesn't exist, or we find another class implementing an exploitable `get_registered` method. Luckily there is [WP_Block_Patterns_Registry](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/class-wp-block-patterns-registry.php#L193) which implements a `get_registered` method, which eventually leads to an **PHP** `include` function call:
 
 ```php
 if ( ! isset( $patterns[ $pattern_name ]['content'] ) && isset( $patterns[ $pattern_name ]['filePath'] ) ) {
@@ -126,12 +124,12 @@ if ( ! isset( $patterns[ $pattern_name ]['content'] ) && isset( $patterns[ $patt
 }
 ```
 
-We have full control over the `$patterns` as we can set it ourself in the serialized payload. If you didn't know yet if you got control over any **PHP** `include` or `require` as an attacker, you just got RCE. For exploitation you can make use of a [public repository](https://github.com/synacktiv/php_filter_chain_generator/) which allows you to generate a ready to use payload. You can read for some further explanation [this article](https://www.synacktiv.com/publications/php-filters-chain-what-is-it-and-how-to-use-it). Basically it uses the `php://filter` stream wrapper to apply a chain of built-in stream filters (for example `convert.base64-encode` and `convert.iconv.*`) to transform the bytes returned by an included resource so that, after the filters run, the output begins with a valid `<?php` tag and the payload is executed — all without even uploading a file. By composing encoding and base64 encode/decode steps the chains can craft or hide the exact byte sequence needed and thus helping evade naive input filters. So this is perfect to bypass the filtering in the `resetSecurityProperties` method of `SecureTableGenerator`.
+We have full control over the `$patterns` as we can set them ourselves as an attribute of the class in the serialized payload. If you didn't know yet if you got control over any **PHP** `include` or `require` as an attacker, you just got RCE. For exploitation, you can make use of [this public repository](https://github.com/synacktiv/php_filter_chain_generator/) which allows you to generate a ready-to-use payload. You can read for some further explanation [this article](https://www.synacktiv.com/publications/php-filters-chain-what-is-it-and-how-to-use-it). Basically it uses the `php://filter` stream wrapper to apply a chain of built-in stream filters, for example `convert.base64-encode` and `convert.iconv.*`, to transform the bytes returned by an included resource. After the filters run, the output begins with a valid `<?php` tag and the payload is executed — all without even uploading a file. By composing encoding and base64 encode/decode steps, the chains can craft or hide the exact byte sequence needed and thus helping evade naive input filters. So this is perfect to bypass the filtering in the `resetSecurityProperties` method of `SecureTableGenerator`.
 
-So now that we got our source, `WP_HTML_Tag_Processor` with the `__toString` method we will trigger via the `SecureTableGenerator` due to the `in_array` operations, and our sink, `WP_Block_Patterns_Registry` obtaining RCE due to the triggered `include`, we can now connect both end to get a full POP chain.
+So now that we have our source, `WP_HTML_Tag_Processor` with the `__toString` method, which we can trigger via the `SecureTableGenerator` due to the `in_array` operations, and our sink, `WP_Block_Patterns_Registry`, obtaining RCE due to the controlled **PHP** `include` call, we can now connect both ends to get a full POP chain.
 
 # 4.3. Connecting the ends<a id="connecting the ends"></a>
-The [article](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) describes an interesting technique to pivot from one class to another by leveraging classes that implement the `ArrayAccess` class. If a class implements it, it will behave similar to a casual array but implementing its own functionality e.g. for index accesses. The [blog](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) uses the `WP_Block_List` class and this is the same we are also looking for. Starting with our source `WP_HTML_Tag_Processor` within the `__toString` method we go over to the `get_updated_html` method which will eventually call `class_name_updates_to_attributes_updates`. This method got an interesting if case handling `$this->attributes` as an array which is exactly what we are looking for:
+The [article](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) describes an interesting technique to pivot from one class to another by leveraging classes that implement the `ArrayAccess` class. If a class implements it, it will behave similarly to a normal array but by implementing its own functionality, e.g., for index accesses. The [blog](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) uses the `WP_Block_List` class, and this is the same we are also looking for. Starting with our source `WP_HTML_Tag_Processor` within the `__toString` method, we go over to the `get_updated_html` method, which will eventually call `class_name_updates_to_attributes_updates`. This method got an interesting case handling `$this->attributes` as an array, which is exactly what we are looking for:
 
 ```php
 if ( false === $existing_class && isset( $this->attributes['class'] ) ) {
@@ -143,7 +141,7 @@ if ( false === $existing_class && isset( $this->attributes['class'] ) ) {
 }
 ```
 
-So if we define `class` in this array and the array itself is an instance of `WP_Block_List`, the [offsetGet method](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/class-wp-block-list.php#L92) will be called of that class and we pivot:
+So if we define `class` in this array and the array itself is an instance of `WP_Block_List`, the [offsetGet method](https://github.com/WordPress/WordPress/blob/6.8.2/wp-includes/class-wp-block-list.php#L92) will be called on that class and we pivot:
 
 ```php
 public function offsetGet( $offset ) {
@@ -153,7 +151,7 @@ public function offsetGet( $offset ) {
         $block = new WP_Block( $block, $this->available_context, $this->registry );
 ```
 
-As we see in the source code of `WP_Block_List` a `new WP_Block` is created. From here on we can just follow the [blog](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) triggering the `__construct` method of `WP_Block`, which is always called by **PHP** when an instance is created.
+As we see in the source code of `WP_Block_List`, a `new WP_Block` is created. From here on we can just follow the [blog](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) triggering the `__construct` method of `WP_Block`, which is always called by **PHP** when an instance is created.
 
 ```php
 public function __construct( $block, $available_context = array(), $registry = null ) {
@@ -169,13 +167,13 @@ public function __construct( $block, $available_context = array(), $registry = n
     $this->block_type = $registry->get_registered( $this->name );
 ```
 
-Eventually the `get_registered` method is called of the `$registry` attribute of the `WP_Block` instance. So setting the `$registry` to an instance of `WP_Block_Patterns_Registry` we will finally reach our sink with the `include` being called.
+Eventually, the `get_registered` method is called on the `$registry` attribute of the `WP_Block` instance. So, setting the `$registry` to an instance of `WP_Block_Patterns_Registry`, we will finally reach our sink with the `include` being called and achieve RCE.
 
 # 5. Mitigation<a id="mitigation"></a>
-Rule number one is always escape, validate and sanitize any external input. The use of `unserialize` always comes with its risks, as presented with this challenge. So don't use `unserialize` if not really necessary. If you really need to use `unserialize` make sure to only use it on very restricted input or use whitelists. Although the developers of this `fancy` plugin tried to implement simple whitelists it has been done very poorly. As soon as the `unserialize` is called, it doesn't make any sense to do some kind of filtering afterwards as the payload has already been executed.
+Rule number one is always escape, validate, and sanitize any external input. The use of `unserialize` always comes with its risks, as presented with this challenge. Although the custom **Wordpress** plugin `fancy` doesn't have an exploitable POP chain itself, you should always be aware that the underlying code like the **Wordpress** core also might have some flaws. So don't use `unserialize` if not really necessary. If you really need to use `unserialize` make sure to only use it on very restricted input sources and use whitelists and other methods vor sanitization. Although the developers of the `fancy` plugin tried to implement simple whitelists, it has been done very poorly. As soon as the `unserialize` is called, it doesn't make any sense to do some kind of filtering afterwards, as the payload has already been executed.
 
 # 6. Solve script<a id="solve script"></a>
-As unfortunately I wasn't able to solve the challenge in time during the competition (nor did anyone else) the following are the public solve scripts of the author:
+As unfortunately, I wasn't able to solve the challenge in time during the competition (nor did anyone else), the following are the public solve scripts of the [author](https://github.com/dimasma0305) which can also be found among the other challenge files in [this repository](https://github.com/project-sekai-ctf/sekaictf-2025/tree/main/web/fancy-web/solution):
 
 ```php
 <?php
@@ -366,7 +364,7 @@ def main():
     # Parsing command line arguments
     parser = argparse.ArgumentParser(description="PHP filter chain generator.")
 
-    parser.add_argument("--chain", help="Content you want to generate. (you will maybe need to pad with spaces for your payload to work)", required=False)
+    parser.add_argument("--chain", help="Content you want to generate. (You will maybe need to pad with spaces for your payload to work)", required=False)
     parser.add_argument("--rawbase64", help="The base64 value you want to test, the chain will be printed as base64 by PHP, useful to debug.", required=False)
     args = parser.parse_args()
     if args.chain is not None:

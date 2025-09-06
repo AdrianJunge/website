@@ -1,11 +1,10 @@
 # Content
 - Search bar for ctfs and writeups
+    - ctf tags clickable machen sodass gefiltert wird nach dem tag unter den writeups
 - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
     => Übersicht über meine Challenges
     => jeweils redirect zu bereits published Post
-- Autoren auflisten auf Website für CTF
 - xterm + flowbite css über CDN fetchen
-- ctf tags clickable machen sodass gefiltert wird nach dem tag unter den writeups
 - Landing Page anpassen
     - https://unbounce.com/landing-page-examples/best-landing-page-examples/
     - Images von KIT/KITCTF lieber wegpacken oder vlt als Emoji falls das irgendwie geht
@@ -38,6 +37,8 @@
     - Writeup Overview
         - Sortieren nach Datum
     - Writeup
+        - hints anzeigen über die Metadaten und Template erweitern
+        - Autoren auflisten evtl auch deren Blog verlinken
         - Hintergrund Image des CTFs
     - Suchfilter und Filteroption nach Jahr
     - Archievements
@@ -63,7 +64,7 @@
 # Visuals
 - Writeups
     - Anstatt Screenshots, Challenge HTML embedden und so aussehen lassen als wäre es wie in einem eigenen Browserfenster
-    => https://github.com/felixfbecker/dom-to-svg
+        => https://github.com/felixfbecker/dom-to-svg
 - Redundantes bzw alles an CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
 - Taskbar Icons sind klickbar auch wenn die Taskbar nicht expanded ist
