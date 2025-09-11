@@ -31,5 +31,3 @@ published: "2025-08-25"
 ```
 
 # 7. Flag<a id="flag"></a>
-
-# 8. References<a id="references"></a>
