@@ -7,3 +7,17 @@ $color-primary: #18243a;
 $color-secondary: #334461;
 $color-tertiary: #55aaff;
 $color-accent: #ccffff;
+
+$colors: (
+    default: $color-default,
+    primary: $color-primary,
+    secondary: $color-secondary,
+    tertiary: $color-tertiary,
+    accent: $color-accent
+);
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+}

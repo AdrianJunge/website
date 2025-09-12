@@ -199,3 +199,14 @@ body {
 .copy-btn:hover {
   background-color: $color-secondary;
 }
+
+.download-btn:hover {
+  transition: transform 0.2s ease-in-out, background-color 1s ease;
+  transform: scale(1.1);
+  background-color: $color-accent;
+}
+
+.download-btn {
+  transition: transform 0.2s ease-in-out, background-color 1s ease;
+  transform: scale(1);
+}

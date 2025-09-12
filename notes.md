@@ -1,4 +1,5 @@
 # Content
+- "Zurück" Button, um ein Level höher zu gehen also im Prinzip "cd .."
 - Search bar for ctfs and writeups
     - ctf tags clickable machen sodass gefiltert wird nach dem tag unter den writeups
 - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
@@ -91,6 +92,7 @@
 - Fetched ctf favicon sanitzen wegen XSS vector mit DOMPurify
 
 # Fix
+- single truth of color pattern für tailwindcss vs variables.scss
 - table of contents - sobald zu einer section gescrollt wird dessen title die ganze Box ausfüllt wird die Box nochmal größer
 - Terminal nav button geht aus Bildschirm raus sobald zu klein
 - tailwindcss flowbite plugin fixen

@@ -1,3 +1,10 @@
+# TODOs
+- Grammarly
+- adversiting the writeup
+# Common syntax
+- [link description](link)
+- ![picture description](ctf/writeups/<picture-path> "screen-readers")
+
 ---
 title:
 author:
