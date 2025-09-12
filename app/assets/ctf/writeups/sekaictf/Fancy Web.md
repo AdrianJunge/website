@@ -128,7 +128,7 @@ We have full control over the `$patterns` as we can set them ourselves as an att
 
 So now that we have our source, `WP_HTML_Tag_Processor` with the `__toString` method, which we can trigger via the `SecureTableGenerator` due to the `in_array` operations, and our sink, `WP_Block_Patterns_Registry`, obtaining RCE due to the controlled **PHP** `include` call, we can now connect both ends to get a full POP chain.
 
-# 4.3. Connecting the ends<a id="connecting the ends"></a>
+# 4.3. Chain assembly<a id="chain assembly"></a>
 The [article](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) describes an interesting technique to pivot from one class to another by leveraging classes that implement the `ArrayAccess` class. If a class implements it, it will behave similarly to a normal array but by implementing its own functionality, e.g., for index accesses. The [blog](https://wpscan.com/blog/finding-a-rce-gadget-chain-in-wordpress-core/) uses the `WP_Block_List` class, and this is the same we are also looking for. Starting with our source `WP_HTML_Tag_Processor` within the `__toString` method, we go over to the `get_updated_html` method, which will eventually call `class_name_updates_to_attributes_updates`. This method got an interesting case handling `$this->attributes` as an array, which is exactly what we are looking for:
 
 ```php
