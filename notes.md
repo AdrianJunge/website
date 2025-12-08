@@ -5,6 +5,7 @@
 - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
     => Übersicht über meine Challenges
     => jeweils redirect zu bereits published Post
+- PDF von Writeups verlinken
 - xterm + flowbite css über CDN fetchen
 - Landing Page anpassen
     - https://unbounce.com/landing-page-examples/best-landing-page-examples/
@@ -20,49 +21,35 @@
         - Text about me left aligned
         - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
-- Impressum
 - Dynamischer Hintergrund
-- RSS Feed
-    - Blog
 - CTF
-    - Übersicht mit allen CTFs für die ich Writeups habe oder noch anfertigen möchte
-        - PicoCTF
-        - GlacierCTF
-        - 0CTF
-        - THM
-        - OpenECSC
-        - FaustCTF
-        - HackluCTF
-        - SaarCTF
-        - SnakeCTF + Final
     - Writeup Overview
-        - Sortieren nach Datum
+        - Suchfilter und Filteroption nach Jahr/Datum
     - Writeup
         - hints anzeigen über die Metadaten und Template erweitern
         - Autoren auflisten evtl auch deren Blog verlinken
         - Hintergrund Image des CTFs
-    - Suchfilter und Filteroption nach Jahr
+    - OpenECSC Writeup anfertigen
     - Archievements
-- Contact
-    - Email Adresse
 - Upcoming
     - Blog
         - Codewhite bzw Deadsecctf webmiau exploit aufschlüsseln
         - Java Strings
         - Falls Wordpress CVE gefunden mit POP Chain diese ebenfalls im Blog veröffentlichen
+        - Ideen
+            - Java Strings
+        - RSS Feed
     - Real World Exploitation (Bug Bounty/CVE)
     - Competitive Programming
     - Minigames (eigene App wie das Terminal)
         - TicTacToe vs AI
-    - Tools
+    - Custom Tools
 - Content Management
-    - Admin Account
-        - dieser kann neue Inhalte hochladen
-    - Management
-        - Writeups/Blogs erstellen/editieren/löschen
+    - Writeups/Blogs erstellen/editieren/löschen
         - live Rendering des Markdowns
 
 # Visuals
+- CTF Overview - hat man auf einen der CTFs geklickt wird die Beschreibung vorgehoben und wenn man wieder den vergrößerten Button weg macht, dann wird immer der zuletzt vergrößterte beim Hovern nicht mehr vergrößert
 - Writeups
     - Anstatt Screenshots, Challenge HTML embedden und so aussehen lassen als wäre es wie in einem eigenen Browserfenster
         => https://github.com/felixfbecker/dom-to-svg
