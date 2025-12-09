@@ -6,6 +6,25 @@
 @import "ctf_which";
 @import "ctf_writeup";
 
+.back-button-floating {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 50;
+}
+
+.back-button {
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    color: white;
+    transition: transform 0.2s ease-in-out, background-color 1s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: $color-secondary;
+        cursor: pointer;
+    }
+}
+
 .MathJax {
     overflow-x: auto;
     overflow-y: hidden;

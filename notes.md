@@ -1,5 +1,4 @@
 # Content
-- "Zurück" Button, um ein Level höher zu gehen also im Prinzip "cd .."
 - PDF von Writeups verlinken falls vorhanden
 - Search bar for ctfs and writeups
     - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
