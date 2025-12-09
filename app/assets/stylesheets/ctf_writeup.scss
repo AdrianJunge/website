@@ -199,13 +199,13 @@ body {
   background-color: $color-secondary;
 }
 
-.download-btn:hover {
+.download-btn:hover, .open-pdf-btn:hover {
   transition: transform 0.2s ease-in-out, background-color 1s ease;
   transform: scale(1.1);
   background-color: $color-accent;
 }
 
-.download-btn {
+.download-btn, .open-pdf-btn {
   transition: transform 0.2s ease-in-out, background-color 1s ease;
   transform: scale(1);
 }
