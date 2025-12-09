@@ -14,7 +14,7 @@
     <% file_abs_path = Rails.root.join("public", "ctf", "files", file_rel) %>
     <% file_exists = "#{@ctf_info['challengefiles']}.zip".present? && File.exist?(file_abs_path) %>
 
-    <% pdf_rel = "#{@which}/#{@ctf_info['year']}/#{@ctf_info['challengefiles']}.pdf" %>
+    <% pdf_rel = "#{@which}/#{@ctf_info['year']}/#{@ctf_info['challengefiles']}.pdf".to_s %>
     <% pdf_abs_path = Rails.root.join("public", "ctf", "writeups", pdf_rel) %>
     <% pdf_exists = "#{@ctf_info['challengefiles']}.pdf".present? && File.exist?(pdf_abs_path) %>
 

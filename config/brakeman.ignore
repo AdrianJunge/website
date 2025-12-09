@@ -7,7 +7,7 @@
       "check_name": "FileAccess",
       "message": "Parameter value used in file name",
       "file": "app/controllers/ctf_controller.rb",
-      "line": 32,
+      "line": 34,
       "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
       "code": "File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\")))",
       "render_path": null,
@@ -22,7 +22,7 @@
         22
       ],
       "note": ""
-    },     {
+    }, {
       "warning_type": "File Access",
       "warning_code": 16,
       "fingerprint": "3a266212b28fab67e5e48028d3218ac020eb68eb185975fad4b4d7d75f2e8c62",
@@ -69,13 +69,46 @@
     {
       "warning_type": "Path Traversal",
       "warning_code": 125,
-      "fingerprint": "8d6415219e0cfd627e6b7a13637778382e4a5fda508c2750e0a1d747d494346a",
+      "fingerprint": "74123d5014a14ea50eb499fbce965b75d6f122d937f2c7b5d0dce58477d43b0e",
       "check_name": "Pathname",
       "message": "Absolute paths in `Pathname#join` cause the entire path to be relative to the absolute path, ignoring any prior values",
       "file": "app/views/ctf/writeup.html.erb",
-      "line": 13,
+      "line": 14,
       "link": "https://brakemanscanner.org/docs/warning_types/path_traversal/",
-      "code": "Rails.root.join(\"public\", \"ctf\", \"files\", \"#{params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\")}/#{get_ctf_info((File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\"))) or \"Markdown file not found\"))[\"year\"]}/#{get_ctf_info((File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\"))) or \"Markdown file not found\"))[\"challengefiles\"]}\".to_s)",
+      "code": "Rails.root.join(\"public\", \"ctf\", \"files\", \"#{params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\")}/#{get_ctf_info((File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\"))) or \"Markdown file not found\"))[\"year\"]}/#{get_ctf_info((File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\"))) or \"Markdown file not found\"))[\"challengefiles\"]}.zip\".to_s)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "CtfController",
+          "method": "writeup",
+          "line": 41,
+          "file": "app/controllers/ctf_controller.rb",
+          "rendered": {
+            "name": "ctf/writeup",
+            "file": "app/views/ctf/writeup.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "ctf/writeup"
+      },
+      "user_input": "params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\")",
+      "confidence": "High",
+      "cwe_id": [
+        22
+      ]
+    },
+    {
+      "warning_type": "Path Traversal",
+      "warning_code": 125,
+      "fingerprint": "d528e3c04849eb12a9165fb4713060c26cdd2f3873328cb168edfb576e6a8152",
+      "check_name": "Pathname",
+      "message": "Absolute paths in `Pathname#join` cause the entire path to be relative to the absolute path, ignoring any prior values",
+      "file": "app/views/ctf/writeup.html.erb",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/path_traversal/",
+      "code": "Rails.root.join(\"public\", \"ctf\", \"writeups\", \"#{params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\")}/#{get_ctf_info((File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\"))) or \"Markdown file not found\"))[\"year\"]}/#{get_ctf_info((File.read(Rails.root.join(\"app\", \"assets\", \"ctf\", \"writeups\").join(params[:which].gsub(\"..\", \"\").gsub(\"/\", \"\"), (params[:writeup].gsub(\"..\", \"\").gsub(\"/\", \"\") + \".md\"))) or \"Markdown file not found\"))[\"challengefiles\"]}.pdf\".to_s)",
       "render_path": [
         {
           "type": "controller",
