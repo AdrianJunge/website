@@ -1,7 +1,6 @@
 // https://xtermjs.org/docs/api/terminal/classes/terminal/
 
 import "xterm";
-import "xterm-addon-web-links";
 import "xterm-addon-fit";
 
 //                                  _.
@@ -38,7 +37,6 @@ const term = new Terminal({
     convertEol: true,
     fontSize: fontSize,
 });
-const webLinksAddon = new WebLinksAddon.WebLinksAddon()
 const fitAddon = new FitAddon.FitAddon();
 const terminalElement = document.getElementById('terminal-container');
 const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
@@ -105,9 +103,25 @@ function createHyperlink(text, url) {
     return `\x1b]8;;${url}\x07${text}\x1b]8;;\x07`
 }
 
-const customOpenLink = (url) => {
-    window.location.href = url;
-}
+const customLinkHandler = {
+  allowNonHttpProtocols: false,
+
+  activate: (event, uri, range) => {
+    event.preventDefault();
+    const url = new URL(uri, window.location.origin);
+    let isExternal = url.origin !== window.location.origin;
+
+    if (isExternal) {
+      window.open(uri, '_blank', 'noopener,noreferrer');
+    } else {
+      window.location.href = uri;
+    }
+  },
+
+  hover: () => {},
+  leave: () => {}
+};
+
 
 function typeText(text, color, callback) {
     let i = 0;
@@ -132,8 +146,6 @@ function getTargetUrl(path) {
     } else {
         url = window.location.href.endsWith("/") ? window.location.href + path : window.location.href + "/" + path;
     }
-    // url = new URL(url);
-    // url = parsedUrl.pathname
 
     return url;
 }
@@ -172,14 +184,13 @@ function processCommand(command) {
 }
 
 const initTerminal = () => {
-    term.loadAddon(webLinksAddon);
     term.loadAddon(fitAddon);
     term.open(terminalElement);
     fitAddon.fit();
     term.onResize((_) => {
         fitAddon.fit();
     });
-    webLinksAddon._openLink = customOpenLink;
+    term.options.linkHandler = customLinkHandler;
 
     if (window.location.pathname === '/') {
         printMultiLineString(fastFetchInfo, COLORS.brightBlue);

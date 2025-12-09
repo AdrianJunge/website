@@ -37,11 +37,13 @@
     -ms-user-select: none;
     user-select: none;
     box-sizing: border-box;
+    pointer-events: none;
 }
 
 #taskbar-left.expanded {
     width: calc(#{$taskbar-size} * 3);
     opacity: 1;
+    pointer-events: auto;
 }
 
 #taskbar-left .taskbar-item:last-child {
@@ -67,7 +69,6 @@
     margin: 1dvh;
     color: white;
     font-size: 2vmin;
-    pointer-events: auto;
 }
 
 .taskbar-link:hover .taskbar-icon,

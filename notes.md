@@ -1,11 +1,11 @@
 # Content
 - "Zurück" Button, um ein Level höher zu gehen also im Prinzip "cd .."
+- PDF von Writeups verlinken falls vorhanden
 - Search bar for ctfs and writeups
-    - ctf tags clickable machen sodass gefiltert wird nach dem tag unter den writeups
+    - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
 - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
     => Übersicht über meine Challenges
     => jeweils redirect zu bereits published Post
-- PDF von Writeups verlinken
 - xterm + flowbite css über CDN fetchen
 - Landing Page anpassen
     - https://unbounce.com/landing-page-examples/best-landing-page-examples/
@@ -49,20 +49,18 @@
         - live Rendering des Markdowns
 
 # Visuals
-- CTF Overview - hat man auf einen der CTFs geklickt wird die Beschreibung vorgehoben und wenn man wieder den vergrößerten Button weg macht, dann wird immer der zuletzt vergrößterte beim Hovern nicht mehr vergrößert
+- Terminal slide in/out animation wenn man es öffnet/schließt
+- Scrolling out/in führt dazu dass e.g.
+    - ctf overview die Fonts in den vergrößerten Kreise viel zu groß ist
+    - writeups overview die Boxen nicht verkleinert werden, aber die Fonts
+    - "Table of content" Überschrift zu klein ist/unproportional zum Rest
+- Fehler pages updaten
 - Writeups
     - Anstatt Screenshots, Challenge HTML embedden und so aussehen lassen als wäre es wie in einem eigenen Browserfenster
         => https://github.com/felixfbecker/dom-to-svg
 - Redundantes bzw alles an CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
-- Taskbar Icons sind klickbar auch wenn die Taskbar nicht expanded ist
-- Fehler pages updaten
-- Firefox
-    - CSS fixen
-- Scrolling out/in führt dazu dass "Table of content" Überschrift zu klein ist/unproportional zum Rest
 ## Terminal
-- internal statt external links
-    => keine Warnung bei Terminal Hyperlinks + Weiterleitung im gleichen Fenster
 - Das Terminal könnte vllt von unten hochgeschoben werden, statt einfach so aufzuploppen
 - localstore speichern ob Terminal gerade collapsed ist oder nicht => seitenübergreifend bleibt das Terminal auf
 

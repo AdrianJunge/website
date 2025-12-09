@@ -37,7 +37,7 @@ document.querySelectorAll('.ctf-card').forEach(card => {
       card.style.transform = '';
       requestAnimationFrame(() => {
         card.style.transition = 'transform 0.3s ease-in-out';
-        card.style.transform = 'none';
+        card.style.transform = '';
       });
       setTimeout(() => {
         card.style.zIndex = '';
