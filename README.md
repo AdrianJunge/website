@@ -9,6 +9,7 @@ Just use the `install_necessary.sh` to install everything needed.
 
 # Update
 `bundle update`
+`npm update`
 
 # Dev stuff
 `bundle exec overcommit --sign pre-commit`
