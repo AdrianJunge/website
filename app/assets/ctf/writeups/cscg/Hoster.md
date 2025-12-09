@@ -5,7 +5,7 @@ description: You gained access to a Linux server. Can you also gain privileges?
 categories:
     - PrivEsc
 year: 2024
-challengefiles:
+challengefiles: hoster
 published: "2024-05-01"
 ---
 

@@ -5,7 +5,7 @@ description: We recently stumbled upon an exposed SVN server of a large multimed
 categories:
     - Web
 year: 2025
-challengefiles: vidplow.zip
+challengefiles: vidplow
 published: "2025-05-01"
 ---
 

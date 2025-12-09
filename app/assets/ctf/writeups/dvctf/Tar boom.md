@@ -5,7 +5,7 @@ description: Within the Louvre Museum's intranet, there is a service that allows
 categories:
     - web
 year: 2025
-challengefiles: tarboom.zip
+challengefiles: tarboom
 published: "2025-03-01"
 ---
 

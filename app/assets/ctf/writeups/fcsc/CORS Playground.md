@@ -5,7 +5,7 @@ description: Perplexed by CORS? Our CORS Playground is your ideal solution. This
 categories:
     - Web
 year: 2024
-challengefiles: cors-playground.zip
+challengefiles: cors-playground
 published: "2024-09-01"
 ---
 

@@ -6,7 +6,7 @@ categories:
     - Web
     - .NET
 year: 2024
-challengefiles: photoeditor.zip
+challengefiles: photoeditor
 published: "2024-05-01"
 ---
 

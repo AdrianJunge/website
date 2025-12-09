@@ -7,31 +7,21 @@
   <div class="writeup-container bg-primary">
     <h4 class="writeup-year text-white text-center"><%= @which.upcase %>-<%= @ctf_info["year"] %></h4>
     <h1 class="writeup-title text-white"><%= @ctf_info["title"] %></h1>
-    <% file_rel = "#{@which}/#{@ctf_info['year']}/#{@ctf_info['challengefiles']}".to_s %>
-    <% basename = File.basename(@ctf_info['challengefiles'].to_s) %>
+
+    <% basename = File.basename("#{@ctf_info['challengefiles']}.zip")  %>
+
+    <% file_rel = "#{@which}/#{@ctf_info['year']}/#{@ctf_info['challengefiles']}.zip".to_s %>
     <% file_abs_path = Rails.root.join("public", "ctf", "files", file_rel) %>
-    <% file_exists = @ctf_info["challengefiles"].present? && File.exist?(file_abs_path) %>
+    <% file_exists = "#{@ctf_info['challengefiles']}.zip".present? && File.exist?(file_abs_path) %>
+
+    <% pdf_rel = "#{@which}/#{@ctf_info['year']}/#{@ctf_info['challengefiles']}.pdf" %>
+    <% pdf_abs_path = Rails.root.join("public", "ctf", "writeups", pdf_rel) %>
+    <% pdf_exists = "#{@ctf_info['challengefiles']}.pdf".present? && File.exist?(pdf_abs_path) %>
 
     <div class="writeup-challengefiles flex flex-col items-center gap-3">
       <div class="flex items-center gap-4">
-        <% if @ctf_info["challengefiles"].blank? %>
-          <span class="inline-flex items-center gap-2 rounded-full bg-yellow-600/10 px-3 py-1 text-sm font-medium text-gray-300 shadow-sm mt-3">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M14 3v5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            No files for the challenge
-          </span>
 
-        <% elsif !file_exists %>
-          <span class="inline-flex items-center gap-2 rounded-full bg-red-600/10 px-3 py-1 text-sm font-medium text-red-300 shadow-sm mt-3">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            File not found
-          </span>
-
-          <small class="text-xs text-red-200/70 ml-2">Contact an admin or check the file path.</small>
-
-        <% else %>
+        <% if file_exists %>
           <% size = number_to_human_size(File.size(file_abs_path)) rescue nil %>
           <%= link_to ctf_file_download_path(file_rel),
                       class: "download-btn bg-tertiary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-black font-semibold mt-3",
@@ -47,9 +37,24 @@
             <%= basename %> - <%= size %>
           <% end %>
         <% end %>
+
+        <% if pdf_exists %>
+          <%= link_to "/ctf/writeups/#{pdf_rel}",
+                      class: "open-pdf-btn bg-blue-500 inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-white font-semibold mt-3",
+                      target: "_blank",
+                      rel: "noopener",
+                      aria: { label: "Open PDF Writeup" },
+                      style: "background: box-shadow: 0 8px 24px rgba(59,130,246,0.22);" do %>
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 19a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h7l5 5v9a2 2 0 0 1-2 2H6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 7V2.5L18.5 8H14a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Open PDF Writeup
+          <% end %>
+        <% end %>
+
       </div>
     </div>
-
 
     <%= @html_content %>
   </div>

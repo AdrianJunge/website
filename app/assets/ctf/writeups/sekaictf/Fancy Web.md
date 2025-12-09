@@ -5,7 +5,7 @@ description: The Ministry of Information and Communications Technology of Konoha
 categories:
     - web
 year: 2025
-challengefiles: fancy-web.zip
+challengefiles: fancy-web
 published: "2025-09-06"
 hints:
     - Taking a closer look at `in_array` might offer some inspiration on where to look next.

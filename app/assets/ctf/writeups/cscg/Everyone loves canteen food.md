@@ -5,7 +5,7 @@ description: Welcome to the canteen's online menu, where you can check out the d
 categories:
     - Web
 year: 2025
-challengefiles: canteenfood.zip
+challengefiles: canteenfood
 published: "2025-05-01"
 ---
 

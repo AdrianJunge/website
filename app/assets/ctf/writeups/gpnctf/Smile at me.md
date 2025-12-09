@@ -5,7 +5,7 @@ description: Be careful, others might be able to find out your most sacred secre
 categories:
     - web
 year: 2025
-challengefiles: smile-at-me.zip
+challengefiles: smile-at-me
 published: "2025-08-01"
 ---
 

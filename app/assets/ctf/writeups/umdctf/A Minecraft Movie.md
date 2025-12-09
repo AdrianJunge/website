@@ -5,7 +5,7 @@ description: I...AM STEVE!
 categories:
     - Web
 year: 2025
-challengefiles:
+challengefiles: a-minecraft-movie
 published: "2025-02-01"
 ---
 

@@ -5,7 +5,7 @@ description: We've managed to insert ourselves into a secure channel between two
 categories:
     - Crypto
 year: 2025
-challengefiles: kdf-dream.zip
+challengefiles: kdf-dream
 published: "2025-05-01"
 ---
 

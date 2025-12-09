@@ -1,5 +1,5 @@
 # Content
-- PDF von Writeups verlinken falls vorhanden
+- fetch favicon from ctf site and cache it
 - Search bar for ctfs and writeups
     - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
 - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
