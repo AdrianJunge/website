@@ -1,4 +1,6 @@
 # Content
+- awards/achievements
+    - e.g. winning writeup @cscg (best writeup for challenge) oder @umdctf (best web writeup)
 - fetch favicon from ctf site and cache it
 - Search bar for ctfs and writeups
     - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
