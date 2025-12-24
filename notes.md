@@ -7,7 +7,6 @@
         - timeline pro Jahr mit count wie viel published (https://sky-lance.github.io/archives/)
 
 # Landing page
-- insta verlinken
 - top part
     - Dynamischer Hintergrund
         - zB mit random auswahl aus bestimmten GIFs
