@@ -40,6 +40,7 @@ const term = new Terminal({
 const fitAddon = new FitAddon.FitAddon();
 const terminalElement = document.getElementById('terminal-container');
 const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
+let linkTooltip = document.getElementById('terminal-link-tooltip');
 
 const COLORS = {
     reset: '\x1B[0m',
@@ -106,10 +107,10 @@ function createHyperlink(text, url) {
 const customLinkHandler = {
   allowNonHttpProtocols: false,
 
-  activate: (event, uri, range) => {
+  activate: (event, uri) => {
     event.preventDefault();
     const url = new URL(uri, window.location.origin);
-    let isExternal = url.origin !== window.location.origin;
+    const isExternal = url.origin !== window.location.origin;
 
     if (isExternal) {
       window.open(uri, '_blank', 'noopener,noreferrer');
@@ -117,9 +118,20 @@ const customLinkHandler = {
       window.location.href = uri;
     }
   },
-
-  hover: () => {},
-  leave: () => {}
+  hover: (event, uri) => {
+    console.log("event hover", event, uri);
+    if (!linkTooltip) return;
+    const rect = document
+        .getElementById("terminal-container")
+        .getBoundingClientRect();
+    linkTooltip.textContent = uri;
+    linkTooltip.style.visibility = "visible";
+    linkTooltip.style.left = event.clientX - rect.left + 30 + "px";
+    linkTooltip.style.top  = event.clientY - rect.top + "px";
+  },
+  leave: () => {
+    if (linkTooltip) linkTooltip.style.visibility = "hidden";
+  }
 };
 
 

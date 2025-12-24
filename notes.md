@@ -1,12 +1,17 @@
+# Misc
+- Ideen von anderen Blogs holen
+    - https://sky-lance.github.io/
+
 # Content
 - awards/achievements
     - e.g. winning writeup @cscg (best writeup for challenge) oder @umdctf (best web writeup)
-- fetch favicon from ctf site and cache it
-- Search bar for ctfs and writeups
-    - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
-- “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
-    => Übersicht über meine Challenges
-    => jeweils redirect zu bereits published Post
+- ctf writeups
+    - Search bar for ctfs and writeups
+        - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
+    - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
+        => Übersicht über meine Challenges
+        => jeweils redirect zu bereits published Post
+    - automatisch PDF erstellen falls noch nicht vorhanden/premade (zB wie bei cscg writeups mit demselben Format zB Ctf Logo auf 1. Seite dann Ctf chal Metadaten und dann Kapitel etc)
 - xterm + flowbite css über CDN fetchen
 - Landing Page anpassen
     - https://unbounce.com/landing-page-examples/best-landing-page-examples/
@@ -22,7 +27,6 @@
         - Text about me left aligned
         - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
     - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
-- Dynamischer Hintergrund
 - CTF
     - Writeup Overview
         - Suchfilter und Filteroption nach Jahr/Datum
@@ -50,26 +54,34 @@
         - live Rendering des Markdowns
 
 # Visuals
-- Terminal slide in/out animation wenn man es öffnet/schließt
-- Scrolling out/in führt dazu dass e.g.
-    - ctf overview die Fonts in den vergrößerten Kreise viel zu groß ist
-    - writeups overview die Boxen nicht verkleinert werden, aber die Fonts
-    - "Table of content" Überschrift zu klein ist/unproportional zum Rest
+- Dynamischer Hintergrund
+    - zB mit random auswahl aus bestimmten GIFs
 - Fehler pages updaten
 - Writeups
     - Anstatt Screenshots, Challenge HTML embedden und so aussehen lassen als wäre es wie in einem eigenen Browserfenster
         => https://github.com/felixfbecker/dom-to-svg
+- Scrolling out/in führt dazu dass e.g.
+    - ctf overview die Fonts in den vergrößerten Kreise viel zu groß ist
+    - writeups overview die Boxen nicht verkleinert werden, aber die Fonts
+    - "Table of content" Überschrift zu klein ist/unproportional zum Rest
+## CSS
 - Redundantes bzw alles an CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
-## Terminal
+- single truth of color pattern für tailwindcss vs variables.scss
+- tailwindcss flowbite plugin fixen
+    => evtl neues Setup und dann Code übernehmen
+
+# Terminal
+- Am Handy passt die Terminal text Height nicht - ist zu klein aber Terminal Box ist groß
+- Terminal slide in/out animation wenn man es öffnet/schließt
 - Das Terminal könnte vllt von unten hochgeschoben werden, statt einfach so aufzuploppen
 - localstore speichern ob Terminal gerade collapsed ist oder nicht => seitenübergreifend bleibt das Terminal auf
 
 # Misc
-- Orientieren an https://sky-lance.github.io/
+- fetch favicon from ctf site and **cache it**
+- `vurlo.de` sichern und DNS einrichten sodass sowohl `adrianjunge.de` als auch `vurlo.de` auf dieselbe IP zeigen
 - SEO (search engine optimization)
 - kompletten boiler plate Code von Rails durchgehen und das rauswerfen was ich nicht brauche
-- vurlo.de sichern und DNS einrichten
 - Email einrichten für Domaine
     - Forwarding
     - als contact angeben in Terminal + Footer
@@ -78,12 +90,6 @@
 - Fetched ctf favicon sanitzen wegen XSS vector mit DOMPurify
 
 # Fix
-- single truth of color pattern für tailwindcss vs variables.scss
-- table of contents - sobald zu einer section gescrollt wird dessen title die ganze Box ausfüllt wird die Box nochmal größer
-- Terminal nav button geht aus Bildschirm raus sobald zu klein
-- tailwindcss flowbite plugin fixen
-    => evtl neues Setup und Code übernehmen
-- Terminal Height passt nicht ganz zum content - es wird was abgeschnitten
 - Writeups und paths für ctf file zips in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
     => Brakeman ignore Test wieder rausnehmen (config/brakeman.ignore)
