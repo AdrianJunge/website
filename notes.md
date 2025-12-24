@@ -1,40 +1,44 @@
-# Misc
+# Ideas
 - Ideen von anderen Blogs holen
     - https://sky-lance.github.io/
-        - nicer hintergrund
-        - insta verlinkt
-        - animated written text mit persönlichen zitaten/slogans
-        - nach kurzem scroll
-            - kleine Box mit counts wie tags, categories, posts (ctf spezifisch machen)
-            - latest 3 writeups auflisten auf landing
+        - collapsable table of content bei den writeups
+        - bei einem writeup unten previous/next writeup
+            - entweder innerhalb des CTFs oder overall (zB nach Datum oder ordered by ctfs)
+        - timeline pro Jahr mit count wie viel published (https://sky-lance.github.io/archives/)
+
+# Landing page
+- insta verlinken
+- top part
+    - Dynamischer Hintergrund
+        - zB mit random auswahl aus bestimmten GIFs
+    - animated written welcome messages mit persönlichen zitaten/slogans/lebensmotto
+- lower part nach kurzem scroll (wie bei https://sky-lance.github.io/)
+    - blurry background
+    - kleine Box mit
+        - personal info
+            - Name und gamer/ctftag
+            - master's student of computer science @KIT focusing on cyber security
+            - ctf team KITCTF
+            - main ctf categories
+            - find here my ctf writeups and projects
+            - evtl Teile von CV/Resumee
+        - image von KITCTF
+    - kleine Box mit
+        - profilbild
+        - counts wie tags, categories, posts (ctf spezifisch machen)
+    - latest 3 writeups/latestcontent direkt auflisten als boxen
 
 # Content
 - awards/achievements
     - e.g. winning writeup @cscg (best writeup for challenge) oder @umdctf (best web writeup)
-- ctf writeups
-    - Search bar for ctfs and writeups
-        - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
+- xterm + flowbite css über CDN fetchen
+- CTF
+    - automatisch PDF erstellen falls noch nicht vorhanden/premade (zB wie bei cscg writeups mit demselben Format zB Ctf Logo auf 1. Seite dann Ctf chal Metadaten und dann Kapitel etc)
     - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
         => Übersicht über meine Challenges
         => jeweils redirect zu bereits published Post
-    - automatisch PDF erstellen falls noch nicht vorhanden/premade (zB wie bei cscg writeups mit demselben Format zB Ctf Logo auf 1. Seite dann Ctf chal Metadaten und dann Kapitel etc)
-- xterm + flowbite css über CDN fetchen
-- Landing Page anpassen
-    - https://unbounce.com/landing-page-examples/best-landing-page-examples/
-    - Images von KIT/KITCTF lieber wegpacken oder vlt als Emoji falls das irgendwie geht
-    - Schrift größer
-    - Writeups direkt verlinken bzw "latest content"
-- about me als landing Page mit Welcome Message etc und kleines gif Terminal nav und shortcuts
-    - Resumee/CV (oder nur Teile davon)
-        - Englisch/Deutsch
-        => was muss man beachten wenn man sein CV online stellt
-    - Ask me anything - Chatbot (chat with me)
-    - Landing Page improvement
-        - Text about me left aligned
-        - Bild von mir zB als Hintergrund oder als kleiner Bildkasten wie die anderen Bilder
-    - "irgendwie noch etwas mehr Beschreibung als I'm Adrian. Irgendein Lebensmotto oder Slogan oder so"
-- CTF
-    - Writeup Overview
+    - Search bar for ctfs and writeups
+        - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
         - Suchfilter und Filteroption nach Jahr/Datum
     - Writeup
         - hints anzeigen über die Metadaten und Template erweitern
@@ -55,13 +59,13 @@
     - Minigames (eigene App wie das Terminal)
         - TicTacToe vs AI
     - Custom Tools
-- Content Management
+    - Ask me anything - Chatbot (chat with me)
+
+# Content Management
     - Writeups/Blogs erstellen/editieren/löschen
         - live Rendering des Markdowns
 
 # Visuals
-- Dynamischer Hintergrund
-    - zB mit random auswahl aus bestimmten GIFs
 - Fehler pages updaten
 - Writeups
     - Anstatt Screenshots, Challenge HTML embedden und so aussehen lassen als wäre es wie in einem eigenen Browserfenster
