@@ -1,6 +1,12 @@
 # Misc
 - Ideen von anderen Blogs holen
     - https://sky-lance.github.io/
+        - nicer hintergrund
+        - insta verlinkt
+        - animated written text mit persönlichen zitaten/slogans
+        - nach kurzem scroll
+            - kleine Box mit counts wie tags, categories, posts (ctf spezifisch machen)
+            - latest 3 writeups auflisten auf landing
 
 # Content
 - awards/achievements
@@ -71,13 +77,8 @@
 - tailwindcss flowbite plugin fixen
     => evtl neues Setup und dann Code übernehmen
 
-# Terminal
-- Am Handy passt die Terminal text Height nicht - ist zu klein aber Terminal Box ist groß
-- Terminal slide in/out animation wenn man es öffnet/schließt
-- Das Terminal könnte vllt von unten hochgeschoben werden, statt einfach so aufzuploppen
-- localstore speichern ob Terminal gerade collapsed ist oder nicht => seitenübergreifend bleibt das Terminal auf
-
 # Misc
+- mathjax aus `application.html.erb` moven in JS file
 - fetch favicon from ctf site and **cache it**
 - `vurlo.de` sichern und DNS einrichten sodass sowohl `adrianjunge.de` als auch `vurlo.de` auf dieselbe IP zeigen
 - SEO (search engine optimization)

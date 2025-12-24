@@ -1,5 +1,4 @@
 // https://xtermjs.org/docs/api/terminal/classes/terminal/
-
 import "xterm";
 import "xterm-addon-fit";
 
@@ -38,9 +37,15 @@ const term = new Terminal({
     fontSize: fontSize,
 });
 const fitAddon = new FitAddon.FitAddon();
+term.loadAddon(fitAddon);
+
 const terminalElement = document.getElementById('terminal-container');
 const pathsArray = JSON.parse(terminalElement.dataset.terminalText);
 let linkTooltip = document.getElementById('terminal-link-tooltip');
+
+let inputBuffer = '';
+let terminalOpened = false;
+const terminalOpenKey = 'terminal-open';
 
 const COLORS = {
     reset: '\x1B[0m',
@@ -119,7 +124,6 @@ const customLinkHandler = {
     }
   },
   hover: (event, uri) => {
-    console.log("event hover", event, uri);
     if (!linkTooltip) return;
     const rect = document
         .getElementById("terminal-container")
@@ -137,15 +141,19 @@ const customLinkHandler = {
 
 function typeText(text, color, callback) {
     let i = 0;
-    const interval = setInterval(() => {
+    function typeChar() {
+        if (i >= text.length) {
+            if (callback) callback();
+            return;
+        }
         printLine(text.charAt(i), color);
         i++;
-        if (i === text.length) {
-            clearInterval(interval);
-            if (callback) callback();
-        }
-    }, 100);
+        const delay = 25 + Math.random() * 100;
+        setTimeout(typeChar, delay);
+    }
+    typeChar();
 }
+
 
 function getTargetUrl(path) {
     let url;
@@ -171,11 +179,10 @@ function processCommand(command) {
             let targetUrl;
             targetUrl = getTargetUrl(target);
             printLine(`\n  Changing to ${target}...\n`);
-            printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
             window.location.href = targetUrl;
+            return;
         } else {
             printLine(`\n  Directory "${target}" not found.`, COLORS.white);
-            printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
         }
     } else if (command === 'clear') {
         term.clear();
@@ -195,14 +202,16 @@ function processCommand(command) {
     printLine(`\nadrian@my-space:~$ `, COLORS.brightRed);
 }
 
-const initTerminal = () => {
-    term.loadAddon(fitAddon);
+function initializeTerminal() {
+    terminalOpened = true;
+
     term.open(terminalElement);
+    term.options.linkHandler = customLinkHandler;
+
     fitAddon.fit();
     term.onResize((_) => {
         fitAddon.fit();
     });
-    term.options.linkHandler = customLinkHandler;
 
     if (window.location.pathname === '/') {
         printMultiLineString(fastFetchInfo, COLORS.brightBlue);
@@ -215,8 +224,6 @@ const initTerminal = () => {
         generateLsOutput(pathsArray);
         printLine('\nadrian@my-space:~$ ', COLORS.brightRed);
     });
-
-    let inputBuffer = '';
 
     term.onData(function(data) {
         if (data === '\r' || data === '\n') {
@@ -255,7 +262,7 @@ function getFormattedDate() {
       hour12: false
     }).format(now);
     return formatted.replace(',', '');
-  }
+}
 
 function generateLsOutput(pathsArray) {
     pathsArray.forEach(path => {
@@ -278,7 +285,22 @@ function generateLsOutput(pathsArray) {
     });
 }
 
+function openTerminal(terminal) {
+    terminal.classList.toggle("terminal-minimized");
+    const nowMinimized = terminal.classList.contains("terminal-minimized");
+    try {
+        localStorage.setItem(terminalOpenKey, (!nowMinimized).toString());
+    } catch(e) {
+        console.error("Error accessing localStorage:", e);
+    }
 
+    if (nowMinimized) {
+        if (terminalOpened) term.blur();
+    } else {
+        if (!terminalOpened) initializeTerminal();
+        term.focus();
+    }
+}
 
 function minimizeTerminal() {
     const minimizeButton = document.getElementById("minimize-terminal");
@@ -286,33 +308,34 @@ function minimizeTerminal() {
 	const terminal = document.getElementById("terminal-container");
 	const terminalTaskbarIcon = document.getElementById("terminal-taskbar-button");
 
-	minimizeButton.addEventListener("click", function () {
+    minimizeButton.addEventListener("click", function () {
         terminal.classList.add("terminal-minimized");
-	});
-	closeButton.addEventListener("click", function () {
-        terminal.classList.add("terminal-minimized");
-	});
-	terminalTaskbarIcon.addEventListener("click", function () {
-        terminal.classList.toggle("terminal-minimized");
-        if (terminal.classList.contains("terminal-minimized")) {
-            term.blur();
-        } else {
-            term.focus();
+        try {
+            localStorage.setItem(terminalOpenKey, 'false');
+        } catch(e) {
+            console.error("Error accessing localStorage:", e);
         }
+        if (terminalOpened) term.blur();
+    });
+    closeButton.addEventListener("click", function () {
+        terminal.classList.add("terminal-minimized");
+        try {
+            localStorage.setItem(terminalOpenKey, 'false');
+        } catch(e) {
+            console.error("Error accessing localStorage:", e);
+        }
+        if (terminalOpened) term.blur();
+    });
+    terminalTaskbarIcon.addEventListener("click", function () {
+        openTerminal(terminal);
     });
 
     let isProcessingShortcut = false;
-
     const handleCtrlEnter = () => {
         if (isProcessingShortcut) return;
         isProcessingShortcut = true;
 
-        terminal.classList.toggle("terminal-minimized");
-        if (terminal.classList.contains("terminal-minimized")) {
-            term.blur();
-        } else {
-            term.focus();
-        }
+        openTerminal(terminal);
 
         setTimeout(() => {
             isProcessingShortcut = false;
@@ -340,5 +363,13 @@ function minimizeTerminal() {
 
 document.addEventListener('DOMContentLoaded', function() {
     minimizeTerminal();
+    try {
+        const shouldBeOpen = localStorage.getItem('terminal-open') === 'true';
+        const terminal = document.getElementById('terminal-container');
+        if (shouldBeOpen && terminal) {
+            openTerminal(terminal);
+            term.focus();
+        }
+    } catch (e) {
+    }
 });
-document.addEventListener('DOMContentLoaded', initTerminal);

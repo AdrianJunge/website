@@ -33,7 +33,6 @@
       startup: {
         pageReady() {
           function updateScrollClasses() {
-            console.log('Updating scroll classes');
             document.querySelectorAll('.MathJax').forEach(el => {
               if (el.scrollWidth > el.clientWidth) {
                 el.classList.add('has-scroll');
