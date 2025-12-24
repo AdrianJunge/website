@@ -1,3 +1,5 @@
+import Typed from "typed.js";
+
 document.addEventListener("DOMContentLoaded", function () {
 	const menuIcons = document.querySelectorAll(".menu-icon");
 	const taskbarLeft = document.getElementById("taskbar-left");
@@ -26,4 +28,36 @@ document.getElementById('taskbar-left').addEventListener('transitionstart', func
             label.style.opacity = '0';
         });
     }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const el = document.getElementById('typing');
+    if (!el) return;
+
+    const phrases = [
+        'Welcome to my space!',
+        'Explore my CTF writeups & projects',
+        'Web and occasionally PWN player',
+        'CTF enthusiast',
+        'I love breaking stuff to fix it',
+        'Hey, I\'m Adrian aka vurlo',
+        'I write things that people read later',
+        'If it runs, I poke it',
+        'I like puzzles that crash things',
+        'Teaching machines to misbehave',
+        // 'Currently learning: <TODO>'
+    ];
+
+    new Typed(el, {
+        strings: phrases,
+        typeSpeed: 60,
+        backSpeed: 30,
+        backDelay: 1500,
+        startDelay: 300,
+        loop: true,
+        smartBackspace: true,
+        showCursor: true,
+        cursorChar: '|',
+        shuffle: true,
+    });
 });

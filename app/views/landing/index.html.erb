@@ -2,26 +2,33 @@
     { image_path: 'task-bar/flag.svg', alt_text: "CTF Icon", label: "CTF", link: ctf_path },
 ]) %>
 <%= render_terminal(['ctf'], true) %>
-<% kit_link="https://www.kit.edu" %>
-<% kitctf_link="https://kitctf.de" %>
+<% kit_link = "https://www.kit.edu" %>
+<% kitctf_link = "https://kitctf.de" %>
 
-<div class="px-10 landing-container text-white flex flex-col items-center justify-center mx-auto space-y-6 text-center">
-    <h3 class="font-bold text-5xl">Welcome to my space!</h3>
-    <p class="text-2xl">Hey, I'm Adrian aka vurlo.</p>
-    <p class="text-2xl">
-        I'm a master's student of computer science
-        <a href="<%= kit_link %>" class="font-bold underline" target="_blank">@KIT</a>
-        focusing on cyber security.
-    </p>
-    <p class="text-2xl">
-        Together with the
-        <a href="<%= kitctf_link %>" class="font-bold underline" target="_blank">KITCTF</a>
-        team I regularly challenge myself. I love to play Web and occasionally PWN.
-    </p>
-    <p class="text-2xl">
-        Here you will find my
-        <%= link_to "CTF", ctf_path, class: "font-bold underline" %>
-        writeups and projects.
-    </p>
-    <p class="text-2xl">Have fun exploring!</p>
-</div>
+<section id="hero" class="h-screen w-full flex flex-col items-center justify-center text-center relative">
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-white">vurlo</h1>
+    <div class="text-2xl md:text-3xl text-gray-200">
+      <span id="typing" class="font-medium"></span>
+    </div>
+
+    <div class="absolute bottom-8">
+        <button
+            type="button"
+            class="back-button rounded-full w-12 h-12 flex items-center justify-center hover:bg-secondary transition-colors"
+            aria-label="Scroll down"
+            onclick="document.getElementById('bottom').scrollIntoView({behavior:'smooth'})"
+        >
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </button>
+    </div>
+</section>
+
+<!--
+<section id="bottom" class="min-h-screen flex items-center justify-center bg-black text-black">
+    <div class="p-8 border-2 border-dashed border-gray-300 rounded-lg text-center text-gray-600">
+        Placeholder
+    </div>
+</section>
+-->

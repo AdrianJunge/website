@@ -10,12 +10,11 @@
 - top part
     - Dynamischer Hintergrund
         - zB mit random auswahl aus bestimmten GIFs
-    - animated written welcome messages mit persönlichen zitaten/slogans/lebensmotto
-- lower part nach kurzem scroll (wie bei https://sky-lance.github.io/)
+- lower part nach kurzem scroll
     - blurry background
     - kleine Box mit
         - personal info
-            - Name und gamer/ctftag
+            - Name und gamer/ctftag (Adrian aka vurlo)
             - master's student of computer science @KIT focusing on cyber security
             - ctf team KITCTF
             - main ctf categories

@@ -19,3 +19,5 @@ pin "xterm-addon-fit", to: "https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0
 pin "mathjax", to: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js", preload: true
 pin "mathjax/input/tex-full.js", to: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex-full.js"
 pin "mathjax/output/chtml.js",   to: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml.js"
+
+pin "typed.js", to: "https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.module.js"
