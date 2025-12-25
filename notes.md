@@ -1,8 +1,9 @@
 # Content
-- landing page mobile tauglich machen
+- landing page mobile tauglich machen (aber erst nachdem ich Bootstrap durch tailwindcss ersetzt habe)
+    - .html.erb
+    - helper
+- responsiveness
     - ctf-cards "..." sind sehr seltsam bzw tauchen mehrmals auf und die letzten "..." sind im datum drin
-    - mehr responsiveness
-    - timeline dots sind verschoben
     - footer mehr squeezen und Buttons größer machen
 - CTF
     - RSS buttons zu CTF verschieben

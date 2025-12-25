@@ -116,9 +116,9 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     -moz-box-orient: vertical;
     -ms-text-overflow: ellipsis;

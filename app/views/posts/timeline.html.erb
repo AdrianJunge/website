@@ -6,6 +6,11 @@
   <meta property="og:type" content="website">
 <% end %>
 
+<%= render_taskbar_items([
+  { image_path: 'task-bar/flag.svg', alt_text: "CTF Icon", label: "CTF", link: ctf_path },
+]) %>
+<%= render_terminal([], true) %>
+
 <div class="max-w-4xl mx-auto">
   <ul class="timeline">
     <% @timeline.each do |year, items| %>

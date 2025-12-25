@@ -166,11 +166,13 @@ const btn = document.getElementById("toc-toggle");
 const icon = document.getElementById("toc-toggle-icon");
 const toc  = document.getElementById("toc");
 
-btn.addEventListener("click", () => {
-  const expanded = btn.getAttribute("aria-expanded") === "true";
-  if (expanded) {
-    icon.classList.add("rotate-180");
-  } else {
-    icon.classList.remove("rotate-180");
-  }
-});
+if (btn && icon && toc) {
+  btn.addEventListener("click", () => {
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    if (expanded) {
+      icon.classList.add("rotate-180");
+    } else {
+      icon.classList.remove("rotate-180");
+    }
+  });
+}

@@ -95,12 +95,14 @@
         color: #9ca3af;
         font-weight: 500;
     }
+    .timeline-connector {
+        min-height: 0;
+        width: 0;
+    }
     .timeline-connector .dot {
-        left: calc(1.25rem + var(--timeline-padding));
-        transform: translateX(-50%);
-        top: 0.25rem;
+        display: none;
     }
     .timeline-content {
-        padding-left: 2.25rem;
+        padding-left: 0;
     }
 }

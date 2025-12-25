@@ -10,7 +10,7 @@ module CtfHelper
   end
 
   def render_writeup_card(writeup, writeup_path, which, info)
-    max_description_length = 100
+    max_description_length = 200
     categories = info["categories"] || [ "Unknown category" ]
     first_category = categories&.first || "unknown"
     description = info["description"] || "No description available"
