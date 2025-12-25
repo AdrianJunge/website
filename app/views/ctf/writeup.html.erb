@@ -84,6 +84,36 @@
     </div>
 
     <%= @html_content %>
+
+    <div class="next-previous-writeups flex justify-between my-8">
+      <% if @previous_writeup %>
+        <a
+          href="<%= @previous_writeup[:link] %>"
+          class="previous-writeup-btn bg-tertiary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-black font-semibold mt-3 shadow-[0_8px_24px_rgba(99,102,241,0.22)] hover:shadow-lg"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          <span><%= @previous_writeup[:which].upcase %> - <%= @previous_writeup[:title] %></span>
+        </a>
+      <% else %>
+        <div></div>
+      <% end %>
+
+      <% if @next_writeup %>
+        <a
+          href="<%= @next_writeup[:link] %>"
+          class="next-writeup-btn bg-tertiary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-black font-semibold mt-3 shadow-[0_8px_24px_rgba(99,102,241,0.22)] hover:shadow-lg"
+        >
+          <span><%= @next_writeup[:which].upcase %> - <%= @next_writeup[:title] %></span>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      <% else %>
+        <div></div>
+      <% end %>
+    </div>
   </div>
 
   <div id="toc" class="table-of-content bg-primary">

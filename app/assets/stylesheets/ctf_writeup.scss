@@ -203,13 +203,13 @@ body {
   background-color: $color-secondary;
 }
 
-.download-btn:hover, .open-pdf-btn:hover {
+.download-btn:hover, .open-pdf-btn:hover, .previous-writeup-btn:hover, .next-writeup-btn:hover {
   transition: transform 0.2s ease-in-out, background-color 1s ease;
   transform: scale(1.1);
   background-color: $color-accent;
 }
 
-.download-btn, .open-pdf-btn {
+.download-btn, .open-pdf-btn, .previous-writeup-btn, .next-writeup-btn {
   transition: transform 0.2s ease-in-out, background-color 1s ease;
   transform: scale(1);
 }

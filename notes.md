@@ -1,6 +1,4 @@
 # Content
-- bei einem writeup unten previous/next writeup
-    - entweder innerhalb des CTFs oder overall (zB nach Datum oder ordered by ctfs)
 - landing page mobile tauglich machen
     - ctf-cards "..." sind sehr seltsam bzw tauchen mehrmals auf und die letzten "..." sind im datum drin
     - mehr responsiveness

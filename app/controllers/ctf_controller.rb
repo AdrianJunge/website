@@ -35,6 +35,8 @@ class CtfController < ApplicationController
     @ctf_info = get_ctf_info(@markdown_content)
     @headings = get_writeup_headings(@which, @writeup)
     @html_content = render_markdown(@markdown_content)
+
+    @previous_writeup, @next_writeup = get_previous_and_next_writeup(@writeup)
   end
 
   def feed
@@ -78,5 +80,18 @@ class CtfController < ApplicationController
       format.rss { render layout: false }
       format.atom { render layout: false }
     end
+  end
+
+  private
+
+  def get_previous_and_next_writeup(writeup)
+    slug  = writeup.to_s
+    items = get_timeline.flat_map { |_, year_items| year_items }
+
+    index = items.index { |i| i[:slug].downcase == slug.downcase }
+    nxt  = index > 0 ? items[index - 1] : nil   # newer
+    prev = index < items.length - 1 ? items[index + 1] : nil  # older
+
+    [ prev, nxt ]
   end
 end
