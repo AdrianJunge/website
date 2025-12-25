@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get "/ctf", to: "ctf#index"
   get "/ctf/:which", to: "ctf#which"
   get "/ctf/:which/:writeup", to: "ctf#writeup"
+
+  get "/posts-timeline", to: "posts#timeline", as: :posts
 end

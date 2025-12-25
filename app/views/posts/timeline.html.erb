@@ -1,0 +1,42 @@
+<div class="max-w-4xl mx-auto">
+  <ul class="timeline">
+    <% @timeline.each do |year, items| %>
+      <li class="mb-6">
+        <div class="flex items-baseline justify-between mb-4">
+          <h2 class="text-2xl font-semibold text-white"><%= year %></h2>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-800 text-slate-200">
+            <%= items.size %> posts
+          </span>
+        </div>
+
+        <ul class="space-y-4">
+          <% items.each do |item| %>
+            <li class="timeline-item">
+              <div class="timeline-date">
+                <time datetime="<%= item[:published].iso8601 %>">
+                  <%= item[:published].strftime('%Y-%m-%d') %>
+                </time>
+                <div class="text-xs mt-1 text-gray-500"><span class="inline-block bg-slate-800 px-2 py-0.5 rounded text-xs font-medium text-slate-200"><%= item[:which].upcase %></span></div>
+              </div>
+
+              <div class="timeline-connector">
+                <div class="dot"></div>
+              </div>
+
+              <div class="timeline-content">
+                <a href="<%= item[:link] %>" class="timeline-title hover:underline">
+                  <%= item[:title] %>
+                </a>
+
+                <div class="timeline-meta mt-1">
+                    <%= item[:description] %>
+                </div>
+
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

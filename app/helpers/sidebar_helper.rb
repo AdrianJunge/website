@@ -50,6 +50,15 @@ module SidebarHelper
       end
 
       concat(taskbar_icon_item(
+        image_path: "task-bar/post.svg",
+        alt_text: "Blogs Icon",
+        label: "Posts",
+        link: posts_path,
+        icon_class: taskbar_icon_class,
+        label_class: taskbar_label_class,
+      ))
+
+      concat(taskbar_icon_item(
         image_path: "task-bar/rss.svg",
         alt_text: "RSS Icon",
         label: "CTF RSS Feed",

@@ -1,38 +1,24 @@
-# Ideas
-- Ideen von anderen Blogs holen
-    - https://sky-lance.github.io/
-        - collapsable table of content bei den writeups
-        - bei einem writeup unten previous/next writeup
-            - entweder innerhalb des CTFs oder overall (zB nach Datum oder ordered by ctfs)
-        - timeline pro Jahr mit count wie viel published (https://sky-lance.github.io/archives/)
-            => landing page Posts number clickable machen und dort hin verlinken
-
-# Landing page
-- top part
-    - Dynamischer Hintergrund
-        - zB mit random auswahl aus bestimmten GIFs
-        - oder je nach dem wo sich die Maus hinbewegt wird das Bild auch etwas bewegt
-
 # Content
-- awards/achievements
-    - e.g. winning writeup @cscg (best writeup for challenge) oder @umdctf (best web writeup)
-- xterm + flowbite css über CDN fetchen
+- collapsable table of content bei den writeups
+- bei einem writeup unten previous/next writeup
+    - entweder innerhalb des CTFs oder overall (zB nach Datum oder ordered by ctfs)
 - CTF
     - RSS buttons zu CTF verschieben
         => zB neben Search/Filterbar packen
-    - automatisch PDF erstellen falls noch nicht vorhanden/premade (zB wie bei cscg writeups mit demselben Format zB Ctf Logo auf 1. Seite dann Ctf chal Metadaten und dann Kapitel etc)
     - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
         => Übersicht über meine Challenges
         => jeweils redirect zu bereits published Post
     - Search bar for ctfs and writeups
         - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
         - Suchfilter und Filteroption nach Jahr/Datum
+    - awards/achievements
+        - e.g. winning writeup @cscg (best writeup for challenge) oder @umdctf (best web writeup)
+        - top 5, 3 oder winner (zB DHM)
     - Writeup
         - hints anzeigen über die Metadaten und Template erweitern
         - Autoren auflisten evtl auch deren Blog verlinken
         - Hintergrund Image des CTFs
-    - OpenECSC Writeup anfertigen
-    - Archievements
+    - automatisch PDF erstellen falls noch nicht vorhanden/premade (zB wie bei cscg writeups mit demselben Format zB Ctf Logo auf 1. Seite dann Ctf chal Metadaten und dann Kapitel etc)
 - Upcoming
     - Blog
         - Codewhite bzw Deadsecctf webmiau exploit aufschlüsseln
@@ -47,6 +33,8 @@
         - TicTacToe vs AI
     - Custom Tools
     - Ask me anything - Chatbot (chat with me)
+## Neue Writeups
+- OpenECSC
 
 # Content Management
     - Writeups/Blogs erstellen/editieren/löschen
@@ -69,6 +57,7 @@
     => evtl neues Setup und dann Code übernehmen
 
 # Misc
+- xterm + flowbite css über CDN fetchen
 - mathjax aus `application.html.erb` moven in JS file
 - fetch favicon from ctf site and **cache it**
 - `vurlo.de` sichern und DNS einrichten sodass sowohl `adrianjunge.de` als auch `vurlo.de` auf dieselbe IP zeigen
