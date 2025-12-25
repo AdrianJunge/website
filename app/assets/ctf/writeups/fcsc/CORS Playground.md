@@ -1,4 +1,5 @@
 ---
+ctf: FCSC
 title: CORS Playground
 author: Adrian Junge
 description: Perplexed by CORS? Our CORS Playground is your ideal solution. This intuitive and sleek platform lets you effortlessly learn and experiment with CORS policies. Perfect for unraveling the complexities of secure cross-origin requests. Dive in and clarify your CORS concepts!

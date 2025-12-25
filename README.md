@@ -33,7 +33,9 @@ When you have installation problems try out
 `bundle exec rake db:migrate`
 
 # Brakeman ignore warnings
-Exec `bundle exec brakeman -f json -o brakeman-report.json` and add the warnings to be ignored to the `config/brakeman.ignore`
+`brakeman -I config/brakeman.ignore .`
+or
+exec `bundle exec brakeman -f json -o brakeman-report.json` and add the warnings to be ignored to the `config/brakeman.ignore`
 
 # Adding js
 Add entry in `/config/importmap.rb` and `/assets/config/manifest.js`

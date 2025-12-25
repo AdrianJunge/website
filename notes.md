@@ -5,6 +5,7 @@
         - bei einem writeup unten previous/next writeup
             - entweder innerhalb des CTFs oder overall (zB nach Datum oder ordered by ctfs)
         - timeline pro Jahr mit count wie viel published (https://sky-lance.github.io/archives/)
+            => landing page Posts number clickable machen und dort hin verlinken
 
 # Landing page
 - top part
@@ -12,25 +13,16 @@
         - zB mit random auswahl aus bestimmten GIFs
 - lower part nach kurzem scroll
     - blurry background
-    - kleine Box mit
-        - personal info
-            - Name und gamer/ctftag (Adrian aka vurlo)
-            - master's student of computer science @KIT focusing on cyber security
-            - ctf team KITCTF
             - main ctf categories
-            - find here my ctf writeups and projects
-            - evtl Teile von CV/Resumee
-        - image von KITCTF
-    - kleine Box mit
-        - profilbild
-        - counts wie tags, categories, posts (ctf spezifisch machen)
-    - latest 3 writeups/latestcontent direkt auflisten als boxen
+- TODO: writeups overview karten alignen genau wie auf landing page
 
 # Content
 - awards/achievements
     - e.g. winning writeup @cscg (best writeup for challenge) oder @umdctf (best web writeup)
 - xterm + flowbite css über CDN fetchen
 - CTF
+    - RSS buttons zu CTF verschieben
+        => zB neben Search/Filterbar packen
     - automatisch PDF erstellen falls noch nicht vorhanden/premade (zB wie bei cscg writeups mit demselben Format zB Ctf Logo auf 1. Seite dann Ctf chal Metadaten und dann Kapitel etc)
     - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
         => Übersicht über meine Challenges

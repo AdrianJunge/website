@@ -1,4 +1,5 @@
 ---
+ctf: CSCG
 title: Hoster
 author: Adrian Junge
 description: You gained access to a Linux server. Can you also gain privileges?

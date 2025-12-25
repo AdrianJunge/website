@@ -6,12 +6,15 @@ module CtfHelper
     svg_filename = Rails.root.join("app", "assets", "ctf", "categories", "#{category.downcase}.svg")
     svg_path = File.exist?(svg_filename) ? svg_filename : Rails.root.join("app", "assets", "ctf", "categories", "default.svg")
     svg = File.read(svg_path)
-    svg.gsub("<svg", '<svg style="width: 6vh; height: 6vh;"')
+    svg.gsub("<svg", '<svg style="width: 6vh; height: 6vh;" ')
   end
 
-  def render_writeup_card(writeup, writeup_path, which, categories, description)
+  def render_writeup_card(writeup, writeup_path, which, info)
     max_description_length = 100
+    categories = info["categories"] || [ "Unknown category" ]
     first_category = categories&.first || "unknown"
+    description = info["description"] || "No description available"
+    published = info["published"] || "Unknown date"
 
     content_tag(:a, href: writeup_path) do
       concat(content_tag(:div, class: "flex items-center") do
@@ -35,6 +38,10 @@ module CtfHelper
           end)
         end
       )
+
+      concat(content_tag(:div, class: "mt-4") do
+        concat(content_tag(:span, "#{published}", class: "text-sm text-gray-400"))
+      end)
     end
   end
 

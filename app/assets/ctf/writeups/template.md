@@ -6,6 +6,7 @@
 - ![picture description](ctf/writeups/<picture-path> "screen-readers")
 
 ---
+ctf:
 title:
 author:
 description:

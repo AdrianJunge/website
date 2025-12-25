@@ -1,3 +1,29 @@
 .landing-container {
     margin-top: 20dvh;
 }
+
+.landing-bottom {
+    padding-bottom: 10dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing-writeup-cards {
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 120dvh;
+    margin: 0 auto;
+}
+
+.profile-card, .ctfteam-card, .university-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-cards-container img {
+    width: 8dvh;
+    height: 8dvh;
+}

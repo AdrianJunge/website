@@ -1,4 +1,5 @@
 ---
+ctf: CSCG
 title: Air smeller
 author: D_K
 description: I found this website where you can rate the smell of the air, after purification. Do you know a good purifier, maybe you can recommend some purifier to the people.
