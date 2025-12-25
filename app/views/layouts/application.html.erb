@@ -1,67 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Adrian Junge</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "flowbite", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "xterm", "data-turbo-track": "reload" %>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "flowbite", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "xterm", "data-turbo-track": "reload" %>
 
-  <link rel="alternate" type="application/rss+xml" title="CTF Writeups (RSS)" href="<%= ctf_feed_url %>">
-  <link rel="alternate" type="application/atom+xml" title="CTF Writeups (Atom)" href="<%= ctf_feed_url(format: :atom) %>">
 
-  <script>
-    window.MathJax = {
-      loader: {
-        paths: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5'
-        },
-        load: ['input/tex-full', 'output/chtml', '[tex]/color']
-      },
-      options: {
-        skipHtmlTags: ["script","noscript","style","textarea"]
-      },
-      tex: {
-        packages: {
-          '[+]': ['color']
-        },
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']]
-      },
-      startup: {
-        pageReady() {
-          function updateScrollClasses() {
-            document.querySelectorAll('.MathJax').forEach(el => {
-              if (el.scrollWidth > el.clientWidth) {
-                el.classList.add('has-scroll');
-              } else {
-                el.classList.remove('has-scroll');
-              }
-            });
-          }
-          return MathJax.startup.defaultPageReady().then(() => {
-            updateScrollClasses();
-            window.addEventListener('resize', updateScrollClasses);
-          });
-        }
-      }
-    };
-  </script>
-  <%= javascript_importmap_tags %>
-  <%= favicon_link_tag asset_path('favicon.svg') %>
+    <link rel="alternate" type="application/rss+xml" title="CTF Writeups (RSS)" href="<%= ctf_feed_url %>">
+    <link rel="alternate" type="application/atom+xml" title="CTF Writeups (Atom)" href="<%= ctf_feed_url(format: :atom) %>">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%= javascript_importmap_tags %>
+    <%= favicon_link_tag asset_path('favicon.svg') %>
 
-  <%= yield :head %>
+    <% if content_for?(:head) %>
+      <%= yield :head %>
+    <% else %>
+      <title>vurlo</title>
+    <% end %>
 
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  </head>
   <body class="bg-default min-h-screen flex flex-col">
 
     <% if current_page?(root_path) == false %>
       <a href="<%= parent_path %>" class="back-button-floating">
-        <button type="button" class="back-button rounded-full w-12 h-12 flex items-center justify-center hover:bg-secondary transition-colors" aria-label="Back">
+        <button
+          type="button"
+          class="back-button rounded-full w-12 h-12 flex items-center justify-center hover:bg-secondary transition-colors" aria-label="Back"
+        >
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
           </svg>

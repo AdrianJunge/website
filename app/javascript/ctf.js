@@ -1,3 +1,39 @@
+window.MathJax = {
+  loader: {
+    paths: {
+      mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5'
+    },
+    load: ['input/tex-full', 'output/chtml', '[tex]/color']
+  },
+  options: {
+    skipHtmlTags: ["script","noscript","style","textarea"]
+  },
+  tex: {
+    packages: {
+      '[+]': ['color']
+    },
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']]
+  },
+  startup: {
+    pageReady() {
+      function updateScrollClasses() {
+        document.querySelectorAll('.MathJax').forEach(el => {
+          if (el.scrollWidth > el.clientWidth) {
+            el.classList.add('has-scroll');
+          } else {
+            el.classList.remove('has-scroll');
+          }
+        });
+      }
+      return MathJax.startup.defaultPageReady().then(() => {
+        updateScrollClasses();
+        window.addEventListener('resize', updateScrollClasses);
+      });
+    }
+  }
+};
+
 document.querySelectorAll('.ctf-card').forEach(card => {
   card.addEventListener('transitionend', event => {
     if (!card.classList.contains('expanded')) {
@@ -95,6 +131,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", highlightCurrentSection);
     highlightCurrentSection();
+
+    /* TOC toggle using Tailwind utility classes (avoid .collapse collision) */
+    document.querySelectorAll('[data-toc-toggle]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetId = btn.getAttribute('data-toc-toggle') || btn.getAttribute('aria-controls');
+        const toc = document.getElementById(targetId);
+        if (!toc) return;
+
+        const nowHidden = toc.classList.toggle('hidden');
+        const expanded = (!nowHidden).toString();
+        btn.setAttribute('aria-expanded', expanded);
+      });
+    });
 });
 
 document.addEventListener('click', event => {
@@ -110,4 +159,18 @@ document.addEventListener('click', event => {
     .catch(() => {
       btn.textContent = 'Error';
     });
+});
+
+
+const btn = document.getElementById("toc-toggle");
+const icon = document.getElementById("toc-toggle-icon");
+const toc  = document.getElementById("toc");
+
+btn.addEventListener("click", () => {
+  const expanded = btn.getAttribute("aria-expanded") === "true";
+  if (expanded) {
+    icon.classList.add("rotate-180");
+  } else {
+    icon.classList.remove("rotate-180");
+  }
 });

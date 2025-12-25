@@ -1,7 +1,11 @@
 # Content
-- collapsable table of content bei den writeups
 - bei einem writeup unten previous/next writeup
     - entweder innerhalb des CTFs oder overall (zB nach Datum oder ordered by ctfs)
+- landing page mobile tauglich machen
+    - ctf-cards "..." sind sehr seltsam bzw tauchen mehrmals auf und die letzten "..." sind im datum drin
+    - mehr responsiveness
+    - timeline dots sind verschoben
+    - footer mehr squeezen und Buttons größer machen
 - CTF
     - RSS buttons zu CTF verschieben
         => zB neben Search/Filterbar packen
@@ -50,6 +54,7 @@
     - writeups overview die Boxen nicht verkleinert werden, aber die Fonts
     - "Table of content" Überschrift zu klein ist/unproportional zum Rest
 ## CSS
+- switch von bootstrap to tailwindcss+flowbite
 - Redundantes bzw alles an CSS wie zB für die ganzen Buttons das Hoverzeug custom tailwindcss classes anlegen
     - alle Tailwind classes durchgehen und Redundanzen/Inkonsistenzen entfernen zB abgerundete Ecken immer 3xl bzw custom class anlegen
 - single truth of color pattern für tailwindcss vs variables.scss

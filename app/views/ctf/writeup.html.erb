@@ -1,9 +1,38 @@
+<% content_for :head do %>
+  <title><%= @ctf_info["title"] %> - <%= @ctf_info['ctf'] %></title>
+  <meta name="description" content="Writeup for <%= @ctf_info['title'] %> from <%= @ctf_info['year'] %> CTF.">
+  <meta property="og:title" content="<%= @ctf_info['title'] %> Writeup">
+  <meta property="og:description" content="Writeup for <%= @ctf_info['title'] %> from <%= @ctf_info['year'] %> CTF.">
+  <meta property="og:type" content="article">
+<% end %>
+
 <%= render_taskbar_items([
   { image_path: 'task-bar/flag.svg', alt_text: "CTF Icon", label: "CTF", link: ctf_path },
 ]) %>
 <%= render_terminal([], true) %>
 
-<div class="writeup-wrapper gap-4 mx-4">
+<div class="writeup-wrapper relative flex items-start gap-4 mx-4">
+  <button
+    id="toc-toggle"
+    type="button"
+    class="collapse-toc-button fixed top-4 right-4 z-50 hover:bg-secondary transition-colors flex items-center justify-center rounded-full w-12 h-12"
+    title="Collapse table of contents"
+    data-toc-toggle="toc"
+    aria-expanded="true"
+    aria-controls="toc"
+  >
+    <svg
+      id="toc-toggle-icon"
+      class="w-6 h-6"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M19 12l-7 7-7-7"/>
+    </svg>
+  </button>
   <div class="writeup-container bg-primary">
     <h4 class="writeup-year text-white text-center"><%= @which.upcase %>-<%= @ctf_info["year"] %></h4>
     <h1 class="writeup-title text-white"><%= @ctf_info["title"] %></h1>
@@ -24,11 +53,10 @@
         <% if file_exists %>
           <% size = number_to_human_size(File.size(file_abs_path)) rescue nil %>
           <%= link_to ctf_file_download_path(file_rel),
-                      class: "download-btn bg-tertiary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-black font-semibold mt-3",
+                      class: "download-btn bg-tertiary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-black font-semibold mt-3 shadow-[0_8px_24px_rgba(99,102,241,0.22)] hover:shadow-lg",
                       target: "_blank",
                       rel: "noopener",
-                      aria: { label: "Download #{basename}" },
-                      style: "background: box-shadow: 0 8px 24px rgba(99,102,241,0.22);" do %>
+                      aria: { label: "Download #{basename}" } do %>
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -40,11 +68,10 @@
 
         <% if pdf_exists %>
           <%= link_to "/ctf/writeups/#{pdf_rel}",
-                      class: "open-pdf-btn bg-tertiary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-black font-semibold mt-3",
+                      class: "open-pdf-btn bg-tertiary inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-black font-semibold mt-3 shadow-[0_8px_24px_rgba(59,130,246,0.22)] hover:shadow-lg",
                       target: "_blank",
                       rel: "noopener",
-                      aria: { label: "PDF Writeup" },
-                      style: "background: box-shadow: 0 8px 24px rgba(59,130,246,0.22);" do %>
+                      aria: { label: "PDF Writeup" } do %>
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M6 19a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h7l5 5v9a2 2 0 0 1-2 2H6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M13 7V2.5L18.5 8H14a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -59,7 +86,7 @@
     <%= @html_content %>
   </div>
 
-  <div class="table-of-content bg-primary">
+  <div id="toc" class="table-of-content bg-primary">
     <h3 class="text-slate-100 font-semibold text-3xl">Table of contents</h3>
     <ul class="text-slate-100">
       <% @headings.each do |heading| %>
