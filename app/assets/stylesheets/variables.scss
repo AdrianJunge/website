@@ -1,7 +1,3 @@
-$taskbar-size: 9vmin;
-$taskbar-icon-size: 7vmin;
-$default-border: 0.3dvh solid #5d749e;
-
 $color-default: #0a101a;
 $color-primary: #18243a;
 $color-secondary: #334461;
@@ -19,5 +15,31 @@ $colors: (
 :root {
   @each $name, $value in $colors {
     --color-#{$name}: #{$value};
+  }
+  --taskbar-icon-size: 7vmin;
+  --taskbar-size: 9vmin;
+  --default-border: 0.3dvh solid #5d749e;
+}
+
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+);
+
+$icon-sizes: (
+  sm: 9vmin,
+  md: 8vmin,
+  lg: 7vmin,
+  xl: 6vmin
+);
+
+@each $name, $bp in $breakpoints {
+  $size: map-get($icon-sizes, $name);
+  @if $size {
+    @media (min-width: $bp) {
+      :root { --taskbar-icon-size: #{$size}; }
+    }
   }
 }
