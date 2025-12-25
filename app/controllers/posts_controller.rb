@@ -29,14 +29,14 @@ class PostsController < ApplicationController
           title: title,
           published: published,
           link: link,
-          description: meta["description"].to_s,
+          description: meta["description"].to_s
         }
       end
     end
 
     grouped = items.group_by { |i| i[:published].year }
     @timeline = grouped.keys.sort.reverse.map { |year|
-      [year, grouped[year].sort_by { |i| -i[:published].to_i }]
+      [ year, grouped[year].sort_by { |i| -i[:published].to_i } ]
     }
   end
 end
