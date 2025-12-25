@@ -77,7 +77,6 @@
     <h2 class="text-3xl font-bold mb-6 text-white text-center">Most recent published</h2>
 
     <div class="landing-writeup-cards">
-        <% puts "most recents: #{@most_recent_ctfs.inspect}" %>
         <% @most_recent_ctfs.each do |info| %>
             <% which = info["ctf"].downcase %>
             <% writeup = info["title"] %>

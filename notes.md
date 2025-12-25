@@ -11,10 +11,7 @@
 - top part
     - Dynamischer Hintergrund
         - zB mit random auswahl aus bestimmten GIFs
-- lower part nach kurzem scroll
-    - blurry background
-            - main ctf categories
-- TODO: writeups overview karten alignen genau wie auf landing page
+        - oder je nach dem wo sich die Maus hinbewegt wird das Bild auch etwas bewegt
 
 # Content
 - awards/achievements
