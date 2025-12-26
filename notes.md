@@ -1,13 +1,11 @@
 # Content
 - CTF
-    - RSS buttons zu CTF verschieben
-        => zB neben Search/Filterbar packen
+    - Search functionality for ctfs and writeups
+        - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
+        - Suchfilter und Filteroption nach Jahr/Datum
     - “My Challenges” Section adden zu CTF (unter Angabe bei welchem CTF das veröffentlicht wurde und Link zu meinem Writeup dazu)
         => Übersicht über meine Challenges
         => jeweils redirect zu bereits published Post
-    - Search bar for ctfs and writeups
-        - ctf tags bei den einzelnen Writeups clickable machen sodass gefiltert wird nach dem tag unter den writeups
-        - Suchfilter und Filteroption nach Jahr/Datum
     - awards/achievements
         - e.g. winning writeup @cscg (best writeup for challenge) oder @umdctf (best web writeup)
         - top 5, 3 oder winner (zB DHM)

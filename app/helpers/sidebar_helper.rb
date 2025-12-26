@@ -59,25 +59,6 @@ module SidebarHelper
       ))
 
       concat(taskbar_icon_item(
-        image_path: "task-bar/rss.svg",
-        alt_text: "RSS Icon",
-        label: "CTF RSS Feed",
-        link: ctf_feed_url(format: :rss),
-        icon_class: taskbar_icon_class,
-        label_class: taskbar_label_class,
-        target: "/ctf/feed"
-      ))
-      concat(taskbar_icon_item(
-        image_path: "task-bar/atom.svg",
-        alt_text: "Atom Icon",
-        label: "CTF Atom Feed",
-        link: ctf_feed_url(format: :atom),
-        icon_class: taskbar_icon_class,
-        label_class: taskbar_label_class,
-        target: "/ctf/feed.atom"
-      ))
-
-      concat(taskbar_icon_item(
         image_path: "task-bar/terminal.svg",
         alt_text: "Terminal Icon",
         label: "Terminal navigation",

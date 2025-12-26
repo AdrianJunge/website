@@ -4,21 +4,21 @@
     "logo": "ctf/cscg.png",
     "writeups": "/ctf/cscg",
     "website": "https://cscg.de/",
-    "description": "The CSCG is an annual CTF competition that spans two months and serves as the qualifier for the DHM."
+    "description": "The CSCG is an annual german CTF competition that spans two months and serves as the qualifier for the DHM, serving as the qualifier for selecting the German team for the ECSC."
   },
   "GPNCTF": {
     "terminal_path": "gpnctf",
     "logo": "ctf/gpnctf.png",
     "writeups": "/ctf/gpnctf",
     "website": "https://gpn23.ctf.kitctf.de/",
-    "description": "GPNCTF is an annual CTF competition hosted by KITCTF at the GPN chaos event in Karlsruhe."
+    "description": "GPNCTF is an annual CTF competition hosted by KITCTF at the GPN chaos computer club event in Karlsruhe."
   },
   "SEKAICTF": {
     "terminal_path": "sekaictf",
     "logo": "ctf/sekaictf.png",
     "writeups": "/ctf/sekaictf",
     "website": "https://sekai.team/",
-    "description": "SekaiCTF is an annual CTF competition, hosted by PROJECT SEKAI which is a very well known and international CTF team. The competition itself is known for its sizable prize pools and for serving as a prequalifier for events like MaltaCTF and XCTF."
+    "description": "SekaiCTF is an annual CTF competition, hosted by PROJECT SEKAI - a well known international CTF team. The competition itself is known for its sizable prize pools and for serving as a prequalifier for events like MaltaCTF and XCTF."
   },
   // "DHM": {
   //   "terminal_path": "dhm",
@@ -39,7 +39,7 @@
     "logo": "ctf/smileyctf.png",
     "writeups": "/ctf/smileyctf",
     "website": "https://play.ctf.gg/",
-    "description": "This was the very first edition of SmileyCTF hosted by \"America's #1 CTF team\" named .;,;."
+    "description": "SmileyCTF is hosted by \"America's #1 CTF team\" named .;,;."
   },
   "UMDCTF":{
     "terminal_path": "umdctf",
@@ -60,20 +60,20 @@
     "logo": "ctf/ehax.png",
     "writeups": "/ctf/ehax",
     "website": "https://ctf.ehax.tech/",
-    "description": "EHAX is an 24-hour CTF competition hosted as part of Invictus DTU's mega tech fest."
+    "description": "EHAX is an online 24-hour CTF competition hosted as part of Invictus DTU's mega tech fest in India."
   },
   "LACTF":{
     "terminal_path": "lactf",
     "logo": "ctf/lactf.png",
     "writeups": "/ctf/lactf",
     "website": "https://lac.tf/",
-    "description": "LACTF is an annual CTF competition hosted by ACM Cyber at UCLA."
+    "description": "LACTF is an annual american CTF competition hosted by ACM Cyber at UCLA."
   },
   "DVCTF":{
     "terminal_path": "dvctf",
     "logo": "ctf/dvctf.png",
     "writeups": "/ctf/dvctf",
     "website": "https://dvc.tf/",
-    "description": "DVCTF is annualy held by DaVinciCode, the academic team of the École supérieure d'ingénieurs Léonard-de-Vinci."
+    "description": "DVCTF is annualy held by DaVinciCode, the academic team of the École supérieure d'ingénieurs Léonard-de-Vinci in France."
   }
 }

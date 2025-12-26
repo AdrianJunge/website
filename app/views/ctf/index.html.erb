@@ -13,17 +13,35 @@
 <%= render_terminal(terminal_paths, true) %>
 
 <div class="ctf-overview">
-  <% @ctfs.each do |name, ctf| %>
-    <div class="ctf-card">
-      <%= image_tag(ctf["logo"], alt: "#{name} Logo", class: "ctf-logo") %>
-      <div class="ctf-details">
-        <h3 class="ctf-name font-bold"><%= name %></h3>
-        <p class="ctf-description"><%= ctf["description"] %></p>
-        <div class="ctf-button-container">
-          <a href="<%= ctf["website"] %>" target="_blank" class="ctf-button website-button">Website</a>
-          <a href="<%= ctf["writeups"] %>" class="ctf-button writeups-button">Writeups</a>
+  <div class="ctf-header-section">
+    <div class="ctf-header-center">
+      <input type="text" id="ctf-search-input" placeholder="Search CTFs..." class="ctf-search-input">
+    </div>
+
+    <div class="ctf-header-right">
+      <a href="/ctf/feed" class="ctf-rss-feed">
+        <%= image_tag("task-bar/rss.svg", alt: "RSS Feed Icon", class: "ctf-rss-icon bg-tertiary") %>
+      </a>
+
+      <a href="/ctf/feed.atom" class="ctf-atom-feed">
+        <%= image_tag("task-bar/atom.svg", alt: "Atom Feed Icon", class: "ctf-atom-icon bg-tertiary") %>
+      </a>
+    </div>
+  </div>
+
+  <div class="ctf-cards-container">
+    <% @ctfs.each do |name, ctf| %>
+      <div class="ctf-card">
+        <%= image_tag(ctf["logo"], alt: "#{name} Logo", class: "ctf-logo") %>
+        <div class="ctf-details">
+          <h3 class="ctf-name font-bold"><%= name %></h3>
+          <p class="ctf-description"><%= ctf["description"] %></p>
+          <div class="ctf-button-container">
+            <a href="<%= ctf["website"] %>" target="_blank" class="ctf-button website-button">Website</a>
+            <a href="<%= ctf["writeups"] %>" class="ctf-button writeups-button">Writeups</a>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
