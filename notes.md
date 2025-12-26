@@ -69,5 +69,6 @@
 - Writeups und paths für ctf file zips in Datenbank verschieben anstatt .md files einzulesen
     => kein Potenzial mehr für Path Traversals
     => Brakeman ignore Test wieder rausnehmen (config/brakeman.ignore)
+    => keine Probleme mehr mit upper/lowercasing um bestimmte writeups zu finden etc
 - Pipeline aufsetzen, welche automatisch neue oder edited Markdown Writeups zu HTML parsed, sodass nicht bei jedem Request unnötig neu geparsed wird
 - Heroku Warnings durchgehen und evtl fixen

@@ -213,3 +213,20 @@ body {
   transition: transform 0.2s ease-in-out, background-color 1s ease;
   transform: scale(1);
 }
+
+.next-previous-writeups {
+  gap: 4dvh;
+}
+
+@media (max-width: 640px) {
+  .next-previous-writeups, .writeup-challengefiles {
+    flex-direction: column;
+    gap: 1.5dvh;
+    align-items: center;
+  }
+
+  .previous-writeup-btn,
+  .next-writeup-btn {
+    justify-content: center;
+  }
+}
